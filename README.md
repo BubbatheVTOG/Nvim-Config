@@ -65,21 +65,22 @@
 <p>A more up-do-date TODO list can be found at the bottom of the configuration file.
 <ul>
 	<li>Plugins that I want to install/configure but haven't had time:
-<ul>
-	<li>Supertab/YouCompleteMe plugin
-	<li>https://github.com/terryma/vim-multiple-cursors
-	<li>Get rid of manual commenter and install https://github.com/scrooloose/nerdcommenter
-	<li>tpope plugin to auto adjust tab width: https://github.com/tpope/vim-sleuth
-	<li>bufferHJKL movements
-	<li>https://github.com/jvanja/vim-bootstrap4-snippets
-</ul>
+	<ul>
+		<li>Supertab/YouCompleteMe plugin
+		<li>https://github.com/terryma/vim-multiple-cursors
+		<li>Get rid of manual commenter and install https://github.com/scrooloose/nerdcommenter
+		<li>tpope plugin to auto adjust tab width: https://github.com/tpope/vim-sleuth
+		<li>bufferHJKL movements
+		<li>https://github.com/jvanja/vim-bootstrap4-snippets
+	</ul>
 	<li>Enhancements or fixes I want to implement when I have time or an idea of how to fix it.
-	<li>https://github.com/AnthonyAstige/ctrlhjkl.vim
-	<li>Configure LaTeX more
-	<li>Source .vimrc funciton
-	<li>reopen in sudo mode funciton
-	<li>seletion file insertion
-	<li>add test for functions like,"has('neovim')&&has('externel shell binary')
-	<li>make function use silent!
-</ul>
+	<ul>
+		<li>https://github.com/AnthonyAstige/ctrlhjkl.vim
+		<li>Configure LaTeX more
+		<li>Source .vimrc funciton
+		<li>reopen in sudo mode funciton
+		<li>seletion file insertion
+		<li>add test for functions like,"has('neovim')&&has('externel shell binary')
+		<li>make function use silent!
+	</ul>
 </ul>
