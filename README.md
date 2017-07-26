@@ -1,5 +1,10 @@
 # Nvim-Config
 <strong>This is my config for nvim.</strong>
+<hr width="75%" align="center" noshade>
+<strong>It looks like this...</strong>
+<a href="http://imgur.com/y9wF8Tm"><img src="http://i.imgur.com/y9wF8Tm.png" title="source: imgur.com" /></a>
+<hr width="75%" align="center" noshade>
+<br>
 <p>This is a .vimrc that requires plugins and other software.</p>
 <p>This VIM config uses <a href=https://github.com/junegunn/vim-plug>vim-plug</a> as the plugin manager.</p>
 <hr width="75%" align="center" noshade>
@@ -50,12 +55,6 @@
 │   │   └── plug.vim
 │   ├── init.vim -> /home/$USER/git/simple.vimrc/vimrc
 </pre>
-<br>
-<hr width="75%" align="center" noshade>
-<strong>It looks like this...</strong>
-<a href="http://imgur.com/y9wF8Tm"><img src="http://i.imgur.com/y9wF8Tm.png" title="source: imgur.com" /></a>
-<p>This picture is old and of the NOTsimple.vimrc config.
-<br>
 <br>
 <hr width="75%" align="center" noshade>
 <strong>TODO:</strong>
