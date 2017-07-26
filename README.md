@@ -16,6 +16,8 @@
 <li>indentLine
 <li>nerdtree
 <li>nerdtree-git-plugin
+<li>splitjoin.vim
+<li>supertab
 <li>syntastic
 <li>vim-airline
 <li>vim-airline-themes
