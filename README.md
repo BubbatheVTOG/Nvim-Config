@@ -1,7 +1,6 @@
-# NOTsimple.nvimrc
-<strong>This is a SIMPLE .vimrc (.nvimrc) for nvim.</strong>
-<p><strong>Check out the simple.vimrc branch if you want to keep it simple ;)</strong></p>
-<p>This is a .vimrc that requires plugins and other software to get the most use out of.</p>
+# Nvim-Config
+<strong>This is my config for nvim.</strong>
+<p>This is a .vimrc that requires plugins and other software.</p>
 <p>This VIM config uses <a href=https://github.com/junegunn/vim-plug>vim-plug</a> as the plugin manager.</p>
 <hr width="75%" align="center" noshade>
 <strong>Software Needed:</strong>
@@ -12,23 +11,23 @@
 <hr width="75%" align="center">
 <strong>Plugins Currently In Use:</strong>
 <ul>
-<li>vim-plug (detailed below)
-<li>vim-fugitive
+<li>colorizer
+<li>comfortable-motion.vim
+<li>indentLine
 <li>nerdtree
 <li>nerdtree-git-plugin
-<li>indentLine
-<li>comfortable-motion.vim
-<li>vim-trailing-whitespace
-<li>vim-gitgutter
+<li>syntastic
 <li>vim-airline
 <li>vim-airline-themes
-<li>vim-plyglot
-<li>syntastic
-<li>vimtex
-<li>vim-latex-live-preview
-<li>colorizer
-<li>vim-surround
+<li>vim-fugitive
 <li>vim-game-code-break
+<li>vim-gitgutter
+<li>vim-latex-live-preview
+<li>vim-plug (detailed below)
+<li>vim-plyglot
+<li>vim-surround
+<li>vim-trailing-whitespace
+<li>vimtex
 </ul>
 <br>
 <hr width="75%" align="center" noshade>
