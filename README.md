@@ -1,6 +1,9 @@
 # Nvim-Config
 <strong>This is my config for <a href="https://github.com/neovim/neovim">neovim</a>.</strong>
 <hr width="75%" align="center" noshade>
+<p>This is a .vimrc that requires plugins and other software.</p>
+<p>This VIM config uses <a href=https://github.com/junegunn/vim-plug>vim-plug</a> as the plugin manager.</p>
+<hr width="75%" align="center" noshade>
 <strong>It looks like this...</strong>
 <a href="http://imgur.com/iiRj5dB"><img src="http://i.imgur.com/iiRj5dB.png" title="source: imgur.com" /></a>
 <p>This shows some plugins (syntastic,colorizer,nerdtree) with one theme.</p>
@@ -8,9 +11,6 @@
 <p>This shows some plugins (syntastic,colorizer,nerdtree) using a different theme.</p>
 <a href="http://imgur.com/X9Sap29"><img src="http://i.imgur.com/X9Sap29.png" title="source: imgur.com" /></a>
 <p>Just some general code/formatting appearance.</p>
-<hr width="75%" align="center" noshade>
-<p>This is a .vimrc that requires plugins and other software.</p>
-<p>This VIM config uses <a href=https://github.com/junegunn/vim-plug>vim-plug</a> as the plugin manager.</p>
 <hr width="75%" align="center" noshade>
 <strong>Software Dependencies:</strong>
 <ul>
