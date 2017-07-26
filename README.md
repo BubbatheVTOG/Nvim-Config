@@ -74,7 +74,7 @@
 	<li>https://github.com/jvanja/vim-bootstrap4-snippets
 </ul>
 	<li>Enhancements or fixes I want to implement when I have time or an idea of how to fix it.
-<ul>https://github.com/AnthonyAstige/ctrlhjkl.vim
+	<li>https://github.com/AnthonyAstige/ctrlhjkl.vim
 	<li>Configure LaTeX more
 	<li>Source .vimrc funciton
 	<li>reopen in sudo mode funciton
