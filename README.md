@@ -1,5 +1,5 @@
 # Nvim-Config
-<strong>This is my config for nvim.</strong>
+<strong>This is my config for <a href="https://github.com/neovim/neovim">neovim</a>.</strong>
 <hr width="75%" align="center" noshade>
 <strong>It looks like this...</strong>
 <a href="http://imgur.com/iiRj5dB"><img src="http://i.imgur.com/iiRj5dB.png" title="source: imgur.com" /></a>
