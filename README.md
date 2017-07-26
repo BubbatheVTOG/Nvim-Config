@@ -2,12 +2,17 @@
 <strong>This is my config for nvim.</strong>
 <hr width="75%" align="center" noshade>
 <strong>It looks like this...</strong>
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/eBefC"><a href="//imgur.com/eBefC">My neovim configs with different themes</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+<a href="http://imgur.com/iiRj5dB"><img src="http://i.imgur.com/iiRj5dB.png" title="source: imgur.com" /></a>
+<p>This shows some plugins (syntastic,colorizer,nerdtree) with one theme.</p>
+<a href="http://imgur.com/NGTbJH6"><img src="http://i.imgur.com/NGTbJH6.png" title="source: imgur.com" /></a>
+<p>This shows some plugins (syntastic,colorizer,nerdtree) using a different theme.</p>
+<a href="http://imgur.com/X9Sap29"><img src="http://i.imgur.com/X9Sap29.png" title="source: imgur.com" /></a>
+<p>Just some general code/formatting appearance.</p>
 <hr width="75%" align="center" noshade>
 <p>This is a .vimrc that requires plugins and other software.</p>
 <p>This VIM config uses <a href=https://github.com/junegunn/vim-plug>vim-plug</a> as the plugin manager.</p>
 <hr width="75%" align="center" noshade>
-<strong>Software Needed:</strong>
+<strong>Software Dependencies:</strong>
 <ul>
 <li>ctags (optional)
 <li>python-neovim (needed for java2complete)
