@@ -11,25 +11,25 @@
 <hr width="75%" align="center">
 <strong>Plugins Currently In Use:</strong>
 <ul>
-<li>colorizer
-<li>comfortable-motion.vim
-<li>indentLine
-<li>nerdtree
-<li>nerdtree-git-plugin
-<li>splitjoin.vim
-<li>supertab
-<li>syntastic
-<li>vim-airline
-<li>vim-airline-themes
-<li>vim-fugitive
-<li>vim-game-code-break
-<li>vim-gitgutter
-<li>vim-latex-live-preview
-<li>vim-plug (detailed below)
-<li>vim-plyglot
-<li>vim-surround
-<li>vim-trailing-whitespace
-<li>vimtex
+<li><a href=http://github.com/lilydjwg/colorizer>colorizer</a>
+<li><a href=http://github.com/yuttie/comfortable-motion.vim>comfortable-motion.vim</a>
+<li><a href=http://github.com/Yggdroot/indentLine>indentLine</a>
+<li><a href=http://github.com/scrooloose/nerdtree>nerdtree</a>
+<li><a href=http://github.com/Xuyuanp/nerdtree-git-plugin>nerd-git-plugin</a>
+<li><a href=http://github.com/AndreRadev/splitjoin.vim>splitjoin.vim</a>
+<li><a href=http://github.com/ervandew/supertab>supertab</a>
+<li><a href=http://github.com/vim-syntastic/syntastic>syntastic</a>
+<li><a href=http://github.com/vim-airline/vim-airline>air-line</a>
+<li><a href=http://github.com/vim-airline/vim-airline-themes>air-line-themes</a>
+<li><a href=http://github.com/tpope/vim-fugitive>vim-fugitive</a>
+<li><a href=http://github.com/johngrib/vim-game-code-break>vim-game-code-break</a>
+<li><a href=http://github.com/airblade/vim-gitgutter>vim-gitgutter</a>
+<li><a href=http://github.com/xuhdev/vim-latex-live-preview>vim-latex-live-preview</a>
+<li><a href=http://github.com/junegunn/vim-plug>vim-plug</a>
+<li><a href=http://github.com/sheerun/vim-plyglot>vim-polyglot</a>
+<li><a href=http://github.com/tpope/vim-surround>vim-surround</a>
+<li><a href=http://github.com/bronson/vim-trailing-whitespace>vim-trailing-whitespace</a>
+<li><a href=http://github.com/lervag/vimtex>vimtex</a>
 </ul>
 <br>
 <hr width="75%" align="center" noshade>
