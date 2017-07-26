@@ -1,7 +1,7 @@
 # Nvim-Config
 <strong>This is my config for <a href="https://github.com/neovim/neovim">neovim</a>.</strong>
 <hr width="75%" align="center" noshade>
-<p>This is a .vimrc that requires plugins and other software.</p>
+<p>This is a .vimrc that requires plugins and external dependencies.</p>
 <p>This VIM config uses <a href=https://github.com/junegunn/vim-plug>vim-plug</a> as the plugin manager.</p>
 <hr width="75%" align="center" noshade>
 <strong>It looks like this...</strong>
