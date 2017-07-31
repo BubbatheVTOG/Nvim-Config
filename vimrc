@@ -35,6 +35,7 @@ Plug 'rhysd/clever-f.vim' 		" Super slick t/f movements.
 Plug 'ervandew/supertab' 		" Tab completion.
 Plug 'cohama/agit.vim' 			" Git log viewer.
 Plug 'machakann/vim-highlightedyank' 	" Highlight yanked objects.
+Plug 'mbbill/undotree' 			" Create an undotree.
 
 " THIS IS NOT CONFIGURED
 if has('nvim')
@@ -117,22 +118,24 @@ autocmd FileType java let java_highlight_functions="style"
 nnoremap ; :
 " Clear search highlights
 nnoremap ,nh	:noh<CR>
+" Leader defined
+let mapleader = ","
 
 " Keymaps for custom functions.
 " -----------------------------------------------------------------------------
-nnoremap ,fc	:Flash<CR>
-nnoremap ,sc	:ToggleSpell<CR>
-nnoremap ,hs	:HtopVsplit<CR>
-nnoremap ,ht	:HtopTab<CR>
-nnoremap ,tc	:TTYClock<CR>
-nnoremap ,bg	:ToggleBG<CR>
-nnoremap ,co	:CommentITOut<CR>
-nnoremap ,ci	:CommentITIn<CR>
-nnoremap ,ts	:TermSplit<CR>
-nnoremap ,tt	:TermTab<CR>
-nnoremap ,so	:Source<CR>
-nnoremap ,su	:Sudo<CR>
-nnoremap ,ev	:e $MYVIMRC<CR>
+nnoremap <leader>fc	:Flash<CR>
+nnoremap <leader>sc	:ToggleSpell<CR>
+nnoremap <leader>hs	:HtopVsplit<CR>
+nnoremap <leader>ht	:HtopTab<CR>
+nnoremap <leader>tc	:TTYClock<CR>
+nnoremap <leader>bg	:ToggleBG<CR>
+nnoremap <leader>co	:CommentITOut<CR>
+nnoremap <leader>ci	:CommentITIn<CR>
+nnoremap <leader>ts	:TermSplit<CR>
+nnoremap <leader>tt	:TermTab<CR>
+nnoremap <leader>so	:Source<CR>
+nnoremap <leader>su	:Sudo<CR>
+nnoremap <leader>ev	:e $MYVIMRC<CR>
 
 " Custom Key Mappings For Builtin Commands
 " -----------------------------------------------------------------------------
@@ -268,13 +271,17 @@ let g:comfortable_motion_air_drag = 2.0		" Default = 2.0
 " -----------------------------------------------------------------------------
 " HOW TO USE:
 " http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
-
 " Vim-Highlightedyank
 " -----------------------------------------------------------------------------
 " Bind y to activate plugin.
 map y <Plug>(highlightedyank)
 " Highlight time in milliseconds. '-1' makes in infinite.
 let g:highlightedyank_highlight_duration = 1000
+
+" UndoTree
+" -----------------------------------------------------------------------------
+nnoremap <leader><Space> :UndotreeToggle<CR>
+
 
 " -----------------------------------------------------------------------------
 " CUSTOM FUNCTIONS

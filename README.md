@@ -50,6 +50,7 @@
 	<li><a href=http://github.com/ervandew/supertab>supertab</a>
 	<li><a href=http://github.com/cohama/agit.vim>agit.vim</a>
 	<li><a href=http://github.com/machakann/vim-highlightedyank>vim-highlightedyank</a>
+	<li><a href=http://github.com/mbbill/undotree>undotree</a>
 </ul>
 <br>
 <hr width="75%" align="center" noshade>
