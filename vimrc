@@ -1,16 +1,18 @@
-" The ctags function requires the host to have ctags installed.
-"
-set encoding=utf-8
-filetype off                  " required for plug, we'll enable it later
-
 " -----------------------------------------------------------------------------
-" Set the runtime path to include Plug and initialize
+" PLUGINS
+" -----------------------------------------------------------------------------
+" install vim-plug if it is not installed
+if empty(glob('~/.vim/autoload/plug.vim'))
+	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd vimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Plugins listed after this line
 " -----------------------------------------------------------------------------
 call plug#begin()
 Plug 'tpope/vim-fugitive'		" Git commands from ex mode.
-Plug 'scrooloose/nerdtree',{'on': 'NERDTreeToggle'}		" Its NerdTree...but only when its toggled.
 Plug 'Xuyuanp/nerdtree-git-plugin'	" Git plugin for NerdTree.
-Plug 'artur-shaik/vim-javacomplete2',{'for':['java']}		" Auto complete for Java...but only in java files.
 Plug 'Yggdroot/indentLine'		" Shows line indents.
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
 Plug 'bronson/vim-trailing-whitespace'	" Fix white space by :FixWhitespace
@@ -19,57 +21,72 @@ Plug 'vim-airline/vim-airline'		" Status bar.
 Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
 Plug 'sheerun/vim-polyglot'		" Syntax highlighting for a lot of languages. (Striped down, install specific ones if needed.)
 Plug 'vim-syntastic/syntastic'		" Syntastic linter.
-Plug 'lervag/vimtex',{'for':['tex']}				" Tex Utility
-Plug 'xuhdev/vim-latex-live-preview',{'for':['tex']}		" A Vim Plugin for Lively Previewing LaTeX PDF Output
 Plug 'lilydjwg/colorizer'		" Hex code colorizer
 Plug 'tpope/vim-surround'		" Surround movement command.
-Plug 'johngrib/vim-game-code-break',{'on': 'VimGameCodeBreak'}	" Brick Breaker
 Plug 'AndrewRadev/splitjoin.vim'	" Split or join lines.
 Plug 'godlygeek/tabular'		" Fix spacing plugin
 Plug 'ervandew/supertab'		" Omnicompletion
+
+Plug 'scrooloose/nerdtree',		{'on': 'NERDTreeToggle'}	" Its NerdTree...but only when its toggled.
+Plug 'artur-shaik/vim-javacomplete2',	{'for':['java']}		" Auto complete for Java...but only in java files.
+Plug 'lervag/vimtex',			{'for':['tex']}			" Tex Utility
+Plug 'xuhdev/vim-latex-live-preview',	{'for':['tex']}			" A Vim Plugin for Lively Previewing LaTeX PDF Output
+Plug 'johngrib/vim-game-code-break',	{'on': 'VimGameCodeBreak'}	" Brick Breaker
 call plug#end()				" required
-filetype plugin indent on		" required
-" Brief help
-" :PlugList       - lists configured plugins
-" :PlugInstall    - installs plugins; append `!` to update or just
-" :PlugUpdate
-" :PlugSearch foo - searches for foo; append `!` to refresh local cache
-" :PlugClean      - confirms removal of unused plugins; append `!` to
-" auto-approve removal
 
-" Put your non-Plugin stuff after this line
 
 " -----------------------------------------------------------------------------
-"**USER DEFINED BUILT IN CONFIGS**
+" GENERAL CONFIGURATION
 " -----------------------------------------------------------------------------
-set path+=**		" appends $PATH to find command
-set wildmenu		" allows us to use the wildcard file menu
-set background=dark	" Use text colors that look good on a dark background.
-set autoindent		" Auto intent to the same col when on new line.
-set smarttab		" Auto insert tabs spaces for curly braces.
-set mouse=a 		" Enables mouse.
-set ruler		" Enables cursor location.
-set nocompatible	" Disables legacy stuff?
-set showmode		" Shows what mode you're in.
-set showcmd		" Show partial command in status line.
-set hlsearch		" While searching, highlight (and search) as you type.
-set incsearch		" While searching, take you directly to where the so far typed pattern matches.
-set ignorecase		" While searching, ignore case.
-set smartcase		" While searching, use capitals when you use capitals.
-set showmatch		" While search, show exact matches.
-set relativenumber	" Enable relative number position when using 'set number'
-set number		" Enable line numbering.
-" set nowrap		" Disable line wrapping cuz we do it live!
-filetype plugin indent on	" Syntax for different file types. Plus auto inden for that file type.
-syntax on		" Syntax on bitch.
+filetype plugin indent on		" Syntax for different file types. Plus autoindent for that file type.
+syntax on				" Syntax on bitch.
+set path+=**				" appends $PATH to find command
+set wildmenu				" allows us to use the wildcard file menu
+set background=dark			" Use text colors that look good on a dark background.
+set autoindent				" Auto intent to the same col when on new line.
+set smarttab				" Auto insert tabs spaces for curly braces.
+set mouse=a 				" Enables mouse.
+set ruler				" Enables cursor location.
+set nocompatible			" Disables legacy stuff?
+set showmode				" Shows what mode you're in.
+set showcmd				" Show partial command in status line.
+set showmatch				" Show matching brackets.
+set splitright 				" Open new horizontal splits right of the current one.
+set splitbelow 				" Open new vertical splits below the current one.
+set completeopt=longest,menuone 	" Better autocompletion.
+set autowriteall 			" Autosave files.
+set hidden 				" Buffers become hidden when abandonded.
+set autoread 				" Reload the file when it changes outside of (n)vim.
+set visualbell 				" Use visual bell instead of beeping.
+set history=1000 			" Increase history.
+set undolevels=1000 			" Increase undo levels.
 autocmd BufWinLeave *.* mkview		" Save folds on exit.
 autocmd BufWinEnter *.* silent loadview	" Create folds from save.
 
+" Search
+" -----------------------------------------------------------------------------
+set hlsearch				" While searching, highlight (and search) as you type.
+set incsearch				" While searching, take you directly to where the so far typed pattern matches.
+set ignorecase				" While searching, ignore case.
+set smartcase				" While searching, use capitals when you use capitals.
+set showmatch				" While search, show exact matches.
+
+" Line Numbers
+" -----------------------------------------------------------------------------
+set relativenumber			" Enable relative number position when using 'set number'
+set number				" Enable line numbering.
+
+" Backups
+" -----------------------------------------------------------------------------
+set nobackup 				" Disable backups. YOLO
+set noswapfile 				" Disable swapfiles.
+
 
 " -----------------------------------------------------------------------------
-" Language Specific Settings (built-in configurations)
+" LANGUAGE SPECIFIC SETTINGS
 " From :h ft-$LANGUAGE
 " -----------------------------------------------------------------------------
+
 " Java
 " -----------------------------------------------------------------------------
 autocmd FileType java let java_highlight_debug=1
@@ -77,8 +94,13 @@ autocmd FileType java let java_highlight_functions="style"
 
 
 " -----------------------------------------------------------------------------
-" Custom Keybinds (NOT PART OF PLUGIN CONFIGS OR BUILT IN COMMANDS)
-" These are shortcuts to defined functions.
+" CUSTOM KEYBINDS
+" -----------------------------------------------------------------------------
+
+" CONTROVERSY
+nnoremap ; :
+
+" Keymaps for custom functions.
 " -----------------------------------------------------------------------------
 nnoremap ,fc	:Flash<CR>
 nnoremap ,sc	:ToggleSpell<CR>
@@ -94,8 +116,144 @@ nnoremap ,so	:Source<CR>
 nnoremap ,su	:Sudo<CR>
 nnoremap ,ev	:e $MYVIMRC<CR>
 
+" Custom Key Mappings For Builtin Commands
 " -----------------------------------------------------------------------------
-" Custom Functions
+" Tab navigation similar to web browser behaviors.
+" tab new (requires file name or path or %)
+nnoremap <C-t>		:tabnew
+" tab new in insert mode (requires file name or path or %)
+inoremap <C-t>		<Esc>:tabnew
+" insert mode tab new
+nnoremap <C-q>		:tabclose<CR>
+" insert mode tab close
+inoremap <C-q>		<Esc>:tabclose<CR>
+
+
+" -----------------------------------------------------------------------------
+" PLUGIN CONFIGURATION
+" -----------------------------------------------------------------------------
+
+" NERDTree config
+" -----------------------------------------------------------------------------
+" Open NERDTree bind
+nnoremap <Space>	:NERDTreeToggle<CR>
+
+" Java Complete 2 Config
+" -----------------------------------------------------------------------------
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+autocmd Filetype java setlocal completefunc=javacomplete#CompleteParamsInfo
+" Enable smart inserting class imports with F4
+nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+" Enable unusual inserting class imports with F5
+nmap <F5> <Plug>(JavaComplete-Imports-Add)
+imap <F5> <Plug>(JavaComplete-Imports-Add)
+" Add all missing imports with F5
+nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+" Remove all missing imports with F7
+nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+
+" IndentLines Config
+" -----------------------------------------------------------------------------
+let g:indentLine_enabled = 1		" Enable indentLine
+let g:indentLine_faster = 1		" DO NOT DISABLE WHILE USING THIS PLUGIN
+let g:indentLine_color_term = 239	" Set indentLine color
+let g:indentLine_char = '.'		" Set indentLine symbol(This does nothing apparently)
+set list lcs=tab:\·\ 			" set indentLine for tabs (this actually changes the symbol lol)
+
+" GitGutter Config
+" -----------------------------------------------------------------------------
+" let g:gitgutter_realtime = 0
+" let g:gitgutter_eager = 0
+set updatetime=250			" update vim faster
+let g:gitgutter_enabled = 1		" enable gitgutter
+
+" Ctags Config
+" -----------------------------------------------------------------------------
+" ^] to jump to tag under cursor
+" g^] for amiguous tags
+" ^t to jump back to the tag stack
+command! MakeTags !ctags -R .
+
+" Neovim Terminal Mode Config
+" -----------------------------------------------------------------------------
+tnoremap <Esc> <C-\><C-n>
+autocmd TermOpen * setlocal statusline=%{b:term_title}
+
+" Airline Config
+" -----------------------------------------------------------------------------
+let g:airline_theme='lucius'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_alt_sep = ' | '
+let g:airline_powerline_fonts = 0
+
+" AirLine (unicode) symbols
+if !exists('g:airline_symbols')
+	let g:airline_symbols = {}
+endif
+let g:airline_left_sep = '»'
+let g:airline_right_sep = '«'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.maxlinenr = '☰'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" Syntastic recommended settings.
+" -----------------------------------------------------------------------------
+" Global Settings:
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+
+" LaTeX Settings
+" -----------------------------------------------------------------------------
+" :LLPStartPreview	" To start live preview
+" let g:livepreview_engine = 'your_engine' . ' [options]'	" To change compiler
+" let g:livepreview_engine 	= 'pdftex'
+let g:livepreview_previewer 	= 'zathura'
+
+" CSS Color Settings
+" -----------------------------------------------------------------------------
+let g:colorizer_auto_color	= 0
+let g:colorizer_x11_name	= 1
+let g:colorizer_maxlines	= 500
+
+" Smooth Scolling Settings
+" -----------------------------------------------------------------------------
+" Smooth Scoll the j and k keys.
+let g:comfortable_motion_scroll_down_key = "j"
+let g:comfortable_motion_scroll_up_key = "k"
+"
+" Intervals
+let g:comfortable_motion_interval = 1000/60	" Default = 1000/60
+let g:comfortable_motion_friction = 80.0	" Default = 80.0
+let g:comfortable_motion_air_drag = 2.0		" Default = 2.0
+
+" SplitJoin
+" -----------------------------------------------------------------------------
+" Split a single line with gS
+" Join a block to a line with gJ
+
+" Tabular
+" -----------------------------------------------------------------------------
+" HOW TO USE:
+" http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
+
+
+" -----------------------------------------------------------------------------
+" CUSTOM FUNCTIONS
 " -----------------------------------------------------------------------------
 " Change Keyboard Brightness on mode B)
 autocmd InsertEnter * silent! call system('echo 50 > /sys/class/leds/chromeos::kbd_backlight/brightness')
@@ -257,7 +415,6 @@ function Sudo()
 endfunction
 command Sudo silent! call Sudo()
 
-" -----------------------------------------------------------------------------
 " Configure Color Column (Built in)
 " -----------------------------------------------------------------------------
 let &colorcolumn=join(range(81,81),",")			" Set bar at column 81
@@ -266,149 +423,6 @@ let &colorcolumn="80,".join(range(121,121),",")		" Set bar at column121
 " Make that line black w/ a bit of blue.
 highlight ColorColumn ctermbg=235 guibg=#003333
 
-" -----------------------------------------------------------------------------
-" Custom Key Mappings For Builtin Commands
-" -----------------------------------------------------------------------------
-" Tab navigation similar to web browser behaviors.
-" tab new (requires file name or path or %)
-nnoremap <C-t>		:tabnew
-" tab new in insert mode (requires file name or path or %)
-inoremap <C-t>		<Esc>:tabnew
-" insert mode tab new
-nnoremap <C-q>		:tabclose<CR>
-" insert mode tab close
-inoremap <C-q>		<Esc>:tabclose<CR>
-
-" -----------------------------------------------------------------------------
-" NERDTree config
-" -----------------------------------------------------------------------------
-" Open NERDTree bind
-nnoremap <Space>	:NERDTreeToggle<CR>
-
-" -----------------------------------------------------------------------------
-" Java Complete 2 Config
-" -----------------------------------------------------------------------------
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-autocmd Filetype java setlocal completefunc=javacomplete#CompleteParamsInfo
-" Enable smart inserting class imports with F4
-nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-" Enable unusual inserting class imports with F5
-nmap <F5> <Plug>(JavaComplete-Imports-Add)
-imap <F5> <Plug>(JavaComplete-Imports-Add)
-" Add all missing imports with F5
-nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-" Remove all missing imports with F7
-nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-
-" -----------------------------------------------------------------------------
-" IndentLines Config
-" -----------------------------------------------------------------------------
-let g:indentLine_enabled = 1		" Enable indentLine
-let g:indentLine_faster = 1		" DO NOT DISABLE WHILE USING THIS PLUGIN
-let g:indentLine_color_term = 239	" Set indentLine color
-let g:indentLine_char = '.'		" Set indentLine symbol(This does nothing apparently)
-set list lcs=tab:\·\ 			" set indentLine for tabs (this actually changes the symbol lol)
-
-" -----------------------------------------------------------------------------
-" GitGutter Config
-" -----------------------------------------------------------------------------
-" let g:gitgutter_realtime = 0
-" let g:gitgutter_eager = 0
-set updatetime=250			" update vim faster
-let g:gitgutter_enabled = 1		" enable gitgutter
-
-" -----------------------------------------------------------------------------
-" Ctags Config
-" -----------------------------------------------------------------------------
-" ^] to jump to tag under cursor
-" g^] for amiguous tags
-" ^t to jump back to the tag stack
-command! MakeTags !ctags -R .
-
-" -----------------------------------------------------------------------------
-" Neovim Terminal Mode Config
-" -----------------------------------------------------------------------------
-tnoremap <Esc> <C-\><C-n>
-autocmd TermOpen * setlocal statusline=%{b:term_title}
-
-" -----------------------------------------------------------------------------
-" Airline Config
-" -----------------------------------------------------------------------------
-let g:airline_theme='lucius'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_alt_sep = ' | '
-let g:airline_powerline_fonts = 0
-
-" AirLine (unicode) symbols
-if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
-endif
-let g:airline_left_sep = '»'
-let g:airline_right_sep = '«'
-let g:airline_symbols.crypt = '🔒'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.maxlinenr = '☰'
-let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.whitespace = 'Ξ'
-
-" -----------------------------------------------------------------------------
-" Syntastic recommended settings.
-" -----------------------------------------------------------------------------
-" Global Settings:
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-
-" -----------------------------------------------------------------------------
-" LaTeX Settings
-" -----------------------------------------------------------------------------
-" :LLPStartPreview	" To start live preview
-" let g:livepreview_engine = 'your_engine' . ' [options]'	" To change compiler
-" let g:livepreview_engine 	= 'pdftex'
-let g:livepreview_previewer 	= 'zathura'
-
-" -----------------------------------------------------------------------------
-" CSS Color Settings
-" -----------------------------------------------------------------------------
-let g:colorizer_auto_color	= 0
-let g:colorizer_x11_name	= 1
-let g:colorizer_maxlines	= 500
-
-" -----------------------------------------------------------------------------
-" Smooth Scolling Settings
-" -----------------------------------------------------------------------------
-" Smooth Scoll the j and k keys.
-let g:comfortable_motion_scroll_down_key = "j"
-let g:comfortable_motion_scroll_up_key = "k"
-"
-" Intervals
-let g:comfortable_motion_interval = 1000/60	" Default = 1000/60
-let g:comfortable_motion_friction = 80.0	" Default = 80.0
-let g:comfortable_motion_air_drag = 2.0		" Default = 2.0
-
-" -----------------------------------------------------------------------------
-" SplitJoin
-" -----------------------------------------------------------------------------
-" Split a single line with gS
-" Join a block to a line with gJ
-
-" -----------------------------------------------------------------------------
-" Tabular
-" -----------------------------------------------------------------------------
-" HOW TO USE:
-" http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 
 " -----------------------------------------------------------------------------
 " TODO:
