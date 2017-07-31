@@ -48,6 +48,7 @@
 	<li><a href=http://github.com/Shougo/deoplete.nvim>deoplete.nvim</a>
 	<li><a href=http://github.com/Shougo/neocomplete.vim>neocomplete.vim</a>
 	<li><a href=http://github.com/ervandew/supertab>supertab</a>
+	<li><a href=http://github.com/cohama/agit.vim>agit.vim</a>
 </ul>
 <br>
 <hr width="75%" align="center" noshade>
