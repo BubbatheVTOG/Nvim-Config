@@ -8,6 +8,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 	autocmd vimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+
 " Plugins listed after this line
 " -----------------------------------------------------------------------------
 call plug#begin()
@@ -27,6 +28,7 @@ Plug 'AndrewRadev/splitjoin.vim'	" Split or join lines.
 Plug 'godlygeek/tabular'		" Fix spacing plugin
 Plug 'ervandew/supertab'		" Omnicompletion
 Plug 'tpope/vim-sleuth' 		" Heuristic tabsizes.
+Plug 'apalmer1377/factorus' 		" Refactoring Plugin.
 
 Plug 'scrooloose/nerdtree',		{'on': 'NERDTreeToggle'}	" Its NerdTree...but only when its toggled.
 Plug 'artur-shaik/vim-javacomplete2',	{'for':['java']}		" Auto complete for Java...but only in java files.
