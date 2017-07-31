@@ -26,14 +26,18 @@ Plug 'lilydjwg/colorizer'		" Hex code colorizer
 Plug 'tpope/vim-surround'		" Surround movement command.
 Plug 'tpope/vim-sleuth' 		" Heuristic tabsizes.
 Plug 'tpope/vim-repeat' 		" Repeat support for plugins.
-Plug 'tpope/vim-speeddating' 		" Date manipulation. 
+Plug 'tpope/vim-speeddating' 		" Date manipulation.
 Plug 'AndrewRadev/splitjoin.vim'	" Split or join lines.
-Plug 'godlygeek/tabular'		" Fix spacing plugin
-Plug 'ervandew/supertab'		" Omnicompletion
 Plug 'apalmer1377/factorus' 		" Refactoring Plugin.
 Plug 'metakirby5/codi.vim' 		" Interactive scratchpad.
 Plug 'machakann/vim-sandwich' 		" Adds sandwich command for surrounding objects.
-Plug 'rhysd/clever-f.vim' 		" Super slick t/f movements. 
+Plug 'rhysd/clever-f.vim' 		" Super slick t/f movements.
+
+if has('nvim')
+	Plug 'Shougo/deoplete.nvim' 	" Omnicompletion for neovim
+else
+	Plug 'Shougo/neocomplete.vim' 	" Omnicompletion for vim
+endif
 
 Plug 'scrooloose/nerdtree',		{'on': 'NERDTreeToggle'}	" Its NerdTree...but only when its toggled.
 Plug 'artur-shaik/vim-javacomplete2',	{'for':['java']}		" Auto complete for Java...but only in java files.

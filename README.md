@@ -27,7 +27,6 @@
 	<li><a href=http://github.com/scrooloose/nerdtree>nerdtree</a>
 	<li><a href=http://github.com/Xuyuanp/nerdtree-git-plugin>nerd-git-plugin</a>
 	<li><a href=http://github.com/AndreRadev/splitjoin.vim>splitjoin.vim</a>
-	<li><a href=http://github.com/ervandew/supertab>supertab</a>
 	<li><a href=http://github.com/vim-syntastic/syntastic>syntastic</a>
 	<li><a href=http://github.com/vim-airline/vim-airline>air-line</a>
 	<li><a href=http://github.com/vim-airline/vim-airline-themes>air-line-themes</a>
@@ -46,6 +45,8 @@
 	<li><a href=http://github.com/metakirby5/codi.vim'>codi.vim</a>
 	<li><a href=http://github.com/mechakann/vim-sandwich>vim-sandwich</a>
 	<li><a href=http://github.com/rhysd/clever-f.vim>clever-f.vim</a>
+	<li><a href=http://github.com/Shougo/deoplete.nvim>deoplete.nvim</a>
+	<li><a href=http://github.com/Shougo/neocomplete.vim>neocomplete.vim</a>
 </ul>
 <br>
 <hr width="75%" align="center" noshade>
