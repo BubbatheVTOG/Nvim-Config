@@ -273,7 +273,7 @@ let g:comfortable_motion_air_drag = 2.0		" Default = 2.0
 " -----------------------------------------------------------------------------
 " Bind y to activate plugin.
 map y <Plug>(highlightedyank)
-" Highlight time in milliseconds.
+" Highlight time in milliseconds. '-1' makes in infinite.
 let g:highlightedyank_highlight_duration = 1000
 
 " -----------------------------------------------------------------------------
