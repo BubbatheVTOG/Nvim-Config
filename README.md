@@ -38,8 +38,14 @@
 	<li><a href=http://github.com/junegunn/vim-plug>vim-plug</a>
 	<li><a href=http://github.com/sheerun/vim-plyglot>vim-polyglot</a>
 	<li><a href=http://github.com/tpope/vim-surround>vim-surround</a>
+	<li><a href=http://github.com/tpope/vim-sleuth>vim-sleuth</a>
+	<li><a href=http://github.com/tpope/vim-repeat>vim-repeat</a>
+	<li><a href=http://github.com/tpope/vim-speeddating>vim-speeddating</a>
 	<li><a href=http://github.com/bronson/vim-trailing-whitespace>vim-trailing-whitespace</a>
 	<li><a href=http://github.com/lervag/vimtex>vimtex</a>
+	<li><a href=http://github.com/metakirby5/codi.vim'>codi.vim</a>
+	<li><a href=http://github.com/mechakann/vim-sandwich>vim-sandwich</a>
+	<li><a href=http://github.com/rhysd/clever-f.vim>clever-f.vim</a>
 </ul>
 <br>
 <hr width="75%" align="center" noshade>
