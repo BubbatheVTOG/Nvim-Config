@@ -33,6 +33,7 @@ Plug 'metakirby5/codi.vim' 		" Interactive scratchpad.
 Plug 'machakann/vim-sandwich' 		" Adds sandwich command for surrounding objects.
 Plug 'rhysd/clever-f.vim' 		" Super slick t/f movements.
 Plug 'ervandew/supertab' 		" Tab completion.
+Plug 'cohama/agit.vim' 			" Git log viewer.
 
 " THIS IS NOT CONFIGURED
 if has('nvim')
@@ -113,6 +114,8 @@ autocmd FileType java let java_highlight_functions="style"
 
 " CONTROVERSY
 nnoremap ; :
+" Clear search highlights
+nnoremap ,nh	:noh<CR>
 
 " Keymaps for custom functions.
 " -----------------------------------------------------------------------------
