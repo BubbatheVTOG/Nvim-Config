@@ -35,7 +35,7 @@ Plug 'rhysd/clever-f.vim' 		" Super slick t/f movements.
 Plug 'ervandew/supertab' 		" Tab completion.
 
 if has('nvim')
-	Plug 'Shougo/deoplete.nvim' 	" Omnicompletion for neovim
+	Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'} 	" Omnicompletion for neovim
 else
 	Plug 'Shougo/neocomplete.vim' 	" Omnicompletion for vim
 endif
@@ -397,7 +397,6 @@ function TermSplit()
 	let g:indentLine_enabled=0
 	" TODO: change the next line to open in working directory"
 	exec "vsplit term://zsh"
-	exec "normal! \<C-w>r"
 	exec "terminal!"
 endfunction
 command TermSplit silent! call TermSplit()
@@ -443,3 +442,5 @@ highlight ColorColumn ctermbg=235 guibg=#003333
 " (Plug-in) Get rid of manual commenter and install https://github.com/scrooloose/nerdcommenter
 " (Enhancement) skeleton file insertion
 " (Enhancement) test "if has('neovim')&&has('external shell command') for functions
+
+" vim:tw=78:ts=8
