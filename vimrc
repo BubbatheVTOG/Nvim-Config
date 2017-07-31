@@ -32,7 +32,7 @@ Plug 'apalmer1377/factorus' 		" Refactoring Plugin.
 Plug 'metakirby5/codi.vim' 		" Interactive scratchpad.
 Plug 'machakann/vim-sandwich' 		" Adds sandwich command for surrounding objects.
 Plug 'rhysd/clever-f.vim' 		" Super slick t/f movements.
-Plugin 'ervandew/supertab' 		" Tab completion.
+Plug 'ervandew/supertab' 		" Tab completion.
 
 if has('nvim')
 	Plug 'Shougo/deoplete.nvim' 	" Omnicompletion for neovim
