@@ -34,6 +34,7 @@ Plug 'machakann/vim-sandwich' 		" Adds sandwich command for surrounding objects.
 Plug 'rhysd/clever-f.vim' 		" Super slick t/f movements.
 Plug 'ervandew/supertab' 		" Tab completion.
 
+" THIS IS NOT CONFIGURED
 if has('nvim')
 	Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'} 	" Omnicompletion for neovim
 else
