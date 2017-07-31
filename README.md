@@ -47,6 +47,7 @@
 	<li><a href=http://github.com/rhysd/clever-f.vim>clever-f.vim</a>
 	<li><a href=http://github.com/Shougo/deoplete.nvim>deoplete.nvim</a>
 	<li><a href=http://github.com/Shougo/neocomplete.vim>neocomplete.vim</a>
+	<li><a href=http://github.com/ervandew/supertab>supertab</a>
 </ul>
 <br>
 <hr width="75%" align="center" noshade>
