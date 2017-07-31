@@ -85,6 +85,7 @@
 	</ul>
 	<li>Enhancements or fixes I want to implement when I have time or an idea of how to fix it.
 	<ul>
+		<li><u>configure deoplete</u>
 		<li>seletion file insertion
 		<li>add test for functions like,"has('neovim')&&has('externel shell binary')
 	</ul>
