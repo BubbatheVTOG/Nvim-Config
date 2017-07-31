@@ -22,6 +22,7 @@
 <ul>
 	<li><a href=http://github.com/lilydjwg/colorizer>colorizer</a>
 	<li><a href=http://github.com/yuttie/comfortable-motion.vim>comfortable-motion.vim</a>
+	<li><a href=https://github.com/apalmer1377/factorus>factorus></a>
 	<li><a href=http://github.com/Yggdroot/indentLine>indentLine</a>
 	<li><a href=http://github.com/scrooloose/nerdtree>nerdtree</a>
 	<li><a href=http://github.com/Xuyuanp/nerdtree-git-plugin>nerd-git-plugin</a>
