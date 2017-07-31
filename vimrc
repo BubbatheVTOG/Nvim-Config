@@ -34,6 +34,7 @@ Plug 'machakann/vim-sandwich' 		" Adds sandwich command for surrounding objects.
 Plug 'rhysd/clever-f.vim' 		" Super slick t/f movements.
 Plug 'ervandew/supertab' 		" Tab completion.
 Plug 'cohama/agit.vim' 			" Git log viewer.
+Plug 'machakann/vim-highlightedyank' 	" Highlight yanked objects.
 
 " THIS IS NOT CONFIGURED
 if has('nvim')
@@ -268,6 +269,12 @@ let g:comfortable_motion_air_drag = 2.0		" Default = 2.0
 " HOW TO USE:
 " http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 
+" Vim-Highlightedyank
+" -----------------------------------------------------------------------------
+" Bind y to activate plugin.
+map y <Plug>(highlightedyank)
+" Highlight time in milliseconds.
+let g:highlightedyank_highlight_duration = 1000
 
 " -----------------------------------------------------------------------------
 " CUSTOM FUNCTIONS
