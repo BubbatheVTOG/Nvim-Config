@@ -1,6 +1,6 @@
-" -----------------------------------------------------------------------------
+" =============================================================================
 " PLUGINS
-" -----------------------------------------------------------------------------
+" =============================================================================
 " install vim-plug if it is not installed
 if empty(glob('~/.vim/autoload/plug.vim'))
 	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -52,9 +52,9 @@ Plug 'johngrib/vim-game-code-break',	{'on': 'VimGameCodeBreak'}	" Brick Breaker
 call plug#end()				" required
 
 
-" -----------------------------------------------------------------------------
+" =============================================================================
 " GENERAL CONFIGURATION
-" -----------------------------------------------------------------------------
+" =============================================================================
 filetype plugin indent on		" Syntax for different file types. Plus autoindent for that file type.
 syntax on				" Syntax on bitch.
 set path+=**				" appends $PATH to find command
@@ -110,9 +110,9 @@ autocmd FileType java let java_highlight_debug=1
 autocmd FileType java let java_highlight_functions="style"
 
 
-" -----------------------------------------------------------------------------
+" =============================================================================
 " CUSTOM KEYBINDS
-" -----------------------------------------------------------------------------
+" =============================================================================
 
 " CONTROVERSY
 nnoremap ; :
@@ -150,9 +150,9 @@ nnoremap <C-q>		:tabclose<CR>
 inoremap <C-q>		<Esc>:tabclose<CR>
 
 
-" -----------------------------------------------------------------------------
+" =============================================================================
 " PLUGIN CONFIGURATION
-" -----------------------------------------------------------------------------
+" =============================================================================
 
 " NERDTree config
 " -----------------------------------------------------------------------------
@@ -283,9 +283,10 @@ let g:highlightedyank_highlight_duration = 1000
 nnoremap <leader><Space> :UndotreeToggle<CR>
 
 
-" -----------------------------------------------------------------------------
+" =============================================================================
 " CUSTOM FUNCTIONS
-" -----------------------------------------------------------------------------
+" =============================================================================
+
 " Change Keyboard Brightness on mode B)
 autocmd InsertEnter * silent! call system('echo 50 > /sys/class/leds/chromeos::kbd_backlight/brightness')
 autocmd InsertLeave * silent! call system('echo 1 > /sys/class/leds/chromeos::kbd_backlight/brightness')
@@ -454,8 +455,10 @@ let &colorcolumn="80,".join(range(121,121),",")		" Set bar at column121
 highlight ColorColumn ctermbg=235 guibg=#003333
 
 
-" -----------------------------------------------------------------------------
-" TODO:
+" =============================================================================
+" TODO
+" =============================================================================
+
 " (Plug-in) https://github.com/terryma/vim-multiple-cursors
 " (Plug-in) Get rid of manual commenter and install https://github.com/scrooloose/nerdcommenter
 " (Enhancement) skeleton file insertion
