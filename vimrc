@@ -26,6 +26,7 @@ Plug 'tpope/vim-surround'		" Surround movement command.
 Plug 'AndrewRadev/splitjoin.vim'	" Split or join lines.
 Plug 'godlygeek/tabular'		" Fix spacing plugin
 Plug 'ervandew/supertab'		" Omnicompletion
+Plug 'tpope/vim-sleuth' 		" Heuristic tabsizes.
 
 Plug 'scrooloose/nerdtree',		{'on': 'NERDTreeToggle'}	" Its NerdTree...but only when its toggled.
 Plug 'artur-shaik/vim-javacomplete2',	{'for':['java']}		" Auto complete for Java...but only in java files.

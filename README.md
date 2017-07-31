@@ -68,7 +68,6 @@
 	<ul>
 		<li>https://github.com/terryma/vim-multiple-cursors
 		<li>Get rid of manual commenter and install https://github.com/scrooloose/nerdcommenter
-		<li>tpope plugin to auto adjust tab width: https://github.com/tpope/vim-sleuth
 		<li>bufferHJKL movements
 		<li>https://github.com/AnthonyAstige/ctrlhjkl.vim
 		<li>https://github.com/jvanja/vim-bootstrap4-snippets
