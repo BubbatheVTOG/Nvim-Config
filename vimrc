@@ -36,6 +36,7 @@ Plug 'ervandew/supertab' 		" Tab completion.
 Plug 'cohama/agit.vim' 			" Git log viewer.
 Plug 'machakann/vim-highlightedyank' 	" Highlight yanked objects.
 Plug 'mbbill/undotree' 			" Create an undotree.
+Plug 'godlygeek/tabular' 		" Text alignment.
 
 " THIS IS NOT CONFIGURED
 if has('nvim')
@@ -271,6 +272,7 @@ let g:comfortable_motion_air_drag = 2.0		" Default = 2.0
 " -----------------------------------------------------------------------------
 " HOW TO USE:
 " http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
+
 " Vim-Highlightedyank
 " -----------------------------------------------------------------------------
 " Bind y to activate plugin.
@@ -456,9 +458,9 @@ highlight ColorColumn ctermbg=235 guibg=#003333
 
 
 " =============================================================================
-" TODO
+" TODO:
 " =============================================================================
-
+"
 " (Plug-in) https://github.com/terryma/vim-multiple-cursors
 " (Plug-in) Get rid of manual commenter and install https://github.com/scrooloose/nerdcommenter
 " (Enhancement) skeleton file insertion
