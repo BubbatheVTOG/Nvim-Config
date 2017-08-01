@@ -61,8 +61,8 @@
 <hr width="75%" align="center" noshade>
 <p>Installation:
 <ul>
-	<li><pre>git clone https://github.com/BubbatheVTOG/Nvim-Config.git</pre>
-	<li><pre>ln -s /location/to/Nvim-config/vimrc ~/.vimrc</pre>
+	<li><code>git clone https://github.com/BubbatheVTOG/Nvim-Config.git</code>
+	<li><code>ln -s /location/to/Nvim-config/vimrc ~/.vimrc</code>
 </ul>
 <p>When you open up (n)vim, vim-plug will install. It might error out a bit..but just keep hitting enter. When its done call <code>:PlugInstall</code> again.
 <br>
