@@ -53,6 +53,7 @@
 	<li><a href=http://github.com/mbbill/undotree>undotree</a>
 	<li><a href=https://github.com/godlygeek/tabular>tabular</a>
 	<li><a href=https://github.com/thaerkh/vim-workspace>vim-workspace</a>
+	<li><a href=https://github.com/dylanaraps/wal>wal</a>
 </ul>
 <br>
 <hr width="75%" align="center" noshade>
