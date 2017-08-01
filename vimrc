@@ -248,6 +248,9 @@ let g:livepreview_previewer 	= 'zathura'
 
 " CSS Color Settings
 " -----------------------------------------------------------------------------
+" Stop jacking my binds.
+let g:colorizer_nomap = 1
+" General settings
 let g:colorizer_auto_color	= 0
 let g:colorizer_x11_name	= 1
 let g:colorizer_maxlines	= 500
