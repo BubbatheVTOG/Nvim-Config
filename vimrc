@@ -248,6 +248,8 @@ let g:livepreview_previewer 	= 'zathura'
 
 " CSS Color Settings
 " -----------------------------------------------------------------------------
+" ColorToggle
+nnoremap <leader>ct	:ColorToggle<CR>
 " Stop jacking my binds.
 let g:colorizer_nomap = 1
 " General settings
