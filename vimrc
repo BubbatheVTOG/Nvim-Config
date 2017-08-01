@@ -37,6 +37,7 @@ Plug 'godlygeek/tabular'		" Text alignment.
 Plug 'thaerkh/vim-workspace'		" Save workspace.
 Plug 'dylanaraps/wal' 			" Wal color setting.
 Plug 'matze/vim-move' 			" Move text selections.
+Plug 'vim-scripts/Tabmerge' 		" Merge tab into split.
 
 " THIS IS NOT CONFIGURED
 if has('nvim')
