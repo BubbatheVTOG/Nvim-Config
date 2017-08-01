@@ -64,16 +64,7 @@
 	<li><pre>git clone https://github.com/BubbatheVTOG/Nvim-Config.git</pre>
 	<li><pre>ln -s /location/to/Nvim-config/vimrc ~/.vimrc</pre>
 </ul>
-<p>When you open up (n)vim vim-plug will install. It might error out a bit..but just keep hitting enter. When its done call <pre>:PlugInstall</pre> again.
-<br>
-<p>It should look like this:</p>
-<pre>
-.config
-├── nvim
-│   ├── autoload
-│   │   └── plug.vim
-│   ├── init.vim -> /home/$USER/git/simple.vimrc/vimrc
-</pre>
+<p>When you open up (n)vim, vim-plug will install. It might error out a bit..but just keep hitting enter. When its done call <code>:PlugInstall</code> again.
 <br>
 <hr width="75%" align="center" noshade>
 <strong>TODO:</strong>
