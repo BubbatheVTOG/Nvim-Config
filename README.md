@@ -54,6 +54,7 @@
 	<li><a href=https://github.com/godlygeek/tabular>tabular</a>
 	<li><a href=https://github.com/thaerkh/vim-workspace>vim-workspace</a>
 	<li><a href=https://github.com/dylanaraps/wal>wal</a>
+	<li><a href=https://github.com/matze/vim-move>vim-move</a>
 </ul>
 <br>
 <hr width="75%" align="center" noshade>

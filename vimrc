@@ -36,6 +36,7 @@ Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
 Plug 'godlygeek/tabular'		" Text alignment.
 Plug 'thaerkh/vim-workspace'		" Save workspace.
 Plug 'dylanaraps/wal' 			" Wal color setting.
+Plug 'matze/vim-move' 			" Move text selections.
 
 " THIS IS NOT CONFIGURED
 if has('nvim')
@@ -296,6 +297,10 @@ map y <Plug>(highlightedyank)
 " Highlight time in milliseconds. '-1' makes in infinite.
 let g:highlightedyank_highlight_duration = 1000
 
+" Aget
+" -----------------------------------------------------------------------------
+nnoremap <leader>ag	:Agit<CR>
+
 " UndoTree
 " -----------------------------------------------------------------------------
 nnoremap <leader><Space> :UndotreeToggle<CR>
@@ -313,6 +318,9 @@ let g:workspace_session_name = '.saved_session.vim'
 " (Enabling this messes up indentLine plugin, and is unneeded.)
 " colorscheme wal
 
+" Vim-move
+" =============================================================================
+let g:move_key_modifier = 'C'
 
 " =============================================================================
 " CUSTOM FUNCTIONS
