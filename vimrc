@@ -32,7 +32,6 @@ Plug 'metakirby5/codi.vim' 		" Interactive scratchpad.
 Plug 'machakann/vim-sandwich' 		" Adds sandwich command for surrounding objects.
 Plug 'rhysd/clever-f.vim' 		" Super slick t/f movements.
 Plug 'ervandew/supertab' 		" Tab completion.
-Plug 'cohama/agit.vim' 			" Git log viewer.
 Plug 'machakann/vim-highlightedyank' 	" Highlight yanked objects.
 Plug 'mbbill/undotree' 			" Create an undotree.
 Plug 'godlygeek/tabular' 		" Text alignment.
@@ -44,6 +43,7 @@ else
 	Plug 'Shougo/neocomplete.vim' 	" Omnicompletion for vim
 endif
 
+Plug 'cohama/agit.vim', 		{'on': 'Agit'} 			" Git log viewer.
 Plug 'lilydjwg/colorizer',		{'on': 'ColorToggle'}		" Hex code colorizer
 Plug 'scrooloose/nerdtree',		{'on': 'NERDTreeToggle'}	" Its NerdTree...but only when its toggled.
 Plug 'artur-shaik/vim-javacomplete2',	{'for':['java']}		" Auto complete for Java...but only in java files.
@@ -72,7 +72,7 @@ set showmatch				" Show matching brackets.
 set splitright 				" Open new horizontal splits right of the current one.
 set splitbelow 				" Open new vertical splits below the current one.
 set completeopt=longest,menuone 	" Better autocompletion.
-set autowriteall 			" Autosave files.
+" set autowriteall 			" Autosave files.
 set hidden 				" Buffers become hidden when abandonded.
 set autoread 				" Reload the file when it changes outside of (n)vim.
 set visualbell 				" Use visual bell instead of beeping.
@@ -159,6 +159,15 @@ inoremap <C-q>		<Esc>:tabclose<CR>
 " -----------------------------------------------------------------------------
 " Open NERDTree bind
 nnoremap <Space>	:NERDTreeToggle<CR>
+let NERDTreeMouseMode = 3
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeCaseSensitiveSort = 1
+let NERDTreeDirArrows = 1
+let NERDTreeHijackNetrw = 1
+" let NERDTreeMinimalUI = 1
+let NERDTreeChDirMode = 2
+let NERDTreeCascadeSingleChildDir = 0
+let NERDTreeCascadeOpenSingleChildDir = 0
 
 " Java Complete 2 Config
 " -----------------------------------------------------------------------------
