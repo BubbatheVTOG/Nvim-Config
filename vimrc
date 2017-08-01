@@ -35,6 +35,7 @@ Plug 'ervandew/supertab'		" Tab completion.
 Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
 Plug 'godlygeek/tabular'		" Text alignment.
 Plug 'thaerkh/vim-workspace'		" Save workspace.
+Plug 'dylanaraps/wal' 			" Wal color setting.
 
 " THIS IS NOT CONFIGURED
 if has('nvim')
@@ -101,10 +102,10 @@ set nobackup 				" Disable backups. YOLO
 set noswapfile 				" Disable swapfiles.
 
 
-" -----------------------------------------------------------------------------
+" =============================================================================
 " LANGUAGE SPECIFIC SETTINGS
 " From :h ft-$LANGUAGE
-" -----------------------------------------------------------------------------
+" =============================================================================
 
 " Java
 " -----------------------------------------------------------------------------
@@ -305,6 +306,12 @@ nnoremap <leader><Space> :UndotreeToggle<CR>
 nnoremap <leader>ss	:ToggleWorkspace<CR>
 " Save session default name
 let g:workspace_session_name = '.saved_session.vim'
+
+" Wal
+" =============================================================================
+" Set the colorscheme to wal
+colorscheme wal
+
 
 " =============================================================================
 " CUSTOM FUNCTIONS
