@@ -43,7 +43,7 @@ else
 	Plug 'Shougo/neocomplete.vim' 	" Omnicompletion for vim
 endif
 
-Plug 'mbbill/undotree'			{'on': 'UndotreeToggle'}	" Create an undotree.
+Plug 'mbbill/undotree',			{'on': 'UndotreeToggle'}	" Create an undotree.
 Plug 'cohama/agit.vim', 		{'on': 'Agit'} 			" Git log viewer.
 Plug 'lilydjwg/colorizer',		{'on': 'ColorToggle'}		" Hex code colorizer
 Plug 'scrooloose/nerdtree',		{'on': 'NERDTreeToggle'}	" Its NerdTree...but only when its toggled.
