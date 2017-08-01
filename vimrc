@@ -69,6 +69,7 @@ set autoindent				" Auto intent to the same col when on new line.
 set smarttab				" Auto insert tabs spaces for curly braces.
 set mouse=a 				" Enables mouse.
 set ruler				" Enables cursor location.
+set wrap lbr 				" Wrap on words. 
 set nocompatible			" Disables legacy stuff?
 set showmode				" Shows what mode you're in.
 set showcmd				" Show partial command in status line.
@@ -125,6 +126,9 @@ nnoremap ; :
 nnoremap ,nh	:noh<CR>
 " Leader defined
 let mapleader = ","
+" Change movement behavior for wrapped lines.
+nnoremap gj j
+nnoremap gk k
 
 " Keymaps for custom functions.
 " -----------------------------------------------------------------------------
