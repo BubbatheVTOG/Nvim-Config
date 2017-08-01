@@ -59,14 +59,12 @@
 </ul>
 <br>
 <hr width="75%" align="center" noshade>
-<p>To install vim plug:
+<p>Installation:
 <ul>
-	<li><pre>$mkdir -p ~/.config/nvim/autoload</pre>
-	<li><pre>$ln -s ~/.config/nvim/init.vim .location.to.your.vimrc</pre>
-	<li><pre>#cd ~/.config/nvim/autoload && curl -fLo plug.vim --create-dirs \https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim</pre>
-	<li><pre>$nvim</pre>
-	<li><pre>:PlugUpdate</pre>
+	<li><pre>git clone https://github.com/BubbatheVTOG/Nvim-Config.git</pre>
+	<li><pre>ln -s /location/to/Nvim-config/vimrc ~/.vimrc</pre>
 </ul>
+<p>When you open up (n)vim vim-plug will install. It might error out a bit..but just keep hitting enter. When its done call <pre>:PlugInstall</pre> again.
 <br>
 <p>It should look like this:</p>
 <pre>
@@ -95,5 +93,6 @@
 		<li><u>configure deoplete</u>
 		<li>seletion file insertion
 		<li>add test for functions like,"has('neovim')&&has('externel shell binary')
+		<li>add test for if has('wal'), to load wal, or to load another colorscheme and airlinetheme.
 	</ul>
 </ul>
