@@ -33,7 +33,6 @@ Plug 'machakann/vim-sandwich'		" Adds sandwich command for surrounding objects.
 Plug 'rhysd/clever-f.vim'		" Super slick t/f movements.
 Plug 'ervandew/supertab'		" Tab completion.
 Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
-Plug 'mbbill/undotree'			" Create an undotree.
 Plug 'godlygeek/tabular'		" Text alignment.
 Plug 'thaerkh/vim-workspace'		" Save workspace.
 
@@ -44,6 +43,7 @@ else
 	Plug 'Shougo/neocomplete.vim' 	" Omnicompletion for vim
 endif
 
+Plug 'mbbill/undotree'			{'on': 'UndotreeToggle'}	" Create an undotree.
 Plug 'cohama/agit.vim', 		{'on': 'Agit'} 			" Git log viewer.
 Plug 'lilydjwg/colorizer',		{'on': 'ColorToggle'}		" Hex code colorizer
 Plug 'scrooloose/nerdtree',		{'on': 'NERDTreeToggle'}	" Its NerdTree...but only when its toggled.
