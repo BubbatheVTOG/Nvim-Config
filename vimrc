@@ -223,8 +223,10 @@ command! MakeTags !ctags -R .
 
 " Neovim Terminal Mode Config
 " -----------------------------------------------------------------------------
-tnoremap <Esc> <C-\><C-n>
-autocmd TermOpen * setlocal statusline=%{b:term_title}
+if has('nvim')
+	tnoremap <Esc> <C-\><C-n>
+	autocmd TermOpen * setlocal statusline=%{b:term_title}
+endif
 
 " Airline Config
 " -----------------------------------------------------------------------------
