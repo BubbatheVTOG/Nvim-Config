@@ -22,7 +22,6 @@ Plug 'vim-airline/vim-airline'		" Status bar.
 Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
 Plug 'sheerun/vim-polyglot'		" Syntax highlighting for a lot of languages. (Striped down, install specific ones if needed.)
 Plug 'vim-syntastic/syntastic'		" Syntastic linter.
-Plug 'lilydjwg/colorizer'		" Hex code colorizer
 Plug 'tpope/vim-surround'		" Surround movement command.
 Plug 'tpope/vim-sleuth' 		" Heuristic tabsizes.
 Plug 'tpope/vim-repeat' 		" Repeat support for plugins.
@@ -45,6 +44,7 @@ else
 	Plug 'Shougo/neocomplete.vim' 	" Omnicompletion for vim
 endif
 
+Plug 'lilydjwg/colorizer',		{'on': 'ColorToggle'}		" Hex code colorizer
 Plug 'scrooloose/nerdtree',		{'on': 'NERDTreeToggle'}	" Its NerdTree...but only when its toggled.
 Plug 'artur-shaik/vim-javacomplete2',	{'for':['java']}		" Auto complete for Java...but only in java files.
 Plug 'lervag/vimtex',			{'for':['tex']}			" Tex Utility
