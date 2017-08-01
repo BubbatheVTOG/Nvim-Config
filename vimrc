@@ -217,7 +217,7 @@ autocmd TermOpen * setlocal statusline=%{b:term_title}
 
 " Airline Config
 " -----------------------------------------------------------------------------
-let g:airline_theme='lucius'
+let g:airline_theme='wal'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_alt_sep = ' | '
 let g:airline_powerline_fonts = 0
@@ -478,11 +478,11 @@ command Sudo silent! call Sudo()
 
 " Configure Color Column (Built in)
 " -----------------------------------------------------------------------------
-let &colorcolumn=join(range(81,81),",")			" Set bar at column 81
-let &colorcolumn="80,".join(range(121,121),",")		" Set bar at column121
-
-" Make that line black w/ a bit of blue.
-highlight ColorColumn ctermbg=235 guibg=#003333
+" let &colorcolumn=join(range(81,81),",")			" Set bar at column 81
+" let &colorcolumn="80,".join(range(121,121),",")		" Set bar at column121
+" 
+" " Make that line black w/ a bit of blue.
+" highlight ColorColumn ctermbg=235 guibg=#003333
 
 
 " =============================================================================
