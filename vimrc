@@ -267,9 +267,9 @@ let g:colorizer_auto_color	= 0
 let g:colorizer_x11_name	= 1
 let g:colorizer_maxlines	= 500
 
-" Smooth Scolling Settings
+" Smooth Scroll Settings
 " -----------------------------------------------------------------------------
-" Smooth Scoll the j and k keys.
+" Smooth Scroll the j and k keys.
 let g:comfortable_motion_scroll_down_key = "j"
 let g:comfortable_motion_scroll_up_key = "k"
 "
@@ -299,6 +299,12 @@ let g:highlightedyank_highlight_duration = 1000
 " -----------------------------------------------------------------------------
 nnoremap <leader><Space> :UndotreeToggle<CR>
 
+" Vim-Session
+" -----------------------------------------------------------------------------
+" Save session
+nnoremap <leader>ss	:ToggleWorkspace<CR>
+" Save session default name
+let g:workspace_session_name = '.saved_session.vim'
 
 " =============================================================================
 " CUSTOM FUNCTIONS
