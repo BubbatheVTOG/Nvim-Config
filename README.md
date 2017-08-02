@@ -78,6 +78,7 @@
 		<li>https://github.com/AnthonyAstige/ctrlhjkl.vim
 		<li>https://github.com/jvanja/vim-bootstrap4-snippets
 		<li>https://github.com/termhn/i3-vim-nav ?
+		<li>https://github.com/neomake/neomake
 	</ul>
 	<li>Enhancements or fixes I want to implement when I have time or an idea of how to fix it.
 	<ul>
