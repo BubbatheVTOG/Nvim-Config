@@ -26,6 +26,7 @@ Plug 'tpope/vim-surround'		" Surround movement command.
 Plug 'tpope/vim-sleuth' 		" Heuristic tabsizes.
 Plug 'tpope/vim-repeat' 		" Repeat support for plugins.
 Plug 'tpope/vim-speeddating'		" Date manipulation.
+Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
 Plug 'AndrewRadev/splitjoin.vim'	" Split or join lines.
 Plug 'apalmer1377/factorus'		" Refactoring Plugin.
 Plug 'metakirby5/codi.vim'		" Interactive scratchpad.
