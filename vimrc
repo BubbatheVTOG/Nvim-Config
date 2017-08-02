@@ -337,9 +337,12 @@ let g:move_key_modifier = 'C'
 
 " NERDCommenter
 " =============================================================================
-NERDSpaceDelims = 1
-NERDRemoveExtraSpaces = 1
-NERDTrimTraillingWhitespace = 1
+let NERDSpaceDelims = 1
+let NERDRemoveExtraSpaces = 1
+let NERDTrimTraillingWhitespace = 1
+
+" Deoplete
+" =============================================================================
 
 
 " =============================================================================
