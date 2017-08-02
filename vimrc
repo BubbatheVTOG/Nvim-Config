@@ -337,7 +337,10 @@ let g:move_key_modifier = 'C'
 
 " NERDCommenter
 " =============================================================================
-NERDRemoveExtraSpaces = both
+NERDSpaceDelims = 1
+NERDRemoveExtraSpaces = 1
+NERDTrimTraillingWhitespace = 1
+
 
 " =============================================================================
 " CUSTOM FUNCTIONS
@@ -439,31 +442,6 @@ function ToggleBG()
 	endif
 endfunction
 command ToggleBG silent! call ToggleBG()
-
-" CommentIO()
-" -----------------------------------------------------------------------------
-" Comments in/out the current block of code.
-function CommentIT(toggle)
-
-	let languageSlash	= ["java","sql","javascript"]
-	let languagePound	= ["python","sh"]
-
-	if (index(languageSlash,&ft) >=0)
-		let comment = "//"
-	elseif (index(languagePound,&ft) >= 0)
-		let comment = "#"
-	else
-		let comment = ""
-	endif
-
-	if a:toggle ==? "out"
-		exec "normal! \<S-{>\<C-v>\<S-}\<S-i>\<comment>\<Space><esc>"
-	else
-		exec "normal! \<S-{>\<C-v>\<S-}2x<esc>"
-	endif
-endfunction
-command CommentITOut call CommentIT("out")
-command CommentITIn call CommentIT("in")
 
 " Terminal Split
 " -----------------------------------------------------------------------------
