@@ -73,7 +73,6 @@
 	<li>Plugins that I want to install/configure but haven't had time:
 	<ul>
 		<li>https://github.com/terryma/vim-multiple-cursors
-		<li>Get rid of manual commenter and install https://github.com/scrooloose/nerdcommenter
 		<li>bufferHJKL movements
 		<li>https://github.com/AnthonyAstige/ctrlhjkl.vim
 		<li>https://github.com/jvanja/vim-bootstrap4-snippets
