@@ -41,7 +41,6 @@ Plug 'matze/vim-move' 			" Move text selections.
 Plug 'vim-scripts/Tabmerge' 		" Merge tab into split.
 Plug 'vim-scripts/vimwiki' 		" Build a wiki -> html.
 Plug 'vim-scripts/SearchComplete' 	" Tab completion inside of '/' search.
-Plug 'roman/golden-ratio' 		" Change split sizes on focus change.
 
 " THIS IS NOT CONFIGURED
 if has('nvim')
@@ -60,6 +59,7 @@ Plug 'xuhdev/vim-latex-live-preview',	{'for':['tex']}			" A Vim Plugin for Livel
 Plug 'johngrib/vim-game-code-break',	{'on': 'VimGameCodeBreak'}	" Brick Breaker
 Plug 'vim-scripts/LanguageTool',	{'on':['LanguageToolCheck','LanguageToolClear']}	" Grammar checking.
 Plug 'vim-scripts/todo-vim',		{'on':['TODOToggle']}
+Plug 'roman/golden-ratio', 		{'on':['GoldenRatioToggle']} 	" Change split sizes on focus change.
 call plug#end()				" required
 
 
@@ -366,6 +366,7 @@ let NERDTrimTraillingWhitespace = 1
 
 " Golden-ratio
 " -----------------------------------------------------------------------------
+nnoremap <leader>gr	:GoldenRatioToggle<CR>
 " :h golden-ratio
 " :GoldenRatioToggle
 " :GoldenRatioResize
