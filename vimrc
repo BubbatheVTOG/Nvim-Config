@@ -354,48 +354,48 @@ let NERDSpaceDelims = 1
 let NERDRemoveExtraSpaces = 1
 let NERDTrimTraillingWhitespace = 1
 
-" Deoplete
+" Deoplete (TODO: @configure deopleted)
 " -----------------------------------------------------------------------------
 " 1500 lines of config...ugh, just Google it.
 
-" Vim-wiki
+" Vim-wiki (TODO: @configure vim-wiki)
 " -----------------------------------------------------------------------------
 " see :h vimwiki-syntax
 " see :h vimwiki-mappings
 
-" LanguageTool
+" LanguageTool (TODO: @configure LanguageTool)
 " -----------------------------------------------------------------------------
 " :LanguageToolCheck
 " :LanguageToolClear
 
-" Todo-vim
+" Todo-vim (TODO: @configure todo-vim)
 " -----------------------------------------------------------------------------
 " :TODOToggle
 
-" Golden-ratio
+" Golden-ratio (TODO: @configure golden-ratio)
 " -----------------------------------------------------------------------------
 nnoremap <leader>gr	:GoldenRatioToggle<CR>
 " :h golden-ratio
 " :GoldenRatioToggle
 " :GoldenRatioResize
 
-" Easymotion
+" Easymotion (TODO: @configure easymotion)
 " -----------------------------------------------------------------------------
 " help easymotion.txt
 
-" Vim-easy-align
+" Vim-easy-align (TODO: @configure vim-easy-align)
 " -----------------------------------------------------------------------------
 " :h vim-easy-align
 
-" Vim-multiple-cursors
+" Vim-multiple-cursors (TODO: @configure vim-multiple-cursors)
 " -----------------------------------------------------------------------------
 " h; vim-multiple-cursors
 
-" Wordy
+" Wordy (TODO: @configure wordy)
 " -----------------------------------------------------------------------------
 " :Wordy
 
-" Writegood
+" Writegood (TODO: @configure writegood)
 " -----------------------------------------------------------------------------
 " :h writegood.txt
 
@@ -411,15 +411,19 @@ nnoremap <leader>gr	:GoldenRatioToggle<CR>
 
 " Ctrlhjkl
 " -----------------------------------------------------------------------------
+" Stop jacking my binds pls.
 let g:ctrlhjkl_suppress_keymaps = 1
 
+" Normal mode maps
 nmap <s-j> <Plug>CtrlHJKLGoJn
 nmap <s-k> <Plug>CtrlHJKLGoKn
 nmap <s-h> <Plug>CtrlHJKLGoHn
 nmap <s-l> <Plug>CtrlHJKLGoLn
 
+" Normal mode quit...not a good idea.
 nmap <s-q> <Plug>CtrlHJKLClose
 
+" ex-mode maps
 xmap <s-j> <Plug>CtrlHJKLMoveJ
 xmap <s-k> <Plug>CtrlHJKLMoveK
 xmap <s-h> <Plug>CtrlHJKLMoveH
