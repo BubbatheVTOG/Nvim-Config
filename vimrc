@@ -41,6 +41,7 @@ Plug 'matze/vim-move' 			" Move text selections.
 Plug 'vim-scripts/Tabmerge' 		" Merge tab into split.
 Plug 'vim-scripts/vimwiki' 		" Build a wiki -> html.
 Plug 'vim-scripts/SearchComplete' 	" Tab completion inside of '/' search.
+Plug 'roman/golden-ratio' 		" Change split sizes on focus change.
 
 " THIS IS NOT CONFIGURED
 if has('nvim')
@@ -330,38 +331,44 @@ nnoremap <leader>ss	:ToggleWorkspace<CR>
 let g:workspace_session_name = '.saved_session.vim'
 
 " Wal
-" =============================================================================
+" -----------------------------------------------------------------------------
 " Set the colorscheme to wal
 " (Enabling this messes up indentLine plugin, and is unneeded.)
 " colorscheme wal
 
 " Vim-move
-" =============================================================================
+" -----------------------------------------------------------------------------
 let g:move_key_modifier = 'C'
 
 " NERDCommenter
-" =============================================================================
+" -----------------------------------------------------------------------------
 let NERDSpaceDelims = 1
 let NERDRemoveExtraSpaces = 1
 let NERDTrimTraillingWhitespace = 1
 
 " Deoplete
-" =============================================================================
+" -----------------------------------------------------------------------------
 " 1500 lines of config...ugh, just Google it.
 
 " Vim-wiki
-" =============================================================================
+" -----------------------------------------------------------------------------
 " see :h vimwiki-syntax
 " see :h vimwiki-mappings
 
 " LanguageTool
-" =============================================================================
+" -----------------------------------------------------------------------------
 " :LanguageToolCheck
 " :LanguageToolClear
 
 " Todo-vim
-" =============================================================================
+" -----------------------------------------------------------------------------
 " :TODOToggle
+
+" Golden-ratio
+" -----------------------------------------------------------------------------
+" :h golden-ratio
+" :GoldenRatioToggle
+" :GoldenRatioResize
 
 " =============================================================================
 " CUSTOM FUNCTIONS
