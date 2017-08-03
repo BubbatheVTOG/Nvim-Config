@@ -40,6 +40,7 @@ Plug 'dylanaraps/wal' 			" Wal color setting.
 Plug 'matze/vim-move' 			" Move text selections.
 Plug 'vim-scripts/Tabmerge' 		" Merge tab into split.
 Plug 'vim-scripts/vimwiki' 		" Build a wiki -> html.
+Plug 'vim-scripts/SearchComplete' 	" Tab completion inside of '/' search.
 
 " THIS IS NOT CONFIGURED
 if has('nvim')
