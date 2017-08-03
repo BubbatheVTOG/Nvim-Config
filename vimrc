@@ -39,6 +39,7 @@ Plug 'thaerkh/vim-workspace'		" Save workspace.
 Plug 'dylanaraps/wal' 			" Wal color setting.
 Plug 'matze/vim-move' 			" Move text selections.
 Plug 'vim-scripts/Tabmerge' 		" Merge tab into split.
+Plug 'vim-scripts/vimwiki' 		" Build a wiki -> html.
 
 " THIS IS NOT CONFIGURED
 if has('nvim')
@@ -343,6 +344,12 @@ let NERDTrimTraillingWhitespace = 1
 
 " Deoplete
 " =============================================================================
+" 1500 lines of config...ugh, just Google it.
+
+" Vim-wiki
+" =============================================================================
+" see :h vimwiki-syntax
+" see :h vimwiki-mappings
 
 
 " =============================================================================
