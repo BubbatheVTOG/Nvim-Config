@@ -57,6 +57,8 @@ Plug 'artur-shaik/vim-javacomplete2',	{'for':['java']}		" Auto complete for Java
 Plug 'lervag/vimtex',			{'for':['tex']}			" Tex Utility
 Plug 'xuhdev/vim-latex-live-preview',	{'for':['tex']}			" A Vim Plugin for Lively Previewing LaTeX PDF Output
 Plug 'johngrib/vim-game-code-break',	{'on': 'VimGameCodeBreak'}	" Brick Breaker
+Plug 'vim-scripts/LanguageTool',	{'on':['LanguageToolCheck','LanguageToolClear']}	" Grammar checking.
+Plug 'Dimercel/todo-vim',		{'on':['TODOToggle]}
 call plug#end()				" required
 
 
@@ -352,6 +354,14 @@ let NERDTrimTraillingWhitespace = 1
 " see :h vimwiki-syntax
 " see :h vimwiki-mappings
 
+" LanguageTool
+" =============================================================================
+" :LanguageToolCheck
+" :LanguageToolClear
+
+" Todo-vim
+" =============================================================================
+" :TODOToggle
 
 " =============================================================================
 " CUSTOM FUNCTIONS
