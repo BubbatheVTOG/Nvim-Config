@@ -409,7 +409,7 @@ nnoremap <leader>gr	:GoldenRatioToggle<CR>
 " :GOL (to start)
 " :GOL (to stop)
 
-" Ctrlhjkl
+" Ctrlhjkl (TODO: @refactor)
 " -----------------------------------------------------------------------------
 " Stop jacking my binds pls.
 let g:ctrlhjkl_suppress_keymaps = 1
@@ -567,13 +567,13 @@ function Sudo()
 endfunction
 command Sudo silent! call Sudo()
 
-" Configure Color Column (Built in)
-" -----------------------------------------------------------------------------
-let &colorcolumn=join(range(81,81),",")			" Set bar at column 81
-let &colorcolumn="80,".join(range(121,121),",")		" Set bar at column121
+" " Configure Color Column (Built in)
+" " -----------------------------------------------------------------------------
+	" let &colorcolumn=join(range(81,81),",")			" Set bar at column 81
+	" let &colorcolumn="80,".join(range(121,121),",")		" Set bar at column121
 
-" Make that line black w/ a bit of blue.
-highlight ColorColumn ctermbg=235 guibg=#003333
+	" " Make that line black w/ a bit of blue.
+	" highlight ColorColumn ctermbg=235 guibg=#003333
 
 
 " =============================================================================
