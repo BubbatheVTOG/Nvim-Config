@@ -86,5 +86,6 @@
 		<li>add test for functions like,"has('neovim')&&has('externel shell binary')
 		<li>add test for if has('wal'), to load wal, or to load another colorscheme and airlinetheme.
 		<li>add toggle for columncolor stuff.
+		<li>configure easymotions https://github.com/easymotion/vim-easymotion
 	</ul>
 </ul>

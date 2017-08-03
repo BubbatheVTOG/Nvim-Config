@@ -31,16 +31,21 @@ Plug 'AndrewRadev/splitjoin.vim'	" Split or join lines.
 Plug 'apalmer1377/factorus'		" Refactoring Plugin.
 Plug 'metakirby5/codi.vim'		" Interactive scratchpad.
 Plug 'machakann/vim-sandwich'		" Adds sandwich command for surrounding objects.
-Plug 'rhysd/clever-f.vim'		" Super slick t/f movements.
+" Plug 'rhysd/clever-f.vim'		" Super slick t/f movements.
 Plug 'ervandew/supertab'		" Tab completion.
 Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
 Plug 'godlygeek/tabular'		" Text alignment.
 Plug 'thaerkh/vim-workspace'		" Save workspace.
-Plug 'dylanaraps/wal' 			" Wal color setting.
-Plug 'matze/vim-move' 			" Move text selections.
-Plug 'vim-scripts/Tabmerge' 		" Merge tab into split.
-Plug 'vim-scripts/vimwiki' 		" Build a wiki -> html.
-Plug 'vim-scripts/SearchComplete' 	" Tab completion inside of '/' search.
+Plug 'dylanaraps/wal'			" Wal color setting.
+Plug 'matze/vim-move'			" Move text selections.
+Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
+Plug 'vim-scripts/vimwiki'		" Build a wiki -> html.
+Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
+Plug 'easymotion/vim-easymotion'	" Motions on speed.
+Plug 'junegunn/vim-easy-align' 		" Easily align text.
+Plug 'terryma/vim-multiple-cursors' 	" Multiple cursors.
+Plug 'reedes/vim-wordy' 		" Word usage for writing.
+Plug 'AnthonyAstige/ctrlhjkl.vim' 	" Easier move between splits/buffers/windows.
 
 " THIS IS NOT CONFIGURED
 if has('nvim')
@@ -60,6 +65,9 @@ Plug 'johngrib/vim-game-code-break',	{'on': 'VimGameCodeBreak'}	" Brick Breaker
 Plug 'vim-scripts/LanguageTool',	{'on':['LanguageToolCheck','LanguageToolClear']}	" Grammar checking.
 Plug 'vim-scripts/todo-vim',		{'on':['TODOToggle']}
 Plug 'roman/golden-ratio', 		{'on':['GoldenRatioToggle']} 	" Change split sizes on focus change.
+Plug 'davidbeckingsale/writegood.vim',	{'on':['WritegoodToggle']} 	" Writting utility.
+Plug 'johngrib/vim-game-snake', 	{'on':['VimGameSnake']} 	" Snake!
+Plug 'omaraboumrad/vim-life', 		{'on':['GOL']} 			" Game of life
 call plug#end()				" required
 
 
@@ -370,6 +378,52 @@ nnoremap <leader>gr	:GoldenRatioToggle<CR>
 " :h golden-ratio
 " :GoldenRatioToggle
 " :GoldenRatioResize
+
+" Easymotion
+" -----------------------------------------------------------------------------
+" help easymotion.txt
+
+" Vim-easy-align
+" -----------------------------------------------------------------------------
+" :h vim-easy-align
+
+" Vim-multiple-cursors
+" -----------------------------------------------------------------------------
+" h; vim-multiple-cursors
+
+" Wordy
+" -----------------------------------------------------------------------------
+" :Wordy
+
+" Writegood
+" -----------------------------------------------------------------------------
+" :h writegood.txt
+
+" Vimgamesnake
+" -----------------------------------------------------------------------------
+" Use: ":VimGameSnake"
+
+" GOL (Game of Life)
+" -----------------------------------------------------------------------------
+" :e glider.txt
+" :GOL (to start)
+" :GOL (to stop)
+
+" Ctrlhjkl
+" -----------------------------------------------------------------------------
+let g:ctrlhjkl_suppress_keymaps = 1
+
+nmap <s-j> <Plug>CtrlHJKLGoJn
+nmap <s-k> <Plug>CtrlHJKLGoKn
+nmap <s-h> <Plug>CtrlHJKLGoHn
+nmap <s-l> <Plug>CtrlHJKLGoLn
+
+nmap <s-q> <Plug>CtrlHJKLClose
+
+xmap <s-j> <Plug>CtrlHJKLMoveJ
+xmap <s-k> <Plug>CtrlHJKLMoveK
+xmap <s-h> <Plug>CtrlHJKLMoveH
+xmap <s-l> <Plug>CtrlHJKLMoveL
 
 " =============================================================================
 " CUSTOM FUNCTIONS
