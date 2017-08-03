@@ -75,8 +75,8 @@ call plug#end()				" required
 " GENERAL CONFIGURATION
 " =============================================================================
 filetype plugin indent on		" Syntax for different file types. Plus autoindent for that file type.
-syntax on				" Syntax on bitch.
 set path+=**				" appends $PATH to find command
+syntax on				" Syntax on bitch.
 set wildmenu				" allows us to use the wildcard file menu
 set background=dark			" Use text colors that look good on a dark background.
 set autoindent				" Auto intent to the same col when on new line.
@@ -368,11 +368,12 @@ let NERDTrimTraillingWhitespace = 1
 " :LanguageToolCheck
 " :LanguageToolClear
 
-" Todo-vim (TODO: @configure todo-vim)
+" Todo-vim 
 " -----------------------------------------------------------------------------
 " :TODOToggle
+nnoremap <leader>td	:TODOToggle<CR>\<C-w>
 
-" Golden-ratio (TODO: @configure golden-ratio)
+" Golden-ratio 
 " -----------------------------------------------------------------------------
 nnoremap <leader>gr	:GoldenRatioToggle<CR>
 " :h golden-ratio
