@@ -31,7 +31,7 @@ Plug 'AndrewRadev/splitjoin.vim'	" Split or join lines.
 Plug 'apalmer1377/factorus'		" Refactoring Plugin.
 Plug 'metakirby5/codi.vim'		" Interactive scratchpad.
 Plug 'machakann/vim-sandwich'		" Adds sandwich command for surrounding objects.
-" Plug 'rhysd/clever-f.vim'		" Super slick t/f movements.
+Plug 'rhysd/clever-f.vim'		" Super slick t/f movements.
 Plug 'ervandew/supertab'		" Tab completion.
 Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
 Plug 'godlygeek/tabular'		" Text alignment.
@@ -41,7 +41,7 @@ Plug 'matze/vim-move'			" Move text selections.
 Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
 Plug 'vim-scripts/vimwiki'		" Build a wiki -> html.
 Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
-Plug 'easymotion/vim-easymotion'	" Motions on speed.
+" Plug 'easymotion/vim-easymotion'	" Motions on speed.
 Plug 'junegunn/vim-easy-align' 		" Easily align text.
 Plug 'terryma/vim-multiple-cursors' 	" Multiple cursors.
 Plug 'reedes/vim-wordy' 		" Word usage for writing.
