@@ -56,6 +56,20 @@
 	<li><a href=https://github.com/dylanaraps/wal>wal</a>
 	<li><a href=https://github.com/matze/vim-move>vim-move</a>
 	<li><a href=https://github.com/vim-scripts/Tabmerge>Tabmerge</a>
+	<li><a href=https://github.com/scrooloose/nerdcommenter>nerdcommenter</a>
+	<li><a href=https://github.com/Shougo/deoplete.nvim>deoplete.nvim</a>
+	<li><a href=https://github.com/vim-scripts/vimwiki>vimwiki</a>
+	<li><a href=https://github.com/vim-scripts/LanguageTool>LanguageTool</a>
+	<li><a href=https://github.com/vim-scripts/todo-vim>todo-vim</a>
+	<li><a href=https://github.com/roman/golden-ratio>golden-ratio</a>
+	<li><a href=https://github.com/easymotion/vim-easymotion>vim-easymotio</a>
+	<li><a href=https://github.com/junegunn/vim-easy-align>vim-easy-align</a>
+	<li><a href=https://github.com/terryma/vim-multiple-cursors>vim-multiple-cursors</a>
+	<li><a href=https://github.com/reedes/vim-wordy>vim-wordy</a>
+	<li><a href=https://github.com/davidbeckingsale/writegood.vim>writegood.vim</a>
+	<li><a href=https://github.com/johngrib/vim-game-snake>vim-game-snake</a>
+	<li><a href=https://github.com/omaraboumrad/vim-life>vim-life</a>
+	<li><a href=https://github.com/AnthonyAstige/ctrlhjkl.vim>ctrlhjkl.vim</a>
 </ul>
 <br>
 <hr width="75%" align="center" noshade>
