@@ -85,8 +85,9 @@
 		<li>seletion file insertion
 		<li>add test for functions like,"has('neovim')&&has('externel shell binary')
 		<li>add test for if has('wal'), to load wal, or to load another colorscheme and airlinetheme.
-		<li>add toggle for columncolor stuff.
+		<li>add toggle for columncolor stuff*81,121)
 		<li>configure easymotions https://github.com/easymotion/vim-easymotion
 		<li>put in folds using fdl and such.
+		<li>config goldenratio to be disabled when it enter syntastic split.
 	</ul>
 </ul>
