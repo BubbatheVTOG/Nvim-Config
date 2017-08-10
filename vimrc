@@ -75,8 +75,8 @@ call plug#end()				" required
 " GENERAL CONFIGURATION
 " =============================================================================
 filetype plugin indent on		" Syntax for different file types. Plus autoindent for that file type.
-syntax on				" Syntax on bitch.
 set path+=**				" appends $PATH to find command
+syntax on				" Syntax on bitch.
 set wildmenu				" allows us to use the wildcard file menu
 set background=dark			" Use text colors that look good on a dark background.
 set autoindent				" Auto intent to the same col when on new line.
@@ -368,11 +368,12 @@ let NERDTrimTraillingWhitespace = 1
 " :LanguageToolCheck
 " :LanguageToolClear
 
-" Todo-vim (TODO: @configure todo-vim)
+" Todo-vim 
 " -----------------------------------------------------------------------------
 " :TODOToggle
+nnoremap <leader>td	:TODOToggle<CR>\<C-w>
 
-" Golden-ratio (TODO: @configure golden-ratio)
+" Golden-ratio 
 " -----------------------------------------------------------------------------
 nnoremap <leader>gr	:GoldenRatioToggle<CR>
 " :h golden-ratio
@@ -409,7 +410,7 @@ nnoremap <leader>gr	:GoldenRatioToggle<CR>
 " :GOL (to start)
 " :GOL (to stop)
 
-" Ctrlhjkl
+" Ctrlhjkl (TODO: @refactor)
 " -----------------------------------------------------------------------------
 " Stop jacking my binds pls.
 let g:ctrlhjkl_suppress_keymaps = 1
@@ -568,13 +569,13 @@ function Sudo()
 endfunction
 command Sudo silent! call Sudo()
 
-" Configure Color Column (Built in)
-" -----------------------------------------------------------------------------
-let &colorcolumn=join(range(81,81),",")			" Set bar at column 81
-let &colorcolumn="80,".join(range(121,121),",")		" Set bar at column121
+" " Configure Color Column (Built in)
+" " -----------------------------------------------------------------------------
+	" let &colorcolumn=join(range(81,81),",")			" Set bar at column 81
+	" let &colorcolumn="80,".join(range(121,121),",")		" Set bar at column121
 
-" Make that line black w/ a bit of blue.
-highlight ColorColumn ctermbg=235 guibg=#003333
+	" " Make that line black w/ a bit of blue.
+	" highlight ColorColumn ctermbg=235 guibg=#003333
 
 
 " =============================================================================
