@@ -29,7 +29,6 @@ Plug 'tpope/vim-speeddating'		" Date manipulation.
 Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
 Plug 'AndrewRadev/splitjoin.vim'	" Split or join lines.
 Plug 'apalmer1377/factorus'		" Refactoring Plugin.
-Plug 'metakirby5/codi.vim'		" Interactive scratchpad.
 Plug 'machakann/vim-sandwich'		" Adds sandwich command for surrounding objects.
 Plug 'rhysd/clever-f.vim'		" Super slick t/f movements.
 Plug 'ervandew/supertab'		" Tab completion.
@@ -45,7 +44,7 @@ Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
 Plug 'junegunn/vim-easy-align' 		" Easily align text.
 Plug 'terryma/vim-multiple-cursors' 	" Multiple cursors.
 Plug 'reedes/vim-wordy' 		" Word usage for writing.
-Plug 'AnthonyAstige/ctrlhjkl.vim' 	" Easier move between splits/buffers/windows.
+" Plug 'AnthonyAstige/ctrlhjkl.vim' 	" Easier move between splits/buffers/windows.
 
 " THIS IS NOT CONFIGURED
 if has('nvim')
@@ -54,20 +53,21 @@ else
 	Plug 'Shougo/neocomplete.vim' 	" Omnicompletion for vim
 endif
 
-Plug 'mbbill/undotree',			{'on': 'UndotreeToggle'}	" Create an undotree.
-Plug 'cohama/agit.vim', 		{'on': 'Agit'} 			" Git log viewer.
-Plug 'lilydjwg/colorizer',		{'on': 'ColorToggle'}		" Hex code colorizer
-Plug 'scrooloose/nerdtree',		{'on': 'NERDTreeToggle'}	" Its NerdTree...but only when its toggled.
 Plug 'artur-shaik/vim-javacomplete2',	{'for':['java']}		" Auto complete for Java...but only in java files.
 Plug 'lervag/vimtex',			{'for':['tex']}			" Tex Utility
 Plug 'xuhdev/vim-latex-live-preview',	{'for':['tex']}			" A Vim Plugin for Lively Previewing LaTeX PDF Output
-Plug 'johngrib/vim-game-code-break',	{'on': 'VimGameCodeBreak'}	" Brick Breaker
+Plug 'mbbill/undotree',			{'on':['UndoSreeToggle']}	" Create an undotree.
+Plug 'cohama/agit.vim', 		{'on':['Agit']} 		" Git log viewer.
+Plug 'lilydjwg/colorizer',		{'on':['ColorToggle']}		" Hex code colorizer
+Plug 'scrooloose/nerdtree',		{'on':['NERDTreeToggle']}	" Its NerdTree...but only when its toggled.
+Plug 'johngrib/vim-game-code-break',	{'on':['VimGameCodeBreak']}	" Brick Breaker
 Plug 'vim-scripts/LanguageTool',	{'on':['LanguageToolCheck','LanguageToolClear']}	" Grammar checking.
 Plug 'vim-scripts/todo-vim',		{'on':['TODOToggle']}
 Plug 'roman/golden-ratio', 		{'on':['GoldenRatioToggle']} 	" Change split sizes on focus change.
 Plug 'davidbeckingsale/writegood.vim',	{'on':['WritegoodToggle']} 	" Writting utility.
 Plug 'johngrib/vim-game-snake', 	{'on':['VimGameSnake']} 	" Snake!
 Plug 'omaraboumrad/vim-life', 		{'on':['GOL']} 			" Game of life
+Plug 'metakirby5/codi.vim',		{'on':['Codi']}			" Interactive scratchpad.
 call plug#end()				" required
 
 
@@ -434,6 +434,7 @@ xmap <s-l> <Plug>CtrlHJKLMoveL
 " =============================================================================
 
 " Change Keyboard Brightness on mode B)
+" -----------------------------------------------------------------------------
 autocmd InsertEnter * silent! call system('echo 50 > /sys/class/leds/chromeos::kbd_backlight/brightness')
 autocmd InsertLeave * silent! call system('echo 1 > /sys/class/leds/chromeos::kbd_backlight/brightness')
 
