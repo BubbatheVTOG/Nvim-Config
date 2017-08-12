@@ -164,6 +164,7 @@ nnoremap <leader>tt	:TermTab<CR>
 nnoremap <leader>so	:Source<CR>
 nnoremap <leader>su	:Sudo<CR>
 nnoremap <leader>ev	:e $MYVIMRC<CR>
+nnoremap <leader>tg	:TODOToggle<CR>
 
 " Custom Key Mappings For Builtin Commands
 " -----------------------------------------------------------------------------
