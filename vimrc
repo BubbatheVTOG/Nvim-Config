@@ -369,12 +369,12 @@ let NERDTrimTraillingWhitespace = 1
 " :LanguageToolCheck
 " :LanguageToolClear
 
-" Todo-vim 
+" Todo-vim
 " -----------------------------------------------------------------------------
 " :TODOToggle
 nnoremap <leader>td	:TODOToggle<CR>\<C-w>
 
-" Golden-ratio 
+" Golden-ratio
 " -----------------------------------------------------------------------------
 nnoremap <leader>gr	:GoldenRatioToggle<CR>
 " :h golden-ratio
@@ -487,7 +487,7 @@ function Htop(window)
 	endif
 	if a:window ==? "vsplit"
 		exec "vsplit term://htop"
-		exec "normal! \<C-w>r\<C-w>\<C-w>"
+	"	exec "normal! \<C-w>r\<C-w>\<C-w>"
 	endif
 	" TODO:Change this to elseif, with else echom'ing bad command'
 endfunction
