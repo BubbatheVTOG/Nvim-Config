@@ -21,7 +21,8 @@ Plug 'airblade/vim-gitgutter'		" Shows staged lines.
 Plug 'vim-airline/vim-airline'		" Status bar.
 Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
 Plug 'sheerun/vim-polyglot'		" Syntax highlighting for a lot of languages. (Striped down, install specific ones if needed.)
-Plug 'vim-syntastic/syntastic'		" Syntastic linter.
+Plug 'vim-syntastic/syntastic'	" Syntastic linter.
+" Plug 'w0rp/ale' 			" Linter.
 Plug 'tpope/vim-surround'		" Surround movement command.
 Plug 'tpope/vim-sleuth' 		" Heuristic tabsizes.
 Plug 'tpope/vim-repeat' 		" Repeat support for plugins.
@@ -266,7 +267,7 @@ let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.whitespace = 'Ξ'
 
-" Syntastic recommended settings.
+" Syntastic recommended settings. (Currently disabled)
 " -----------------------------------------------------------------------------
 " Global Settings:
 set statusline+=%#warningmsg#
@@ -277,6 +278,17 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
+
+" Ale recommended settings.
+" -----------------------------------------------------------------------------
+" " Set this. Airline will handle the rest.
+" let g:airline#extensions#ale#enabled = 1
+" " Change linting frequency. (default:always,never,insert,normal)
+" " let g:ale_lint_on_text_changed = never
+" " Change linting to insertleave event. (default:1,0)
+" let g:ale_lint_on_insert_leave = 1
+" " Only lint on enter. (default:1,0)
+" " g:ale_lint_on_enter = 1
 
 " LaTeX Settings
 " -----------------------------------------------------------------------------
@@ -292,7 +304,7 @@ nnoremap <leader>ct	:ColorToggle<CR>
 " Stop jacking my binds.
 let g:colorizer_nomap = 1
 " General settings
-let g:colorizer_auto_color	= 0
+let g:colorizer_auto_color	= 1
 let g:colorizer_x11_name	= 1
 let g:colorizer_maxlines	= 500
 
