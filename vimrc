@@ -450,7 +450,7 @@ xmap <s-l> <Plug>CtrlHJKLMoveL
 " Change Keyboard Brightness on mode B)
 " -----------------------------------------------------------------------------
 " Only do this if on a chromebook.
-if system('if [ -e /sys/class/leds/chromeos::kbd_backlight/brightness ]; then echo true; fi') =~ "true"
+if system('if [ -e /sys/class/leds/chromeos::kbd_backlight/brightness ]; then echo true; fi') == "true"
 	autocmd InsertEnter * silent! call system('echo 50 > /sys/class/leds/chromeos::kbd_backlight/brightness')
 	autocmd InsertLeave * silent! call system('echo 1 > /sys/class/leds/chromeos::kbd_backlight/brightness')
 endif
@@ -461,7 +461,7 @@ if has('nvim')
 " -----------------------------------------------------------------------------
 	" This executes ttyclock in a new full screen tab.
 	" Requires the host to have tty-clock installed.
-	if system('if [ -e /usr/bin/tty-clock]; then echo true; fi') =~ "true"
+	if system('if [ -e /usr/bin/tty-clock]; then echo true; fi') == "true"
 		function TTYClock()
 			let g:indentLine_enabled = 0
 			exec "tabnew term://tty-clock -C 6 -txbsrc"
@@ -473,7 +473,7 @@ if has('nvim')
 " -----------------------------------------------------------------------------
 	" This executes cmatrix in a new full screen tab.
 	" Requires the host to have cmatrix installed.
-	if system('if [ -e /usr/bin/cmatrix]; then echo true; fi') =~ "true"
+	if system('if [ -e /usr/bin/cmatrix]; then echo true; fi') == "true"
 		function Cmatrix()
 			let g:indentLine_enabled = 0
 			exec "tabnew term://cmatrix -a -C cyan"
@@ -485,7 +485,7 @@ if has('nvim')
 " -----------------------------------------------------------------------------
 	" This executes htop in a new full screen tab.
 	" Requires the host to have htop installed.
-	if system('if [ -e /usr/bin/htop]; then echo true; fi') =~ "true"
+	if system('if [ -e /usr/bin/htop]; then echo true; fi') == "true"
 		function Htop(window)
 			if a:window ==? "tabnew"
 				exec "tabnew term://htop"
