@@ -158,7 +158,7 @@ nnoremap <leader>bg	:ToggleBG<CR>
 nnoremap <leader>so	:Source<CR>
 nnoremap <leader>su	:Sudo<CR>
 nnoremap <leader>ev	:e $MYVIMRC<CR>
-" Only load these if in neovim.
+" Only create these binds if in neovim.
 if has('nvim')
 	nnoremap <leader>ts	:TermSplit<CR>
 	nnoremap <leader>tt	:TermTab<CR>
@@ -449,8 +449,11 @@ xmap <s-l> <Plug>CtrlHJKLMoveL
 
 " Change Keyboard Brightness on mode B)
 " -----------------------------------------------------------------------------
-autocmd InsertEnter * silent! call system('echo 50 > /sys/class/leds/chromeos::kbd_backlight/brightness')
-autocmd InsertLeave * silent! call system('echo 1 > /sys/class/leds/chromeos::kbd_backlight/brightness')
+" Only do this if on a chromebook.
+if system('if [ -e /sys/class/leds/chromeos::kbd_backlight/brightness ]; then echo true; fi') =~ "true"
+	autocmd InsertEnter * silent! call system('echo 50 > /sys/class/leds/chromeos::kbd_backlight/brightness')
+	autocmd InsertLeave * silent! call system('echo 1 > /sys/class/leds/chromeos::kbd_backlight/brightness')
+endif
 
 " Only create these functions if we are in neovim.
 if has('nvim')
@@ -458,38 +461,44 @@ if has('nvim')
 " -----------------------------------------------------------------------------
 	" This executes ttyclock in a new full screen tab.
 	" Requires the host to have tty-clock installed.
-	function TTYClock()
-		let g:indentLine_enabled = 0
-		exec "tabnew term://tty-clock -C 6 -txbsrc"
-	endfunction
-	command TTYClock silent! call TTYClock()
+	if system('if [ -e /usr/bin/tty-clock]; then echo true; fi') =~ "true"
+		function TTYClock()
+			let g:indentLine_enabled = 0
+			exec "tabnew term://tty-clock -C 6 -txbsrc"
+		endfunction
+		command TTYClock silent! call TTYClock()
+	endif
 
 	" Cmatrix()
 " -----------------------------------------------------------------------------
 	" This executes cmatrix in a new full screen tab.
 	" Requires the host to have cmatrix installed.
-	function Cmatrix()
-		let g:indentLine_enabled = 0
-		exec "tabnew term://cmatrix -a -C cyan"
-	endfunction
-	command Cmatrix silent! call Cmatrix()
+	if system('if [ -e /usr/bin/cmatrix]; then echo true; fi') =~ "true"
+		function Cmatrix()
+			let g:indentLine_enabled = 0
+			exec "tabnew term://cmatrix -a -C cyan"
+		endfunction
+		command Cmatrix silent! call Cmatrix()
+	endif
 
 	" Htop()
 " -----------------------------------------------------------------------------
 	" This executes htop in a new full screen tab.
 	" Requires the host to have htop installed.
-	function Htop(window)
-		if a:window ==? "tabnew"
-			exec "tabnew term://htop"
-		endif
-		if a:window ==? "vsplit"
-			exec "vsplit term://htop"
-			exec "normal! \<C-w>r\<C-w>\<C-w>"
-		endif
-		" TODO:Change this to elseif, with else echom'ing bad command'
-	endfunction
-	command HtopTab silent! call Htop("tabnew")
-	command HtopVsplit silent! call Htop("vsplit")
+	if system('if [ -e /usr/bin/htop]; then echo true; fi') =~ "true"
+		function Htop(window)
+			if a:window ==? "tabnew"
+				exec "tabnew term://htop"
+			endif
+			if a:window ==? "vsplit"
+				exec "vsplit term://htop"
+				exec "normal! \<C-w>r\<C-w>\<C-w>"
+			endif
+			" TODO:Change this to elseif, with else echom'ing bad command'
+		endfunction
+		command HtopTab silent! call Htop("tabnew")
+		command HtopVsplit silent! call Htop("vsplit")
+	endif
 
 	" Terminal Split
 " -----------------------------------------------------------------------------
@@ -558,7 +567,7 @@ command ToggleSpell silent! call ToggleSpell()
 " -----------------------------------------------------------------------------
 " Toggle background between light and dark
 " This can be rewritten like this:
-" map ,b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+" nnomap <leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 function ToggleBG()
 	if &background ==? "dark"
 		exec "set background=light"
@@ -601,6 +610,5 @@ command Sudo silent! call Sudo()
 " (Plug-in) https://github.com/terryma/vim-multiple-cursors
 " (Plug-in) Get rid of manual commenter and install https://github.com/scrooloose/nerdcommenter
 " (Enhancement) skeleton file insertion
-" (Enhancement) test "if has('neovim')&&has('external shell command') for functions
 
 " vim:tw=78:ts=8
