@@ -46,8 +46,6 @@ Plug 'junegunn/vim-easy-align' 		" Easily align text.
 Plug 'terryma/vim-multiple-cursors' 	" Multiple cursors.
 Plug 'reedes/vim-wordy' 		" Word usage for writing.
 " Plug 'AnthonyAstige/ctrlhjkl.vim' 	" Easier move between splits/buffers/windows.
-Plug 'zanglg/nova.vim'
-Plug 'arcticicestudio/nord-vim'
 
 " THIS IS NOT CONFIGURED
 if has('nvim')
