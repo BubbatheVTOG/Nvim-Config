@@ -21,7 +21,7 @@ Plug 'airblade/vim-gitgutter'		" Shows staged lines.
 Plug 'vim-airline/vim-airline'		" Status bar.
 Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
 Plug 'sheerun/vim-polyglot'		" Syntax highlighting for a lot of languages. (Striped down, install specific ones if needed.)
-Plug 'vim-syntastic/syntastic'	" Syntastic linter.
+Plug 'vim-syntastic/syntastic'		" Syntastic linter.
 " Plug 'w0rp/ale' 			" Linter.
 Plug 'tpope/vim-surround'		" Surround movement command.
 Plug 'tpope/vim-sleuth' 		" Heuristic tabsizes.
