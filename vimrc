@@ -154,17 +154,18 @@ onoremap <silent> k gk
 " -----------------------------------------------------------------------------
 nnoremap <leader>fc	:Flash<CR>
 nnoremap <leader>sc	:ToggleSpell<CR>
-nnoremap <leader>hs	:HtopVsplit<CR>
-nnoremap <leader>ht	:HtopTab<CR>
-nnoremap <leader>tc	:TTYClock<CR>
 nnoremap <leader>bg	:ToggleBG<CR>
-nnoremap <leader>co	:CommentITOut<CR>
-nnoremap <leader>ci	:CommentITIn<CR>
-nnoremap <leader>ts	:TermSplit<CR>
-nnoremap <leader>tt	:TermTab<CR>
 nnoremap <leader>so	:Source<CR>
 nnoremap <leader>su	:Sudo<CR>
 nnoremap <leader>ev	:e $MYVIMRC<CR>
+" Only load these if in neovim.
+if has('nvim)
+	nnoremap <leader>ts	:TermSplit<CR>
+	nnoremap <leader>tt	:TermTab<CR>
+	nnoremap <leader>hs	:HtopVsplit<CR>
+	nnoremap <leader>ht	:HtopTab<CR>
+	nnoremap <leader>tc	:TTYClock<CR>
+endif
 
 " Custom Key Mappings For Builtin Commands
 " -----------------------------------------------------------------------------
@@ -451,6 +452,66 @@ xmap <s-l> <Plug>CtrlHJKLMoveL
 autocmd InsertEnter * silent! call system('echo 50 > /sys/class/leds/chromeos::kbd_backlight/brightness')
 autocmd InsertLeave * silent! call system('echo 1 > /sys/class/leds/chromeos::kbd_backlight/brightness')
 
+" Only create these functions if we are in neovim.
+if has('nvim')
+	" TTYClock()
+" -----------------------------------------------------------------------------
+	" This executes ttyclock in a new full screen tab.
+	" Requires the host to have tty-clock installed.
+	function TTYClock()
+		let g:indentLine_enabled = 0
+		exec "tabnew term://tty-clock -C 6 -txbsrc"
+	endfunction
+	command TTYClock silent! call TTYClock()
+
+	" Cmatrix()
+" -----------------------------------------------------------------------------
+	" This executes cmatrix in a new full screen tab.
+	" Requires the host to have cmatrix installed.
+	function Cmatrix()
+		let g:indentLine_enabled = 0
+		exec "tabnew term://cmatrix -a -C cyan"
+	endfunction
+	command Cmatrix silent! call Cmatrix()
+
+	" Htop()
+" -----------------------------------------------------------------------------
+	" This executes htop in a new full screen tab.
+	" Requires the host to have htop installed.
+	function Htop(window)
+		if a:window ==? "tabnew"
+			exec "tabnew term://htop"
+		endif
+		if a:window ==? "vsplit"
+			exec "vsplit term://htop"
+			exec "normal! \<C-w>r\<C-w>\<C-w>"
+		endif
+		" TODO:Change this to elseif, with else echom'ing bad command'
+	endfunction
+	command HtopTab silent! call Htop("tabnew")
+	command HtopVsplit silent! call Htop("vsplit")
+
+	" Terminal Split
+" -----------------------------------------------------------------------------
+	" Just make a terminal and split it on the right side.
+	function TermSplit()
+		let g:indentLine_enabled=0
+		" TODO: change the next line to open in working directory"
+		exec "vsplit term://zsh"
+		exec "terminal!"
+	endfunction
+	command TermSplit silent! call TermSplit()
+
+	" Terminal Tab
+" -----------------------------------------------------------------------------
+	" Just make a terminal in a new tab ffs.
+	function TermTab()
+		exec "tabnew term://zsh"
+		exec "terminal!"
+	endfunction
+	command TermTab silent! call TermTab()
+endif
+
 " Speed Profiling
 " -----------------------------------------------------------------------------
 " Lets you see what plugins/external commands are slowing down vim.
@@ -467,43 +528,6 @@ function ProfileEnd()
 	exec "noautocmd qall!"
 endfunction
 command ProfileEnd silent! call ProfileEnd()
-
-" TTYClock()
-" -----------------------------------------------------------------------------
-" This executes ttyclock in a new full screen tab.
-" Requires the host to have tty-clock installed.
-function TTYClock()
-	let g:indentLine_enabled = 0
-	exec "tabnew term://tty-clock -C 6 -txbsrc"
-endfunction
-command TTYClock silent! call TTYClock()
-
-" Cmatrix()
-" -----------------------------------------------------------------------------
-" This executes cmatrix in a new full screen tab.
-" Requires the host to have cmatrix installed.
-function Cmatrix()
-	let g:indentLine_enabled = 0
-	exec "tabnew term://cmatrix -a -C cyan"
-endfunction
-command Cmatrix silent! call Cmatrix()
-
-" Htop()
-" -----------------------------------------------------------------------------
-" This executes htop in a new full screen tab.
-" Requires the host to have htop installed.
-function Htop(window)
-	if a:window ==? "tabnew"
-		exec "tabnew term://htop"
-	endif
-	if a:window ==? "vsplit"
-		exec "vsplit term://htop"
-		exec "normal! \<C-w>r\<C-w>\<C-w>"
-	endif
-	" TODO:Change this to elseif, with else echom'ing bad command'
-endfunction
-command HtopTab silent! call Htop("tabnew")
-command HtopVsplit silent! call Htop("vsplit")
 
 " Crosshair Flash()
 " -----------------------------------------------------------------------------
@@ -543,26 +567,6 @@ function ToggleBG()
 	endif
 endfunction
 command ToggleBG silent! call ToggleBG()
-
-" Terminal Split
-" -----------------------------------------------------------------------------
-" Just make a terminal and split it on the right side.
-function TermSplit()
-	let g:indentLine_enabled=0
-	" TODO: change the next line to open in working directory"
-	exec "vsplit term://zsh"
-	exec "terminal!"
-endfunction
-command TermSplit silent! call TermSplit()
-
-" Terminal Tab
-" -----------------------------------------------------------------------------
-" Just make a terminal in a new tab ffs.
-function TermTab()
-	exec "tabnew term://zsh"
-	exec "terminal!"
-endfunction
-command TermTab silent! call TermTab()
 
 " Source
 " -----------------------------------------------------------------------------
