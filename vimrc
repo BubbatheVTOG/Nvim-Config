@@ -116,8 +116,18 @@ set undolevels=1000 			" Increase undo levels.
 
 " Folding {{{
 " -----------------------------------------------------------------------------
-set foldmarker 				" sets manual foldmarkers {{{,}}}
-highlight Folded guibg=black guifg=blue
+set foldmethod=marker				" sets manual foldmarkers
+highlight Folded ctermbg=black ctermfg=blue
+" nmap <leader>f0 :set foldlevel=0<CR>
+" nmap <leader>f1 :set foldlevel=1<CR>
+" nmap <leader>f2 :set foldlevel=2<CR>
+" nmap <leader>f3 :set foldlevel=3<CR>
+" nmap <leader>f4 :set foldlevel=4<CR>
+" nmap <leader>f5 :set foldlevel=5<CR>
+" nmap <leader>f6 :set foldlevel=6<CR>
+" nmap <leader>f7 :set foldlevel=7<CR>
+" nmap <leader>f8 :set foldlevel=8<CR>
+" nmap <leader>f9 :set foldlevel=9<CR>
 " autocmd BufWinLeave *.* mkview		" Save folds on exit.
 " autocmd BufWinEnter *.* silent loadview	" Create folds from save.
 " }}}
@@ -159,11 +169,15 @@ autocmd FileType java let java_highlight_functions="style"
 " CONTROVERSY
 nnoremap ; :
 
-" Clear search highlights
-nnoremap ,nh	:noh<CR>
-
 " Leader defined
 let mapleader = ","
+
+" Clear search highlights
+nnoremap <leader>nh	:noh<CR>
+
+" Fold Binds
+nnoremap <Space> za
+nnoremap <leader>cf 	:fold<CR>
 
 " Change movement behavior for wrapped lines.
 noremap  <buffer> <silent> k gk
@@ -213,7 +227,7 @@ inoremap <C-q>		<Esc>:tabclose<CR>
 " NERDTree config
 " -----------------------------------------------------------------------------
 " Open NERDTree bind
-nnoremap <Space>	:NERDTreeToggle<CR>
+nnoremap <leader>nt	:NERDTreeToggle<CR>
 let NERDTreeMouseMode = 3
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeCaseSensitiveSort = 1
@@ -396,6 +410,7 @@ let NERDTrimTraillingWhitespace = 1
 " Deoplete (TODO: @configure deopleted)
 " -----------------------------------------------------------------------------
 " 1500 lines of config...ugh, just Google it.
+let g:deoplete#enable_at_startup = 1
 
 " Vim-wiki (TODO: @configure vim-wiki)
 " -----------------------------------------------------------------------------
