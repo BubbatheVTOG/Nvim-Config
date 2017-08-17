@@ -106,7 +106,7 @@ set showcmd				" Show partial command in status line.
 set showmatch				" Show matching brackets.
 set splitright 				" Open new horizontal splits right of the current one.
 set splitbelow 				" Open new vertical splits below the current one.
-set completeopt=longest,menuone 	" Better autocompletion.
+set completeopt=longest,menuone,preview	" Better autocompletion.
 " set autowriteall 			" Autosave files.
 set hidden 				" Buffers become hidden when abandonded.
 set autoread 				" Reload the file when it changes outside of (n)vim.
