@@ -72,7 +72,7 @@ endif
 Plug 'artur-shaik/vim-javacomplete2',	{'for':['java']}		" Auto complete for Java...but only in java files.
 Plug 'lervag/vimtex',			{'for':['tex']}			" Tex Utility
 Plug 'xuhdev/vim-latex-live-preview',	{'for':['tex']}			" A Vim Plugin for Lively Previewing LaTeX PDF Output
-Plug 'mbbill/undotree',			{'on':['UndoSreeToggle']}	" Create an undotree.
+Plug 'mbbill/undotree',			{'on':['UndotreeToggle']}	" Create an undotree.
 Plug 'cohama/agit.vim', 		{'on':['Agit']} 		" Git log viewer.
 Plug 'lilydjwg/colorizer',		{'on':['ColorToggle']}		" Hex code colorizer
 Plug 'scrooloose/nerdtree',		{'on':['NERDTreeToggle']}	" Its NerdTree...but only when its toggled.
@@ -113,8 +113,14 @@ set autoread 				" Reload the file when it changes outside of (n)vim.
 set visualbell 				" Use visual bell instead of beeping.
 set history=1000 			" Increase history.
 set undolevels=1000 			" Increase undo levels.
-autocmd BufWinLeave *.* mkview		" Save folds on exit.
-autocmd BufWinEnter *.* silent loadview	" Create folds from save.
+
+" Folding {{{
+" -----------------------------------------------------------------------------
+set foldmarker 				" sets manual foldmarkers {{{,}}}
+highlight Folded guibg=black guifg=blue
+" autocmd BufWinLeave *.* mkview		" Save folds on exit.
+" autocmd BufWinEnter *.* silent loadview	" Create folds from save.
+" }}}
 
 " Search
 " -----------------------------------------------------------------------------
