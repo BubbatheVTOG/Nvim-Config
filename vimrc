@@ -116,7 +116,7 @@ set undolevels=1000 			" Increase undo levels.
 
 " Folding {{{
 " -----------------------------------------------------------------------------
-set foldmethod=marker				" sets manual foldmarkers
+set foldmethod=marker			" sets manual foldmarkers
 highlight Folded ctermbg=black ctermfg=blue
 " nmap <leader>f0 :set foldlevel=0<CR>
 " nmap <leader>f1 :set foldlevel=1<CR>
@@ -502,7 +502,7 @@ if has('nvim')
 " -----------------------------------------------------------------------------
 	" This executes ttyclock in a new full screen tab.
 	" Requires the host to have tty-clock installed.
-	if system('if [ -e /usr/bin/tty-clock]; then echo true; fi') == "true"
+	if system('if [ -e /usr/bin/tty-clock]; then echo true; fi') =~ "true"
 		function TTYClock()
 			let g:indentLine_enabled = 0
 			exec "tabnew term://tty-clock -C 6 -txbsrc"
@@ -514,7 +514,7 @@ if has('nvim')
 " -----------------------------------------------------------------------------
 	" This executes cmatrix in a new full screen tab.
 	" Requires the host to have cmatrix installed.
-	if system('if [ -e /usr/bin/cmatrix]; then echo true; fi') == "true"
+	if system('if [ -e /usr/bin/cmatrix]; then echo true; fi') =~ "true"
 		function Cmatrix()
 			let g:indentLine_enabled = 0
 			exec "tabnew term://cmatrix -a -C cyan"
@@ -526,7 +526,7 @@ if has('nvim')
 " -----------------------------------------------------------------------------
 	" This executes htop in a new full screen tab.
 	" Requires the host to have htop installed.
-	if system('if [ -e /usr/bin/htop]; then echo true; fi') == "true"
+	if system('if [ -e /usr/bin/htop]; then echo true; fi') =~ "true"
 		function Htop(window)
 			if a:window ==? "tabnew"
 				exec "tabnew term://htop"
