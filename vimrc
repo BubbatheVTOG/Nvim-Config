@@ -1,3 +1,18 @@
+" ██████╗ ██╗   ██╗██████╗ ██████╗  █████╗ ███████╗
+" ██╔══██╗██║   ██║██╔══██╗██╔══██╗██╔══██╗██╔════╝
+" ██████╔╝██║   ██║██████╔╝██████╔╝███████║███████╗
+" ██╔══██╗██║   ██║██╔══██╗██╔══██╗██╔══██║╚════██║
+" ██████╔╝╚██████╔╝██████╔╝██████╔╝██║  ██║███████║
+" ╚═════╝  ╚═════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
+
+"  ██╗███╗   ██╗██╗ ██╗   ██╗██╗███╗   ███╗██████╗  ██████╗
+" ██╔╝████╗  ██║╚██╗██║   ██║██║████╗ ████║██╔══██╗██╔════╝
+" ██║ ██╔██╗ ██║ ██║██║   ██║██║██╔████╔██║██████╔╝██║
+" ██║ ██║╚██╗██║ ██║╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║
+" ╚██╗██║ ╚████║██╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╗
+"  ╚═╝╚═╝  ╚═══╝╚═╝   ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
+
+
 " =============================================================================
 " PLUGINS
 " =============================================================================
@@ -21,7 +36,7 @@ Plug 'airblade/vim-gitgutter'		" Shows staged lines.
 Plug 'vim-airline/vim-airline'		" Status bar.
 Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
 Plug 'sheerun/vim-polyglot'		" Syntax highlighting for a lot of languages. (Striped down, install specific ones if needed.)
-Plug 'vim-syntastic/syntastic'	" Syntastic linter.
+Plug 'vim-syntastic/syntastic'		" Syntastic linter.
 " Plug 'w0rp/ale' 			" Linter.
 Plug 'tpope/vim-surround'		" Surround movement command.
 Plug 'tpope/vim-sleuth' 		" Heuristic tabsizes.
@@ -57,7 +72,7 @@ endif
 Plug 'artur-shaik/vim-javacomplete2',	{'for':['java']}		" Auto complete for Java...but only in java files.
 Plug 'lervag/vimtex',			{'for':['tex']}			" Tex Utility
 Plug 'xuhdev/vim-latex-live-preview',	{'for':['tex']}			" A Vim Plugin for Lively Previewing LaTeX PDF Output
-Plug 'mbbill/undotree',			{'on':['UndoSreeToggle']}	" Create an undotree.
+Plug 'mbbill/undotree',			{'on':['UndotreeToggle']}	" Create an undotree.
 Plug 'cohama/agit.vim', 		{'on':['Agit']} 		" Git log viewer.
 Plug 'lilydjwg/colorizer',		{'on':['ColorToggle']}		" Hex code colorizer
 Plug 'scrooloose/nerdtree',		{'on':['NERDTreeToggle']}	" Its NerdTree...but only when its toggled.
@@ -91,15 +106,31 @@ set showcmd				" Show partial command in status line.
 set showmatch				" Show matching brackets.
 set splitright 				" Open new horizontal splits right of the current one.
 set splitbelow 				" Open new vertical splits below the current one.
-set completeopt=longest,menuone 	" Better autocompletion.
+set completeopt=longest,menuone,preview	" Better autocompletion.
 " set autowriteall 			" Autosave files.
 set hidden 				" Buffers become hidden when abandonded.
 set autoread 				" Reload the file when it changes outside of (n)vim.
 set visualbell 				" Use visual bell instead of beeping.
 set history=1000 			" Increase history.
 set undolevels=1000 			" Increase undo levels.
-autocmd BufWinLeave *.* mkview		" Save folds on exit.
-autocmd BufWinEnter *.* silent loadview	" Create folds from save.
+
+" Folding {{{
+" -----------------------------------------------------------------------------
+set foldmethod=marker			" sets manual foldmarkers
+highlight Folded ctermbg=black ctermfg=blue
+" nmap <leader>f0 :set foldlevel=0<CR>
+" nmap <leader>f1 :set foldlevel=1<CR>
+" nmap <leader>f2 :set foldlevel=2<CR>
+" nmap <leader>f3 :set foldlevel=3<CR>
+" nmap <leader>f4 :set foldlevel=4<CR>
+" nmap <leader>f5 :set foldlevel=5<CR>
+" nmap <leader>f6 :set foldlevel=6<CR>
+" nmap <leader>f7 :set foldlevel=7<CR>
+" nmap <leader>f8 :set foldlevel=8<CR>
+" nmap <leader>f9 :set foldlevel=9<CR>
+" autocmd BufWinLeave *.* mkview		" Save folds on exit.
+" autocmd BufWinEnter *.* silent loadview	" Create folds from save.
+" }}}
 
 " Search
 " -----------------------------------------------------------------------------
@@ -137,15 +168,23 @@ autocmd FileType java let java_highlight_functions="style"
 
 " CONTROVERSY
 nnoremap ; :
-" Clear search highlights
-nnoremap ,nh	:noh<CR>
+
 " Leader defined
 let mapleader = ","
+
+" Clear search highlights
+nnoremap <leader>nh	:noh<CR>
+
+" Fold Binds
+nnoremap <Space> za
+nnoremap <leader>cf 	:fold<CR>
+
 " Change movement behavior for wrapped lines.
 noremap  <buffer> <silent> k gk
 noremap  <buffer> <silent> j gj
 noremap  <buffer> <silent> 0 g0
 noremap  <buffer> <silent> $ g$
+
 " Change movement behavior for wrapped lines in operator-pending mode(ex:d6j)
 onoremap <silent> j gj
 onoremap <silent> k gk
@@ -154,18 +193,20 @@ onoremap <silent> k gk
 " -----------------------------------------------------------------------------
 nnoremap <leader>fc	:Flash<CR>
 nnoremap <leader>sc	:ToggleSpell<CR>
-nnoremap <leader>hs	:HtopVsplit<CR>
-nnoremap <leader>ht	:HtopTab<CR>
-nnoremap <leader>tc	:TTYClock<CR>
 nnoremap <leader>bg	:ToggleBG<CR>
-nnoremap <leader>co	:CommentITOut<CR>
-nnoremap <leader>ci	:CommentITIn<CR>
-nnoremap <leader>ts	:TermSplit<CR>
-nnoremap <leader>tt	:TermTab<CR>
 nnoremap <leader>so	:Source<CR>
 nnoremap <leader>su	:Sudo<CR>
 nnoremap <leader>ev	:e $MYVIMRC<CR>
 nnoremap <leader>tg	:TODOToggle<CR>
+
+" Only create these binds if in neovim.
+if has('nvim')
+	nnoremap <leader>ts	:TermSplit<CR>
+	nnoremap <leader>tt	:TermTab<CR>
+	nnoremap <leader>hs	:HtopVsplit<CR>
+	nnoremap <leader>ht	:HtopTab<CR>
+	nnoremap <leader>tc	:TTYClock<CR>
+endif
 
 " Custom Key Mappings For Builtin Commands
 " -----------------------------------------------------------------------------
@@ -187,7 +228,7 @@ inoremap <C-q>		<Esc>:tabclose<CR>
 " NERDTree config
 " -----------------------------------------------------------------------------
 " Open NERDTree bind
-nnoremap <Space>	:NERDTreeToggle<CR>
+nnoremap <leader>nt	:NERDTreeToggle<CR>
 let NERDTreeMouseMode = 3
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeCaseSensitiveSort = 1
@@ -370,6 +411,7 @@ let NERDTrimTraillingWhitespace = 1
 " Deoplete (TODO: @configure deopleted)
 " -----------------------------------------------------------------------------
 " 1500 lines of config...ugh, just Google it.
+let g:deoplete#enable_at_startup = 1
 
 " Vim-wiki (TODO: @configure vim-wiki)
 " -----------------------------------------------------------------------------
@@ -449,8 +491,77 @@ xmap <s-l> <Plug>CtrlHJKLMoveL
 
 " Change Keyboard Brightness on mode B)
 " -----------------------------------------------------------------------------
-autocmd InsertEnter * silent! call system('echo 50 > /sys/class/leds/chromeos::kbd_backlight/brightness')
-autocmd InsertLeave * silent! call system('echo 1 > /sys/class/leds/chromeos::kbd_backlight/brightness')
+" Only do this if on a chromebook.
+if system('if [ -e /sys/class/leds/chromeos::kbd_backlight/brightness ]; then echo true; fi') == "true"
+	autocmd InsertEnter * silent! call system('echo 50 > /sys/class/leds/chromeos::kbd_backlight/brightness')
+	autocmd InsertLeave * silent! call system('echo 1 > /sys/class/leds/chromeos::kbd_backlight/brightness')
+endif
+
+" Only create these functions if we are in neovim.
+if has('nvim')
+	" TTYClock()
+" -----------------------------------------------------------------------------
+	" This executes ttyclock in a new full screen tab.
+	" Requires the host to have tty-clock installed.
+	if system('if [ -e /usr/bin/tty-clock]; then echo true; fi') =~ "true"
+		function TTYClock()
+			let g:indentLine_enabled = 0
+			exec "tabnew term://tty-clock -C 6 -txbsrc"
+		endfunction
+		command TTYClock silent! call TTYClock()
+	endif
+
+	" Cmatrix()
+" -----------------------------------------------------------------------------
+	" This executes cmatrix in a new full screen tab.
+	" Requires the host to have cmatrix installed.
+	if system('if [ -e /usr/bin/cmatrix]; then echo true; fi') =~ "true"
+		function Cmatrix()
+			let g:indentLine_enabled = 0
+			exec "tabnew term://cmatrix -a -C cyan"
+		endfunction
+		command Cmatrix silent! call Cmatrix()
+	endif
+
+	" Htop()
+" -----------------------------------------------------------------------------
+	" This executes htop in a new full screen tab.
+	" Requires the host to have htop installed.
+	if system('if [ -e /usr/bin/htop]; then echo true; fi') =~ "true"
+		function Htop(window)
+			if a:window ==? "tabnew"
+				exec "tabnew term://htop"
+			endif
+			if a:window ==? "vsplit"
+				exec "vsplit term://htop"
+				exec "normal! \<C-w>r\<C-w>\<C-w>"
+			endif
+			" TODO:Change this to elseif, with else echom'ing bad command'
+		endfunction
+		command HtopTab silent! call Htop("tabnew")
+		command HtopVsplit silent! call Htop("vsplit")
+	endif
+
+	" Terminal Split
+" -----------------------------------------------------------------------------
+	" Just make a terminal and split it on the right side.
+	function TermSplit()
+		let g:indentLine_enabled=0
+		" TODO: change the next line to open in working directory"
+		exec "vsplit term://zsh"
+		exec "terminal!"
+	endfunction
+	command TermSplit silent! call TermSplit()
+
+	" Terminal Tab
+" -----------------------------------------------------------------------------
+	" Just make a terminal in a new tab ffs.
+	function TermTab()
+		exec "tabnew term://zsh"
+		exec "terminal!"
+	endfunction
+	command TermTab silent! call TermTab()
+endif
 
 " Speed Profiling
 " -----------------------------------------------------------------------------
@@ -469,6 +580,7 @@ function ProfileEnd()
 endfunction
 command ProfileEnd silent! call ProfileEnd()
 
+<<<<<<< HEAD
 " TTYClock()
 " -----------------------------------------------------------------------------
 " This executes ttyclock in a new full screen tab.
@@ -506,6 +618,8 @@ endfunction
 command HtopTab silent! call Htop("tabnew")
 command HtopVsplit silent! call Htop("vsplit")
 
+=======
+>>>>>>> eb46d58757500bfa0616e696f1081d6f6ee4e65b
 " Crosshair Flash()
 " -----------------------------------------------------------------------------
 " This will flash cols and rows to locate the cursor
@@ -535,7 +649,7 @@ command ToggleSpell silent! call ToggleSpell()
 " -----------------------------------------------------------------------------
 " Toggle background between light and dark
 " This can be rewritten like this:
-" map ,b :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+" nnomap <leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 function ToggleBG()
 	if &background ==? "dark"
 		exec "set background=light"
@@ -544,26 +658,6 @@ function ToggleBG()
 	endif
 endfunction
 command ToggleBG silent! call ToggleBG()
-
-" Terminal Split
-" -----------------------------------------------------------------------------
-" Just make a terminal and split it on the right side.
-function TermSplit()
-	let g:indentLine_enabled=0
-	" TODO: change the next line to open in working directory"
-	exec "vsplit term://zsh"
-	exec "terminal!"
-endfunction
-command TermSplit silent! call TermSplit()
-
-" Terminal Tab
-" -----------------------------------------------------------------------------
-" Just make a terminal in a new tab ffs.
-function TermTab()
-	exec "tabnew term://zsh"
-	exec "terminal!"
-endfunction
-command TermTab silent! call TermTab()
 
 " Source
 " -----------------------------------------------------------------------------
@@ -598,6 +692,5 @@ highlight ColorColumn ctermbg=235 guibg=#003333
 " (Plug-in) https://github.com/terryma/vim-multiple-cursors
 " (Plug-in) Get rid of manual commenter and install https://github.com/scrooloose/nerdcommenter
 " (Enhancement) skeleton file insertion
-" (Enhancement) test "if has('neovim')&&has('external shell command') for functions
 
 " vim:tw=78:ts=8
