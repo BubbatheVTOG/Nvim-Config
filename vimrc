@@ -113,6 +113,7 @@ set autoread 				" Reload the file when it changes outside of (n)vim.
 set visualbell 				" Use visual bell instead of beeping.
 set history=1000 			" Increase history.
 set undolevels=1000 			" Increase undo levels.
+set confirm 				" Prompt conformation dialogs
 
 " Folding {{{
 " -----------------------------------------------------------------------------
@@ -508,12 +509,13 @@ if has('nvim')
 	" Requires the host to have tty-clock installed.
 	function! TTYClock()
 		if system('if [ -e /usr/bin/tty-clock ]; then echo true; fi') =~ "true"
+			let g:indentLine_enabled = 0
 			exec "tabnew term://tty-clock -C 6 -txbsrc"
-			let b:indentLine_enabled = 0
 		else
 			echom "TTYClock NOT installed on host system!"
 		endif
 	endfunction
+	command! TTYClock silent! call TTYClock()
 
 	" Cmatrix()
 " -----------------------------------------------------------------------------
@@ -521,12 +523,13 @@ if has('nvim')
 	" Requires the host to have cmatrix installed.
 	function! Cmatrix()
 		if system('if [ -e /usr/bin/cmatrix ]; then echo true; fi') =~ "true"
+			let g:indentLine_enabled = 0
 			exec "tabnew term://cmatrix -a -C cyan"
-			let b:indentLine_enabled = 0
 		else
 			echom "Cmatrix NOT installed on host system!"
 		endif
 	endfunction
+	command! Cmatrix silent! call Cmatrix()
 
 	" Htop()
 " -----------------------------------------------------------------------------
@@ -546,7 +549,8 @@ if has('nvim')
 			echom "Htop is NOT installed on the host system!"
 		endif
 	endfunction
-	" endif
+	command! HtopTab silent! call Htop("tabnew")
+	command! HtopVsplit silent! call Htop("vsplit")
 
 	" Terminal Split
 " -----------------------------------------------------------------------------
@@ -569,10 +573,6 @@ if has('nvim')
 	command TermTab silent! call TermTab()
 endif
 
-command! Cmatrix silent! call Cmatrix()
-command! TTYClock silent! call TTYClock()
-command! HtopTab silent! call Htop("tabnew")
-command! HtopVsplit silent! call Htop("vsplit")
 
 " Speed Profiling
 " -----------------------------------------------------------------------------
