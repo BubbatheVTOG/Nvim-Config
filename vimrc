@@ -197,6 +197,7 @@ nnoremap <leader>bg	:ToggleBG<CR>
 nnoremap <leader>so	:Source<CR>
 nnoremap <leader>su	:Sudo<CR>
 nnoremap <leader>ev	:e $MYVIMRC<CR>
+nnoremap <leader>tg	:TODOToggle<CR>
 
 " Only create these binds if in neovim.
 if has('nvim')
@@ -590,6 +591,46 @@ function ProfileEnd()
 endfunction
 command ProfileEnd silent! call ProfileEnd()
 
+<<<<<<< HEAD
+" TTYClock()
+" -----------------------------------------------------------------------------
+" This executes ttyclock in a new full screen tab.
+" Requires the host to have tty-clock installed.
+function TTYClock()
+	let g:indentLine_enabled = 0
+	exec "tabnew term://tty-clock -C 6 -txbsrc"
+endfunction
+command TTYClock silent! call TTYClock()
+
+" Cmatrix()
+" -----------------------------------------------------------------------------
+" This executes cmatrix in a new full screen tab.
+" Requires the host to have cmatrix installed.
+function Cmatrix()
+	let g:indentLine_enabled = 0
+	exec "tabnew term://cmatrix -a -C cyan"
+endfunction
+command Cmatrix silent! call Cmatrix()
+
+" Htop()
+" -----------------------------------------------------------------------------
+" This executes htop in a new full screen tab.
+" Requires the host to have htop installed.
+function Htop(window)
+	if a:window ==? "tabnew"
+		exec "tabnew term://htop"
+	endif
+	if a:window ==? "vsplit"
+		exec "vsplit term://htop"
+	"	exec "normal! \<C-w>r\<C-w>\<C-w>"
+	endif
+	" TODO:Change this to elseif, with else echom'ing bad command'
+endfunction
+command HtopTab silent! call Htop("tabnew")
+command HtopVsplit silent! call Htop("vsplit")
+
+=======
+>>>>>>> eb46d58757500bfa0616e696f1081d6f6ee4e65b
 " Crosshair Flash()
 " -----------------------------------------------------------------------------
 " This will flash cols and rows to locate the cursor
@@ -648,11 +689,11 @@ command Sudo silent! call Sudo()
 
 " " Configure Color Column (Built in)
 " " -----------------------------------------------------------------------------
-	" let &colorcolumn=join(range(81,81),",")			" Set bar at column 81
-	" let &colorcolumn="80,".join(range(121,121),",")		" Set bar at column121
+let &colorcolumn=join(range(81,81),",")			" Set bar at column 81
+let &colorcolumn="80,".join(range(121,121),",")		" Set bar at column121
 
-	" " Make that line black w/ a bit of blue.
-	" highlight ColorColumn ctermbg=235 guibg=#003333
+" Make that line black w/ a bit of blue.
+highlight ColorColumn ctermbg=235 guibg=#003333
 
 
 " =============================================================================
