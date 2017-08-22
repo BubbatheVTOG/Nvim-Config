@@ -496,50 +496,56 @@ if system('if [ -e /sys/class/leds/chromeos::kbd_backlight/brightness ]; then ec
 	autocmd InsertLeave * silent! call system('echo 1 > /sys/class/leds/chromeos::kbd_backlight/brightness')
 endif
 
+
+
 " Only create these functions if we are in neovim.
 if has('nvim')
+
 	" TTYClock()
 " -----------------------------------------------------------------------------
 	" This executes ttyclock in a new full screen tab.
 	" Requires the host to have tty-clock installed.
-	if system('if [ -e /usr/bin/tty-clock]; then echo true; fi') =~ "true"
-		function TTYClock()
+	function! TTYClock()
+		if system('if [ -e /usr/bin/tty-clock ]; then echo true; fi') =~ "true"
 			let g:indentLine_enabled = 0
 			exec "tabnew term://tty-clock -C 6 -txbsrc"
-		endfunction
-		command TTYClock silent! call TTYClock()
-	endif
+		else
+			echom "TTYClock NOT installed on host system!"
+		endif
+	endfunction
 
 	" Cmatrix()
 " -----------------------------------------------------------------------------
 	" This executes cmatrix in a new full screen tab.
 	" Requires the host to have cmatrix installed.
-	if system('if [ -e /usr/bin/cmatrix]; then echo true; fi') =~ "true"
-		function Cmatrix()
+	function! Cmatrix()
+		if system('if [ -e /usr/bin/cmatrix ]; then echo true; fi') =~ "true"
 			let g:indentLine_enabled = 0
 			exec "tabnew term://cmatrix -a -C cyan"
-		endfunction
-		command Cmatrix silent! call Cmatrix()
-	endif
+		else
+			echom "Cmatrix NOT installed on host system!"
+		endif
+	endfunction
 
 	" Htop()
 " -----------------------------------------------------------------------------
 	" This executes htop in a new full screen tab.
 	" Requires the host to have htop installed.
-	if system('if [ -e /usr/bin/htop]; then echo true; fi') =~ "true"
-		function Htop(window)
+	function! Htop(window)
+		if system('if [ -e /usr/bin/htop ]; then echo true; fi') =~ "true"
 			if a:window ==? "tabnew"
 				exec "tabnew term://htop"
-			endif
-			if a:window ==? "vsplit"
+			elseif a:window ==? "vsplit"
 				exec "vsplit term://htop"
-				exec "normal! \<C-w>r\<C-w>\<C-w>"
+				" exec "normal! \<C-w>r\<C-w>\<C-w>"
+			else
+				echom "Bad command!"
 			endif
-			" TODO:Change this to elseif, with else echom'ing bad command'
-		endfunction
-		command HtopTab silent! call Htop("tabnew")
-		command HtopVsplit silent! call Htop("vsplit")
-	endif
+		else
+			echom "Htop is NOT installed on the host system!"
+		endif
+	endfunction
+	" endif
 
 	" Terminal Split
 " -----------------------------------------------------------------------------
@@ -561,6 +567,11 @@ if has('nvim')
 	endfunction
 	command TermTab silent! call TermTab()
 endif
+
+command! Cmatrix silent! call Cmatrix()
+command! TTYClock silent! call TTYClock()
+command! HtopTab silent! call Htop("tabnew")
+command! HtopVsplit silent! call Htop("vsplit")
 
 " Speed Profiling
 " -----------------------------------------------------------------------------
