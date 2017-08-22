@@ -508,8 +508,8 @@ if has('nvim')
 	" Requires the host to have tty-clock installed.
 	function! TTYClock()
 		if system('if [ -e /usr/bin/tty-clock ]; then echo true; fi') =~ "true"
-			let g:indentLine_enabled = 0
 			exec "tabnew term://tty-clock -C 6 -txbsrc"
+			let b:indentLine_enabled = 0
 		else
 			echom "TTYClock NOT installed on host system!"
 		endif
@@ -521,8 +521,8 @@ if has('nvim')
 	" Requires the host to have cmatrix installed.
 	function! Cmatrix()
 		if system('if [ -e /usr/bin/cmatrix ]; then echo true; fi') =~ "true"
-			let g:indentLine_enabled = 0
 			exec "tabnew term://cmatrix -a -C cyan"
+			let b:indentLine_enabled = 0
 		else
 			echom "Cmatrix NOT installed on host system!"
 		endif
@@ -591,46 +591,6 @@ function ProfileEnd()
 endfunction
 command ProfileEnd silent! call ProfileEnd()
 
-<<<<<<< HEAD
-" TTYClock()
-" -----------------------------------------------------------------------------
-" This executes ttyclock in a new full screen tab.
-" Requires the host to have tty-clock installed.
-function TTYClock()
-	let g:indentLine_enabled = 0
-	exec "tabnew term://tty-clock -C 6 -txbsrc"
-endfunction
-command TTYClock silent! call TTYClock()
-
-" Cmatrix()
-" -----------------------------------------------------------------------------
-" This executes cmatrix in a new full screen tab.
-" Requires the host to have cmatrix installed.
-function Cmatrix()
-	let g:indentLine_enabled = 0
-	exec "tabnew term://cmatrix -a -C cyan"
-endfunction
-command Cmatrix silent! call Cmatrix()
-
-" Htop()
-" -----------------------------------------------------------------------------
-" This executes htop in a new full screen tab.
-" Requires the host to have htop installed.
-function Htop(window)
-	if a:window ==? "tabnew"
-		exec "tabnew term://htop"
-	endif
-	if a:window ==? "vsplit"
-		exec "vsplit term://htop"
-	"	exec "normal! \<C-w>r\<C-w>\<C-w>"
-	endif
-	" TODO:Change this to elseif, with else echom'ing bad command'
-endfunction
-command HtopTab silent! call Htop("tabnew")
-command HtopVsplit silent! call Htop("vsplit")
-
-=======
->>>>>>> eb46d58757500bfa0616e696f1081d6f6ee4e65b
 " Crosshair Flash()
 " -----------------------------------------------------------------------------
 " This will flash cols and rows to locate the cursor
