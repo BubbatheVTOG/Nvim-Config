@@ -493,7 +493,7 @@ xmap <s-l> <Plug>CtrlHJKLMoveL
 " Change Keyboard Brightness on mode B)
 " -----------------------------------------------------------------------------
 " Only do this if on a chromebook.
-if system('if [ -e /sys/class/leds/chromeos::kbd_backlight/brightness ]; then echo true; fi') == "true"
+if system('if [ -e /sys/class/leds/chromeos::kbd_backlight/brightness ]; then echo true; fi') =~ "true"
 	autocmd InsertEnter * silent! call system('echo 50 > /sys/class/leds/chromeos::kbd_backlight/brightness')
 	autocmd InsertLeave * silent! call system('echo 1 > /sys/class/leds/chromeos::kbd_backlight/brightness')
 endif
