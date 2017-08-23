@@ -181,9 +181,9 @@ let mapleader = ","
 nnoremap <leader>nh	:noh<CR>
 
 " Fold Binds
-nnoremap <Space> za
+nnoremap <Space> 	za
 nnoremap <leader>of 	:fold<CR>
-nnoremap <leader>cf :fold<CR>4li<CR><ESC>ka<SPACE><SPACE><ESC>i
+nnoremap <leader>cf 	:fold<CR>4li<CR><ESC>ka<SPACE><SPACE><ESC>i
 
 " Change movement behavior for wrapped lines.
 noremap  <buffer> <silent> k gk
