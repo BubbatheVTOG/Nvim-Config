@@ -131,7 +131,8 @@ highlight Folded ctermbg=black ctermfg=blue
 " nmap <leader>f9 :set foldlevel=9<CR>
 " autocmd BufWinLeave *.* mkview		" Save folds on exit.
 " autocmd BufWinEnter *.* silent loadview	" Create folds from save.
-" }}}
+nnoremap <leader>cf :fold<CR>4li<CR><ESC>ka<SPACE><SPACE><ESC>i
+"}}}
 
 " Search
 " -----------------------------------------------------------------------------
@@ -182,7 +183,7 @@ nnoremap <leader>nh	:noh<CR>
 
 " Fold Binds
 nnoremap <Space> za
-nnoremap <leader>cf 	:fold<CR>
+nnoremap <leader>of 	:fold<CR>
 
 " Change movement behavior for wrapped lines.
 noremap  <buffer> <silent> k gk
