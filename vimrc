@@ -162,6 +162,10 @@ set noswapfile 				" Disable swapfiles.
 autocmd FileType java let java_highlight_debug=1
 autocmd FileType java let java_highlight_functions="style"
 
+" SQL
+" -----------------------------------------------------------------------------
+autocmd FileType sql inoremap <SPACE><SPACE> <ESC>/<++><CR><ESC>d4li
+autocmd FileType sql nnoremap <SPACE><SPACE> <ESC>/<++><CR><ESC>d4li
 
 " =============================================================================
 " CUSTOM KEYBINDS
