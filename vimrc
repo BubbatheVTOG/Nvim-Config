@@ -60,6 +60,9 @@ Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
 Plug 'junegunn/vim-easy-align' 		" Easily align text.
 Plug 'terryma/vim-multiple-cursors' 	" Multiple cursors.
 Plug 'reedes/vim-wordy' 		" Word usage for writing.
+Plug 'kana/vim-textobj-line' 		" Defines line object.
+Plug 'kana/vim-textobj-indent' 		" Defines indent object.
+
 " Plug 'AnthonyAstige/ctrlhjkl.vim' 	" Easier move between splits/buffers/windows.
 
 " THIS IS NOT CONFIGURED
@@ -72,6 +75,7 @@ endif
 Plug 'artur-shaik/vim-javacomplete2',	{'for':['java']}		" Auto complete for Java...but only in java files.
 Plug 'lervag/vimtex',			{'for':['tex']}			" Tex Utility
 Plug 'xuhdev/vim-latex-live-preview',	{'for':['tex']}			" A Vim Plugin for Lively Previewing LaTeX PDF Output
+Plug 'aserebryakov/vim-todo-lists',	{'for':['todo']} 		" todo list on .todo files.
 Plug 'mbbill/undotree',			{'on':['UndotreeToggle']}	" Create an undotree.
 Plug 'cohama/agit.vim', 		{'on':['Agit']} 		" Git log viewer.
 Plug 'lilydjwg/colorizer',		{'on':['ColorToggle']}		" Hex code colorizer
