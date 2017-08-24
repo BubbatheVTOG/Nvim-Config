@@ -186,8 +186,16 @@ nnoremap <leader>nh	:noh<CR>
 
 " Fold Binds
 nnoremap <Space> 	za
+" Create classic fold.
 nnoremap <leader>of 	:fold<CR>
+" Create unnumberd fold.
 nnoremap <leader>cf 	:fold<CR>4li<CR><ESC>ka<SPACE><SPACE><ESC>i
+" Create numbered fold.
+nnoremap <leader>nf 	:fold<CR>4li<++><CR><ESC><S-o><BS><++><ESC>k2hi<SPACE><SPACE><ESC>i
+
+" Marker Replace
+inoremap <leader><SPACE> <ESC>/<++><CR><ESC>d4l:noh<CR>i
+nnoremap <leader><SPACE> /<++><CR>d4l:noh<CR>i
 
 " Change movement behavior for wrapped lines.
 noremap  <buffer> <silent> k gk
@@ -393,7 +401,7 @@ nnoremap <leader>ag	:Agit<CR>
 
 " UndoTree
 " -----------------------------------------------------------------------------
-nnoremap <leader><Space> :UndotreeToggle<CR>
+nnoremap <leader>ut :UndotreeToggle<CR>
 
 " Vim-Session
 " -----------------------------------------------------------------------------
