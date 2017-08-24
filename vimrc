@@ -45,7 +45,7 @@ Plug 'tpope/vim-speeddating'		" Date manipulation.
 Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
 Plug 'AndrewRadev/splitjoin.vim'	" Split or join lines.
 Plug 'apalmer1377/factorus'		" Refactoring Plugin.
-Plug 'machakann/vim-sandwich'		" Adds sandwich command for surrounding objects.
+" Plug 'machakann/vim-sandwich'		" Adds sandwich command for surrounding objects.
 Plug 'rhysd/clever-f.vim'		" Super slick t/f movements.
 Plug 'ervandew/supertab'		" Tab completion.
 Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
