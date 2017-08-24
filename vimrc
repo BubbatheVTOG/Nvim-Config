@@ -189,8 +189,8 @@ nnoremap <leader>cf 	:fold<CR>4li<CR><ESC>ka<SPACE><SPACE><ESC>i
 nnoremap <leader>nf 	:fold<CR>4li<++><CR><ESC><S-o><BS><++><ESC>k2hi<SPACE><SPACE><ESC>i
 
 " Marker Replace
-inoremap <leader><SPACE> <ESC>/<++><CR>d4l:noh<CR>i
-nnoremap <leader><SPACE> /<++><CR>d4l:noh<CR>i
+inoremap <leader><SPACE><SPACE> <ESC>/<++><CR>d4l:noh<CR>i
+nnoremap <leader><SPACE><SPACE> /<++><CR>d4l:noh<CR>i
 
 " Change movement behavior for wrapped lines.
 noremap  <buffer> <silent> k gk
