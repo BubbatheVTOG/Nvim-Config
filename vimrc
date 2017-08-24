@@ -166,11 +166,6 @@ set noswapfile 				" Disable swapfiles.
 autocmd FileType java let java_highlight_debug=1
 autocmd FileType java let java_highlight_functions="style"
 
-" SQL
-" -----------------------------------------------------------------------------
-autocmd FileType sql inoremap <SPACE><SPACE> <ESC>/<++><CR><ESC>d4li
-autocmd FileType sql nnoremap <SPACE><SPACE> <ESC>/<++><CR><ESC>d4li
-
 " =============================================================================
 " CUSTOM KEYBINDS
 " =============================================================================
@@ -194,7 +189,7 @@ nnoremap <leader>cf 	:fold<CR>4li<CR><ESC>ka<SPACE><SPACE><ESC>i
 nnoremap <leader>nf 	:fold<CR>4li<++><CR><ESC><S-o><BS><++><ESC>k2hi<SPACE><SPACE><ESC>i
 
 " Marker Replace
-inoremap <leader><SPACE> <ESC>/<++><CR><ESC>d4l:noh<CR>i
+inoremap <leader><SPACE> <ESC>/<++><CR>d4l:noh<CR>i
 nnoremap <leader><SPACE> /<++><CR>d4l:noh<CR>i
 
 " Change movement behavior for wrapped lines.
