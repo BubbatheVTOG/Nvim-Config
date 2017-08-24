@@ -321,7 +321,7 @@ let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.whitespace = 'Ξ'
 
-" Syntastic recommended settings. (Currently disabled)
+" Syntastic recommended settings.
 " -----------------------------------------------------------------------------
 " Global Settings:
 set statusline+=%#warningmsg#
