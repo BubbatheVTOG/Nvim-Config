@@ -516,6 +516,11 @@ if system('if [ -e /sys/class/leds/chromeos::kbd_backlight/brightness ]; then ec
 	autocmd InsertEnter * silent! call system('echo 50 > /sys/class/leds/chromeos::kbd_backlight/brightness')
 	autocmd InsertLeave * silent! call system('echo 1 > /sys/class/leds/chromeos::kbd_backlight/brightness')
 endif
+" Only do this if on a samsung.
+if system('if [ -e /sys/class/leds/samsung::kbd_backlight/brightness ]; then echo true; fi') =~ "true"
+	autocmd InsertEnter * silent! call system('echo 6 > /sys/class/leds/samsung::kbd_backlight/brightness')
+	autocmd InsertLeave * silent! call system('echo 1 > /sys/class/leds/samsung::kbd_backlight/brightness')
+endif
 
 
 
