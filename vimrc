@@ -18,6 +18,10 @@
 " =============================================================================
 " install vim-plug if it is not installed
 if has('nvim')
+	if empty(glob('~/.config/nvim/init.vim'))
+		silent !mkdir -p ~/.config/nvim
+		silent !ln -s ~/.vimrc ~/.config/nvim/init.vim
+	endif
 	if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 		silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
 			\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
