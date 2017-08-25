@@ -60,8 +60,8 @@ Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
 Plug 'junegunn/vim-easy-align' 		" Easily align text.
 Plug 'terryma/vim-multiple-cursors' 	" Multiple cursors.
 Plug 'reedes/vim-wordy' 		" Word usage for writing.
-Plug 'kana/vim-textobj-line' 		" Defines line object.
-Plug 'kana/vim-textobj-indent' 		" Defines indent object.
+" Plug 'kana/vim-textobj-line' 		" Defines line object.(Currently broken.)
+" Plug 'kana/vim-textobj-indent' 	" Defines indent object.(Currently broken.)
 
 " Plug 'AnthonyAstige/ctrlhjkl.vim' 	" Easier move between splits/buffers/windows.
 
