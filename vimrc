@@ -16,7 +16,8 @@
 " =============================================================================
 " PLUGINS
 " =============================================================================
-" install vim-plug if it is not installed
+
+" Enviroment Setup {{{1
 if has('nvim')
 	if empty(glob('~/.config/nvim/init.vim'))
 		silent !mkdir -p ~/.config/nvim
@@ -34,9 +35,9 @@ else
 		autocmd vimEnter * PlugInstall --sync | source $MYVIMRC
 	endif
 endif
+"}}}1
 
-
-" Plugins listed after this line
+" Plugins {{{1
 " -----------------------------------------------------------------------------
 call plug#begin()
 Plug 'tpope/vim-fugitive'		" Git commands from ex mode.
@@ -74,9 +75,10 @@ Plug 'terryma/vim-multiple-cursors' 	" Multiple cursors.
 Plug 'reedes/vim-wordy' 		" Word usage for writing.
 " Plug 'kana/vim-textobj-line' 		" Defines line object.(Currently broken.)
 " Plug 'kana/vim-textobj-indent' 	" Defines indent object.(Currently broken.)
-
 " Plug 'AnthonyAstige/ctrlhjkl.vim' 	" Easier move between splits/buffers/windows.
+"}}}1
 
+" Triggered Plugins {{{1
 if has('nvim')
 	Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'} 	" Omnicompletion for neovim
 else
@@ -100,11 +102,14 @@ Plug 'johngrib/vim-game-snake', 	{'on':['VimGameSnake']} 	" Snake!
 Plug 'omaraboumrad/vim-life', 		{'on':['GOL']} 			" Game of life
 Plug 'metakirby5/codi.vim',		{'on':['Codi']}			" Interactive scratchpad.
 call plug#end()				" required
+"}}}1
 
 
 " =============================================================================
 " GENERAL CONFIGURATION
 " =============================================================================
+
+" General Configuration {{{1
 filetype plugin indent on		" Syntax for different file types. Plus autoindent for that file type.
 set path+=**				" appends $PATH to find command
 syntax on				" Syntax on bitch.
@@ -129,6 +134,7 @@ set visualbell 				" Use visual bell instead of beeping.
 set history=1000 			" Increase history.
 set undolevels=1000 			" Increase undo levels.
 set confirm 				" Prompt conformation dialogs
+" }}}1
 
 " Folding {{{
 " -----------------------------------------------------------------------------
@@ -148,23 +154,26 @@ highlight Folded ctermbg=black ctermfg=blue
 " autocmd BufWinEnter *.* silent loadview	" Create folds from save.
 "}}}
 
-" Search
+" Search {{{1
 " -----------------------------------------------------------------------------
 set hlsearch				" While searching, highlight (and search) as you type.
 set incsearch				" While searching, take you directly to where the so far typed pattern matches.
 set ignorecase				" While searching, ignore case.
 set smartcase				" While searching, use capitals when you use capitals.
 set showmatch				" While search, show exact matches.
+" }}}1
 
-" Line Numbers
+" Line Numbers {{{1
 " -----------------------------------------------------------------------------
 set relativenumber			" Enable relative number position when using 'set number'
 set number				" Enable line numbering.
+" }}}1
 
-" Backups
+" Backups {{{1
 " -----------------------------------------------------------------------------
 set nobackup 				" Disable backups. YOLO
 set noswapfile 				" Disable swapfiles.
+" }}}1
 
 
 " =============================================================================
@@ -172,25 +181,29 @@ set noswapfile 				" Disable swapfiles.
 " From :h ft-$LANGUAGE
 " =============================================================================
 
-" Java
+" Java {{{1
 " -----------------------------------------------------------------------------
 autocmd FileType java let java_highlight_debug=1
 autocmd FileType java let java_highlight_functions="style"
+" }}}1
 
 " =============================================================================
 " CUSTOM KEYBINDS
 " =============================================================================
 
-" CONTROVERSY
+" CONTROVERSY {{{1
 nnoremap ; :
+" }}}1
 
-" Leader defined
+" Leader defined {{{1
 let mapleader = ","
+" }}}1
 
-" Clear search highlights
+" Clear search highlights {{{1
 nnoremap <leader>nh	:noh<CR>
+" }}}1
 
-" Fold Binds
+" Fold Binds {{{1
 nnoremap <Space> 	za
 " Create classic fold.
 nnoremap <leader>of 	:fold<CR>
@@ -198,22 +211,26 @@ nnoremap <leader>of 	:fold<CR>
 nnoremap <leader>cf 	:fold<CR>4li<CR><ESC>ka<SPACE><SPACE><ESC>i
 " Create numbered fold.
 nnoremap <leader>nf 	:fold<CR>4li<++><CR><ESC><S-o><BS><++><ESC>k2hi<SPACE><SPACE><ESC>i
+" }}}1
 
-" Marker Replace
+" Marker Replace {{{1
 inoremap <leader><SPACE><SPACE> <ESC>/<++><CR>d4l:noh<CR>i
 nnoremap <leader><SPACE><SPACE> /<++><CR>d4l:noh<CR>i
+" }}}1
 
-" Change movement behavior for wrapped lines.
+" Change movement behavior for wrapped lines. {{{1
 noremap  <buffer> <silent> k gk
 noremap  <buffer> <silent> j gj
 noremap  <buffer> <silent> 0 g0
 noremap  <buffer> <silent> $ g$
+" }}}1
 
-" Change movement behavior for wrapped lines in operator-pending mode(ex:d6j)
+" Change movement behavior for wrapped lines in operator-pending mode(ex:d6j){{{1
 onoremap <silent> j gj
 onoremap <silent> k gk
+" }}}1
 
-" Keymaps for custom functions.
+" Keymaps for custom functions. {{{1
 " -----------------------------------------------------------------------------
 nnoremap <leader>fc	:Flash<CR>
 nnoremap <leader>sc	:ToggleSpell<CR>
@@ -222,8 +239,9 @@ nnoremap <leader>so	:Source<CR>
 nnoremap <leader>su	:Sudo<CR>
 nnoremap <leader>ev	:e $MYVIMRC<CR>
 nnoremap <leader>tg	:TODOToggle<CR>
+" }}}1
 
-" Only create these binds if in neovim.
+" Only create these binds if in neovim. {{{1
 if has('nvim')
 	nnoremap <leader>ts	:TermSplit<CR>
 	nnoremap <leader>tt	:TermTab<CR>
@@ -231,8 +249,9 @@ if has('nvim')
 	nnoremap <leader>ht	:HtopTab<CR>
 	nnoremap <leader>tc	:TTYClock<CR>
 endif
+" }}}1
 
-" Custom Key Mappings For Builtin Commands
+" Custom Key tabbing. {{{1
 " -----------------------------------------------------------------------------
 " Tab navigation similar to web browser behaviors.
 " tab new (requires file name or path or %)
@@ -243,13 +262,13 @@ inoremap <C-t>		<Esc>:tabnew
 nnoremap <C-q>		:tabclose<CR>
 " insert mode tab close
 inoremap <C-q>		<Esc>:tabclose<CR>
-
+" }}}1
 
 " =============================================================================
 " PLUGIN CONFIGURATION
 " =============================================================================
 
-" NERDTree config
+" NERDTree config {{{1
 " -----------------------------------------------------------------------------
 " Open NERDTree bind
 nnoremap <leader>nt	:NERDTreeToggle<CR>
@@ -262,8 +281,9 @@ let NERDTreeHijackNetrw = 1
 let NERDTreeChDirMode = 2
 let NERDTreeCascadeSingleChildDir = 0
 let NERDTreeCascadeOpenSingleChildDir = 0
+" }}}1
 
-" Java Complete 2 Config
+" Java Complete 2 Config {{{1
 " -----------------------------------------------------------------------------
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 autocmd Filetype java setlocal completefunc=javacomplete#CompleteParamsInfo
@@ -279,37 +299,42 @@ imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
 " Remove all missing imports with F7
 nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+" }}}1
 
-" IndentLines Config
+" IndentLines Config {{{1
 " -----------------------------------------------------------------------------
 let g:indentLine_enabled = 1		" Enable indentLine
 let g:indentLine_faster = 1		" DO NOT DISABLE WHILE USING THIS PLUGIN
 let g:indentLine_color_term = 239	" Set indentLine color
 let g:indentLine_char = '.'		" Set indentLine symbol(This does nothing apparently)
 set list lcs=tab:\·\ 			" set indentLine for tabs (this actually changes the symbol lol)
+" }}}1
 
-" GitGutter Config
+" GitGutter Config {{{1
 " -----------------------------------------------------------------------------
 " let g:gitgutter_realtime = 0
 " let g:gitgutter_eager = 0
 set updatetime=250			" update vim faster
 let g:gitgutter_enabled = 1		" enable gitgutter
+" }}}1
 
-" Ctags Config
+" Ctags Config {{{1
 " -----------------------------------------------------------------------------
 " ^] to jump to tag under cursor
 " g^] for amiguous tags
 " ^t to jump back to the tag stack
 command! MakeTags !ctags -R .
+" }}}1
 
-" Neovim Terminal Mode Config
+" Neovim Terminal Mode Config {{{1
 " -----------------------------------------------------------------------------
 if has('nvim')
 	tnoremap <Esc> <C-\><C-n>
 	autocmd TermOpen * setlocal statusline=%{b:term_title}
 endif
+" }}}1
 
-" Airline Config
+" Airline Config {{{1
 " -----------------------------------------------------------------------------
 let g:airline_theme='wal'
 let g:airline#extensions#tabline#enabled = 1
@@ -331,8 +356,9 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.whitespace = 'Ξ'
+" }}}1
 
-" Syntastic recommended settings.
+" Syntastic recommended settings. {{{1
 " -----------------------------------------------------------------------------
 " Global Settings:
 set statusline+=%#warningmsg#
@@ -343,8 +369,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
+" }}}1
 
-" Ale recommended settings.
+" Ale recommended settings. {{{1
 " -----------------------------------------------------------------------------
 " " Set this. Airline will handle the rest.
 " let g:airline#extensions#ale#enabled = 1
@@ -354,15 +381,17 @@ let g:syntastic_check_on_wq = 1
 " let g:ale_lint_on_insert_leave = 1
 " " Only lint on enter. (default:1,0)
 " " g:ale_lint_on_enter = 1
+" }}}1
 
-" LaTeX Settings
+" LaTeX Settings {{{1
 " -----------------------------------------------------------------------------
 " :LLPStartPreview	" To start live preview
 " let g:livepreview_engine = 'your_engine' . ' [options]'	" To change compiler
 " let g:livepreview_engine 	= 'pdftex'
 let g:livepreview_previewer 	= 'zathura'
+" }}}1
 
-" CSS Color Settings
+" CSS Color Settings {{{1
 " -----------------------------------------------------------------------------
 " ColorToggle
 nnoremap <leader>ct	:ColorToggle<CR>
@@ -372,8 +401,9 @@ let g:colorizer_nomap = 1
 let g:colorizer_auto_color	= 1
 let g:colorizer_x11_name	= 1
 let g:colorizer_maxlines	= 500
+" }}}1
 
-" Smooth Scroll Settings
+" Smooth Scroll Settings {{{1
 " -----------------------------------------------------------------------------
 " Smooth Scroll the j and k keys.
 let g:comfortable_motion_scroll_down_key = "j"
@@ -383,113 +413,135 @@ let g:comfortable_motion_scroll_up_key = "k"
 let g:comfortable_motion_interval = 1000/60	" Default = 1000/60
 let g:comfortable_motion_friction = 80.0	" Default = 80.0
 let g:comfortable_motion_air_drag = 2.0		" Default = 2.0
+" }}}1
 
-" SplitJoin
+" SplitJoin {{{1
 " -----------------------------------------------------------------------------
 " Split a single line with gS
 " Join a block to a line with gJ
+" }}}1
 
-" Tabular
+" Tabular {{{1
 " -----------------------------------------------------------------------------
 " HOW TO USE:
 " http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
+" }}}1
 
-" Vim-Highlightedyank
+" Vim-Highlightedyank {{{1
 " -----------------------------------------------------------------------------
 " Bind y to activate plugin.
 map y <Plug>(highlightedyank)
 " Highlight time in milliseconds. '-1' makes in infinite.
 let g:highlightedyank_highlight_duration = 1000
+" }}}1
 
-" Aget
+" Aget {{{1
 " -----------------------------------------------------------------------------
 nnoremap <leader>ag	:Agit<CR>
+" }}}1
 
-" UndoTree
+" UndoTree {{{1
 " -----------------------------------------------------------------------------
 nnoremap <leader>ut :UndotreeToggle<CR>
+" }}}1
 
-" Vim-Session
+" Vim-Session {{{1
 " -----------------------------------------------------------------------------
 " Save session
 nnoremap <leader>ss	:ToggleWorkspace<CR>
 " Save session default name
 let g:workspace_session_name = '.saved_session.vim'
+" }}}1
 
-" Wal
+" Wal {{{1
 " -----------------------------------------------------------------------------
 " Set the colorscheme to wal
 " (Enabling this messes up indentLine plugin, and is unneeded.)
 " colorscheme wal
+" }}}1
 
-" Vim-move
+" Vim-move {{{1
 " -----------------------------------------------------------------------------
 let g:move_key_modifier = 'C'
+" }}}1
 
-" NERDCommenter
+" NERDCommenter {{{1
 " -----------------------------------------------------------------------------
 let NERDSpaceDelims = 1
 let NERDRemoveExtraSpaces = 1
 let NERDTrimTraillingWhitespace = 1
+" }}}1
 
-" Deoplete (TODO: @configure deopleted)
+" Deoplete (TODO: @configure deopleted) {{{1
 " -----------------------------------------------------------------------------
 " 1500 lines of config...ugh, just Google it.
 let g:deoplete#enable_at_startup = 1
+" }}}1
 
-" Vim-wiki (TODO: @configure vim-wiki)
+" Vim-wiki (TODO: @configure vim-wiki) {{{1
 " -----------------------------------------------------------------------------
 " see :h vimwiki-syntax
 " see :h vimwiki-mappings
+" }}}1
 
-" LanguageTool (TODO: @configure LanguageTool)
+" LanguageTool (TODO: @configure LanguageTool) {{{1
 " -----------------------------------------------------------------------------
 " :LanguageToolCheck
 " :LanguageToolClear
+" }}}1
 
-" Todo-vim
+" Todo-vim {{{1
 " -----------------------------------------------------------------------------
 " :TODOToggle
 nnoremap <leader>td	:TODOToggle<CR>\<C-w>
+" }}}1
 
-" Golden-ratio
+" Golden-ratio {{{1
 " -----------------------------------------------------------------------------
 nnoremap <leader>gr	:GoldenRatioToggle<CR>
 " :h golden-ratio
 " :GoldenRatioToggle
 " :GoldenRatioResize
+" }}}1
 
-" Easymotion (TODO: @configure easymotion)
+" Easymotion (TODO: @configure easymotion) {{{1
 " -----------------------------------------------------------------------------
 " help easymotion.txt
+" }}}1
 
-" Vim-easy-align (TODO: @configure vim-easy-align)
+" Vim-easy-align (TODO: @configure vim-easy-align) {{{1
 " -----------------------------------------------------------------------------
 " :h vim-easy-align
+" }}}1
 
-" Vim-multiple-cursors (TODO: @configure vim-multiple-cursors)
+" Vim-multiple-cursors (TODO: @configure vim-multiple-cursors) {{{1
 " -----------------------------------------------------------------------------
 " h; vim-multiple-cursors
+" }}}1
 
-" Wordy (TODO: @configure wordy)
+" Wordy (TODO: @configure wordy) {{{1
 " -----------------------------------------------------------------------------
 " :Wordy
+" }}}1
 
-" Writegood (TODO: @configure writegood)
+" Writegood (TODO: @configure writegood) {{{1
 " -----------------------------------------------------------------------------
 " :h writegood.txt
+" }}}1
 
-" Vimgamesnake
+" Vimgamesnake {{{1
 " -----------------------------------------------------------------------------
 " Use: ":VimGameSnake"
+" }}}1
 
-" GOL (Game of Life)
+" GOL (Game of Life) {{{1
 " -----------------------------------------------------------------------------
 " :e glider.txt
 " :GOL (to start)
 " :GOL (to stop)
+" }}}1
 
-" Ctrlhjkl (TODO: @refactor)
+" Ctrlhjkl (TODO: @refactor) {{{1
 " -----------------------------------------------------------------------------
 " Stop jacking my binds pls.
 let g:ctrlhjkl_suppress_keymaps = 1
@@ -508,30 +560,32 @@ xmap <s-j> <Plug>CtrlHJKLMoveJ
 xmap <s-k> <Plug>CtrlHJKLMoveK
 xmap <s-h> <Plug>CtrlHJKLMoveH
 xmap <s-l> <Plug>CtrlHJKLMoveL
+" }}}1
 
 " =============================================================================
 " CUSTOM FUNCTIONS
 " =============================================================================
 
-" Change Keyboard Brightness on mode B)
+" Change Keyboard Brightness on mode B) {{{1
 " -----------------------------------------------------------------------------
-" Only do this if on a chromebook.
-if system('if [ -e /sys/class/leds/chromeos::kbd_backlight/brightness ]; then echo true; fi') =~ "true"
+" Only do this if on a chromebook. {{{2
+if !empty(glob('/sys/class/leds/chromeos::kbd_backlight/brightness'))
 	autocmd InsertEnter * silent! call system('echo 50 > /sys/class/leds/chromeos::kbd_backlight/brightness')
 	autocmd InsertLeave * silent! call system('echo 1 > /sys/class/leds/chromeos::kbd_backlight/brightness')
 endif
-" Only do this if on a samsung.
-if system('if [ -e /sys/class/leds/samsung::kbd_backlight/brightness ]; then echo true; fi') =~ "true"
+" }}}2
+" Only do this if on a samsung. {{{2
+if !empty(glob('/sys/class/leds/samsung::kbd_backlight/brightness'))
 	autocmd InsertEnter * silent! call system('echo 6 > /sys/class/leds/samsung::kbd_backlight/brightness')
 	autocmd InsertLeave * silent! call system('echo 1 > /sys/class/leds/samsung::kbd_backlight/brightness')
 endif
+" }}}2
+" }}}1
 
-
-
-" Only create these functions if we are in neovim.
+" Only create these functions if we are in neovim. {{{1
 if has('nvim')
 
-	" TTYClock()
+	" TTYClock() {{{2
 " -----------------------------------------------------------------------------
 	" This executes ttyclock in a new full screen tab.
 	" Requires the host to have tty-clock installed.
@@ -544,8 +598,9 @@ if has('nvim')
 		endif
 	endfunction
 	command! TTYClock silent! call TTYClock()
+	" }}}2
 
-	" Cmatrix()
+	" Cmatrix() {{{2
 " -----------------------------------------------------------------------------
 	" This executes cmatrix in a new full screen tab.
 	" Requires the host to have cmatrix installed.
@@ -558,8 +613,9 @@ if has('nvim')
 		endif
 	endfunction
 	command! Cmatrix silent! call Cmatrix()
+	" }}}2
 
-	" Htop()
+	" Htop() {{{2
 " -----------------------------------------------------------------------------
 	" This executes htop in a new full screen tab.
 	" Requires the host to have htop installed.
@@ -579,8 +635,9 @@ if has('nvim')
 	endfunction
 	command! HtopTab silent! call Htop("tabnew")
 	command! HtopVsplit silent! call Htop("vsplit")
+	" }}}2
 
-	" Terminal Split
+	" Terminal Split {{{2
 " -----------------------------------------------------------------------------
 	" Just make a terminal and split it on the right side.
 	function TermSplit()
@@ -590,8 +647,9 @@ if has('nvim')
 		exec "terminal!"
 	endfunction
 	command TermSplit silent! call TermSplit()
+	" }}}2
 
-	" Terminal Tab
+	" Terminal Tab {{{2
 " -----------------------------------------------------------------------------
 	" Just make a terminal in a new tab ffs.
 	function TermTab()
@@ -599,27 +657,31 @@ if has('nvim')
 		exec "terminal!"
 	endfunction
 	command TermTab silent! call TermTab()
+	" }}}2
 endif
+" }}}1
 
-
-" Speed Profiling
+" Speed Profiling {{{1
 " -----------------------------------------------------------------------------
 " Lets you see what plugins/external commands are slowing down vim.
-function ProfileStart()
+function ProfileStart() "{{{2
 	exec "profile start profile.log"
 	exec "profile func *"
 	exec "profile file *"
 	echo "Do the actions you want profiled, then call :ProfileEnd"
 endfunction
 command ProfileStart silent! call ProfileStart()
+" }}}2
 
-function ProfileEnd()
+function ProfileEnd() "{{{2
 	exec "profile pause"
 	exec "noautocmd qall!"
 endfunction
 command ProfileEnd silent! call ProfileEnd()
+" }}}2
+" }}}1
 
-" Crosshair Flash()
+" Crosshair Flash() {{{1
 " -----------------------------------------------------------------------------
 " This will flash cols and rows to locate the cursor
 function Flash()
@@ -629,8 +691,9 @@ function Flash()
 	set nocursorline nocursorcolumn
 endfunction
 command Flash silent! call Flash()
+" }}}1
 
-" ToggleSpell()
+" ToggleSpell() {{{1
 " -----------------------------------------------------------------------------
 " This will toggle spell check.
 function ToggleSpell()
@@ -643,8 +706,9 @@ function ToggleSpell()
 	endif
 endfunction
 command ToggleSpell silent! call ToggleSpell()
+" }}}1
 
-" ToggleBG()
+" ToggleBG() {{{1
 " -----------------------------------------------------------------------------
 " Toggle background between light and dark
 " This can be rewritten like this:
@@ -657,8 +721,9 @@ function ToggleBG()
 	endif
 endfunction
 command ToggleBG silent! call ToggleBG()
+" }}}1
 
-" Source
+" Source() {{{1
 " -----------------------------------------------------------------------------
 " Sources the vimrc file dynamically.
 function Source()
@@ -667,21 +732,24 @@ function Source()
 	exec "AirlineRefresh"
 endfunction
 command Source silent! call Source()
+" }}}1
 
-" Sudo - Reopen a file with sudo permission
+" Sudo - Reopen a file with sudo permission {{{1
 " -----------------------------------------------------------------------------
 function Sudo()
 	exec "w !sudo tee %"
 endfunction
 command Sudo silent! call Sudo()
+" }}}1
 
-" " Configure Color Column (Built in)
+" " Configure Color Column {{{1
 " " -----------------------------------------------------------------------------
 let &colorcolumn=join(range(81,81),",")			" Set bar at column 81
 let &colorcolumn="80,".join(range(121,121),",")		" Set bar at column121
 
 " Make that line black w/ a bit of blue.
 highlight ColorColumn ctermbg=235 guibg=#003333
+" }}}1
 
 
 " =============================================================================
