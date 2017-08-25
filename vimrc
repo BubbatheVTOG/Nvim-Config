@@ -742,8 +742,8 @@ endfunction
 command Sudo silent! call Sudo()
 " }}}1
 
-" " Configure Color Column {{{1
-" " -----------------------------------------------------------------------------
+" Configure Color Column {{{1
+" -----------------------------------------------------------------------------
 let &colorcolumn=join(range(81,81),",")			" Set bar at column 81
 let &colorcolumn="80,".join(range(121,121),",")		" Set bar at column121
 
