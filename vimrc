@@ -65,7 +65,6 @@ Plug 'reedes/vim-wordy' 		" Word usage for writing.
 
 " Plug 'AnthonyAstige/ctrlhjkl.vim' 	" Easier move between splits/buffers/windows.
 
-" THIS IS NOT CONFIGURED
 if has('nvim')
 	Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'} 	" Omnicompletion for neovim
 else
