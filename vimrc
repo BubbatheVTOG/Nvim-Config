@@ -175,7 +175,6 @@ set nobackup 				" Disable backups. YOLO
 set noswapfile 				" Disable swapfiles.
 " }}}1
 
-
 " =============================================================================
 " LANGUAGE SPECIFIC SETTINGS
 " From :h ft-$LANGUAGE
@@ -192,18 +191,22 @@ autocmd FileType java let java_highlight_functions="style"
 " =============================================================================
 
 " CONTROVERSY {{{1
+" -----------------------------------------------------------------------------
 nnoremap ; :
 " }}}1
 
 " Leader defined {{{1
+" -----------------------------------------------------------------------------
 let mapleader = ","
 " }}}1
 
 " Clear search highlights {{{1
+" -----------------------------------------------------------------------------
 nnoremap <leader>nh	:noh<CR>
 " }}}1
 
 " Fold Binds {{{1
+" -----------------------------------------------------------------------------
 nnoremap <Space> 	za
 " Create classic fold.
 nnoremap <leader>of 	:fold<CR>
@@ -214,11 +217,13 @@ nnoremap <leader>nf 	:fold<CR>4li<++><CR><ESC><S-o><BS><++><ESC>k2hi<SPACE><SPAC
 " }}}1
 
 " Marker Replace {{{1
+" -----------------------------------------------------------------------------
 inoremap <leader><SPACE><SPACE> <ESC>/<++><CR>d4l:noh<CR>i
 nnoremap <leader><SPACE><SPACE> /<++><CR>d4l:noh<CR>i
 " }}}1
 
 " Change movement behavior for wrapped lines. {{{1
+" -----------------------------------------------------------------------------
 noremap  <buffer> <silent> k gk
 noremap  <buffer> <silent> j gj
 noremap  <buffer> <silent> 0 g0
@@ -226,6 +231,7 @@ noremap  <buffer> <silent> $ g$
 " }}}1
 
 " Change movement behavior for wrapped lines in operator-pending mode(ex:d6j){{{1
+" -----------------------------------------------------------------------------
 onoremap <silent> j gj
 onoremap <silent> k gk
 " }}}1
@@ -251,7 +257,23 @@ if has('nvim')
 endif
 " }}}1
 
-" Custom Key tabbing. {{{1
+" Split movement. {{{1
+" -----------------------------------------------------------------------------
+" This maps keys to move between splits easier.
+map <C-h> <C-W>h
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-L> <C-W>l
+" }}}1
+
+" Visual mode code block indentation. {{{1
+" -----------------------------------------------------------------------------
+" When visually selecting a block and changing the indentation, don't unselect.
+vnoremap < <gv
+vnoremap > >gv
+" }}}1
+
+" Custom key binds for tabs. {{{1
 " -----------------------------------------------------------------------------
 " Tab navigation similar to web browser behaviors.
 " tab new (requires file name or path or %)
