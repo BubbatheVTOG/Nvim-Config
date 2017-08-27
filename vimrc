@@ -68,6 +68,7 @@ Plug 'dylanaraps/wal'			" Wal color setting.
 Plug 'matze/vim-move'			" Move text selections.
 Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
 Plug 'vim-scripts/vimwiki'		" Build a wiki -> html.
+" Plug 'suan/vim-instant-markdow'	" Instant markdown preview.
 Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
 " Plug 'easymotion/vim-easymotion'	" Motions on speed.
 Plug 'junegunn/vim-easy-align' 		" Easily align text.
@@ -120,7 +121,7 @@ set smarttab				" Auto insert tabs spaces for curly braces.
 set mouse=a 				" Enables mouse.
 set ruler				" Enables cursor location.
 set wrap lbr 				" Wrap on words.
-set nocompatible			" Disables legacy stuff?
+set nocompatible			" Disables legacy stuff. (for vim)
 set showmode				" Shows what mode you're in.
 set showcmd				" Show partial command in status line.
 set showmatch				" Show matching brackets.
@@ -501,10 +502,32 @@ let NERDTrimTraillingWhitespace = 1
 let g:deoplete#enable_at_startup = 1
 " }}}1
 
-" Vim-wiki (TODO: @configure vim-wiki) {{{1
+" Vim-wiki {{{1
 " -----------------------------------------------------------------------------
 " see :h vimwiki-syntax
 " see :h vimwiki-mappings
+" let g:vimwiki_ext2syntax = {'.md': 'markdown',
+		\ '.mkd': 'markdown',
+		\ '.wiki': 'media'}
+
+" Use real markdown.
+" let g:vimwiki_list = [{'path': '~/my_site/',
+" 	\ 'syntax': 'markdown', 'ext': '.md'}]
+
+" Mappings.
+autocmd Filetype vimwiki nnoremap <leader>vl :VimwikiVSplitLink<CR>
+autocmd Filetype vimwiki nnoremap <leader>hl :VimwikiSplitLink<CR>
+autocmd Filetype vimwiki nnoremap <leader>ah :VimwikiAll2HTML<CR>
+autocmd Filetype vimwiki nnoremap <leader>bc :Vimwiki2HTMLBrowse<CR>
+" }}}1
+
+" Vim-instant-markdown {{{1
+" -----------------------------------------------------------------------------
+let g:instant_markdown_slow = 1 			" Reduced compile/refresh.
+let g:instant_markdown_autostart = 0 			" Disable autostart. :InstantMarkdownPreview
+" let g:instant_markdown_open_to_the_world = 1 		" Open webserver to the world.
+" let g:instant_markdown_allow_unsafe_content = 1 	" Allow scripts.
+" let g:instant_markdown_allow_external_content = 0 	" Disable external content.
 " }}}1
 
 " LanguageTool (TODO: @configure LanguageTool) {{{1
