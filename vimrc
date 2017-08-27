@@ -191,7 +191,13 @@ autocmd FileType java let java_highlight_functions="style"
 " -----------------------------------------------------------------------------
 autocmd Filetype vimwiki,markdown nnoremap <leader>cl i[<++>](<++>)
 autocmd Filetype vimwiki,markdown nnoremap <leader>ci i[<++>](<++>)
-"}}}1
+" Filetype Configuration.
+augroup filetype_wiki
+	autocmd!
+	autocmd FileType vimwiki,markdown set tabstop=4
+	autocmd FileType vimwiki,markdown set shiftwidth=4
+augroup END
+" }}}1
 
 " =============================================================================
 " CUSTOM KEYBINDS
@@ -512,9 +518,6 @@ let g:deoplete#enable_at_startup = 1
 " -----------------------------------------------------------------------------
 " see :h vimwiki-syntax
 " see :h vimwiki-mappings
-" let g:vimwiki_ext2syntax = {'.md': 'markdown',
-		\ '.mkd': 'markdown',
-		\ '.wiki': 'media'}
 
 " Use real markdown.
 let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
@@ -524,13 +527,6 @@ autocmd Filetype vimwiki nnoremap <leader>vl :VimwikiVSplitLink<CR>
 autocmd Filetype vimwiki nnoremap <leader>hl :VimwikiSplitLink<CR>
 autocmd Filetype vimwiki nnoremap <leader>ah :VimwikiAll2HTML<CR>
 autocmd Filetype vimwiki nnoremap <leader>bc :Vimwiki2HTMLBrowse<CR>
-
-" Filetype Configuration.
-augroup filetype_wiki
-	autocmd!
-	autocmd FileType markdown set tabstop=4
-	autocmd FileType markdown set shiftwidth=4
-augroup END
 " }}}1
 
 " Vim-instant-markdown {{{1
