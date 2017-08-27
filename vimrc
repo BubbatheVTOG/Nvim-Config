@@ -213,7 +213,8 @@ nnoremap <leader>of 	:fold<CR>
 " Create unnumberd fold.
 nnoremap <leader>cf 	:fold<CR>4li<CR><ESC>ka<SPACE><SPACE><ESC>i
 " Create numbered fold.
-nnoremap <leader>nf 	:fold<CR>4li<++><CR><ESC><S-o><BS><++><ESC>k2hi<SPACE><SPACE><ESC>i
+nnoremap <leader>nf 	:fold<CR>4li<++><CR><ESC>A<++><ESC><S-o>
+			\<BS><++><ESC>k2hi<SPACE><SPACE><ESC>i
 " }}}1
 
 " Marker Replace {{{1
