@@ -187,6 +187,12 @@ autocmd FileType java let java_highlight_debug=1
 autocmd FileType java let java_highlight_functions="style"
 " }}}1
 
+" Vimwiki/Mardown {{{1
+" -----------------------------------------------------------------------------
+autocmd Filetype vimwiki,markdown nnoremap <leader>cl i[<++>](<++>)
+autocmd Filetype vimwiki,markdown nnoremap <leader>ci i[<++>](<++>)
+"}}}1
+
 " =============================================================================
 " CUSTOM KEYBINDS
 " =============================================================================
@@ -220,8 +226,8 @@ nnoremap <leader>nf 	:fold<CR>4li<++><CR><ESC>A<++><ESC><S-o>
 
 " Marker Replace {{{1
 " -----------------------------------------------------------------------------
-inoremap <leader><SPACE><SPACE> <ESC>/<++><CR>d4l:noh<CR>i
-nnoremap <leader><SPACE><SPACE> /<++><CR>d4l:noh<CR>i
+inoremap <leader><SPACE><SPACE> <ESC>/<++><CR>"_d4l:noh<CR>i
+nnoremap <leader><SPACE><SPACE> /<++><CR>"_d4l:noh<CR>i
 " }}}1
 
 " Change movement behavior for wrapped lines. {{{1
@@ -511,14 +517,20 @@ let g:deoplete#enable_at_startup = 1
 		\ '.wiki': 'media'}
 
 " Use real markdown.
-" let g:vimwiki_list = [{'path': '~/my_site/',
-" 	\ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
 
 " Mappings.
 autocmd Filetype vimwiki nnoremap <leader>vl :VimwikiVSplitLink<CR>
 autocmd Filetype vimwiki nnoremap <leader>hl :VimwikiSplitLink<CR>
 autocmd Filetype vimwiki nnoremap <leader>ah :VimwikiAll2HTML<CR>
 autocmd Filetype vimwiki nnoremap <leader>bc :Vimwiki2HTMLBrowse<CR>
+
+" Filetype Configuration.
+augroup filetype_wiki
+	autocmd!
+	autocmd FileType markdown set tabstop=4
+	autocmd FileType markdown set shiftwidth=4
+augroup END
 " }}}1
 
 " Vim-instant-markdown {{{1
