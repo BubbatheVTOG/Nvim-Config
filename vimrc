@@ -67,7 +67,7 @@ Plug 'thaerkh/vim-workspace'		" Save workspace.
 Plug 'dylanaraps/wal'			" Wal color setting.
 Plug 'matze/vim-move'			" Move text selections.
 Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
-Plug 'vim-scripts/vimwiki'		" Build a wiki -> html.
+" Plug 'vim-scripts/vimwiki'		" Build a wiki -> html.
 " Plug 'suan/vim-instant-markdow'	" Instant markdown preview.
 Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
 " Plug 'easymotion/vim-easymotion'	" Motions on speed.
@@ -77,6 +77,8 @@ Plug 'reedes/vim-wordy' 		" Word usage for writing.
 " Plug 'kana/vim-textobj-line' 		" Defines line object.(Currently broken.)
 " Plug 'kana/vim-textobj-indent' 	" Defines indent object.(Currently broken.)
 " Plug 'AnthonyAstige/ctrlhjkl.vim' 	" Easier move between splits/buffers/windows.
+Plug 'vim-pandoc/vim-pandoc' 		" Pandoc.
+Plug 'vim-pandoc/vim-pandoc-syntax' 	" Pandoc syntax.
 "}}}1
 
 " Triggered Plugins {{{1
@@ -189,8 +191,9 @@ autocmd FileType java let java_highlight_functions="style"
 
 " Vimwiki/Mardown {{{1
 " -----------------------------------------------------------------------------
+" Binds
 autocmd Filetype vimwiki,markdown nnoremap <leader>cl i[<++>](<++>)
-autocmd Filetype vimwiki,markdown nnoremap <leader>ci i[<++>](<++>)
+
 " Filetype Configuration.
 augroup filetype_wiki
 	autocmd!
