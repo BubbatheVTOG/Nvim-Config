@@ -543,8 +543,8 @@ let g:instant_markdown_autostart = 0 			" Disable autostart. :InstantMarkdownPre
 
 " Pandoc {{{1
 " -----------------------------------------------------------------------------
-
-
+" Disable Pandoc folding.
+let g:pandoc#modules#disabled = ["folding"]
 "}}}1
 
 " LanguageTool (TODO: @configure LanguageTool) {{{1
