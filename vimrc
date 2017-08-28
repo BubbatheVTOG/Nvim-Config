@@ -530,6 +530,12 @@ let g:instant_markdown_autostart = 0 			" Disable autostart. :InstantMarkdownPre
 " let g:instant_markdown_allow_external_content = 0 	" Disable external content.
 " }}}1
 
+" Pandoc {{{1
+" -----------------------------------------------------------------------------
+
+
+"}}}1
+
 " LanguageTool (TODO: @configure LanguageTool) {{{1
 " -----------------------------------------------------------------------------
 " :LanguageToolCheck
