@@ -40,45 +40,45 @@ endif
 " Plugins {{{1
 " -----------------------------------------------------------------------------
 call plug#begin()
-Plug 'tpope/vim-fugitive'		" Git commands from ex mode.
+Plug 'AndrewRadev/splitjoin.vim'	" Split or join lines.
 Plug 'Xuyuanp/nerdtree-git-plugin'	" Git plugin for NerdTree.
 Plug 'Yggdroot/indentLine'		" Shows line indents.
-Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
-Plug 'bronson/vim-trailing-whitespace'	" Fix white space by :FixWhitespace
 Plug 'airblade/vim-gitgutter'		" Shows staged lines.
+Plug 'apalmer1377/factorus'		" Refactoring Plugin.
+Plug 'bronson/vim-trailing-whitespace'	" Fix white space by :FixWhitespace
+Plug 'dylanaraps/wal'			" Wal color setting.
+Plug 'ervandew/supertab'		" Tab completion.
+Plug 'godlygeek/tabular'		" Text alignment.
+Plug 'junegunn/vim-easy-align' 		" Easily align text.
+Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
+Plug 'matze/vim-move'			" Move text selections.
+Plug 'reedes/vim-wordy' 		" Word usage for writing.
+Plug 'rhysd/clever-f.vim'		" Super slick t/f movements.
+Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
+Plug 'sheerun/vim-polyglot'		" Syntax highlighting for a lot of languages. (Striped down, install specific ones if needed.)
+Plug 'terryma/vim-multiple-cursors' 	" Multiple cursors.
+Plug 'thaerkh/vim-workspace'		" Save workspace.
+Plug 'tpope/vim-fugitive'		" Git commands from ex mode.
+Plug 'tpope/vim-repeat' 		" Repeat support for plugins.
+Plug 'tpope/vim-sleuth' 		" Heuristic tabsizes.
+Plug 'tpope/vim-speeddating'		" Date manipulation.
+Plug 'tpope/vim-surround'		" Surround movement command.
 Plug 'vim-airline/vim-airline'		" Status bar.
 Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
-Plug 'sheerun/vim-polyglot'		" Syntax highlighting for a lot of languages. (Striped down, install specific ones if needed.)
-Plug 'vim-syntastic/syntastic'		" Syntastic linter.
-" Plug 'w0rp/ale' 			" Linter.
-Plug 'tpope/vim-surround'		" Surround movement command.
-Plug 'tpope/vim-sleuth' 		" Heuristic tabsizes.
-Plug 'tpope/vim-repeat' 		" Repeat support for plugins.
-Plug 'tpope/vim-speeddating'		" Date manipulation.
-Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
-Plug 'AndrewRadev/splitjoin.vim'	" Split or join lines.
-Plug 'apalmer1377/factorus'		" Refactoring Plugin.
-" Plug 'machakann/vim-sandwich'		" Adds sandwich command for surrounding objects.
-Plug 'rhysd/clever-f.vim'		" Super slick t/f movements.
-Plug 'ervandew/supertab'		" Tab completion.
-Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
-Plug 'godlygeek/tabular'		" Text alignment.
-Plug 'thaerkh/vim-workspace'		" Save workspace.
-Plug 'dylanaraps/wal'			" Wal color setting.
-Plug 'matze/vim-move'			" Move text selections.
-Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
-" Plug 'vim-scripts/vimwiki'		" Build a wiki -> html.
-" Plug 'suan/vim-instant-markdow'	" Instant markdown preview.
-Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
-" Plug 'easymotion/vim-easymotion'	" Motions on speed.
-Plug 'junegunn/vim-easy-align' 		" Easily align text.
-Plug 'terryma/vim-multiple-cursors' 	" Multiple cursors.
-Plug 'reedes/vim-wordy' 		" Word usage for writing.
-" Plug 'kana/vim-textobj-line' 		" Defines line object.(Currently broken.)
-" Plug 'kana/vim-textobj-indent' 	" Defines indent object.(Currently broken.)
-" Plug 'AnthonyAstige/ctrlhjkl.vim' 	" Easier move between splits/buffers/windows.
 Plug 'vim-pandoc/vim-pandoc' 		" Pandoc.
 Plug 'vim-pandoc/vim-pandoc-syntax' 	" Pandoc syntax.
+Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
+Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
+Plug 'vim-syntastic/syntastic'		" Syntastic linter.
+Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
+" Plug 'AnthonyAstige/ctrlhjkl.vim' 	" Easier move between splits/buffers/windows.
+" Plug 'easymotion/vim-easymotion'	" Motions on speed.
+" Plug 'kana/vim-textobj-indent' 	" Defines indent object.(Currently broken.)
+" Plug 'kana/vim-textobj-line' 		" Defines line object.(Currently broken.)
+" Plug 'machakann/vim-sandwich'		" Adds sandwich command for surrounding objects.
+" Plug 'suan/vim-instant-markdow'	" Instant markdown preview.
+" Plug 'vim-scripts/vimwiki'		" Build a wiki -> html.
+" Plug 'w0rp/ale' 			" Linter.
 "}}}1
 
 " Triggered Plugins {{{1
@@ -89,21 +89,21 @@ else
 endif
 
 Plug 'artur-shaik/vim-javacomplete2',	{'for':['java']}		" Auto complete for Java...but only in java files.
+Plug 'aserebryakov/vim-todo-lists',	{'for':['todo']} 		" todo list on .todo files.
 Plug 'lervag/vimtex',			{'for':['tex']}			" Tex Utility
 Plug 'xuhdev/vim-latex-live-preview',	{'for':['tex']}			" A Vim Plugin for Lively Previewing LaTeX PDF Output
-Plug 'aserebryakov/vim-todo-lists',	{'for':['todo']} 		" todo list on .todo files.
-Plug 'mbbill/undotree',			{'on':['UndotreeToggle']}	" Create an undotree.
 Plug 'cohama/agit.vim', 		{'on':['Agit']} 		" Git log viewer.
-Plug 'lilydjwg/colorizer',		{'on':['ColorToggle']}		" Hex code colorizer
-Plug 'scrooloose/nerdtree',		{'on':['NERDTreeToggle']}	" Its NerdTree...but only when its toggled.
+Plug 'davidbeckingsale/writegood.vim',	{'on':['WritegoodToggle']} 	" Writting utility.
 Plug 'johngrib/vim-game-code-break',	{'on':['VimGameCodeBreak']}	" Brick Breaker
+Plug 'johngrib/vim-game-snake', 	{'on':['VimGameSnake']} 	" Snake!
+Plug 'lilydjwg/colorizer',		{'on':['ColorToggle']}		" Hex code colorizer
+Plug 'mbbill/undotree',			{'on':['UndotreeToggle']}	" Create an undotree.
+Plug 'metakirby5/codi.vim',		{'on':['Codi']}			" Interactive scratchpad.
+Plug 'omaraboumrad/vim-life', 		{'on':['GOL']} 			" Game of life
+Plug 'roman/golden-ratio', 		{'on':['GoldenRatioToggle']} 	" Change split sizes on focus change.
+Plug 'scrooloose/nerdtree',		{'on':['NERDTreeToggle']}	" Its NerdTree...but only when its toggled.
 Plug 'vim-scripts/LanguageTool',	{'on':['LanguageToolCheck','LanguageToolClear']}	" Grammar checking.
 Plug 'vim-scripts/todo-vim',		{'on':['TODOToggle']}
-Plug 'roman/golden-ratio', 		{'on':['GoldenRatioToggle']} 	" Change split sizes on focus change.
-Plug 'davidbeckingsale/writegood.vim',	{'on':['WritegoodToggle']} 	" Writting utility.
-Plug 'johngrib/vim-game-snake', 	{'on':['VimGameSnake']} 	" Snake!
-Plug 'omaraboumrad/vim-life', 		{'on':['GOL']} 			" Game of life
-Plug 'metakirby5/codi.vim',		{'on':['Codi']}			" Interactive scratchpad.
 call plug#end()				" required
 "}}}1
 
