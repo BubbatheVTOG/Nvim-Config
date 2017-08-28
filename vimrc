@@ -18,6 +18,7 @@
 " =============================================================================
 
 " Enviroment Setup {{{1
+" Use `$nvim -u $(location to vimrc)` to tirgger this event.
 if has('nvim')
 	if empty(glob('~/.config/nvim/init.vim'))
 		silent !mkdir -p ~/.config/nvim
