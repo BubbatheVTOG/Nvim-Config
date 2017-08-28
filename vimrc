@@ -823,4 +823,4 @@ highlight ColorColumn ctermbg=235 guibg=#003333
 " (Plug-in) Get rid of manual commenter and install https://github.com/scrooloose/nerdcommenter
 " (Enhancement) skeleton file insertion
 
-" vim:tw=78:ts=8
+" vim:tw=78:ts=8:fdm=marker
