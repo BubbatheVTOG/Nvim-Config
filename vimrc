@@ -201,6 +201,12 @@ augroup filetype_wiki
 	autocmd FileType vimwiki,markdown set tabstop=4
 	autocmd FileType vimwiki,markdown set shiftwidth=4
 augroup END
+
+augroup zathrra_to_pdf
+	autocmd!
+	autocmd BufWritePost *.{mmd,md,mdown,mkd,mkdn,markdown,mdwn} normal! :Pandoc pdf
+augroup END
+
 " }}}1
 
 " =============================================================================
