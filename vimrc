@@ -202,9 +202,13 @@ augroup filetype_wiki
 	autocmd FileType vimwiki,markdown set shiftwidth=4
 augroup END
 
-augroup zathrra_to_pdf
+augroup md_to_pdf_and_update_view
 	autocmd!
-	autocmd BufWritePost *.{mmd,md,mdown,mkd,mkdn,markdown,mdwn} normal! :Pandoc pdf
+	autocmd BufWritePost *.{mmd,md,mdown,mkd,mkdn,markdown,mdwn} exec ":Pandoc pdf"
+	autocmd BufWritePost *.{mmd,md,mdown,mkd,mkdn,markdown,mdwn} exec ":Pandoc html"
+	if has('nvim')
+		autocmd Filetype vimwiki,markdown call jobstart(['zathura', expand('%<') . '.pdf'])
+	endif
 augroup END
 
 " }}}1
