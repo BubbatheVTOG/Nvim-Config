@@ -190,7 +190,7 @@ autocmd FileType java let java_highlight_debug=1
 autocmd FileType java let java_highlight_functions="style"
 " }}}1
 
-" Vimwiki/Mardown {{{1
+" Vimwiki/Mardown/.bubba {{{1
 " -----------------------------------------------------------------------------
 " Binds
 autocmd Filetype vimwiki,markdown nnoremap <leader>cl i[<++>](<++>)
@@ -204,7 +204,12 @@ augroup END
 
 augroup zathrra_to_pdf
 	autocmd!
-	autocmd BufWritePost *.{mmd,md,mdown,mkd,mkdn,markdown,mdwn} normal! :Pandoc pdf
+	autocmd BufRead,BufNewFile *.bubba set filetype=markdown
+	autocmd BufWritePost *.bubba exec "Pandoc pdf"
+	autocmd BufWritePost *.bubba exec "Pandoc html"
+	if has('nvim')
+		autocmd BufWritePost *.bubba call jobstart(['zathura', expand('%<') . '.pdf'])
+	endif
 augroup END
 
 " }}}1
