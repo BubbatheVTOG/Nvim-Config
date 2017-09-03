@@ -202,6 +202,11 @@ augroup filetype_wiki
 	autocmd FileType vimwiki,markdown set shiftwidth=4
 augroup END
 
+augroup bubba_ft
+	autocmd!
+	autocmd BufNewFile,BufReadPre *.bubba set filetype=markdown
+augroup END
+
 augroup md_to_pdf_and_update_view
 	autocmd!
 	autocmd BufWritePost *.{mmd,md,mdown,mkd,mkdn,markdown,mdwn} exec ":Pandoc pdf"
