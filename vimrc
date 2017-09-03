@@ -213,6 +213,7 @@ augroup md_to_pdf_and_update_view
 	autocmd BufWritePost *.{mmd,md,mdown,mkd,mkdn,markdown,mdwn} exec ":Pandoc html"
 	if has('nvim')
 		autocmd Filetype vimwiki,markdown call jobstart(['zathura', expand('%<') . '.pdf'])
+		autocmd Filetype vimwiki,markdown call jobstart(['python', "-m", "http.server", "8000"])
 	endif
 augroup END
 
