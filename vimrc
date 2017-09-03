@@ -373,6 +373,11 @@ set updatetime=250			" update vim faster
 let g:gitgutter_enabled = 1		" enable gitgutter
 " }}}1
 
+" SuperTab {{{1
+" -----------------------------------------------------------------------------
+let g:SuperTabDefaultCompletionType = "<c-n>"
+"}}}1
+
 " Ctags Config {{{1
 " -----------------------------------------------------------------------------
 " ^] to jump to tag under cursor
