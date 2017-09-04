@@ -631,22 +631,22 @@ nnoremap <leader>gr	:GoldenRatioToggle<CR>
 " Ctrlhjkl (TODO: @refactor) {{{1
 " -----------------------------------------------------------------------------
 " Stop jacking my binds pls.
-let g:ctrlhjkl_suppress_keymaps = 1
+" let g:ctrlhjkl_suppress_keymaps = 1
 
 " Normal mode maps
-nmap <s-j> <Plug>CtrlHJKLGoJn
-nmap <s-k> <Plug>CtrlHJKLGoKn
-nmap <s-h> <Plug>CtrlHJKLGoHn
-nmap <s-l> <Plug>CtrlHJKLGoLn
+" nmap <s-j> <Plug>CtrlHJKLGoJn
+" nmap <s-k> <Plug>CtrlHJKLGoKn
+" nmap <s-h> <Plug>CtrlHJKLGoHn
+" nmap <s-l> <Plug>CtrlHJKLGoLn
 
 " Normal mode quit...not a good idea.
-nmap <s-q> <Plug>CtrlHJKLClose
+" nmap <s-q> <Plug>CtrlHJKLClose
 
 " ex-mode maps
-xmap <s-j> <Plug>CtrlHJKLMoveJ
-xmap <s-k> <Plug>CtrlHJKLMoveK
-xmap <s-h> <Plug>CtrlHJKLMoveH
-xmap <s-l> <Plug>CtrlHJKLMoveL
+" xmap <s-j> <Plug>CtrlHJKLMoveJ
+" xmap <s-k> <Plug>CtrlHJKLMoveK
+" xmap <s-h> <Plug>CtrlHJKLMoveH
+" xmap <s-l> <Plug>CtrlHJKLMoveL
 " }}}1
 
 " =============================================================================
