@@ -70,6 +70,10 @@
 	<li><a href=https://github.com/johngrib/vim-game-snake>vim-game-snake</a>
 	<li><a href=https://github.com/omaraboumrad/vim-life>vim-life</a>
 	<li><a href=https://github.com/AnthonyAstige/ctrlhjkl.vim>ctrlhjkl.vim</a>
+	<li><a href=https://github.com/terryma/vim-multiple-cursors>vim-multiple-cursors</a>
+	<li><a href=https://github.com/vim-pandoc/vim-pandoc>vim-pandoc</a>
+	<li><a href=https://github.com/vim-pandoc/vim-pandoc-syntax>vim-pandoc-syntax</a>
+	<li><a href=https://github.com/w0rp/ale>ale</a>
 </ul>
 <br>
 <hr width="75%" align="center" noshade>
@@ -86,21 +90,15 @@
 <ul>
 	<li>Plugins that I want to install/configure but haven't had time:
 	<ul>
-		<li>https://github.com/terryma/vim-multiple-cursors
-		<li>bufferHJKL movements
-		<li>https://github.com/AnthonyAstige/ctrlhjkl.vim
-		<li>https://github.com/jvanja/vim-bootstrap4-snippets
 		<li>https://github.com/termhn/i3-vim-nav ?
 		<li>https://github.com/neomake/neomake
 	</ul>
 	<li>Enhancements or fixes I want to implement when I have time or an idea of how to fix it.
 	<ul>
-		<li><u>configure deoplete</u>
 		<li>seletion file insertion
 		<li>add test for if has('wal'), to load wal, or to load another colorscheme and airlinetheme.
 		<li>add toggle for columncolor stuff*81,121)
 		<li>configure easymotions https://github.com/easymotion/vim-easymotion
-		<li>put in folds using fdl and such.
 		<li>config goldenratio to be disabled when it enter syntastic split.
 	</ul>
 </ul>

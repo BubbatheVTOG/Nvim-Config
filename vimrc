@@ -82,7 +82,7 @@ Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
 " Plug 'w0rp/ale' 			" Linter.
 "}}}1
 
-" Triggered Plugins {{{1
+" Tri ggered Plugins {{{1
 if has('nvim')
 	Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'} 	" Omnicompletion for neovim
 else
@@ -842,8 +842,6 @@ highlight ColorColumn ctermbg=235 guibg=#003333
 " TODO:
 " =============================================================================
 "
-" (Plug-in) https://github.com/terryma/vim-multiple-cursors
-" (Plug-in) Get rid of manual commenter and install https://github.com/scrooloose/nerdcommenter
 " (Enhancement) skeleton file insertion
 
 " vim:tw=78:ts=8:fdm=marker
