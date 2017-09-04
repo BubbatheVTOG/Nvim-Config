@@ -253,8 +253,8 @@ nnoremap <leader>nf 	:fold<CR>4li<++><CR><ESC>A<++><ESC><S-o>
 
 " Marker Replace {{{1
 " -----------------------------------------------------------------------------
-inoremap <leader><SPACE><SPACE> <ESC>/<++><CR>"_d4l:noh<CR>i
-nnoremap <leader><SPACE><SPACE> /<++><CR>"_d4l:noh<CR>i
+inoremap <leader>mr <ESC>/<++><CR>"_d4l:noh<CR>a
+nnoremap <leader>mr /<++><CR>"_d4l:noh<CR>a
 " }}}1
 
 " Change movement behavior for wrapped lines. {{{1
@@ -280,6 +280,7 @@ nnoremap <leader>so	:Source<CR>
 nnoremap <leader>su	:Sudo<CR>
 nnoremap <leader>ev	:e $MYVIMRC<CR>
 nnoremap <leader>tg	:TODOToggle<CR>
+nnoremap <leader>sf	:SpellFix<CR>
 " }}}1
 
 " Only create these binds if in neovim. {{{1
@@ -750,24 +751,24 @@ endif
 " FocusMode() {{{1
 " -----------------------------------------------------------------------------
 " DO NOT USE!!! BROKEN!!!
-function ToggleFocusMode()
-	if &foldcolumn != 12
-		set laststatus=0
-		set numberwidth=10
-		set foldcolumn=12
-		set noruler
-		hi FoldColumn ctermbg=none
-		hi LineNr ctermfg=0 ctermbg=none
-		hi NonText ctermfg=0
-	else
-		set laststatus=2
-		set numberwidth=4
-		set foldcolumn=0
-		set ruler
-		execute 'colorscheme ' . g:colors_name
-	endif
-endfunc
-command ToggleFocusMode silent! call ToggleFocusMode()
+" function ToggleFocusMode()
+	" if &foldcolumn != 12
+		" set laststatus=0
+		" set numberwidth=10
+		" set foldcolumn=12
+		" set noruler
+		" hi FoldColumn ctermbg=none
+		" hi LineNr ctermfg=0 ctermbg=none
+		" hi NonText ctermfg=0
+	" else
+		" set laststatus=2
+		" set numberwidth=4
+		" set foldcolumn=0
+		" set ruler
+		" execute 'colorscheme ' . g:colors_name
+	" endif
+" endfunc
+" command ToggleFocusMode silent! call ToggleFocusMode()
 "}}}1
 
 " Speed Profiling {{{1
@@ -816,6 +817,14 @@ function! ToggleSpell()
 endfunction
 command ToggleSpell silent! call ToggleSpell()
 " }}}1
+
+" SpellFix() {{{1
+" -----------------------------------------------------------------------------
+function! SpellFix()
+	normal! mp[s1z=`p
+endfunction
+command SpellFix silent! call SpellFix()
+"}}}1
 
 " ToggleBG() {{{1
 " -----------------------------------------------------------------------------
