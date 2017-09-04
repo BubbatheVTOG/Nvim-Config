@@ -747,10 +747,33 @@ if has('nvim')
 endif
 " }}}1
 
+" FocusMode() {{{1
+" -----------------------------------------------------------------------------
+" DO NOT USE!!! BROKEN!!!
+function ToggleFocusMode()
+	if &foldcolumn != 12
+		set laststatus=0
+		set numberwidth=10
+		set foldcolumn=12
+		set noruler
+		hi FoldColumn ctermbg=none
+		hi LineNr ctermfg=0 ctermbg=none
+		hi NonText ctermfg=0
+	else
+		set laststatus=2
+		set numberwidth=4
+		set foldcolumn=0
+		set ruler
+		execute 'colorscheme ' . g:colors_name
+	endif
+endfunc
+command ToggleFocusMode silent! call ToggleFocusMode()
+"}}}1
+
 " Speed Profiling {{{1
 " -----------------------------------------------------------------------------
 " Lets you see what plugins/external commands are slowing down vim.
-function ProfileStart() "{{{2
+function! ProfileStart() "{{{2
 	exec "profile start profile.log"
 	exec "profile func *"
 	exec "profile file *"
@@ -759,7 +782,7 @@ endfunction
 command ProfileStart silent! call ProfileStart()
 " }}}2
 
-function ProfileEnd() "{{{2
+function! ProfileEnd() "{{{2
 	exec "profile pause"
 	exec "noautocmd qall!"
 endfunction
@@ -770,7 +793,7 @@ command ProfileEnd silent! call ProfileEnd()
 " Crosshair Flash() {{{1
 " -----------------------------------------------------------------------------
 " This will flash cols and rows to locate the cursor
-function Flash()
+function! Flash()
 	set cursorline cursorcolumn
 	redraw
 	sleep 200m
@@ -782,7 +805,7 @@ command Flash silent! call Flash()
 " ToggleSpell() {{{1
 " -----------------------------------------------------------------------------
 " This will toggle spell check.
-function ToggleSpell()
+function! ToggleSpell()
 	if &spell
 		exec "set nospell"
 		echom "Spell Check OFF"
@@ -799,7 +822,7 @@ command ToggleSpell silent! call ToggleSpell()
 " Toggle background between light and dark
 " This can be rewritten like this:
 " nnomap <leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
-function ToggleBG()
+function! ToggleBG()
 	if &background ==? "dark"
 		exec "set background=light"
 	else
@@ -812,7 +835,7 @@ command ToggleBG silent! call ToggleBG()
 " Source() {{{1
 " -----------------------------------------------------------------------------
 " Sources the vimrc file dynamically.
-function Source()
+function! Source()
 	exec "source $MYVIMRC"
 	sleep 100m
 	exec "AirlineRefresh"
@@ -822,7 +845,7 @@ command Source silent! call Source()
 
 " Sudo - Reopen a file with sudo permission {{{1
 " -----------------------------------------------------------------------------
-function Sudo()
+function! Sudo()
 	exec "w !sudo tee %"
 endfunction
 command Sudo silent! call Sudo()
@@ -836,7 +859,6 @@ let &colorcolumn="80,".join(range(121,121),",")		" Set bar at column121
 " Make that line black w/ a bit of blue.
 highlight ColorColumn ctermbg=235 guibg=#003333
 " }}}1
-
 
 " =============================================================================
 " TODO:
