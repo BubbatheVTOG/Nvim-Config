@@ -843,7 +843,7 @@ endfunction
 command Source silent! call Source()
 " }}}1
 
-" Sudo - Reopen a file with sudo permission {{{1
+" Sudo() - Reopen a file with sudo permission {{{1
 " -----------------------------------------------------------------------------
 function! Sudo()
 	exec "w !sudo tee %"
