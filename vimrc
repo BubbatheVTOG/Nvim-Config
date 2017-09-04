@@ -104,7 +104,8 @@ Plug 'omaraboumrad/vim-life', 		{'on':['GOL']} 			" Game of life
 Plug 'roman/golden-ratio', 		{'on':['GoldenRatioToggle']} 	" Change split sizes on focus change.
 Plug 'scrooloose/nerdtree',		{'on':['NERDTreeToggle']}	" Its NerdTree...but only when its toggled.
 Plug 'vim-scripts/LanguageTool',	{'on':['LanguageToolCheck','LanguageToolClear']}	" Grammar checking.
-Plug 'vim-scripts/todo-vim',		{'on':['TODOToggle']}
+Plug 'vim-scripts/todo-vim',		{'on':['TODOToggle']} 		" Todo list
+Plug 'dhruvasagar/vim-table-mode', 	{'on':['TableModeToggle']} 	" Table creation plugin.
 call plug#end()				" required
 "}}}1
 
