@@ -808,10 +808,10 @@ command Flash silent! call Flash()
 " This will toggle spell check.
 function! ToggleSpell()
 	if &spell
-		exec "set nospell"
+		set nospell
 		echom "Spell Check OFF"
 	else
-		exec "set spell"
+		set spell
 		echom "Spell Check ON"
 	endif
 endfunction
@@ -833,9 +833,9 @@ command SpellFix silent! call SpellFix()
 " nnomap <leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 function! ToggleBG()
 	if &background ==? "dark"
-		exec "set background=light"
+		set background=light
 	else
-		exec "set background=dark"
+		set background=dark
 	endif
 endfunction
 command ToggleBG silent! call ToggleBG()
