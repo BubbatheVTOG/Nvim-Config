@@ -28,7 +28,7 @@
 	<li><a href=https://github.com/Xuyuanp/nerdtree-git-plugin>nerd-git-plugin</a>
 	<li><a href=https://github.com/Yggdroot/indentLine>indentLine</a>
 	<li><a href=https://github.com/airblade/vim-gitgutter>vim-gitgutter</a>
-	<li><a href=https://github.com/apalmer1377/factorus>factorus></a>
+	<li><a href=https://github.com/apalmer1377/factorus>factorus</a>
 	<li><a href=https://github.com/bronson/vim-trailing-whitespace>vim-trailing-whitespace</a>
 	<li><a href=https://github.com/cohama/agit.vim>agit.vim</a>
 	<li><a href=https://github.com/davidbeckingsale/writegood.vim>writegood.vim</a>
