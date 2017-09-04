@@ -100,5 +100,6 @@
 		<li>add toggle for columncolor stuff*81,121)
 		<li>configure easymotions https://github.com/easymotion/vim-easymotion
 		<li>config goldenratio to be disabled when it enter syntastic split.
+		<li>SpellFix() confirms replacement, or at least echo's changes.
 	</ul>
 </ul>

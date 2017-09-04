@@ -874,5 +874,6 @@ highlight ColorColumn ctermbg=235 guibg=#003333
 " =============================================================================
 "
 " (Enhancement) skeleton file insertion
+" (Enhancement) SpellFix() confirms replacement.
 
 " vim:tw=78:ts=8:fdm=marker
