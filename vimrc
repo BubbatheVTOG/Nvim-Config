@@ -152,7 +152,7 @@ Plug 'Yggdroot/indentLine'		" Shows line indents.
 Plug 'airblade/vim-gitgutter'		" Shows staged lines.
 Plug 'apalmer1377/factorus'		" Refactoring Plugin.
 Plug 'bronson/vim-trailing-whitespace'	" Fix white space by :FixWhitespace
-Plug 'dylanaraps/wal'			" Wal color setting.
+Plug 'dylanaraps/wal.vim'		" Wal color setting.
 Plug 'ervandew/supertab'		" Tab completion.
 Plug 'godlygeek/tabular'		" Text alignment.
 Plug 'junegunn/vim-easy-align' 		" Easily align text.
