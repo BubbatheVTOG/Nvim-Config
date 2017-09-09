@@ -17,20 +17,27 @@
 " =============================================================================
 
 " Index {{{1
-" 1) Plugins
+
+" 1) Plugins {{{2
 " 	a) Environmental Setup
 " 	b) Plugins
 "  	c) Triggered Plugins
-" 2) General Configuration
+"}}}2
+
+" 2) General Configuration {{{2
 " 	a) General Configuration
 " 	b) Folding
 " 	c) Search
 " 	d) Line Numbers
 " 	e) Backups
-" 3) Language Specific Settings
+"}}}2
+
+" 3) Language Specific Settings {{{2
 " 	a) Java
 " 	b) Vimwiki/Markdown
-" 4) Custom Keybinds
+"}}}2
+
+" 4) Custom Keybinds {{{2
 " 	a) CONTROVERSY
 " 	b) Leader Defined
 " 	c) Clear Search Highlights
@@ -43,10 +50,73 @@
 " 	j) Split movement
 " 	k) Visual mode code block indentation
 " 	l) Custom keybinds for tabs
-" 5) Plugin Configuration
-" 6) Custom Functions
-" 7) Todo
-"}}}<++>
+"}}}2
+
+" 5) Plugin Configuration {{{2
+" 	a) NERDTree
+" 	b) Java Complete 2 Config
+" 	c) IndentLines Config
+" 	d) GitGutter Config
+" 	e) SuperTab
+" 	f) Ctags Config
+" 	g) Neovim Termal Mode Config
+" 	h) Airline Config
+" 	i) Syntastic recommended settings
+" 	j) Ale recommended settins
+" 	k) LaTeX Settings
+" 	l) CSS Color Settings
+" 	m) Smooth Scroll Settings
+" 	n) SplitJoin
+" 	o) Tabular
+" 	p) Aget
+" 	q) UndoTree
+" 	r) Vim-Session
+" 	s) Wal
+" 	t) Vim-move
+" 	u) NERDCommenter
+" 	v) Deoplete
+" 	w) Vim-wiki
+" 	x) Vim-insant-markdown
+" 	y) Pandoc
+" 	z) LanguageTool
+" 	aa) Todo-vim
+" 	ab) LanguageTool
+" 	ac) Golden-ratio
+" 	ad) Easymotion
+" 	ae) Vim-easy-align
+" 	af) Vim-multiple-cursors
+" 	ag) Wordy
+" 	ah) Writegood
+" 	ai) Vimgamesnake
+" 	aj) GOL (Game of Life)
+" 	ak) Ctrlhjkl
+"}}}2
+
+" 6) Custom Functions {{{2
+" 	a) Chane Keyboard Brightness on mode
+" 	b) Only create these functions if we are in neovim
+" 		i) TTYClock()
+" 		ii) Cmatrix()
+" 		iii) Htop()
+" 		iv) Terminal Split
+" 		v) Terminal Split
+" 		vi) Terminal Tab
+" 	c) FocusMode()
+" 	d) Speed Profiling
+" 	e) Crosshair Flash()
+" 	f) ToggleSpell()
+" 	g) SpellFix()
+" 	h) ToggleBG()
+" 	i) Source()
+" 	j) Sudo()
+" 	k) Configure Color Column
+"}}}2
+
+" 7) Todo {{{2
+" 	*** Content in this section not indexed ***
+"}}}2
+
+"}}}1
 
 " =============================================================================
 " PLUGINS
@@ -702,7 +772,7 @@ endif
 " }}}2
 " }}}1
 
-" Only create these functions if we are in neovim. {{{1
+" Only create these functions i f we are in neovim. {{{1
 if has('nvim')
 
 	" TTYClock() {{{2
