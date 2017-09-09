@@ -12,12 +12,47 @@
 	 " ╚██╗██║ ╚████║██╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╗
 	 "  ╚═╝╚═╝  ╚═══╝╚═╝   ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
 
+" =============================================================================
+" Index
+" =============================================================================
+
+" Index {{{1
+" 1) Plugins
+" 	a) Environmental Setup
+" 	b) Plugins
+"  	c) Triggered Plugins
+" 2) General Configuration
+" 	a) General Configuration
+" 	b) Folding
+" 	c) Search
+" 	d) Line Numbers
+" 	e) Backups
+" 3) Language Specific Settings
+" 	a) Java
+" 	b) Vimwiki/Markdown
+" 4) Custom Keybinds
+" 	a) CONTROVERSY
+" 	b) Leader Defined
+" 	c) Clear Search Highlights
+" 	d) Fold Binds
+" 	e) Marker Replace
+" 	f) Change movement behavior for wrapped lines
+" 	g) Change movement behavior for wrapped lines in operator-pending mode
+" 	h) Keymaps for custom functions
+" 	i) Only create these binds if in neovim
+" 	j) Split movement
+" 	k) Visual mode code block indentation
+" 	l) Custom keybinds for tabs
+" 5) Plugin Configuration
+" 6) Custom Functions
+" 7) Todo
+"}}}<++>
 
 " =============================================================================
 " PLUGINS
 " =============================================================================
 
-" Enviroment Setup {{{1
+" Environmental Setup {{{1
 " Use `$nvim -u $(location to vimrc)` to tirgger this event.
 if has('nvim')
 	if empty(glob('~/.config/nvim/init.vim'))
@@ -36,7 +71,7 @@ else
 		autocmd vimEnter * PlugInstall --sync | source $MYVIMRC
 	endif
 endif
-"}}}1
+"}}}1 
 
 " Plugins {{{1
 " -----------------------------------------------------------------------------
@@ -82,7 +117,7 @@ Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
 " Plug 'w0rp/ale' 			" Linter.
 "}}}1
 
-" Tri ggered Plugins {{{1
+" Triggered Plugins {{{1
 if has('nvim')
 	Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'} 	" Omnicompletion for neovim
 else
@@ -108,7 +143,6 @@ Plug 'vim-scripts/todo-vim',		{'on':['TODOToggle']} 		" Todo list
 Plug 'dhruvasagar/vim-table-mode', 	{'on':['TableModeToggle']} 	" Table creation plugin.
 call plug#end()				" required
 "}}}1
-
 
 " =============================================================================
 " GENERAL CONFIGURATION
@@ -191,7 +225,7 @@ autocmd FileType java let java_highlight_debug=1
 autocmd FileType java let java_highlight_functions="style"
 " }}}1
 
-" Vimwiki/Mardown {{{1
+" Vimwiki/Markdown {{{1
 " -----------------------------------------------------------------------------
 " Binds
 autocmd Filetype vimwiki,markdown nnoremap <leader>cl i[<++>](<++>)
@@ -217,7 +251,6 @@ augroup md_to_pdf_and_update_view
 		autocmd Filetype vimwiki,markdown call jobstart(['python', "-m", "http.server", "8000"])
 	endif
 augroup END
-
 " }}}1
 
 " =============================================================================
@@ -229,12 +262,12 @@ augroup END
 nnoremap ; :
 " }}}1
 
-" Leader defined {{{1
+" Leader Defined {{{1
 " -----------------------------------------------------------------------------
 let mapleader = ","
 " }}}1
 
-" Clear search highlights {{{1
+" Clear Search Highlights {{{1
 " -----------------------------------------------------------------------------
 nnoremap <leader>nh	:noh<CR>
 " }}}1
@@ -309,7 +342,7 @@ vnoremap < <gv
 vnoremap > >gv
 " }}}1
 
-" Custom key binds for tabs. {{{1
+" Custom keybinds for tabs. {{{1
 " -----------------------------------------------------------------------------
 " Tab navigation similar to web browser behaviors.
 " tab new (requires file name or path or %)
@@ -520,7 +553,7 @@ let g:workspace_session_name = '.saved_session.vim'
 " -----------------------------------------------------------------------------
 " Set the colorscheme to wal
 " (Enabling this messes up indentLine plugin, and is unneeded.)
-" colorscheme wal
+colorscheme wal
 " }}}1
 
 " Vim-move {{{1
