@@ -90,6 +90,7 @@
 " 	ai) Vimgamesnake
 " 	aj) GOL (Game of Life)
 " 	ak) Ctrlhjkl
+" 	al) Ale
 "}}}2
 
 " 6) Custom Functions {{{2
@@ -147,6 +148,7 @@ endif
 " -----------------------------------------------------------------------------
 call plug#begin()
 Plug 'AndrewRadev/splitjoin.vim'	" Split or join lines.
+Plug 'Chiel92/vim-autoformat' 		" Auto code formating. May require system packages.
 Plug 'Xuyuanp/nerdtree-git-plugin'	" Git plugin for NerdTree.
 Plug 'Yggdroot/indentLine'		" Shows line indents.
 Plug 'airblade/vim-gitgutter'		" Shows staged lines.
@@ -175,8 +177,8 @@ Plug 'vim-pandoc/vim-pandoc' 		" Pandoc.
 Plug 'vim-pandoc/vim-pandoc-syntax' 	" Pandoc syntax.
 Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
 Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
-Plug 'vim-syntastic/syntastic'		" Syntastic linter.
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
+Plug 'w0rp/ale' 			" Linter.
 " Plug 'AnthonyAstige/ctrlhjkl.vim' 	" Easier move between splits/buffers/windows.
 " Plug 'easymotion/vim-easymotion'	" Motions on speed.
 " Plug 'kana/vim-textobj-indent' 	" Defines indent object.(Currently broken.)
@@ -184,7 +186,7 @@ Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
 " Plug 'machakann/vim-sandwich'		" Adds sandwich command for surrounding objects.
 " Plug 'suan/vim-instant-markdow'	" Instant markdown preview.
 " Plug 'vim-scripts/vimwiki'		" Build a wiki -> html.
-" Plug 'w0rp/ale' 			" Linter.
+" Plug 'vim-syntastic/syntastic'	" Syntastic linter.
 "}}}1
 
 " Triggered Plugins {{{1
@@ -293,6 +295,12 @@ set noswapfile 				" Disable swapfiles.
 " -----------------------------------------------------------------------------
 autocmd FileType java let java_highlight_debug=1
 autocmd FileType java let java_highlight_functions="style"
+
+" This requires "asytle" to be installed.
+augroup Fix_mah_java
+	autocmd!
+	autocmd BufWritePre *.java exec ":Autoformat"
+augroup END
 " }}}1
 
 " Vimwiki/Markdown {{{1
@@ -638,10 +646,12 @@ let NERDRemoveExtraSpaces = 1
 let NERDTrimTraillingWhitespace = 1
 " }}}1
 
-" Deoplete (TODO: @configure deopleted) {{{1
+" Deoplete {{{1
 " -----------------------------------------------------------------------------
 " 1500 lines of config...ugh, just Google it.
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+"let g:deoplete#complete_method = 'omnifunc'
 " }}}1
 
 " Vim-wiki {{{1
@@ -751,6 +761,20 @@ nnoremap <leader>gr	:GoldenRatioToggle<CR>
 " xmap <s-h> <Plug>CtrlHJKLMoveH
 " xmap <s-l> <Plug>CtrlHJKLMoveL
 " }}}1
+
+" Ale {{{1
+" -----------------------------------------------------------------------------
+let g:airline#extensions#ale#enabled = 1
+
+" Disable constant linting
+" TODO: Make this specific to laptops by glob'ing battery
+let g:ale_lint_on_text_changed = 'never'
+" You can disable this option too
+" if you don't want linters to run on opening a file
+let g:ale_lint_on_enter = 0
+" Enable error list
+let g:ale_open_list = 1
+"}}}<++>
 
 " =============================================================================
 " CUSTOM FUNCTIONS
