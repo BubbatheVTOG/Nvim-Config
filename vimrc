@@ -109,8 +109,9 @@
 " 	g) SpellFix()
 " 	h) ToggleBG()
 " 	i) Source()
-" 	j) Sudo()
-" 	k) Configure Color Column
+" 	j) SourceThis
+" 	k) Sudo()
+" 	l) Configure Color Column
 "}}}2
 
 " 7) Todo {{{2
@@ -174,7 +175,7 @@ Plug 'tpope/vim-surround'		" Surround movement command.
 Plug 'vim-airline/vim-airline'		" Status bar.
 Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
 Plug 'vim-pandoc/vim-pandoc' 		" Pandoc.
-Plug 'vim-pandoc/vim-pandoc-syntax' 	" Pandoc syntax.
+" Plug 'vim-pandoc/vim-pandoc-syntax' 	" Pandoc syntax.
 Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
 Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
@@ -200,6 +201,9 @@ Plug 'artur-shaik/vim-javacomplete2',	{'for':['java']}		" Auto complete for Java
 Plug 'aserebryakov/vim-todo-lists',	{'for':['todo']} 		" todo list on .todo files.
 Plug 'lervag/vimtex',			{'for':['tex']}			" Tex Utility
 Plug 'xuhdev/vim-latex-live-preview',	{'for':['tex']}			" A Vim Plugin for Lively Previewing LaTeX PDF Output
+" Keep these next two plugins ordered and formated like this!
+Plug 'mattn/webapi-vim', 		{'for':['markdown']} 		" Webapi for vim-quicklink.
+	Plug 'christoomey/vim-quicklink', 	{'for':['markdown']} 	" Quickly create links in markdown files.
 Plug 'cohama/agit.vim', 		{'on':['Agit']} 		" Git log viewer.
 Plug 'davidbeckingsale/writegood.vim',	{'on':['WritegoodToggle']} 	" Writting utility.
 Plug 'johngrib/vim-game-code-break',	{'on':['VimGameCodeBreak']}	" Brick Breaker
@@ -358,8 +362,7 @@ nnoremap <leader>of 	:fold<CR>
 " Create unnumberd fold.
 nnoremap <leader>cf 	:fold<CR>4li<CR><ESC>ka<SPACE><SPACE><ESC>i
 " Create numbered fold.
-nnoremap <leader>nf 	:fold<CR>4li<++><CR><ESC>A<++><ESC><S-o>
-			\<BS><++><ESC>k2hi<SPACE><SPACE><ESC>i
+nnoremap <leader>nf 	:fold<CR>4li<++><CR><ESC>A<++><ESC><S-o><BS><++><ESC>k2hi<SPACE><SPACE><ESC>i
 " }}}1
 
 " Marker Replace {{{1
@@ -388,6 +391,7 @@ nnoremap <leader>fc	:Flash<CR>
 nnoremap <leader>sc	:ToggleSpell<CR>
 nnoremap <leader>bg	:ToggleBG<CR>
 nnoremap <leader>so	:Source<CR>
+nnoremap <leader>st 	:SourceThis<CR>
 nnoremap <leader>su	:Sudo<CR>
 nnoremap <leader>ev	:e $MYVIMRC<CR>
 nnoremap <leader>tg	:TODOToggle<CR>
@@ -977,6 +981,17 @@ function! Source()
 	exec "AirlineRefresh"
 endfunction
 command Source silent! call Source()
+" }}}1
+
+" SourceThis() {{{1
+" -----------------------------------------------------------------------------
+" Sources the vimrc file dynamically.
+function! SourceThis()
+	exec "source %"
+	sleep 100m
+	exec "AirlineRefresh"
+endfunction
+command SourceThis silent! call SourceThis()
 " }}}1
 
 " Sudo() - Reopen a file with sudo permission {{{1
