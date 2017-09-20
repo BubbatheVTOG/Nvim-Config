@@ -30,6 +30,7 @@
 " 	c) Search
 " 	d) Line Numbers
 " 	e) Backups
+" 	f) Persistant Undo
 "}}}2
 
 " 3) Language Specific Settings {{{2
@@ -288,6 +289,16 @@ set number				" Enable line numbering.
 " -----------------------------------------------------------------------------
 set nobackup 				" Disable backups. YOLO
 set noswapfile 				" Disable swapfiles.
+" }}}1
+
+" Persistant Undo{{{1
+" -----------------------------------------------------------------------------
+" " Use persistent history.
+if !isdirectory("/tmp/.vim-undo-dir")
+    call mkdir("/tmp/.vim-undo-dir", "", 0700)
+endif
+set undodir=/tmp/.vim-undo-dir
+set undofile
 " }}}1
 
 " =============================================================================
