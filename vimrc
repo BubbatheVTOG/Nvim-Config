@@ -205,6 +205,7 @@ Plug 'xuhdev/vim-latex-live-preview',	{'for':['tex']}			" A Vim Plugin for Livel
 " Keep these next two plugins ordered and formated like this!
 Plug 'mattn/webapi-vim', 		{'for':['markdown']} 		" Webapi for vim-quicklink.
 	Plug 'christoomey/vim-quicklink', 	{'for':['markdown']} 	" Quickly create links in markdown files.
+Plug 'zchee/deoplete-jedi', 		{'for':['python']} 		" Competion engin for python.
 Plug 'cohama/agit.vim', 		{'on':['Agit']} 		" Git log viewer.
 Plug 'davidbeckingsale/writegood.vim',	{'on':['WritegoodToggle']} 	" Writting utility.
 Plug 'johngrib/vim-game-code-break',	{'on':['VimGameCodeBreak']}	" Brick Breaker
@@ -565,11 +566,23 @@ let g:syntastic_check_on_wq = 1
 " " Set this. Airline will handle the rest.
 " let g:airline#extensions#ale#enabled = 1
 " " Change linting frequency. (default:always,never,insert,normal)
-" " let g:ale_lint_on_text_changed = never
+" let g:ale_lint_on_text_changed = never
 " " Change linting to insertleave event. (default:1,0)
 " let g:ale_lint_on_insert_leave = 1
 " " Only lint on enter. (default:1,0)
 " " g:ale_lint_on_enter = 1
+" Linter engines:
+let g:ale_linters = {
+\	'python': ['autopep8',
+\ 	'isort',
+\ 	'yapf']
+\}
+let g:ale_fixers = {
+\	'python': ['autopep8',
+\ 	'isort',
+\ 	'yapf']
+\}
+let g:ale_fix_on_save = 1
 " }}}1
 
 " LaTeX Settings {{{1
