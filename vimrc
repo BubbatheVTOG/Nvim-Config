@@ -442,39 +442,16 @@ let g:airline_symbols.whitespace = 'Ξ'
 " Syntastic recommended settings. {{{1
 " -----------------------------------------------------------------------------
 " Global Settings:
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 1
 " }}}1
 
-" Ale recommended settings. {{{1
-" -----------------------------------------------------------------------------
-" " Set this. Airline will handle the rest.
-" let g:airline#extensions#ale#enabled = 1
-" " Change linting frequency. (default:always,never,insert,normal)
-" let g:ale_lint_on_text_changed = never
-" " Change linting to insertleave event. (default:1,0)
-" let g:ale_lint_on_insert_leave = 1
-" " Only lint on enter. (default:1,0)
-" " g:ale_lint_on_enter = 1
-" Linter engines:
-let g:ale_linters = {
-\	'python': ['autopep8',
-\ 	'isort',
-\ 	'yapf']
-\}
-let g:ale_fixers = {
-\	'python': ['autopep8',
-\ 	'isort',
-\ 	'yapf']
-\}
-let g:ale_fix_on_save = 1
-" }}}1
 
 " LaTeX Settings {{{1
 " -----------------------------------------------------------------------------
@@ -683,17 +660,46 @@ nnoremap <leader>gr	:GoldenRatioToggle<CR>
 
 " Ale {{{1
 " -----------------------------------------------------------------------------
+" " Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
 
 " Disable constant linting
 " TODO: Make this specific to laptops by glob'ing battery
-let g:ale_lint_on_text_changed = 'never'
+" let g:ale_lint_on_text_changed = 'never'
+
 " You can disable this option too
 " if you don't want linters to run on opening a file
 let g:ale_lint_on_enter = 0
+
 " Enable error list
 let g:ale_open_list = 1
-"}}}<++>
+
+" Linter engines:
+" let g:ale_linters = {
+" \	'python': ['autopep8',
+" \ 	'isort',
+" \ 	'yapf']
+" \}
+" let g:ale_fixers = {
+" \	'python': ['autopep8',
+" \ 	'isort',
+" \ 	'yapf']
+" \}
+
+" Lint on save enable (disable other linting times)
+" let g:ale_fix_on_save = 1
+
+" " Change linting frequency. (default:always,never,insert,normal)
+" let g:ale_lint_on_text_changed = never
+" let g:ale_lint_on_text_changed = normal
+
+" " Change linting to insertleave event. (default:1,0)
+" let g:ale_lint_on_insert_leave = 1
+
+" " Only lint on enter. (default:1,0)
+" " g:ale_lint_on_enter = 1
+
+" }}}1
 
 " =============================================================================
 " CUSTOM FUNCTIONS
