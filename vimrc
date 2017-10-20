@@ -71,6 +71,7 @@ Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
 Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
 Plug 'w0rp/ale' 			" Linter.
+" Plug 'ap/vim-css-color' 		" Colorizer.
 " Plug 'AnthonyAstige/ctrlhjkl.vim' 	" Easier move between splits/buffers/windows.
 " Plug 'easymotion/vim-easymotion'	" Motions on speed.
 " Plug 'kana/vim-textobj-indent' 	" Defines indent object.(Currently broken.)
@@ -99,8 +100,10 @@ Plug 'mattn/webapi-vim', 		{'for':['markdown']} 		" Webapi for vim-quicklink.
 Plug 'zchee/deoplete-jedi', 		{'for':['python']} 		" Competion engin for python.
 Plug 'cohama/agit.vim', 		{'on':['Agit']} 		" Git log viewer.
 Plug 'davidbeckingsale/writegood.vim',	{'on':['WritegoodToggle']} 	" Writting utility.
+Plug 'dhruvasagar/vim-table-mode', 	{'on':['TableModeToggle']} 	" Table creation plugin.
 Plug 'johngrib/vim-game-code-break',	{'on':['VimGameCodeBreak']}	" Brick Breaker
 Plug 'johngrib/vim-game-snake', 	{'on':['VimGameSnake']} 	" Snake!
+Plug 'junegunn/goyo.vim', 		{'on':['Goyo']} 		" Distraction free writing.
 Plug 'lilydjwg/colorizer',		{'on':['ColorToggle']}		" Hex code colorizer
 Plug 'mbbill/undotree',			{'on':['UndotreeToggle']}	" Create an undotree.
 Plug 'metakirby5/codi.vim',		{'on':['Codi']}			" Interactive scratchpad.
@@ -109,7 +112,6 @@ Plug 'roman/golden-ratio', 		{'on':['GoldenRatioToggle']} 	" Change split sizes 
 Plug 'scrooloose/nerdtree',		{'on':['NERDTreeToggle']}	" Its NerdTree...but only when its toggled.
 Plug 'vim-scripts/LanguageTool',	{'on':['LanguageToolCheck','LanguageToolClear']}	" Grammar checking.
 Plug 'vim-scripts/todo-vim',		{'on':['TODOToggle']} 		" Todo list
-Plug 'dhruvasagar/vim-table-mode', 	{'on':['TableModeToggle']} 	" Table creation plugin.
 call plug#end()				" required
 "}}}1
 
@@ -636,6 +638,11 @@ nnoremap <leader>gr	:GoldenRatioToggle<CR>
 " :GOL (to start)
 " :GOL (to stop)
 " }}}1
+
+" Goyo (distraction free writing) {{{1
+" -----------------------------------------------------------------------------
+" TODO: make a meaningful bind
+"}}}1
 
 " Ctrlhjkl (TODO: @refactor) {{{1
 " -----------------------------------------------------------------------------
