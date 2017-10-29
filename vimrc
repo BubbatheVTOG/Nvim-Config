@@ -206,7 +206,7 @@ autocmd FileType java let java_highlight_debug=1
 autocmd FileType java let java_highlight_functions="style"
 
 " This requires "asytle" to be installed.
-augroup Fix_mah_java
+augroup Fix_mah_Java
 	autocmd!
 	autocmd BufWritePre *.java exec ":Autoformat"
 augroup END
@@ -215,10 +215,11 @@ augroup END
 " Python {{{1
 " -----------------------------------------------------------------------------
 " This requires "pep8" to be installed.
-augroup Fix_mah_python
+augroup Fix_mah_Python
 	autocmd!
 	autocmd BufWritePre *.py exec ":Autoformat"
 augroup END
+
 " For highlighted numbers:
 let python_no_number_highlight = 0
 
