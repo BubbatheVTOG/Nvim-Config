@@ -35,7 +35,7 @@ else
 		autocmd vimEnter * PlugInstall --sync | source $MYVIMRC
 	endif
 endif
-"}}}1 
+"}}}1
 
 " Plugins {{{1
 " -----------------------------------------------------------------------------
@@ -211,6 +211,23 @@ augroup Fix_mah_java
 	autocmd BufWritePre *.java exec ":Autoformat"
 augroup END
 " }}}1
+
+" Python {{{1
+" -----------------------------------------------------------------------------
+"
+For highlighted numbers:
+let python_no_number_highlight = 1
+
+For highlighted builtin functions:
+let python_no_builtin_highlight = 1
+
+For highlighted standard exceptions:
+let python_no_exception_highlight = 1
+
+For highlighted doctests and code inside:
+let python_no_doctest_highlight = 1
+
+"}}}1
 
 " Vimwiki/Markdown {{{1
 " -----------------------------------------------------------------------------
@@ -453,7 +470,6 @@ let g:airline_symbols.whitespace = 'Ξ'
 " let g:syntastic_check_on_open = 1
 " let g:syntastic_check_on_wq = 1
 " }}}1
-
 
 " LaTeX Settings {{{1
 " -----------------------------------------------------------------------------
@@ -702,9 +718,6 @@ let g:ale_open_list = 1
 
 " " Change linting to insertleave event. (default:1,0)
 " let g:ale_lint_on_insert_leave = 1
-
-" " Only lint on enter. (default:1,0)
-" " g:ale_lint_on_enter = 1
 
 " }}}1
 
