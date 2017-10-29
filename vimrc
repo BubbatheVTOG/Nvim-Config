@@ -703,19 +703,13 @@ let g:ale_lint_on_enter = 0
 let g:ale_open_list = 1
 
 " Linter engines:
-" let g:ale_linters = {
-" \	'python': ['autopep8',
-" \ 	'isort',
-" \ 	'yapf']
-" \}
-" let g:ale_fixers = {
-" \	'python': ['autopep8',
-" \ 	'isort',
-" \ 	'yapf']
-" \}
+" let g:ale_linters = {'python': ['autopep8', 'flake8', 'isort', 'yapf']}
+
+" Fixer engines:
+let g:ale_fixers = {'python': ['autopep8', 'isort', 'yapf']}
 
 " Lint on save enable (disable other linting times)
-" let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 1
 
 " " Change linting frequency. (default:always,never,insert,normal)
 " let g:ale_lint_on_text_changed = never
