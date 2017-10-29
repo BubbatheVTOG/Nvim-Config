@@ -215,16 +215,16 @@ augroup END
 " Python {{{1
 " -----------------------------------------------------------------------------
 "
-For highlighted numbers:
+" For highlighted numbers:
 let python_no_number_highlight = 0
 
-For highlighted builtin functions:
+" For highlighted builtin functions:
 let python_no_builtin_highlight = 0
 
-For highlighted standard exceptions:
+" For highlighted standard exceptions:
 let python_no_exception_highlight = 0
 
-For highlighted doctests and code inside:
+" For highlighted doctests and code inside:
 let python_no_doctest_highlight = 0
 
 "}}}1
