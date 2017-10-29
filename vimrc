@@ -663,6 +663,7 @@ nnoremap <leader>gr	:GoldenRatioToggle<CR>
 " Goyo (distraction free writing) {{{1
 " -----------------------------------------------------------------------------
 " TODO: make a meaningful bind
+nnoremap <leader>gy :Goyo<cr>
 "}}}1
 
 " Ctrlhjkl (TODO: @refactor) {{{1
