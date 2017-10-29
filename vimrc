@@ -214,7 +214,11 @@ augroup END
 
 " Python {{{1
 " -----------------------------------------------------------------------------
-"
+" This requires "pep8" to be installed.
+augroup Fix_mah_python
+	autocmd!
+	autocmd BufWritePre *.py exec ":Autoformat"
+augroup END
 " For highlighted numbers:
 let python_no_number_highlight = 0
 
