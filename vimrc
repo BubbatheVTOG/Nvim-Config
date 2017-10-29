@@ -703,11 +703,11 @@ let g:ale_lint_on_enter = 0
 let g:ale_open_list = 1
 
 " Linter engines:
-" REQURES flake8,mypy,pycodestyle,pylint installed!
+" REQUIRES flake8,mypy,pycodestyle,pylint installed!
 let g:ale_linters = {'python': ['flake8', 'mypy', 'pycodestyle', 'pylint']}
 
 " Fixer engines:
-" REQURES autopep8,isort,yapf installed!
+" REQUIRES autopep8,isort,yapf installed!
 let g:ale_fixers = {'python': ['autopep8', 'isort', 'yapf']}
 
 " Lint on save enable (disable other linting times)
