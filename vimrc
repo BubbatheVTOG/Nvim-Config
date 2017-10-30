@@ -167,6 +167,7 @@ highlight Folded ctermbg=black ctermfg=blue
 " Search {{{1
 " -----------------------------------------------------------------------------
 set hlsearch				" While searching, highlight (and search) as you type.
+" This will be removed when #2198 becomes released.
 set incsearch				" While searching, take you directly to where the so far typed pattern matches.
 set ignorecase				" While searching, ignore case.
 set smartcase				" While searching, use capitals when you use capitals.
