@@ -70,7 +70,7 @@ Plug 'vim-pandoc/vim-pandoc' 		" Pandoc.
 Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
 Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
-Plug 'w0rp/ale' 			" Linter.
+" Plug 'w0rp/ale' 			" Linter.
 " Plug 'ap/vim-css-color' 		" Colorizer.
 " Plug 'AnthonyAstige/ctrlhjkl.vim' 	" Easier move between splits/buffers/windows.
 " Plug 'easymotion/vim-easymotion'	" Motions on speed.
@@ -207,19 +207,19 @@ autocmd FileType java let java_highlight_debug=1
 autocmd FileType java let java_highlight_functions="style"
 
 " This requires "asytle" to be installed.
-augroup Fix_mah_Java
-	autocmd!
-	autocmd BufWritePre *.java exec ":Autoformat"
-augroup END
+" augroup Fix_mah_Java
+	" autocmd!
+	" autocmd BufWritePre *.java exec ":Autoformat"
+" augroup END
 " }}}1
 
 " Python {{{1
 " -----------------------------------------------------------------------------
 " This requires "pep8" to be installed.
-augroup Fix_mah_Python
-	autocmd!
-	autocmd BufWritePre *.py exec ":Autoformat"
-augroup END
+" augroup Fix_mah_Python
+	" autocmd!
+	" autocmd BufWritePre *.py exec ":Autoformat"
+" augroup END
 
 " For highlighted numbers:
 let python_no_number_highlight = 0
@@ -702,7 +702,7 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_enter = 0
 
 " Enable error list
-let g:ale_open_list = 1
+let g:ale_open_list = 0
 
 " Linter engines:
 " REQUIRES flake8,mypy,pycodestyle,pylint installed!
