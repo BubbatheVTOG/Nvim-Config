@@ -143,6 +143,7 @@ set autoread 				" Reload the file when it changes outside of (n)vim.
 set visualbell 				" Use visual bell instead of beeping.
 set history=1000 			" Increase history.
 set undolevels=1000 			" Increase undo levels.
+set scrolloff=5 			" Sets the scroll off set.
 set confirm 				" Prompt conformation dialogs
 " }}}1
 
