@@ -259,6 +259,12 @@ augroup md_to_pdf_and_update_view
 augroup END
 " }}}1
 
+" html {{{1
+" -----------------------------------------------------------------------------
+" HTML skeleton file insertion
+nnoremap <leader>html	:-1read $HOME/.vim/templates/html.skel<CR>
+"}}}1
+
 " =============================================================================
 " CUSTOM KEYBINDS
 " =============================================================================
@@ -289,7 +295,7 @@ nnoremap <leader>cf 	:fold<CR>4li<CR><ESC>ka<SPACE><SPACE><ESC>i
 nnoremap <leader>nf 	:fold<CR>4li<++><CR><ESC>A<++><ESC><S-o><BS><++><ESC>k2hi<SPACE><SPACE><ESC>i
 " }}}1
 
-" Marker Replace {{{1
+" Marker Replace {{{1 
 " -----------------------------------------------------------------------------
 inoremap <leader>mr <ESC>/<++><CR>"_d4l:noh<CR>a
 nnoremap <leader>mr /<++><CR>"_d4l:noh<CR>a
