@@ -259,10 +259,10 @@ augroup md_to_pdf_and_update_view
 augroup END
 " }}}1
 
-" html {{{1
+" HTML{{{1
 " -----------------------------------------------------------------------------
 " HTML skeleton file insertion
-nnoremap <leader>html	:-1read $HOME/.vim/templates/html.skel<CR>
+nnoremap <leader>wh	:-1read $HOME/.vim/templates/html.skel<CR>
 "}}}1
 
 " =============================================================================
@@ -293,12 +293,6 @@ nnoremap <leader>of 	:fold<CR>
 nnoremap <leader>cf 	:fold<CR>4li<CR><ESC>ka<SPACE><SPACE><ESC>i
 " Create numbered fold.
 nnoremap <leader>nf 	:fold<CR>4li<++><CR><ESC>A<++><ESC><S-o><BS><++><ESC>k2hi<SPACE><SPACE><ESC>i
-" }}}1
-
-" Marker Replace {{{1 
-" -----------------------------------------------------------------------------
-inoremap <leader>mr <ESC>/<++><CR>"_d4l:noh<CR>a
-nnoremap <leader>mr /<++><CR>"_d4l:noh<CR>a
 " }}}1
 
 " Change movement behavior for wrapped lines. {{{1
@@ -336,6 +330,12 @@ if has('nvim')
 	nnoremap <leader>ht	:HtopTab<CR>
 	nnoremap <leader>tc	:TTYClock<CR>
 endif
+" }}}1
+
+" Marker Replace {{{1
+" -----------------------------------------------------------------------------
+inoremap <leader>mr <ESC>/<++><CR>"_d4l:noh<CR>a
+nnoremap <leader>mr /<++><CR>"_d4l:noh<CR>a
 " }}}1
 
 " Split movement. {{{1
@@ -746,7 +746,7 @@ endif
 " }}}2
 " }}}1
 
-" Only create these functions i f we are in neovim. {{{1
+" Only create these functions if we are in neovim. {{{1
 if has('nvim')
 
 	" TTYClock() {{{2
@@ -895,7 +895,7 @@ endfunction
 command ToggleSpell silent! call ToggleSpell()
 " }}}1
 
-" SpellFix() {{{1
+" SpellFix() {{{1 
 " -----------------------------------------------------------------------------
 function! SpellFix()
 	normal! mp[s1z=`p
