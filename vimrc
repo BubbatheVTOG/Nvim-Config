@@ -334,8 +334,8 @@ endif
 
 " Marker Replace {{{1
 " -----------------------------------------------------------------------------
-inoremap <leader>mr <ESC>/<++><CR>"_d4l:noh<CR>a
-nnoremap <leader>mr /<++><CR>"_d4l:noh<CR>a
+inoremap <leader>mr <ESC>/<++><CR>"_d4l:noh<CR>i
+nnoremap <leader>mr /<++><CR>"_d4l:noh<CR>i
 " }}}1
 
 " Split movement. {{{1
