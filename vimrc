@@ -70,7 +70,7 @@ Plug 'vim-pandoc/vim-pandoc' 		" Pandoc.
 Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
 Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
-" Plug 'w0rp/ale' 			" Linter.
+Plug 'w0rp/ale' 			" Linter.
 " Plug 'ap/vim-css-color' 		" Colorizer.
 " Plug 'AnthonyAstige/ctrlhjkl.vim' 	" Easier move between splits/buffers/windows.
 " Plug 'easymotion/vim-easymotion'	" Motions on speed.
@@ -248,15 +248,20 @@ augroup filetype_wiki
 	autocmd FileType vimwiki,markdown set shiftwidth=4
 augroup END
 
-augroup md_to_pdf_and_update_view
-	autocmd!
-	autocmd BufWritePost *.{mmd,md,mdown,mkd,mkdn,markdown,mdwn} exec ":Pandoc pdf"
-	autocmd BufWritePost *.{mmd,md,mdown,mkd,mkdn,markdown,mdwn} exec ":Pandoc html"
-	if has('nvim')
-		autocmd Filetype vimwiki,markdown call jobstart(['zathura', expand('%<') . '.pdf'])
-		autocmd Filetype vimwiki,markdown call jobstart(['python', "-m", "http.server", "8000"])
-	endif
-augroup END
+" This needs to be replaced with:
+" let g:pandoc#command#custom_open
+" let g:pandoc#command#autoexec_on_writes
+
+" augroup md_to_pdf_and_update_view
+	" autocmd!
+	" autocmd BufWritePost *.{mmd,md,mdown,mkd,mkdn,markdown,mdwn} exec ":Pandoc pdf"
+	" autocmd BufWritePost *.{mmd,md,mdown,mkd,mkdn,markdown,mdwn} exec ":Pandoc html"
+	" if has('nvim')
+		" autocmd Filetype vimwiki,markdown call jobstart(['zathura', expand('%<') . '.pdf'])
+		" autocmd Filetype vimwiki,markdown call jobstart(['python', "-m", "http.server", "8000"])
+	" endif
+" augroup END
+
 " }}}1
 
 " HTML{{{1
@@ -707,8 +712,13 @@ let g:ale_lint_on_enter = 0
 let g:ale_open_list = 0
 
 " Linter engines:
-" REQUIRES flake8,mypy,pycodestyle,pylint installed!
-let g:ale_linters = {'python': ['flake8', 'mypy', 'pycodestyle', 'pylint']}
+" PYTHON REQUIRES: flake8,mypy,pycodestyle,pylint installed!
+" JavaScript REQURIES: eslint
+" HTML REQUIRES: htmlhint (requires node)
+let g:ale_linters = {'python': ['flake8', 'mypy', 'pycodestyle', 'pylint'],
+		\ 'javascript': ['eslint'],
+		\ 'html': ['htmlhint']
+		\ }
 
 " Fixer engines:
 " REQUIRES autopep8,isort,yapf installed!
