@@ -70,7 +70,7 @@ Plug 'vim-pandoc/vim-pandoc' 		" Pandoc.
 Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
 Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
-" Plug 'w0rp/ale' 			" Linter.
+Plug 'w0rp/ale' 			" Linter.
 " Plug 'ap/vim-css-color' 		" Colorizer.
 " Plug 'AnthonyAstige/ctrlhjkl.vim' 	" Easier move between splits/buffers/windows.
 " Plug 'easymotion/vim-easymotion'	" Motions on speed.
@@ -248,21 +248,27 @@ augroup filetype_wiki
 	autocmd FileType vimwiki,markdown set shiftwidth=4
 augroup END
 
-augroup bubba_ft
-	autocmd!
-	autocmd BufNewFile,BufReadPre *.bubba set filetype=markdown
-augroup END
+" This needs to be replaced with:
+" let g:pandoc#command#custom_open
+" let g:pandoc#command#autoexec_on_writes
 
-augroup md_to_pdf_and_update_view
-	autocmd!
-	autocmd BufWritePost *.{mmd,md,mdown,mkd,mkdn,markdown,mdwn} exec ":Pandoc pdf"
-	autocmd BufWritePost *.{mmd,md,mdown,mkd,mkdn,markdown,mdwn} exec ":Pandoc html"
-	if has('nvim')
-		autocmd Filetype vimwiki,markdown call jobstart(['zathura', expand('%<') . '.pdf'])
-		autocmd Filetype vimwiki,markdown call jobstart(['python', "-m", "http.server", "8000"])
-	endif
-augroup END
+" augroup md_to_pdf_and_update_view
+	" autocmd!
+	" autocmd BufWritePost *.{mmd,md,mdown,mkd,mkdn,markdown,mdwn} exec ":Pandoc pdf"
+	" autocmd BufWritePost *.{mmd,md,mdown,mkd,mkdn,markdown,mdwn} exec ":Pandoc html"
+	" if has('nvim')
+		" autocmd Filetype vimwiki,markdown call jobstart(['zathura', expand('%<') . '.pdf'])
+		" autocmd Filetype vimwiki,markdown call jobstart(['python', "-m", "http.server", "8000"])
+	" endif
+" augroup END
+
 " }}}1
+
+" HTML{{{1
+" -----------------------------------------------------------------------------
+" HTML skeleton file insertion
+nnoremap <leader>wh	:-1read $HOME/.vim/templates/html.skel<CR>
+"}}}1
 
 " =============================================================================
 " CUSTOM KEYBINDS
@@ -292,12 +298,6 @@ nnoremap <leader>of 	:fold<CR>
 nnoremap <leader>cf 	:fold<CR>4li<CR><ESC>ka<SPACE><SPACE><ESC>i
 " Create numbered fold.
 nnoremap <leader>nf 	:fold<CR>4li<++><CR><ESC>A<++><ESC><S-o><BS><++><ESC>k2hi<SPACE><SPACE><ESC>i
-" }}}1
-
-" Marker Replace {{{1
-" -----------------------------------------------------------------------------
-inoremap <leader>mr <ESC>/<++><CR>"_d4l:noh<CR>a
-nnoremap <leader>mr /<++><CR>"_d4l:noh<CR>a
 " }}}1
 
 " Change movement behavior for wrapped lines. {{{1
@@ -335,6 +335,12 @@ if has('nvim')
 	nnoremap <leader>ht	:HtopTab<CR>
 	nnoremap <leader>tc	:TTYClock<CR>
 endif
+" }}}1
+
+" Marker Replace {{{1
+" -----------------------------------------------------------------------------
+inoremap <leader>mr <ESC>/<++><CR>"_d4l:noh<CR>i
+nnoremap <leader>mr /<++><CR>"_d4l:noh<CR>i
 " }}}1
 
 " Split movement. {{{1
@@ -706,8 +712,13 @@ let g:ale_lint_on_enter = 0
 let g:ale_open_list = 0
 
 " Linter engines:
-" REQUIRES flake8,mypy,pycodestyle,pylint installed!
-let g:ale_linters = {'python': ['flake8', 'mypy', 'pycodestyle', 'pylint']}
+" PYTHON REQUIRES: flake8,mypy,pycodestyle,pylint installed!
+" JavaScript REQURIES: eslint
+" HTML REQUIRES: htmlhint (requires node)
+let g:ale_linters = {'python': ['flake8', 'mypy', 'pycodestyle', 'pylint'],
+		\ 'javascript': ['eslint'],
+		\ 'html': ['htmlhint']
+		\ }
 
 " Fixer engines:
 " REQUIRES autopep8,isort,yapf installed!
@@ -745,7 +756,7 @@ endif
 " }}}2
 " }}}1
 
-" Only create these functions i f we are in neovim. {{{1
+" Only create these functions if we are in neovim. {{{1
 if has('nvim')
 
 	" TTYClock() {{{2
@@ -894,7 +905,7 @@ endfunction
 command ToggleSpell silent! call ToggleSpell()
 " }}}1
 
-" SpellFix() {{{1
+" SpellFix() {{{1 
 " -----------------------------------------------------------------------------
 function! SpellFix()
 	normal! mp[s1z=`p
@@ -967,5 +978,7 @@ autocmd VimResized * execute "normal! \<C-w>="
 "
 " (Enhancement) skeleton file insertion
 " (Enhancement) SpellFix() confirms replacement, or at least echo's changes.
+" (FIX) 	LineIndent colorschemes clash.
+" (Fix) 	md_to_pdf_and_update_view, make this togglable.
 
 " vim:tw=78:ts=8:fdm=marker
