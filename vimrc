@@ -42,12 +42,12 @@ endif
 call plug#begin()
 Plug 'AndrewRadev/splitjoin.vim'	" Split or join lines.
 Plug 'Chiel92/vim-autoformat' 		" Auto code formating. May require system packages.
-Plug 'ctrlpvim/ctrlp.vim' 		" ControlP (this could be triggerd but then the bind doesn't work) {'on':['CtrlP','CtrlPBuffer','CtrlPMRU','CtrlPMixed']}
 Plug 'Xuyuanp/nerdtree-git-plugin'	" Git plugin for NerdTree.
 Plug 'Yggdroot/indentLine'		" Shows line indents.
 Plug 'airblade/vim-gitgutter'		" Shows staged lines.
 Plug 'apalmer1377/factorus'		" Refactoring Plugin.
 Plug 'bronson/vim-trailing-whitespace'	" Fix white space by :FixWhitespace
+Plug 'ctrlpvim/ctrlp.vim' 		" ControlP (this could be triggerd but then the bind doesn't work) {'on':['CtrlP','CtrlPBuffer','CtrlPMRU','CtrlPMixed']}
 Plug 'dylanaraps/wal.vim'		" Wal color setting.
 Plug 'ervandew/supertab'		" Tab completion.
 Plug 'godlygeek/tabular'		" Text alignment.
@@ -60,6 +60,7 @@ Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
 Plug 'sheerun/vim-polyglot'		" Syntax highlighting for a lot of languages. (Striped down, install specific ones if needed.)
 Plug 'terryma/vim-multiple-cursors' 	" Multiple cursors.
 Plug 'thaerkh/vim-workspace'		" Save workspace.
+Plug 'tomasr/molokai' 			" color theme for when wal is not installed.
 Plug 'tpope/vim-fugitive'		" Git commands from ex mode.
 Plug 'tpope/vim-repeat' 		" Repeat support for plugins.
 Plug 'tpope/vim-sleuth' 		" Heuristic tabsizes.
@@ -70,8 +71,8 @@ Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
 Plug 'vim-pandoc/vim-pandoc' 		" Pandoc.
 Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
 Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
-Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
 Plug 'w0rp/ale' 			" Linter.
+Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
 " Plug 'ap/vim-css-color' 		" Colorizer.
 " Plug 'AnthonyAstige/ctrlhjkl.vim' 	" Easier move between splits/buffers/windows.
 " Plug 'easymotion/vim-easymotion'	" Motions on speed.
@@ -197,6 +198,19 @@ endif
 set undodir=/tmp/.vim-undo-dir
 set undofile
 " }}}1
+
+" Color Schemes {{{1
+" -----------------------------------------------------------------------------
+" This will manage color scheme stuff since we don't know if the host has wal
+" installed.
+if !empty(glob('/usr/bin/wal'))
+    let g:airline_theme = 'wal'
+    colorscheme wal
+else
+    let g:airline_theme = 'molokai'
+    colorscheme molokai
+endif
+"}}}1
 
 " =============================================================================
 " LANGUAGE SPECIFIC SETTINGS
@@ -459,7 +473,9 @@ endif
 
 " Airline Config {{{1
 " -----------------------------------------------------------------------------
-let g:airline_theme='wal'
+" This is all of the Airline configs.
+" This next line is set in the Color Schemes section.
+" let g:airline_theme='wal'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_alt_sep = ' | '
 let g:airline_powerline_fonts = 0
@@ -568,7 +584,7 @@ let g:workspace_session_name = '.saved_session.vim'
 " -----------------------------------------------------------------------------
 " Set the colorscheme to wal
 " (Enabling this messes up indentLine plugin, and is unneeded.)
-colorscheme wal
+" colorscheme wal
 " }}}1
 
 " Vim-move {{{1
