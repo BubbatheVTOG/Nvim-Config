@@ -16,6 +16,8 @@
 <ul>
 	<li>ctags (optional)
 	<li>python-neovim (needed for java2complete)
+	<li>eslint (optional, needed for JavaScript linting)
+	<li>htmlhint (optional, needed for HTML linting)
 </ul>
 <hr width="75%" align="center">
 <strong>Plugins Currently In Use:</strong>
