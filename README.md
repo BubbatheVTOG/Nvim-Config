@@ -33,6 +33,7 @@
 	<li><a href=https://github.com/apalmer1377/factorus>factorus</a>
 	<li><a href=https://github.com/bronson/vim-trailing-whitespace>vim-trailing-whitespace</a>
 	<li><a href=https://github.com/cohama/agit.vim>agit.vim</a>
+	<li><a href=https://github.com/ctrlpvim/ctrlp.vim>ctrlp</a>
 	<li><a href=https://github.com/davidbeckingsale/writegood.vim>writegood.vim</a>
 	<li><a href=https://github.com/dylanaraps/wal>wal</a>
 	<li><a href=https://github.com/easymotion/vim-easymotion>vim-easymotio</a>
