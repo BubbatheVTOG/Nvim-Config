@@ -42,6 +42,7 @@ endif
 call plug#begin()
 Plug 'AndrewRadev/splitjoin.vim'	" Split or join lines.
 Plug 'Chiel92/vim-autoformat' 		" Auto code formating. May require system packages.
+Plug 'ctrlpvim/ctrlp.vim' 		" ControlP (this could be triggerd but then the bind doesn't work) {'on':['CtrlP','CtrlPBuffer','CtrlPMRU','CtrlPMixed']}
 Plug 'Xuyuanp/nerdtree-git-plugin'	" Git plugin for NerdTree.
 Plug 'Yggdroot/indentLine'		" Shows line indents.
 Plug 'airblade/vim-gitgutter'		" Shows staged lines.
@@ -97,7 +98,6 @@ Plug 'xuhdev/vim-latex-live-preview',	{'for':['tex']}			" A Vim Plugin for Livel
 " Keep these next two plugins ordered and formated like this!
 Plug 'mattn/webapi-vim', 		{'for':['markdown']} 		" Webapi for vim-quicklink.
 	Plug 'christoomey/vim-quicklink', 	{'for':['markdown']} 	" Quickly create links in markdown files.
-Plug 'zchee/deoplete-jedi', 		{'for':['python']} 		" Competion engin for python.
 Plug 'cohama/agit.vim', 		{'on':['Agit']} 		" Git log viewer.
 Plug 'davidbeckingsale/writegood.vim',	{'on':['WritegoodToggle']} 	" Writting utility.
 Plug 'dhruvasagar/vim-table-mode', 	{'on':['TableModeToggle']} 	" Table creation plugin.
@@ -112,6 +112,7 @@ Plug 'roman/golden-ratio', 		{'on':['GoldenRatioToggle']} 	" Change split sizes 
 Plug 'scrooloose/nerdtree',		{'on':['NERDTreeToggle']}	" Its NerdTree...but only when its toggled.
 Plug 'vim-scripts/LanguageTool',	{'on':['LanguageToolCheck','LanguageToolClear']}	" Grammar checking.
 Plug 'vim-scripts/todo-vim',		{'on':['TODOToggle']} 		" Todo list
+Plug 'zchee/deoplete-jedi', 		{'for':['python']} 		" Competion engin for python.
 call plug#end()				" required
 "}}}1
 
@@ -375,10 +376,10 @@ inoremap <C-q>		<Esc>:tabclose<CR>
 " Buffer Prev/Next Binds {{{1
 " -----------------------------------------------------------------------------
 " These binds are for changing buffers.
-inoremap <leader>bn 	silent! <ESC>:bnext<CR>
-inoremap <leader>bp 	silent! <ESC>:bprevious<CR>
-nnoremap <leader>bn  	silent! :bnext<CR>
-nnoremap <leader>bp 	silent! :bprevious<CR>
+inoremap <leader>bn 	<ESC>:bnext<CR>
+inoremap <leader>bp 	<ESC>:bprevious<CR>
+nnoremap <leader>bn  	:bnext<CR>
+nnoremap <leader>bp 	:bprevious<CR>
 "}}}1
 
 " =============================================================================
@@ -703,6 +704,20 @@ nnoremap <leader>gy :Goyo<cr>
 " xmap <s-h> <Plug>CtrlHJKLMoveH
 " xmap <s-l> <Plug>CtrlHJKLMoveL
 " }}}1
+
+" CtrlP {{{1
+" -----------------------------------------------------------------------------
+" Config for CtrlP.
+" :h ctrlp@en
+" Mapings for CtlP.
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+" Ignore .git directory.
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+" Start search from start of directory containinng .git folder.
+" More options here: https://github.com/ctrlpvim/ctrlp.vim
+let g:ctrlp_working_path_mode = 'r'
+"}}}1
 
 " Ale {{{1
 " -----------------------------------------------------------------------------
