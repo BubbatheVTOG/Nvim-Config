@@ -53,6 +53,7 @@ Plug 'ervandew/supertab'		" Tab completion.
 Plug 'godlygeek/tabular'		" Text alignment.
 Plug 'junegunn/vim-easy-align' 		" Easily align text.
 Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
+Plug 'majutsushi/tagbar' 		" Shows all methods and variables.
 Plug 'matze/vim-move'			" Move text selections.
 Plug 'reedes/vim-wordy' 		" Word usage for writing.
 Plug 'rhysd/clever-f.vim'		" Super slick t/f movements.
@@ -733,6 +734,13 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 " Start search from start of directory containinng .git folder.
 " More options here: https://github.com/ctrlpvim/ctrlp.vim
 let g:ctrlp_working_path_mode = 'r'
+"}}}1
+
+" Tag Bar {{{1
+" -----------------------------------------------------------------------------
+" This is all the config for tag bar.
+nnoremap <leader>tb 	:TagbarToggle<CR>
+inoremap <leader>tb 	<ESC>:TagbarToggle<CR>
 "}}}1
 
 " Ale {{{1
