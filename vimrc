@@ -372,6 +372,15 @@ nnoremap <C-q>		:tabclose<CR>
 inoremap <C-q>		<Esc>:tabclose<CR>
 " }}}1
 
+" Buffer Prev/Next Binds {{{1
+" -----------------------------------------------------------------------------
+" These binds are for changing buffers.
+inoremap <leader>bn 	silent! <ESC>:bnext<CR>
+inoremap <leader>bp 	silent! <ESC>:bprevious<CR>
+nnoremap <leader>bn  	silent! :bnext<CR>
+nnoremap <leader>bp 	silent! :bprevious<CR>
+"}}}1
+
 " =============================================================================
 " PLUGIN CONFIGURATION
 " =============================================================================
