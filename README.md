@@ -46,6 +46,7 @@
 	<li><a href=https://github.com/lervag/vimtex>vimtex</a>
 	<li><a href=https://github.com/lilydjwg/colorizer>colorizer</a>
 	<li><a href=https://github.com/machakann/vim-highlightedyank>vim-highlightedyank</a>
+	<li><a href=https://github.com/majutsushi/tagbar>tagbar</a>
 	<li><a href=https://github.com/matze/vim-move>vim-move</a>
 	<li><a href=https://github.com/mbbill/undotree>undotree</a>
 	<li><a href=https://github.com/mechakann/vim-sandwich>vim-sandwich</a>
@@ -99,10 +100,8 @@
 	<li>Enhancements or fixes I want to implement when I have time or an idea of how to fix it.
 	<ul>
 		<li>seletion file insertion
-		<li>add test for if has('wal'), to load wal, or to load another colorscheme and airlinetheme.
 		<li>add toggle for columncolor stuff*81,121)
 		<li>configure easymotions https://github.com/easymotion/vim-easymotion
-		<li>config goldenratio to be disabled when it enter syntastic split.
 		<li>SpellFix() confirms replacement, or at least echo's changes.
 	</ul>
 </ul>
