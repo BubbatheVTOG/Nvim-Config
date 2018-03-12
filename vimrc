@@ -19,11 +19,12 @@
 " Environmental Setup {{{1
 " Use `$nvim -u $(location to vimrc)` to tirgger this event.
 if has('nvim')
-	if getftype($HOME . '/.config/nvim/init.vim') != 'link'
-		silent !rm $HOME/.config/nvim/init.vim
-	endif
 	if empty(glob('~/.config/nvim/init.vim'))
 		silent !mkdir -p ~/.config/nvim
+		silent !ln -s ~/.vimrc ~/.config/nvim/init.vim
+	endif
+	if getftype($HOME . '/.config/nvim/init.vim') != 'link'
+		silent !rm -rf $HOME/.config/nvim/init.vim
 		silent !ln -s ~/.vimrc ~/.config/nvim/init.vim
 	endif
 	if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
