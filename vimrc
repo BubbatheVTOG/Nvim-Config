@@ -24,7 +24,7 @@ if has('nvim')
 		silent !ln -s ~/.vimrc ~/.config/nvim/init.vim
 	endif
 	if getftype($HOME . '/.config/nvim/init.vim') != 'link'
-		silent !rm -rf $HOME/.config/nvim/init.vim
+		silent !rm ~/.config/nvim/init.vim
 		silent !ln -s ~/.vimrc ~/.config/nvim/init.vim
 	endif
 	if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
