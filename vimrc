@@ -74,8 +74,9 @@ Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
 Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
 Plug 'w0rp/ale' 			" Linter.
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
+Plug 'roman/golden-ratio' 		" Change split sizes on focus change. This used to be a triggerd plugin. {'on':['GoldenRatioToggle']}
+Plug 'lilydjwg/colorizer'		" Hex code colorizer. This used to be a triggered plugin. {'on':['ColorToggle']}
 " Plug 'ap/vim-css-color' 		" Colorizer.
-" Plug 'AnthonyAstige/ctrlhjkl.vim' 	" Easier move between splits/buffers/windows.
 " Plug 'easymotion/vim-easymotion'	" Motions on speed.
 " Plug 'kana/vim-textobj-indent' 	" Defines indent object.(Currently broken.)
 " Plug 'kana/vim-textobj-line' 		" Defines line object.(Currently broken.)
@@ -83,14 +84,13 @@ Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
 " Plug 'suan/vim-instant-markdow'	" Instant markdown preview.
 " Plug 'vim-pandoc/vim-pandoc-syntax' 	" Pandoc syntax.
 " Plug 'vim-scripts/vimwiki'		" Build a wiki -> html.
-" Plug 'vim-syntastic/syntastic'	" Syntastic linter.
 "}}}1
 
 " Triggered Plugins {{{1
 if has('nvim')
 	Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'} 	" Omnicompletion for neovim
 else
-	Plug 'Shougo/neocomplete.vim' 	" Omnicompletion for vim
+	Plug 'vim-syntastic/syntastic'	" Syntastic linter.
 endif
 
 Plug 'artur-shaik/vim-javacomplete2',	{'for':['java']}		" Auto complete for Java...but only in java files.
@@ -106,11 +106,9 @@ Plug 'dhruvasagar/vim-table-mode', 	{'on':['TableModeToggle']} 	" Table creation
 Plug 'johngrib/vim-game-code-break',	{'on':['VimGameCodeBreak']}	" Brick Breaker
 Plug 'johngrib/vim-game-snake', 	{'on':['VimGameSnake']} 	" Snake!
 Plug 'junegunn/goyo.vim', 		{'on':['Goyo']} 		" Distraction free writing.
-Plug 'lilydjwg/colorizer',		{'on':['ColorToggle']}		" Hex code colorizer
 Plug 'mbbill/undotree',			{'on':['UndotreeToggle']}	" Create an undotree.
 Plug 'metakirby5/codi.vim',		{'on':['Codi']}			" Interactive scratchpad.
 Plug 'omaraboumrad/vim-life', 		{'on':['GOL']} 			" Game of life
-Plug 'roman/golden-ratio', 		{'on':['GoldenRatioToggle']} 	" Change split sizes on focus change.
 Plug 'scrooloose/nerdtree',		{'on':['NERDTreeToggle']}	" Its NerdTree...but only when its toggled.
 Plug 'vim-scripts/LanguageTool',	{'on':['LanguageToolCheck','LanguageToolClear']}	" Grammar checking.
 Plug 'vim-scripts/todo-vim',		{'on':['TODOToggle']} 		" Todo list
@@ -501,14 +499,14 @@ let g:airline_symbols.whitespace = 'Ξ'
 " Syntastic recommended settings. {{{1
 " -----------------------------------------------------------------------------
 " Global Settings:
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
 " }}}1
 
 " LaTeX Settings {{{1
@@ -701,27 +699,6 @@ nnoremap <leader>gr	:GoldenRatioToggle<CR>
 nnoremap <leader>gy :Goyo<cr>
 "}}}1
 
-" Ctrlhjkl (TODO: @refactor) {{{1
-" -----------------------------------------------------------------------------
-" Stop jacking my binds pls.
-" let g:ctrlhjkl_suppress_keymaps = 1
-
-" Normal mode maps
-" nmap <s-j> <Plug>CtrlHJKLGoJn
-" nmap <s-k> <Plug>CtrlHJKLGoKn
-" nmap <s-h> <Plug>CtrlHJKLGoHn
-" nmap <s-l> <Plug>CtrlHJKLGoLn
-
-" Normal mode quit...not a good idea.
-" nmap <s-q> <Plug>CtrlHJKLClose
-
-" ex-mode maps
-" xmap <s-j> <Plug>CtrlHJKLMoveJ
-" xmap <s-k> <Plug>CtrlHJKLMoveK
-" xmap <s-h> <Plug>CtrlHJKLMoveH
-" xmap <s-l> <Plug>CtrlHJKLMoveL
-" }}}1
-
 " CtrlP {{{1
 " -----------------------------------------------------------------------------
 " Config for CtrlP.
@@ -882,29 +859,6 @@ if has('nvim')
 	" }}}2
 endif
 " }}}1
-
-" FocusMode() {{{1
-" -----------------------------------------------------------------------------
-" DO NOT USE!!! BROKEN!!!
-" function ToggleFocusMode()
-	" if &foldcolumn != 12
-		" set laststatus=0
-		" set numberwidth=10
-		" set foldcolumn=12
-		" set noruler
-		" hi FoldColumn ctermbg=none
-		" hi LineNr ctermfg=0 ctermbg=none
-		" hi NonText ctermfg=0
-	" else
-		" set laststatus=2
-		" set numberwidth=4
-		" set foldcolumn=0
-		" set ruler
-		" execute 'colorscheme ' . g:colors_name
-	" endif
-" endfunc
-" command ToggleFocusMode silent! call ToggleFocusMode()
-"}}}1
 
 " Speed Profiling {{{1
 " -----------------------------------------------------------------------------
