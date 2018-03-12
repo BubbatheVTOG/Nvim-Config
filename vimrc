@@ -20,7 +20,7 @@
 " Use `$nvim -u $(location to vimrc)` to tirgger this event.
 if has('nvim')
 	if getftype($HOME . '/.config/nvim/init.vim') != 'link'
-		silent !rm -rm $HOME/.config/nvim
+		silent !rm -rf $HOME/.config/nvim
 	endif
 	if empty(glob('~/.config/nvim/init.vim'))
 		silent !mkdir -p ~/.config/nvim
