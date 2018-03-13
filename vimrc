@@ -405,6 +405,12 @@ nnoremap <leader>bo 	:buffers<CR>:buffer<Space> 	" Open buffer
 nnoremap <leader>bd 	:buffers<CR>:bdelete<Space> 	" Delete buffer<Paste>
 "}}}1
 
+" Reformating Binds {{{1
+" -----------------------------------------------------------------------------
+nnoremap <leader>rf gg=G`` 				" Format the whole file
+nnoremap <leader>ra gggqgG'' 				" Include list
+"}}}1
+
 " =============================================================================
 " PLUGIN CONFIGURATION
 " =============================================================================
