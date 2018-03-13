@@ -393,13 +393,16 @@ nnoremap <C-q>		:tabclose<CR>
 inoremap <C-q>		<Esc>:tabclose<CR>
 " }}}1
 
-" Buffer Prev/Next Binds {{{1
+" Buffer Binds {{{1
 " -----------------------------------------------------------------------------
 " These binds are for changing buffers.
+nnoremap <leader>ls	:ls<CR>
 inoremap <leader>bn 	<ESC>:bnext<CR>
 inoremap <leader>bp 	<ESC>:bprevious<CR>
 nnoremap <leader>bn  	:bnext<CR>
 nnoremap <leader>bp 	:bprevious<CR>
+nnoremap <leader>bo 	:buffers<CR>:buffer<Space> 	" Open buffer
+nnoremap <leader>bd 	:buffers<CR>:bdelete<Space> 	" Delete buffer<Paste>
 "}}}1
 
 " =============================================================================
