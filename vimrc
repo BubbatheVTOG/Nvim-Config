@@ -132,7 +132,6 @@ set wildmenu				" allows us to use the wildcard file menu
 set background=dark			" Use text colors that look good on a dark background.
 set autoindent				" Auto intent to the same col when on new line.
 set smarttab				" Auto insert tabs spaces for curly braces.
-set mouse=a 				" Enables mouse.
 set ruler				" Enables cursor location.
 set wrap lbr 				" Wrap on words.
 set nocompatible			" Disables legacy stuff. (for vim)
@@ -150,6 +149,9 @@ set history=1000 			" Increase history.
 set undolevels=1000 			" Increase undo levels.
 set scrolloff=5 			" Sets the scroll off set.
 set confirm 				" Prompt conformation dialogs
+if has('mouse')
+    set mouse=a 			" Enables mouse.
+endif
 " }}}1
 
 " Folding {{{
@@ -391,13 +393,22 @@ nnoremap <C-q>		:tabclose<CR>
 inoremap <C-q>		<Esc>:tabclose<CR>
 " }}}1
 
-" Buffer Prev/Next Binds {{{1
+" Buffer Binds {{{1
 " -----------------------------------------------------------------------------
 " These binds are for changing buffers.
+nnoremap <leader>ls	:ls<CR>
 inoremap <leader>bn 	<ESC>:bnext<CR>
 inoremap <leader>bp 	<ESC>:bprevious<CR>
 nnoremap <leader>bn  	:bnext<CR>
 nnoremap <leader>bp 	:bprevious<CR>
+nnoremap <leader>bo 	:buffers<CR>:buffer<Space> 	" Open buffer
+nnoremap <leader>bd 	:buffers<CR>:bdelete<Space> 	" Delete buffer<Paste>
+"}}}1
+
+" Reformating Binds {{{1
+" -----------------------------------------------------------------------------
+nnoremap <leader>rf gg=G`` 				" Format the whole file
+nnoremap <leader>ra gggqgG'' 				" Include list
 "}}}1
 
 " =============================================================================
