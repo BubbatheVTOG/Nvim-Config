@@ -78,7 +78,6 @@ Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
 Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
 Plug 'w0rp/ale' 			" Linter.
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
-Plug 'roman/golden-ratio' 		" Change split sizes on focus change. This used to be a triggerd plugin. {'on':['GoldenRatioToggle']}
 Plug 'lilydjwg/colorizer'		" Hex code colorizer. This used to be a triggered plugin. {'on':['ColorToggle']}
 " Plug 'ap/vim-css-color' 		" Colorizer.
 " Plug 'easymotion/vim-easymotion'	" Motions on speed.
@@ -116,6 +115,7 @@ Plug 'omaraboumrad/vim-life', 		{'on':['GOL']} 			" Game of life
 Plug 'scrooloose/nerdtree',		{'on':['NERDTreeToggle']}	" Its NerdTree...but only when its toggled.
 Plug 'vim-scripts/LanguageTool',	{'on':['LanguageToolCheck','LanguageToolClear']}	" Grammar checking.
 Plug 'vim-scripts/todo-vim',		{'on':['TODOToggle']} 		" Todo list
+Plug 'roman/golden-ratio', 		{'on':['GoldenRatioToggle']} 	" Change split sizes on focus change. This used to be a triggerd plugin.
 Plug 'zchee/deoplete-jedi', 		{'for':['python']} 		" Competion engin for python.
 call plug#end()				" required
 "}}}1
