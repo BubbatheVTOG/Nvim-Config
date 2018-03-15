@@ -87,13 +87,14 @@ Plug 'lilydjwg/colorizer'		" Hex code colorizer. This used to be a triggered plu
 " Plug 'suan/vim-instant-markdow'	" Instant markdown preview.
 " Plug 'vim-pandoc/vim-pandoc-syntax' 	" Pandoc syntax.
 " Plug 'vim-scripts/vimwiki'		" Build a wiki -> html.
+" Plug 'vim-syntastic/syntastic'	" Syntastic linter.
 "}}}1
 
 " Triggered Plugins {{{1
 if has('nvim')
 	Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'} 	" Omnicompletion for neovim
 else
-	Plug 'vim-syntastic/syntastic'	" Syntastic linter.
+	Plug 'valloric/youcompleteme' 	" Vim completion
 endif
 
 Plug 'artur-shaik/vim-javacomplete2',	{'for':['java']}		" Auto complete for Java...but only in java files.
