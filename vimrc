@@ -143,13 +143,14 @@ set splitright 				" Open new horizontal splits right of the current one.
 set splitbelow 				" Open new vertical splits below the current one.
 set completeopt=longest,menuone,preview	" Better autocompletion.
 " set autowriteall 			" Autosave files.
-set hidden 				" Buffers become hidden when abandonded.
+set hidden 				" Buffers become hidden when abandoned.
 set autoread 				" Reload the file when it changes outside of (n)vim.
 set visualbell 				" Use visual bell instead of beeping.
 set history=1000 			" Increase history.
 set undolevels=1000 			" Increase undo levels.
 set scrolloff=5 			" Sets the scroll off set.
 set confirm 				" Prompt conformation dialogs
+set tags=tags; 				" Sets tag file to recursively up directory hierarchy. (The `;` is VERY important)
 if has('mouse')
     set mouse=a 			" Enables mouse.
 endif
@@ -385,13 +386,13 @@ vnoremap > >gv
 " -----------------------------------------------------------------------------
 " Tab navigation similar to web browser behaviors.
 " tab new (requires file name or path or %)
-nnoremap <C-t>		:tabnew
+" nnoremap <C-t>		:tabnew
 " tab new in insert mode (requires file name or path or %)
-inoremap <C-t>		<Esc>:tabnew
+" inoremap <C-t>		<Esc>:tabnew
 " insert mode tab new
-nnoremap <C-q>		:tabclose<CR>
+" nnoremap <C-q>		:tabclose<CR>
 " insert mode tab close
-inoremap <C-q>		<Esc>:tabclose<CR>
+" inoremap <C-q>		<Esc>:tabclose<CR>
 " }}}1
 
 " Buffer Binds {{{1
@@ -411,6 +412,14 @@ nnoremap <leader>bd 	:buffers<CR>:bdelete<Space> 	" Delete buffer<Paste>
 nnoremap <leader>rf gg=G`` 				" Format the whole file
 nnoremap <leader>ra gggqgG'' 				" Include list
 "}}}1
+
+" Ctags Setup {{{1
+" -----------------------------------------------------------------------------
+" ^] to jump to tag under cursor
+" g^] for amiguous tags
+" ^t to jump back to the tag stack
+command! MakeTags !ctags -R .
+" }}}1
 
 " =============================================================================
 " PLUGIN CONFIGURATION
@@ -470,14 +479,6 @@ let g:gitgutter_enabled = 1		" enable gitgutter
 " -----------------------------------------------------------------------------
 let g:SuperTabDefaultCompletionType = "<c-n>"
 "}}}1
-
-" Ctags Config {{{1
-" -----------------------------------------------------------------------------
-" ^] to jump to tag under cursor
-" g^] for amiguous tags
-" ^t to jump back to the tag stack
-command! MakeTags !ctags -R .
-" }}}1
 
 " Neovim Terminal Mode Config {{{1
 " -----------------------------------------------------------------------------
