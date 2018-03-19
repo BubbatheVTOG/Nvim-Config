@@ -61,16 +61,18 @@ Plug 'majutsushi/tagbar' 		" Shows all methods and variables.
 Plug 'matze/vim-move'			" Move text selections.
 Plug 'reedes/vim-wordy' 		" Word usage for writing.
 Plug 'rhysd/clever-f.vim'		" Super slick t/f movements.
-Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
+" Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
 Plug 'sheerun/vim-polyglot'		" Syntax highlighting for a lot of languages. (Striped down, install specific ones if needed.)
 Plug 'terryma/vim-multiple-cursors' 	" Multiple cursors.
 Plug 'thaerkh/vim-workspace'		" Save workspace.
 Plug 'tomasr/molokai' 			" color theme for when wal is not installed.
+Plug 'tpope/vim-commentary' 		" Commenting Plugin (Tring this instead of nerd commenter)
 Plug 'tpope/vim-fugitive'		" Git commands from ex mode.
 Plug 'tpope/vim-repeat' 		" Repeat support for plugins.
 Plug 'tpope/vim-sleuth' 		" Heuristic tabsizes.
 Plug 'tpope/vim-speeddating'		" Date manipulation.
 Plug 'tpope/vim-surround'		" Surround movement command.
+Plug 'tpope/vim-vinegar' 		" Netrw oil.
 Plug 'vim-airline/vim-airline'		" Status bar.
 Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
 Plug 'vim-pandoc/vim-pandoc' 		" Pandoc.
@@ -224,7 +226,7 @@ endif
 
 " Netrw Config {{{1
 " -----------------------------------------------------------------------------
-let g:netrw_banner = 0
+" let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
