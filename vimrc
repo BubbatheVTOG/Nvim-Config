@@ -18,6 +18,7 @@
 
 " Environmental Setup {{{1
 " Use `$nvim -u $(location to vimrc)` to tirgger this event.
+" -----------------------------------------------------------------------------
 if has('nvim')
 	if empty(glob('~/.config/nvim/init.vim'))
 		silent !mkdir -p ~/.config/nvim
@@ -56,29 +57,30 @@ Plug 'dylanaraps/wal.vim'		" Wal color setting.
 Plug 'ervandew/supertab'		" Tab completion.
 Plug 'godlygeek/tabular'		" Text alignment.
 Plug 'junegunn/vim-easy-align' 		" Easily align text.
+Plug 'lilydjwg/colorizer'		" Hex code colorizer. This used to be a triggered plugin. {'on':['ColorToggle']}
 Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
 Plug 'majutsushi/tagbar' 		" Shows all methods and variables.
 Plug 'matze/vim-move'			" Move text selections.
 Plug 'reedes/vim-wordy' 		" Word usage for writing.
 Plug 'rhysd/clever-f.vim'		" Super slick t/f movements.
-Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
 Plug 'sheerun/vim-polyglot'		" Syntax highlighting for a lot of languages. (Striped down, install specific ones if needed.)
 Plug 'terryma/vim-multiple-cursors' 	" Multiple cursors.
 Plug 'thaerkh/vim-workspace'		" Save workspace.
 Plug 'tomasr/molokai' 			" color theme for when wal is not installed.
+Plug 'tpope/vim-commentary' 		" Commenting Plugin (Tring this instead of nerd commenter)
 Plug 'tpope/vim-fugitive'		" Git commands from ex mode.
 Plug 'tpope/vim-repeat' 		" Repeat support for plugins.
 Plug 'tpope/vim-sleuth' 		" Heuristic tabsizes.
 Plug 'tpope/vim-speeddating'		" Date manipulation.
 Plug 'tpope/vim-surround'		" Surround movement command.
+Plug 'tpope/vim-vinegar' 		" Netrw oil.
 Plug 'vim-airline/vim-airline'		" Status bar.
 Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
 Plug 'vim-pandoc/vim-pandoc' 		" Pandoc.
 Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
 Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
-Plug 'w0rp/ale' 			" Linter.
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
-Plug 'lilydjwg/colorizer'		" Hex code colorizer. This used to be a triggered plugin. {'on':['ColorToggle']}
+Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
 " Plug 'ap/vim-css-color' 		" Colorizer.
 " Plug 'easymotion/vim-easymotion'	" Motions on speed.
 " Plug 'kana/vim-textobj-indent' 	" Defines indent object.(Currently broken.)
@@ -87,16 +89,18 @@ Plug 'lilydjwg/colorizer'		" Hex code colorizer. This used to be a triggered plu
 " Plug 'suan/vim-instant-markdow'	" Instant markdown preview.
 " Plug 'vim-pandoc/vim-pandoc-syntax' 	" Pandoc syntax.
 " Plug 'vim-scripts/vimwiki'		" Build a wiki -> html.
-" Plug 'vim-syntastic/syntastic'	" Syntastic linter.
+
+" Change linters and completion for vim and neovim.
+if has('nvim')
+	Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'} 	" Omnicompletion for neovim
+	Plug 'w0rp/ale' 		" Linter.
+else
+	Plug 'valloric/youcompleteme' 	" Vim completion
+	Plug 'vim-syntastic/syntastic'	" Syntastic linter.
+endif
 "}}}1
 
 " Triggered Plugins {{{1
-if has('nvim')
-	Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'} 	" Omnicompletion for neovim
-else
-	Plug 'valloric/youcompleteme' 	" Vim completion
-endif
-
 Plug 'artur-shaik/vim-javacomplete2',	{'for':['java']}		" Auto complete for Java...but only in java files.
 Plug 'aserebryakov/vim-todo-lists',	{'for':['todo']} 		" todo list on .todo files.
 Plug 'lervag/vimtex',			{'for':['tex']}			" Tex Utility
@@ -153,6 +157,9 @@ set confirm 				" Prompt conformation dialogs
 set tags=tags; 				" Sets tag file to recursively up directory hierarchy. (The `;` is VERY important)
 if has('mouse')
     set mouse=a 			" Enables mouse.
+endif
+if has('neovim')
+    set inccommand=nosplit
 endif
 " }}}1
 
@@ -218,6 +225,15 @@ else
     colorscheme molokai
 endif
 "}}}1
+
+" Netrw Config {{{1
+" -----------------------------------------------------------------------------
+" let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 25
+"}}}<++>
 
 " =============================================================================
 " LANGUAGE SPECIFIC SETTINGS
