@@ -79,7 +79,6 @@ Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
 Plug 'vim-pandoc/vim-pandoc' 		" Pandoc.
 Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
 Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
-Plug 'w0rp/ale' 			" Linter.
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
 Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
 " Plug 'ap/vim-css-color' 		" Colorizer.
@@ -90,16 +89,18 @@ Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
 " Plug 'suan/vim-instant-markdow'	" Instant markdown preview.
 " Plug 'vim-pandoc/vim-pandoc-syntax' 	" Pandoc syntax.
 " Plug 'vim-scripts/vimwiki'		" Build a wiki -> html.
-" Plug 'vim-syntastic/syntastic'	" Syntastic linter.
+
+" Change linters and completion for vim and neovim.
+if has('nvim')
+	Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'} 	" Omnicompletion for neovim
+	Plug 'w0rp/ale' 		" Linter.
+else
+	Plug 'valloric/youcompleteme' 	" Vim completion
+	Plug 'vim-syntastic/syntastic'	" Syntastic linter.
+endif
 "}}}1
 
 " Triggered Plugins {{{1
-if has('nvim')
-	Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'} 	" Omnicompletion for neovim
-else
-	Plug 'valloric/youcompleteme' 	" Vim completion
-endif
-
 Plug 'artur-shaik/vim-javacomplete2',	{'for':['java']}		" Auto complete for Java...but only in java files.
 Plug 'aserebryakov/vim-todo-lists',	{'for':['todo']} 		" todo list on .todo files.
 Plug 'lervag/vimtex',			{'for':['tex']}			" Tex Utility
