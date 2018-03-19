@@ -154,6 +154,9 @@ set tags=tags; 				" Sets tag file to recursively up directory hierarchy. (The `
 if has('mouse')
     set mouse=a 			" Enables mouse.
 endif
+if has('neovim')
+    set inccommand=nosplit
+endif
 " }}}1
 
 " Folding {{{
