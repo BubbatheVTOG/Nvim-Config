@@ -16,8 +16,9 @@
 " PLUGINS
 " =============================================================================
 
-" Environmental Setup {{{0
+" Environmental Setup {{{1
 " Use `$nvim -u $(location to vimrc)` to tirgger this event.
+" -----------------------------------------------------------------------------
 if has('nvim')
 	if empty(glob('~/.config/nvim/init.vim'))
 		silent !mkdir -p ~/.config/nvim
@@ -80,7 +81,7 @@ Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
 Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
 Plug 'w0rp/ale' 			" Linter.
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
-" Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
+Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
 " Plug 'ap/vim-css-color' 		" Colorizer.
 " Plug 'easymotion/vim-easymotion'	" Motions on speed.
 " Plug 'kana/vim-textobj-indent' 	" Defines indent object.(Currently broken.)
