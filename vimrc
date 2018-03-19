@@ -16,7 +16,7 @@
 " PLUGINS
 " =============================================================================
 
-" Environmental Setup {{{1
+" Environmental Setup {{{0
 " Use `$nvim -u $(location to vimrc)` to tirgger this event.
 if has('nvim')
 	if empty(glob('~/.config/nvim/init.vim'))
@@ -56,12 +56,12 @@ Plug 'dylanaraps/wal.vim'		" Wal color setting.
 Plug 'ervandew/supertab'		" Tab completion.
 Plug 'godlygeek/tabular'		" Text alignment.
 Plug 'junegunn/vim-easy-align' 		" Easily align text.
+Plug 'lilydjwg/colorizer'		" Hex code colorizer. This used to be a triggered plugin. {'on':['ColorToggle']}
 Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
 Plug 'majutsushi/tagbar' 		" Shows all methods and variables.
 Plug 'matze/vim-move'			" Move text selections.
 Plug 'reedes/vim-wordy' 		" Word usage for writing.
 Plug 'rhysd/clever-f.vim'		" Super slick t/f movements.
-" Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
 Plug 'sheerun/vim-polyglot'		" Syntax highlighting for a lot of languages. (Striped down, install specific ones if needed.)
 Plug 'terryma/vim-multiple-cursors' 	" Multiple cursors.
 Plug 'thaerkh/vim-workspace'		" Save workspace.
@@ -80,7 +80,7 @@ Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
 Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
 Plug 'w0rp/ale' 			" Linter.
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
-Plug 'lilydjwg/colorizer'		" Hex code colorizer. This used to be a triggered plugin. {'on':['ColorToggle']}
+" Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
 " Plug 'ap/vim-css-color' 		" Colorizer.
 " Plug 'easymotion/vim-easymotion'	" Motions on speed.
 " Plug 'kana/vim-textobj-indent' 	" Defines indent object.(Currently broken.)
