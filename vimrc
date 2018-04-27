@@ -45,24 +45,19 @@ endif
 " Plugins {{{1
 " -----------------------------------------------------------------------------
 call plug#begin()
-Plug 'AndrewRadev/splitjoin.vim'	" Split or join lines.
 Plug 'Chiel92/vim-autoformat' 		" Auto code formating. May require system packages.
 Plug 'Xuyuanp/nerdtree-git-plugin'	" Git plugin for NerdTree.
 Plug 'Yggdroot/indentLine'		" Shows line indents.
 Plug 'airblade/vim-gitgutter'		" Shows staged lines.
-Plug 'apalmer1377/factorus'		" Refactoring Plugin.
 Plug 'bronson/vim-trailing-whitespace'	" Fix white space by :FixWhitespace
 Plug 'ctrlpvim/ctrlp.vim' 		" ControlP (this could be triggerd but then the bind doesn't work) {'on':['CtrlP','CtrlPBuffer','CtrlPMRU','CtrlPMixed']}
 Plug 'dylanaraps/wal.vim'		" Wal color setting.
 Plug 'ervandew/supertab'		" Tab completion.
-Plug 'godlygeek/tabular'		" Text alignment.
 Plug 'junegunn/vim-easy-align' 		" Easily align text.
 Plug 'lilydjwg/colorizer'		" Hex code colorizer. This used to be a triggered plugin. {'on':['ColorToggle']}
 Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
 Plug 'majutsushi/tagbar' 		" Shows all methods and variables.
 Plug 'matze/vim-move'			" Move text selections.
-Plug 'reedes/vim-wordy' 		" Word usage for writing.
-Plug 'rhysd/clever-f.vim'		" Super slick t/f movements.
 Plug 'sheerun/vim-polyglot'		" Syntax highlighting for a lot of languages. (Striped down, install specific ones if needed.)
 Plug 'terryma/vim-multiple-cursors' 	" Multiple cursors.
 Plug 'thaerkh/vim-workspace'		" Save workspace.
@@ -71,7 +66,6 @@ Plug 'tpope/vim-commentary' 		" Commenting Plugin (Tring this instead of nerd co
 Plug 'tpope/vim-fugitive'		" Git commands from ex mode.
 Plug 'tpope/vim-repeat' 		" Repeat support for plugins.
 Plug 'tpope/vim-sleuth' 		" Heuristic tabsizes.
-Plug 'tpope/vim-speeddating'		" Date manipulation.
 Plug 'tpope/vim-surround'		" Surround movement command.
 Plug 'tpope/vim-vinegar' 		" Netrw oil.
 Plug 'vim-airline/vim-airline'		" Status bar.
@@ -81,12 +75,18 @@ Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
 Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
 Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
+" Plug 'AndrewRadev/splitjoin.vim'	" Split or join lines.
 " Plug 'ap/vim-css-color' 		" Colorizer.
+" Plug 'apalmer1377/factorus'		" Refactoring Plugin.
 " Plug 'easymotion/vim-easymotion'	" Motions on speed.
+" Plug 'godlygeek/tabular'		" Text alignment.
 " Plug 'kana/vim-textobj-indent' 	" Defines indent object.(Currently broken.)
 " Plug 'kana/vim-textobj-line' 		" Defines line object.(Currently broken.)
 " Plug 'machakann/vim-sandwich'		" Adds sandwich command for surrounding objects.
+" Plug 'reedes/vim-wordy' 		" Word usage for writing.
+" Plug 'rhysd/clever-f.vim'		" Super slick t/f movements.
 " Plug 'suan/vim-instant-markdow'	" Instant markdown preview.
+" Plug 'tpope/vim-speeddating'		" Date manipulation.
 " Plug 'vim-pandoc/vim-pandoc-syntax' 	" Pandoc syntax.
 " Plug 'vim-scripts/vimwiki'		" Build a wiki -> html.
 
@@ -102,26 +102,26 @@ endif
 
 " Triggered Plugins {{{1
 Plug 'artur-shaik/vim-javacomplete2',	{'for':['java']}		" Auto complete for Java...but only in java files.
-Plug 'aserebryakov/vim-todo-lists',	{'for':['todo']} 		" todo list on .todo files.
 Plug 'lervag/vimtex',			{'for':['tex']}			" Tex Utility
 Plug 'xuhdev/vim-latex-live-preview',	{'for':['tex']}			" A Vim Plugin for Lively Previewing LaTeX PDF Output
-" Keep these next two plugins ordered and formated like this!
-Plug 'mattn/webapi-vim', 		{'for':['markdown']} 		" Webapi for vim-quicklink.
-	Plug 'christoomey/vim-quicklink', 	{'for':['markdown']} 	" Quickly create links in markdown files.
 Plug 'cohama/agit.vim', 		{'on':['Agit']} 		" Git log viewer.
-Plug 'davidbeckingsale/writegood.vim',	{'on':['WritegoodToggle']} 	" Writting utility.
-Plug 'dhruvasagar/vim-table-mode', 	{'on':['TableModeToggle']} 	" Table creation plugin.
-Plug 'johngrib/vim-game-code-break',	{'on':['VimGameCodeBreak']}	" Brick Breaker
-Plug 'johngrib/vim-game-snake', 	{'on':['VimGameSnake']} 	" Snake!
 Plug 'junegunn/goyo.vim', 		{'on':['Goyo']} 		" Distraction free writing.
 Plug 'mbbill/undotree',			{'on':['UndotreeToggle']}	" Create an undotree.
-Plug 'metakirby5/codi.vim',		{'on':['Codi']}			" Interactive scratchpad.
-Plug 'omaraboumrad/vim-life', 		{'on':['GOL']} 			" Game of life
 Plug 'scrooloose/nerdtree',		{'on':['NERDTreeToggle']}	" Its NerdTree...but only when its toggled.
-Plug 'vim-scripts/LanguageTool',	{'on':['LanguageToolCheck','LanguageToolClear']}	" Grammar checking.
 Plug 'vim-scripts/todo-vim',		{'on':['TODOToggle']} 		" Todo list
 Plug 'roman/golden-ratio', 		{'on':['GoldenRatioToggle']} 	" Change split sizes on focus change. This used to be a triggerd plugin.
 Plug 'zchee/deoplete-jedi', 		{'for':['python']} 		" Competion engin for python.
+" Plug 'aserebryakov/vim-todo-lists',	{'for':['todo']} 		" todo list on .todo files.
+" Plug 'davidbeckingsale/writegood.vim',	{'on':['WritegoodToggle']} 	" Writting utility.
+" Plug 'dhruvasagar/vim-table-mode', 	{'on':['TableModeToggle']} 	" Table creation plugin.
+" Plug 'johngrib/vim-game-code-break',	{'on':['VimGameCodeBreak']}	" Brick Breaker
+" Plug 'johngrib/vim-game-snake', 	{'on':['VimGameSnake']} 	" Snake!
+" Plug 'metakirby5/codi.vim',		{'on':['Codi']}			" Interactive scratchpad.
+" Plug 'omaraboumrad/vim-life', 		{'on':['GOL']} 			" Game of life
+" Plug 'vim-scripts/LanguageTool',	{'on':['LanguageToolCheck','LanguageToolClear']}	" Grammar checking.
+" Keep these next two plugins ordered and formated like this!
+" Plug 'mattn/webapi-vim', 		{'for':['markdown']} 		" Webapi for vim-quicklink.
+" 	Plug 'christoomey/vim-quicklink', 	{'for':['markdown']} 	" Quickly create links in markdown files.
 call plug#end()				" required
 "}}}1
 
@@ -679,7 +679,7 @@ let g:pandoc#modules#disabled = ["folding"]
 " Todo-vim {{{1
 " -----------------------------------------------------------------------------
 " :TODOToggle
-nnoremap <leader>td	:TODOToggle<CR>\<C-w>
+" nnoremap <leader>td	:TODOToggle<CR>\<C-w>
 " }}}1
 
 " Golden-ratio {{{1
