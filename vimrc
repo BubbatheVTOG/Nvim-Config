@@ -45,6 +45,7 @@ endif
 " Plugins {{{1
 " -----------------------------------------------------------------------------
 call plug#begin()
+Plug 'christoomey/vim-conflicted' 	" A git merging tool.
 Plug 'Chiel92/vim-autoformat' 		" Auto code formating. May require system packages.
 Plug 'Xuyuanp/nerdtree-git-plugin'	" Git plugin for NerdTree.
 Plug 'Yggdroot/indentLine'		" Shows line indents.
