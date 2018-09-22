@@ -144,6 +144,7 @@ call plug#end()				" required
 " =============================================================================
 
 " General Configuration {{{1
+set t_Co=256 				" set the term color to 256. Themes break w/o this.
 filetype plugin indent on		" Syntax for different file types. Plus autoindent for that file type.
 set path+=**				" appends $PATH to find command
 syntax on				" Syntax on bitch.
