@@ -92,20 +92,18 @@ Plug 'octol/vim-cpp-enhanced-highlight' " Enhancemed c++ highlighting.
 
 " Plugins Requiring Host Packages {{{2
 " -----------------------------------------------------------------------------
-
 Plug 'Chiel92/vim-autoformat' 			" Auto code formating. May require system packages.
 
 if executable('ack') || executable ('ag')
     Plug 'mileszs/ack.vim' 			" Project text searching.
 endif
-
 if executable('wal')
     Plug 'dylanaraps/wal.vim'			" Wal color setting.
 endif
-
 " }}}2
 
-" Change linters and completion for vim and neovim.
+" Change linters and completion for vim and neovim. {{{2
+" -----------------------------------------------------------------------------
 if has('nvim')
 	Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'} 	" Omnicompletion for neovim
 	Plug 'w0rp/ale' 		" Linter.
@@ -113,7 +111,8 @@ else
 	Plug 'valloric/youcompleteme' 	" Vim completion 	" may require `~/.vim/plugged/youcompleteme/install.py` on updates.
 	Plug 'vim-syntastic/syntastic'	" Syntastic linter.
 endif
-"}}}1
+" }}}2
+" }}}1
 
 " Triggered Plugins {{{1
 Plug 'artur-shaik/vim-javacomplete2',	{'for':['java']}		" Auto complete for Java...but only in java files.
