@@ -46,13 +46,11 @@ endif
 " -----------------------------------------------------------------------------
 call plug#begin()
 Plug 'christoomey/vim-conflicted' 	" A git merging tool.
-Plug 'Chiel92/vim-autoformat' 		" Auto code formating. May require system packages.
 Plug 'Xuyuanp/nerdtree-git-plugin'	" Git plugin for NerdTree.
 Plug 'Yggdroot/indentLine'		" Shows line indents.
 Plug 'airblade/vim-gitgutter'		" Shows staged lines.
 Plug 'bronson/vim-trailing-whitespace'	" Fix white space by :FixWhitespace
 Plug 'ctrlpvim/ctrlp.vim' 		" ControlP (this could be triggerd but then the bind doesn't work) {'on':['CtrlP','CtrlPBuffer','CtrlPMRU','CtrlPMixed']}
-Plug 'dylanaraps/wal.vim'		" Wal color setting.
 Plug 'ervandew/supertab'		" Tab completion.
 Plug 'junegunn/vim-easy-align' 		" Easily align text.
 Plug 'lilydjwg/colorizer'		" Hex code colorizer. This used to be a triggered plugin. {'on':['ColorToggle']}
@@ -71,9 +69,7 @@ Plug 'tpope/vim-surround'		" Surround movement command.
 Plug 'tpope/vim-vinegar' 		" Netrw oil.
 Plug 'vim-airline/vim-airline'		" Status bar.
 Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
-Plug 'vim-pandoc/vim-pandoc' 		" Pandoc.
 Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
-Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
 Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
 " Plug 'AndrewRadev/splitjoin.vim'	" Split or join lines.
@@ -88,15 +84,32 @@ Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
 " Plug 'rhysd/clever-f.vim'		" Super slick t/f movements.
 " Plug 'suan/vim-instant-markdow'	" Instant markdown preview.
 " Plug 'tpope/vim-speeddating'		" Date manipulation.
+" Plug 'vim-pandoc/vim-pandoc' 		" Pandoc.
 " Plug 'vim-pandoc/vim-pandoc-syntax' 	" Pandoc syntax.
+" Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
 " Plug 'vim-scripts/vimwiki'		" Build a wiki -> html.
+
+" Plugins Requiring Host Packages {{{2
+" -----------------------------------------------------------------------------
+
+Plug 'Chiel92/vim-autoformat' 			" Auto code formating. May require system packages.
+
+if executable('ack') || executable ('ag')
+    Plug 'mileszs/ack.vim' 			" Project text searching.
+endif
+
+if executable('wal')
+    Plug 'dylanaraps/wal.vim'			" Wal color setting.
+endif
+
+" }}}2
 
 " Change linters and completion for vim and neovim.
 if has('nvim')
 	Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'} 	" Omnicompletion for neovim
 	Plug 'w0rp/ale' 		" Linter.
 else
-	Plug 'valloric/youcompleteme' 	" Vim completion
+	Plug 'valloric/youcompleteme' 	" Vim completion 	" may require `~/.vim/plugged/youcompleteme/install.py` on updates.
 	Plug 'vim-syntastic/syntastic'	" Syntastic linter.
 endif
 "}}}1
@@ -148,7 +161,7 @@ set splitright 				" Open new horizontal splits right of the current one.
 set splitbelow 				" Open new vertical splits below the current one.
 set completeopt=longest,menuone,preview	" Better autocompletion.
 " set autowriteall 			" Autosave files.
-set hidden 				" Buffers become hidden when abandoned.
+" set hidden 				" Buffers become hidden when abandoned.
 set autoread 				" Reload the file when it changes outside of (n)vim.
 set visualbell 				" Use visual bell instead of beeping.
 set history=1000 			" Increase history.
@@ -218,7 +231,7 @@ set undofile
 " -----------------------------------------------------------------------------
 " This will manage color scheme stuff since we don't know if the host has wal
 " installed.
-if !empty(glob('/usr/bin/wal'))
+if executable('/usr/bin/wal')
     let g:airline_theme = 'wal'
     colorscheme wal
 else
@@ -435,7 +448,11 @@ nnoremap <leader>ra gggqgG'' 				" Include list
 " ^] to jump to tag under cursor
 " g^] for amiguous tags
 " ^t to jump back to the tag stack
-command! MakeTags !ctags -R .
+
+" Assums ctags istalled in /usr/bin/
+if executable('ctags')
+    command! MakeTags !ctags -R --fields=+iaS --extra=+q --exclude=.git .
+endif
 " }}}1
 
 " =============================================================================
@@ -539,7 +556,9 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+" Disable the location list (it is annoying)
+let g:syntastic_auto_loc_list = 0
+" let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 " }}}1
@@ -796,6 +815,22 @@ let g:ale_fix_on_save = 1
 
 " }}}1
 
+" Ack {{{1
+" -----------------------------------------------------------------------------
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+
+    " Use ag over grep
+    set grepprg=ag\ --nogroup\ --nocolor
+
+    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+    " bind K to grep word under cursor
+    nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+endif
+" }}}1
+
 " =============================================================================
 " CUSTOM FUNCTIONS
 " =============================================================================
@@ -823,52 +858,58 @@ if has('nvim')
 " -----------------------------------------------------------------------------
 	" This executes ttyclock in a new full screen tab.
 	" Requires the host to have tty-clock installed.
-	function! TTYClock()
-		if system('if [ -e /usr/bin/tty-clock ]; then echo true; fi') =~ "true"
-			let g:indentLine_enabled = 0
-			exec "tabnew term://tty-clock -C 6 -txbsrc"
-		else
-			echom "TTYClock NOT installed on host system!"
-		endif
-	endfunction
-	command! TTYClock silent! call TTYClock()
+	if executable('tty-clock')
+	    function! TTYClock()
+		    if system('if [ -e /usr/bin/tty-clock ]; then echo true; fi') =~ "true"
+			    let g:indentLine_enabled = 0
+			    exec "tabnew term://tty-clock -C 6 -txbsrc"
+		    else
+			    echom "TTYClock NOT installed on host system!"
+		    endif
+	    endfunction
+	    command! TTYClock silent! call TTYClock()
+	endif
 	" }}}2
 
 	" Cmatrix() {{{2
 " -----------------------------------------------------------------------------
 	" This executes cmatrix in a new full screen tab.
 	" Requires the host to have cmatrix installed.
-	function! Cmatrix()
-		if system('if [ -e /usr/bin/cmatrix ]; then echo true; fi') =~ "true"
-			let g:indentLine_enabled = 0
-			exec "tabnew term://cmatrix -a -C cyan"
-		else
-			echom "Cmatrix NOT installed on host system!"
-		endif
-	endfunction
-	command! Cmatrix silent! call Cmatrix()
+	if executable('cmatrix')
+	    function! Cmatrix()
+		    if system('if [ -e /usr/bin/cmatrix ]; then echo true; fi') =~ "true"
+			    let g:indentLine_enabled = 0
+			    exec "tabnew term://cmatrix -a -C cyan"
+		    else
+			    echom "Cmatrix NOT installed on host system!"
+		    endif
+	    endfunction
+	    command! Cmatrix silent! call Cmatrix()
+	endif
 	" }}}2
 
 	" Htop() {{{2
 " -----------------------------------------------------------------------------
 	" This executes htop in a new full screen tab.
 	" Requires the host to have htop installed.
-	function! Htop(window)
-		if system('if [ -e /usr/bin/htop ]; then echo true; fi') =~ "true"
-			if a:window ==? "tabnew"
-				exec "tabnew term://htop"
-			elseif a:window ==? "vsplit"
-				exec "vsplit term://htop"
-				" exec "normal! \<C-w>r\<C-w>\<C-w>"
-			else
-				echom "Bad command!"
-			endif
-		else
-			echom "Htop is NOT installed on the host system!"
-		endif
-	endfunction
-	command! HtopTab silent! call Htop("tabnew")
-	command! HtopVsplit silent! call Htop("vsplit")
+	if executable('htop')
+	    function! Htop(window)
+		    if system('if [ -e /usr/bin/htop ]; then echo true; fi') =~ "true"
+			    if a:window ==? "tabnew"
+				    exec "tabnew term://htop"
+			    elseif a:window ==? "vsplit"
+				    exec "vsplit term://htop"
+				    " exec "normal! \<C-w>r\<C-w>\<C-w>"
+			    else
+				    echom "Bad command!"
+			    endif
+		    else
+			    echom "Htop is NOT installed on the host system!"
+		    endif
+	    endfunction
+	    command! HtopTab silent! call Htop("tabnew")
+	    command! HtopVsplit silent! call Htop("vsplit")
+	endif
 	" }}}2
 
 	" Terminal Split {{{2
