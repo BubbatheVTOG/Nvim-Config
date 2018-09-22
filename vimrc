@@ -72,6 +72,7 @@ Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
 Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
 Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
+Plug 'octol/vim-cpp-enhanced-highlight' " Enhancemed c++ highlighting.
 " Plug 'AndrewRadev/splitjoin.vim'	" Split or join lines.
 " Plug 'ap/vim-css-color' 		" Colorizer.
 " Plug 'apalmer1377/factorus'		" Refactoring Plugin.
@@ -830,6 +831,20 @@ if executable('ag')
     " bind K to grep word under cursor
     nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 endif
+" }}}1
+
+" Vim-Cpp-Enhanced-Highlight {{{1
+" -----------------------------------------------------------------------------
+" Class scopes.
+let g:cpp_class_scope_highlight = 1
+" Member variables.
+let g:cpp_member_variable_highlight = 1
+" Class declerations.
+let g:cpp_class_decl_highlight = 1
+" Templates (experimental option).
+let g:cpp_experimental_template_highlight = 1
+" Library Concepts.
+let g:cpp_concepts_highlight = 1
 " }}}1
 
 " =============================================================================
