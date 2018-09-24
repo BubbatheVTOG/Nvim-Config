@@ -934,7 +934,7 @@ if has('nvim')
 	" Terminal Split {{{2
 " -----------------------------------------------------------------------------
 	" Just make a terminal and split it on the right side.
-	function TermSplit()
+	function! TermSplit()
 		let g:indentLine_enabled=0
 		" TODO: change the next line to open in working directory"
 		exec "vsplit term://zsh"
@@ -946,7 +946,7 @@ if has('nvim')
 	" Terminal Tab {{{2
 " -----------------------------------------------------------------------------
 	" Just make a terminal in a new tab ffs.
-	function TermTab()
+	function! TermTab()
 		exec "tabnew term://zsh"
 		exec "terminal!"
 	endfunction
