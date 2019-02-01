@@ -71,14 +71,11 @@ Plug 'tpope/vim-commentary' 		" Commenting Plugin (Tring this instead of nerd co
 Plug 'tpope/vim-fugitive'		" Git commands from ex mode.
 Plug 'tpope/vim-repeat' 		" Repeat support for plugins.
 Plug 'tpope/vim-sleuth' 		" Heuristic tabsizes.
-Plug 'tpope/vim-speeddating'		" Date manipulation.
 Plug 'tpope/vim-surround'		" Surround movement command.
 Plug 'tpope/vim-vinegar' 		" Netrw oil.
 Plug 'vim-airline/vim-airline'		" Status bar.
 Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
-Plug 'vim-pandoc/vim-pandoc' 		" Pandoc.
 Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
-Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
 Plug 'w0rp/ale' 			" Linter.
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
 Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
@@ -88,7 +85,9 @@ Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
 " Plug 'kana/vim-textobj-line' 		" Defines line object.(Currently broken.)
 " Plug 'machakann/vim-sandwich'		" Adds sandwich command for surrounding objects.
 " Plug 'suan/vim-instant-markdow'	" Instant markdown preview.
+" Plug 'vim-pandoc/vim-pandoc' 		" Pandoc.
 " Plug 'vim-pandoc/vim-pandoc-syntax' 	" Pandoc syntax.
+" Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
 " Plug 'vim-scripts/vimwiki'		" Build a wiki -> html.
 " Plug 'vim-syntastic/syntastic'	" Syntastic linter.
 "}}}1
