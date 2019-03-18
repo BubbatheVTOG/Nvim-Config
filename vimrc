@@ -49,11 +49,11 @@ endif
 " Plugins {{{1
 " -----------------------------------------------------------------------------
 call plug#begin()
-Plug 'christoomey/vim-conflicted' 	" A git merging tool.
 Plug 'Xuyuanp/nerdtree-git-plugin'	" Git plugin for NerdTree.
 Plug 'Yggdroot/indentLine'		" Shows line indents.
 Plug 'airblade/vim-gitgutter'		" Shows staged lines.
 Plug 'bronson/vim-trailing-whitespace'	" Fix white space by :FixWhitespace
+Plug 'christoomey/vim-conflicted' 	" A git merging tool.
 Plug 'ctrlpvim/ctrlp.vim' 		" ControlP (this could be triggerd but then the bind doesn't work) {'on':['CtrlP','CtrlPBuffer','CtrlPMRU','CtrlPMixed']}
 Plug 'ervandew/supertab'		" Tab completion.
 Plug 'junegunn/vim-easy-align' 		" Easily align text.
@@ -61,6 +61,8 @@ Plug 'lilydjwg/colorizer'		" Hex code colorizer. This used to be a triggered plu
 Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
 Plug 'majutsushi/tagbar' 		" Shows all methods and variables.
 Plug 'matze/vim-move'			" Move text selections.
+Plug 'mboughaba/i3config.vim' 		" i3 syntax highlighting support.
+Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
 Plug 'sheerun/vim-polyglot'		" Syntax highlighting for a lot of languages. (Striped down, install specific ones if needed.)
 Plug 'terryma/vim-multiple-cursors' 	" Multiple cursors.
 Plug 'thaerkh/vim-workspace'		" Save workspace.
@@ -76,7 +78,6 @@ Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
 Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
 Plug 'w0rp/ale' 			" Linter.
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
-Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
 " Plug 'AndrewRadev/splitjoin.vim'	" Split or join lines.
 " Plug 'ap/vim-css-color' 		" Colorizer.
 " Plug 'apalmer1377/factorus'		" Refactoring Plugin.
@@ -118,26 +119,26 @@ endif
 
 " Triggered Plugins {{{1
 Plug 'artur-shaik/vim-javacomplete2',	{'for':['java']}		" Auto complete for Java...but only in java files.
-Plug 'lervag/vimtex',			{'for':['tex']}			" Tex Utility
-Plug 'xuhdev/vim-latex-live-preview',	{'for':['tex']}			" A Vim Plugin for Lively Previewing LaTeX PDF Output
 Plug 'cohama/agit.vim', 		{'on':['Agit']} 		" Git log viewer.
 Plug 'junegunn/goyo.vim', 		{'on':['Goyo']} 		" Distraction free writing.
+Plug 'lervag/vimtex',			{'for':['tex']}			" Tex Utility
 Plug 'mbbill/undotree',			{'on':['UndotreeToggle']}	" Create an undotree.
+Plug 'roman/golden-ratio', 		{'on':['GoldenRatioToggle']} 	" Change split sizes on focus change. This used to be a triggerd plugin.
 Plug 'scrooloose/nerdtree',		{'on':['NERDTreeToggle']}	" Its NerdTree...but only when its toggled.
 Plug 'vim-scripts/todo-vim',		{'on':['TODOToggle']} 		" Todo list
-Plug 'roman/golden-ratio', 		{'on':['GoldenRatioToggle']} 	" Change split sizes on focus change. This used to be a triggerd plugin.
+Plug 'xuhdev/vim-latex-live-preview',	{'for':['tex']}			" A Vim Plugin for Lively Previewing LaTeX PDF Output
 Plug 'zchee/deoplete-jedi', 		{'for':['python']} 		" Competion engin for python.
+" Keep these next two plugins ordered and formated like this!
 " Plug 'aserebryakov/vim-todo-lists',	{'for':['todo']} 		" todo list on .todo files.
 " Plug 'davidbeckingsale/writegood.vim',	{'on':['WritegoodToggle']} 	" Writting utility.
 " Plug 'dhruvasagar/vim-table-mode', 	{'on':['TableModeToggle']} 	" Table creation plugin.
 " Plug 'johngrib/vim-game-code-break',	{'on':['VimGameCodeBreak']}	" Brick Breaker
 " Plug 'johngrib/vim-game-snake', 	{'on':['VimGameSnake']} 	" Snake!
+" Plug 'mattn/webapi-vim', 		{'for':['markdown']} 		" Webapi for vim-quicklink.
+" 	Plug 'christoomey/vim-quicklink', 	{'for':['markdown']} 	" Quickly create links in markdown files.
 " Plug 'metakirby5/codi.vim',		{'on':['Codi']}			" Interactive scratchpad.
 " Plug 'omaraboumrad/vim-life', 		{'on':['GOL']} 			" Game of life
 " Plug 'vim-scripts/LanguageTool',	{'on':['LanguageToolCheck','LanguageToolClear']}	" Grammar checking.
-" Keep these next two plugins ordered and formated like this!
-" Plug 'mattn/webapi-vim', 		{'for':['markdown']} 		" Webapi for vim-quicklink.
-" 	Plug 'christoomey/vim-quicklink', 	{'for':['markdown']} 	" Quickly create links in markdown files.
 call plug#end()				" required
 "}}}1
 
