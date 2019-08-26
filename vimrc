@@ -111,7 +111,7 @@ if has('nvim')
 	Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'} 	" Omnicompletion for neovim
 	Plug 'w0rp/ale' 		" Linter.
 else
-	Plug 'valloric/youcompleteme' 	" Vim completion 	" may require `~/.vim/plugged/youcompleteme/install.py` on updates.
+	Plug 'valloric/youcompleteme' 	" Vim completion 	 may require `~/.vim/plugged/youcompleteme/install.py` on updates.
 	Plug 'vim-syntastic/syntastic'	" Syntastic linter.
 endif
 " }}}2
@@ -554,16 +554,18 @@ let g:airline_symbols.whitespace = 'Ξ'
 " Syntastic recommended settings. {{{1
 " -----------------------------------------------------------------------------
 " Global Settings:
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+if has('nvim')
+	set statusline+=%#warningmsg#
+	set statusline+=%{SyntasticStatuslineFlag()}
+	set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-" Disable the location list (it is annoying)
-let g:syntastic_auto_loc_list = 0
-" let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
+	let g:syntastic_always_populate_loc_list = 1
+	" Disable the location list (it is annoying)
+	let g:syntastic_auto_loc_list = 0
+	" let g:syntastic_auto_loc_list = 1
+	let g:syntastic_check_on_open = 1
+	let g:syntastic_check_on_wq = 1
+endif
 " }}}1
 
 " LaTeX Settings {{{1
@@ -1000,7 +1002,7 @@ endfunction
 command ToggleSpell silent! call ToggleSpell()
 " }}}1
 
-" SpellFix() {{{1 
+" SpellFix() {{{1
 " -----------------------------------------------------------------------------
 function! SpellFix()
 	normal! mp[s1z=`p
@@ -1084,6 +1086,25 @@ if executable('git')
     "git log --graph --pretty=oneline
 endif
 " }}}1
+
+" Netrw {{{1
+" -----------------------------------------------------------------------------
+function! ToggleNetrw()
+    let i = bufnr("$")
+    let wasOpen = 0
+    while (i >= 1)
+	if (getbufvar(i, "&filetype") == "netrw")
+	    silent exe "bwipeout " . i
+	    let wasOpen = 1
+	endif
+	let i-=1
+    endwhile
+    if !wasOpen
+	silent Lexplore
+    endif
+endfunction
+map <F3> :call ToggleNetrw() <CR>
+" -----------------------------------------------------------------------------
 
 " =============================================================================
 " TODO:
