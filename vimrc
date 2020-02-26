@@ -53,6 +53,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin'	" Git plugin for NerdTree.
 Plug 'Yggdroot/indentLine'		" Shows line indents.
 Plug 'airblade/vim-gitgutter'		" Shows staged lines.
 Plug 'bronson/vim-trailing-whitespace'	" Fix white space by :FixWhitespace
+Plug 'camspiers/animate.vim' 		" Window animations.
+Plug 'camspiers/lens.vim' 		" Window animations.
 Plug 'christoomey/vim-conflicted' 	" A git merging tool.
 Plug 'ctrlpvim/ctrlp.vim' 		" ControlP (this could be triggerd but then the bind doesn't work) {'on':['CtrlP','CtrlPBuffer','CtrlPMRU','CtrlPMixed']}
 Plug 'ervandew/supertab'		" Tab completion.
@@ -532,7 +534,7 @@ endif
 " let g:airline_theme='wal'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_alt_sep = ' | '
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
 
 " AirLine (unicode) symbols
 if !exists('g:airline_symbols')
@@ -848,6 +850,17 @@ let g:cpp_class_decl_highlight = 1
 let g:cpp_experimental_template_highlight = 1
 " Library Concepts.
 let g:cpp_concepts_highlight = 1
+" }}}1
+
+" Lens and Animate {{{1
+" -----------------------------------------------------------------------------
+let g:lens#disabled_filetypes = ['nerdtree', 'fzf']
+" let g:lens#disabled = 1
+" let g:lens#animate = 0
+" let g:lens#height_resize_max = 20
+" let g:lens#height_resize_min = 5
+" let g:lens#width_resize_max = 80
+" let g:lens#width_resize_min = 20
 " }}}1
 
 " =============================================================================
