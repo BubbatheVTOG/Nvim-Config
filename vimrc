@@ -17,8 +17,12 @@
 " =============================================================================
 
 " Environmental Setup {{{1
-" Use `$nvim -u $(location to vimrc)` to tirgger this event.
 " -----------------------------------------------------------------------------
+" Set some sane envirment values.
+set encoding=utf8
+set t_Co=256
+
+" Use `$nvim -u $(location to vimrc)` to tirgger this event.
 if has('nvim')
 	if empty(glob('~/.config/nvim/init.vim'))
 		silent !mkdir -p ~/.config/nvim
@@ -45,24 +49,22 @@ endif
 " Plugins {{{1
 " -----------------------------------------------------------------------------
 call plug#begin()
-Plug 'AndrewRadev/splitjoin.vim'	" Split or join lines.
-Plug 'Chiel92/vim-autoformat' 		" Auto code formating. May require system packages.
 Plug 'Xuyuanp/nerdtree-git-plugin'	" Git plugin for NerdTree.
 Plug 'Yggdroot/indentLine'		" Shows line indents.
 Plug 'airblade/vim-gitgutter'		" Shows staged lines.
-Plug 'apalmer1377/factorus'		" Refactoring Plugin.
 Plug 'bronson/vim-trailing-whitespace'	" Fix white space by :FixWhitespace
+Plug 'camspiers/animate.vim' 		" Window animations.
+Plug 'camspiers/lens.vim' 		" Window animations.
+Plug 'christoomey/vim-conflicted' 	" A git merging tool.
 Plug 'ctrlpvim/ctrlp.vim' 		" ControlP (this could be triggerd but then the bind doesn't work) {'on':['CtrlP','CtrlPBuffer','CtrlPMRU','CtrlPMixed']}
-Plug 'dylanaraps/wal.vim'		" Wal color setting.
 Plug 'ervandew/supertab'		" Tab completion.
-Plug 'godlygeek/tabular'		" Text alignment.
 Plug 'junegunn/vim-easy-align' 		" Easily align text.
 Plug 'lilydjwg/colorizer'		" Hex code colorizer. This used to be a triggered plugin. {'on':['ColorToggle']}
 Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
 Plug 'majutsushi/tagbar' 		" Shows all methods and variables.
 Plug 'matze/vim-move'			" Move text selections.
-Plug 'reedes/vim-wordy' 		" Word usage for writing.
-Plug 'rhysd/clever-f.vim'		" Super slick t/f movements.
+Plug 'mboughaba/i3config.vim' 		" i3 syntax highlighting support.
+Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
 Plug 'sheerun/vim-polyglot'		" Syntax highlighting for a lot of languages. (Striped down, install specific ones if needed.)
 Plug 'terryma/vim-multiple-cursors' 	" Multiple cursors.
 Plug 'thaerkh/vim-workspace'		" Save workspace.
@@ -71,57 +73,74 @@ Plug 'tpope/vim-commentary' 		" Commenting Plugin (Tring this instead of nerd co
 Plug 'tpope/vim-fugitive'		" Git commands from ex mode.
 Plug 'tpope/vim-repeat' 		" Repeat support for plugins.
 Plug 'tpope/vim-sleuth' 		" Heuristic tabsizes.
-Plug 'tpope/vim-speeddating'		" Date manipulation.
 Plug 'tpope/vim-surround'		" Surround movement command.
 Plug 'tpope/vim-vinegar' 		" Netrw oil.
 Plug 'vim-airline/vim-airline'		" Status bar.
 Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
-Plug 'vim-pandoc/vim-pandoc' 		" Pandoc.
 Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
-Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
+Plug 'w0rp/ale' 			" Linter.
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
-Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
+" Plug 'AndrewRadev/splitjoin.vim'	" Split or join lines.
 " Plug 'ap/vim-css-color' 		" Colorizer.
+" Plug 'apalmer1377/factorus'		" Refactoring Plugin.
 " Plug 'easymotion/vim-easymotion'	" Motions on speed.
+" Plug 'godlygeek/tabular'		" Text alignment.
 " Plug 'kana/vim-textobj-indent' 	" Defines indent object.(Currently broken.)
 " Plug 'kana/vim-textobj-line' 		" Defines line object.(Currently broken.)
 " Plug 'machakann/vim-sandwich'		" Adds sandwich command for surrounding objects.
+" Plug 'reedes/vim-wordy' 		" Word usage for writing.
+" Plug 'rhysd/clever-f.vim'		" Super slick t/f movements.
 " Plug 'suan/vim-instant-markdow'	" Instant markdown preview.
 " Plug 'vim-pandoc/vim-pandoc-syntax' 	" Pandoc syntax.
+" Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
 " Plug 'vim-scripts/vimwiki'		" Build a wiki -> html.
 
-" Change linters and completion for vim and neovim.
+" Plugins Requiring Host Packages {{{2
+" -----------------------------------------------------------------------------
+Plug 'Chiel92/vim-autoformat' 			" Auto code formating. May require system packages.
+
+if executable('ack') || executable ('ag')
+    Plug 'mileszs/ack.vim' 			" Project text searching.
+endif
+if executable('wal')
+    Plug 'dylanaraps/wal.vim'			" Wal color setting.
+endif
+" }}}2
+
+" Change linters and completion for vim and neovim. {{{2
+" -----------------------------------------------------------------------------
 if has('nvim')
 	Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'} 	" Omnicompletion for neovim
 	Plug 'w0rp/ale' 		" Linter.
 else
-	Plug 'valloric/youcompleteme' 	" Vim completion
+	Plug 'valloric/youcompleteme' 	" Vim completion 	 may require `~/.vim/plugged/youcompleteme/install.py` on updates.
 	Plug 'vim-syntastic/syntastic'	" Syntastic linter.
 endif
-"}}}1
+" }}}2
+" }}}1
 
 " Triggered Plugins {{{1
 Plug 'artur-shaik/vim-javacomplete2',	{'for':['java']}		" Auto complete for Java...but only in java files.
-Plug 'aserebryakov/vim-todo-lists',	{'for':['todo']} 		" todo list on .todo files.
-Plug 'lervag/vimtex',			{'for':['tex']}			" Tex Utility
-Plug 'xuhdev/vim-latex-live-preview',	{'for':['tex']}			" A Vim Plugin for Lively Previewing LaTeX PDF Output
-" Keep these next two plugins ordered and formated like this!
-Plug 'mattn/webapi-vim', 		{'for':['markdown']} 		" Webapi for vim-quicklink.
-	Plug 'christoomey/vim-quicklink', 	{'for':['markdown']} 	" Quickly create links in markdown files.
 Plug 'cohama/agit.vim', 		{'on':['Agit']} 		" Git log viewer.
-Plug 'davidbeckingsale/writegood.vim',	{'on':['WritegoodToggle']} 	" Writting utility.
-Plug 'dhruvasagar/vim-table-mode', 	{'on':['TableModeToggle']} 	" Table creation plugin.
-Plug 'johngrib/vim-game-code-break',	{'on':['VimGameCodeBreak']}	" Brick Breaker
-Plug 'johngrib/vim-game-snake', 	{'on':['VimGameSnake']} 	" Snake!
 Plug 'junegunn/goyo.vim', 		{'on':['Goyo']} 		" Distraction free writing.
+Plug 'lervag/vimtex',			{'for':['tex']}			" Tex Utility
 Plug 'mbbill/undotree',			{'on':['UndotreeToggle']}	" Create an undotree.
-Plug 'metakirby5/codi.vim',		{'on':['Codi']}			" Interactive scratchpad.
-Plug 'omaraboumrad/vim-life', 		{'on':['GOL']} 			" Game of life
-Plug 'scrooloose/nerdtree',		{'on':['NERDTreeToggle']}	" Its NerdTree...but only when its toggled.
-Plug 'vim-scripts/LanguageTool',	{'on':['LanguageToolCheck','LanguageToolClear']}	" Grammar checking.
-Plug 'vim-scripts/todo-vim',		{'on':['TODOToggle']} 		" Todo list
 Plug 'roman/golden-ratio', 		{'on':['GoldenRatioToggle']} 	" Change split sizes on focus change. This used to be a triggerd plugin.
+Plug 'scrooloose/nerdtree',		{'on':['NERDTreeToggle']}	" Its NerdTree...but only when its toggled.
+Plug 'vim-scripts/todo-vim',		{'on':['TODOToggle']} 		" Todo list
+Plug 'xuhdev/vim-latex-live-preview',	{'for':['tex']}			" A Vim Plugin for Lively Previewing LaTeX PDF Output
 Plug 'zchee/deoplete-jedi', 		{'for':['python']} 		" Competion engin for python.
+" Keep these next two plugins ordered and formated like this!
+" Plug 'aserebryakov/vim-todo-lists',	{'for':['todo']} 		" todo list on .todo files.
+" Plug 'davidbeckingsale/writegood.vim',	{'on':['WritegoodToggle']} 	" Writting utility.
+" Plug 'dhruvasagar/vim-table-mode', 	{'on':['TableModeToggle']} 	" Table creation plugin.
+" Plug 'johngrib/vim-game-code-break',	{'on':['VimGameCodeBreak']}	" Brick Breaker
+" Plug 'johngrib/vim-game-snake', 	{'on':['VimGameSnake']} 	" Snake!
+" Plug 'mattn/webapi-vim', 		{'for':['markdown']} 		" Webapi for vim-quicklink.
+" 	Plug 'christoomey/vim-quicklink', 	{'for':['markdown']} 	" Quickly create links in markdown files.
+" Plug 'metakirby5/codi.vim',		{'on':['Codi']}			" Interactive scratchpad.
+" Plug 'omaraboumrad/vim-life', 		{'on':['GOL']} 			" Game of life
+" Plug 'vim-scripts/LanguageTool',	{'on':['LanguageToolCheck','LanguageToolClear']}	" Grammar checking.
 call plug#end()				" required
 "}}}1
 
@@ -147,7 +166,7 @@ set splitright 				" Open new horizontal splits right of the current one.
 set splitbelow 				" Open new vertical splits below the current one.
 set completeopt=longest,menuone,preview	" Better autocompletion.
 " set autowriteall 			" Autosave files.
-set hidden 				" Buffers become hidden when abandoned.
+" set hidden 				" Buffers become hidden when abandoned.
 set autoread 				" Reload the file when it changes outside of (n)vim.
 set visualbell 				" Use visual bell instead of beeping.
 set history=1000 			" Increase history.
@@ -217,7 +236,7 @@ set undofile
 " -----------------------------------------------------------------------------
 " This will manage color scheme stuff since we don't know if the host has wal
 " installed.
-if !empty(glob('/usr/bin/wal'))
+if executable('/usr/bin/wal')
     let g:airline_theme = 'wal'
     colorscheme wal
 else
@@ -434,7 +453,11 @@ nnoremap <leader>ra gggqgG'' 				" Include list
 " ^] to jump to tag under cursor
 " g^] for amiguous tags
 " ^t to jump back to the tag stack
-command! MakeTags !ctags -R .
+
+" Assums ctags istalled in /usr/bin/
+if executable('ctags')
+    command! MakeTags !ctags -R --fields=+iaS --extra=+q --exclude=.git .
+endif
 " }}}1
 
 " =============================================================================
@@ -511,36 +534,41 @@ endif
 " let g:airline_theme='wal'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_alt_sep = ' | '
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
 
 " AirLine (unicode) symbols
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
+else
+    let g:airline_left_sep = '»'
+    let g:airline_right_sep = '«'
+    let g:airline_symbols.crypt = '🔒'
+    let g:airline_symbols.linenr = '¶'
+    let g:airline_symbols.maxlinenr = '☰'
+    let g:airline_symbols.maxlinenr = ''
+    let g:airline_symbols.branch = '@'
+    let g:airline_symbols.paste = 'ρ'
+    let g:airline_symbols.paste = 'Þ'
+    let g:airline_symbols.spell = 'Ꞩ'
+    let g:airline_symbols.whitespace = 'Ξ'
 endif
-let g:airline_left_sep = '»'
-let g:airline_right_sep = '«'
-let g:airline_symbols.crypt = '🔒'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.maxlinenr = '☰'
-let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.branch = '@'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.whitespace = 'Ξ'
 " }}}1
 
 " Syntastic recommended settings. {{{1
 " -----------------------------------------------------------------------------
 " Global Settings:
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+if has('nvim')
+	set statusline+=%#warningmsg#
+	set statusline+=%{SyntasticStatuslineFlag()}
+	set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
+	let g:syntastic_always_populate_loc_list = 1
+	" Disable the location list (it is annoying)
+	let g:syntastic_auto_loc_list = 0
+	" let g:syntastic_auto_loc_list = 1
+	let g:syntastic_check_on_open = 1
+	let g:syntastic_check_on_wq = 1
+endif
 " }}}1
 
 " LaTeX Settings {{{1
@@ -679,7 +707,7 @@ let g:pandoc#modules#disabled = ["folding"]
 " Todo-vim {{{1
 " -----------------------------------------------------------------------------
 " :TODOToggle
-nnoremap <leader>td	:TODOToggle<CR>\<C-w>
+" nnoremap <leader>td	:TODOToggle<CR>\<C-w>
 " }}}1
 
 " Golden-ratio {{{1
@@ -795,6 +823,47 @@ let g:ale_fix_on_save = 1
 
 " }}}1
 
+" Ack {{{1
+" -----------------------------------------------------------------------------
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+
+    " Use ag over grep
+    set grepprg=ag\ --nogroup\ --nocolor
+
+    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+    " bind K to grep word under cursor
+    nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+endif
+" }}}1
+
+" Vim-Cpp-Enhanced-Highlight {{{1
+" -----------------------------------------------------------------------------
+" Class scopes.
+let g:cpp_class_scope_highlight = 1
+" Member variables.
+let g:cpp_member_variable_highlight = 1
+" Class declerations.
+let g:cpp_class_decl_highlight = 1
+" Templates (experimental option).
+let g:cpp_experimental_template_highlight = 1
+" Library Concepts.
+let g:cpp_concepts_highlight = 1
+" }}}1
+
+" Lens and Animate {{{1
+" -----------------------------------------------------------------------------
+let g:lens#disabled_filetypes = ['nerdtree', 'fzf']
+" let g:lens#disabled = 1
+" let g:lens#animate = 0
+" let g:lens#height_resize_max = 20
+" let g:lens#height_resize_min = 5
+" let g:lens#width_resize_max = 80
+" let g:lens#width_resize_min = 20
+" }}}1
+
 " =============================================================================
 " CUSTOM FUNCTIONS
 " =============================================================================
@@ -822,58 +891,64 @@ if has('nvim')
 " -----------------------------------------------------------------------------
 	" This executes ttyclock in a new full screen tab.
 	" Requires the host to have tty-clock installed.
-	function! TTYClock()
-		if system('if [ -e /usr/bin/tty-clock ]; then echo true; fi') =~ "true"
-			let g:indentLine_enabled = 0
-			exec "tabnew term://tty-clock -C 6 -txbsrc"
-		else
-			echom "TTYClock NOT installed on host system!"
-		endif
-	endfunction
-	command! TTYClock silent! call TTYClock()
+	if executable('tty-clock')
+	    function! TTYClock()
+		    if system('if [ -e /usr/bin/tty-clock ]; then echo true; fi') =~ "true"
+			    let g:indentLine_enabled = 0
+			    exec "tabnew term://tty-clock -C 6 -txbsrc"
+		    else
+			    echom "TTYClock NOT installed on host system!"
+		    endif
+	    endfunction
+	    command! TTYClock silent! call TTYClock()
+	endif
 	" }}}2
 
 	" Cmatrix() {{{2
 " -----------------------------------------------------------------------------
 	" This executes cmatrix in a new full screen tab.
 	" Requires the host to have cmatrix installed.
-	function! Cmatrix()
-		if system('if [ -e /usr/bin/cmatrix ]; then echo true; fi') =~ "true"
-			let g:indentLine_enabled = 0
-			exec "tabnew term://cmatrix -a -C cyan"
-		else
-			echom "Cmatrix NOT installed on host system!"
-		endif
-	endfunction
-	command! Cmatrix silent! call Cmatrix()
+	if executable('cmatrix')
+	    function! Cmatrix()
+		    if system('if [ -e /usr/bin/cmatrix ]; then echo true; fi') =~ "true"
+			    let g:indentLine_enabled = 0
+			    exec "tabnew term://cmatrix -a -C cyan"
+		    else
+			    echom "Cmatrix NOT installed on host system!"
+		    endif
+	    endfunction
+	    command! Cmatrix silent! call Cmatrix()
+	endif
 	" }}}2
 
 	" Htop() {{{2
 " -----------------------------------------------------------------------------
 	" This executes htop in a new full screen tab.
 	" Requires the host to have htop installed.
-	function! Htop(window)
-		if system('if [ -e /usr/bin/htop ]; then echo true; fi') =~ "true"
-			if a:window ==? "tabnew"
-				exec "tabnew term://htop"
-			elseif a:window ==? "vsplit"
-				exec "vsplit term://htop"
-				" exec "normal! \<C-w>r\<C-w>\<C-w>"
-			else
-				echom "Bad command!"
-			endif
-		else
-			echom "Htop is NOT installed on the host system!"
-		endif
-	endfunction
-	command! HtopTab silent! call Htop("tabnew")
-	command! HtopVsplit silent! call Htop("vsplit")
+	if executable('htop')
+	    function! Htop(window)
+		    if system('if [ -e /usr/bin/htop ]; then echo true; fi') =~ "true"
+			    if a:window ==? "tabnew"
+				    exec "tabnew term://htop"
+			    elseif a:window ==? "vsplit"
+				    exec "vsplit term://htop"
+				    " exec "normal! \<C-w>r\<C-w>\<C-w>"
+			    else
+				    echom "Bad command!"
+			    endif
+		    else
+			    echom "Htop is NOT installed on the host system!"
+		    endif
+	    endfunction
+	    command! HtopTab silent! call Htop("tabnew")
+	    command! HtopVsplit silent! call Htop("vsplit")
+	endif
 	" }}}2
 
 	" Terminal Split {{{2
 " -----------------------------------------------------------------------------
 	" Just make a terminal and split it on the right side.
-	function TermSplit()
+	function! TermSplit()
 		let g:indentLine_enabled=0
 		" TODO: change the next line to open in working directory"
 		exec "vsplit term://zsh"
@@ -885,7 +960,7 @@ if has('nvim')
 	" Terminal Tab {{{2
 " -----------------------------------------------------------------------------
 	" Just make a terminal in a new tab ffs.
-	function TermTab()
+	function! TermTab()
 		exec "tabnew term://zsh"
 		exec "terminal!"
 	endfunction
@@ -941,7 +1016,7 @@ endfunction
 command ToggleSpell silent! call ToggleSpell()
 " }}}1
 
-" SpellFix() {{{1 
+" SpellFix() {{{1
 " -----------------------------------------------------------------------------
 function! SpellFix()
 	normal! mp[s1z=`p
@@ -1018,6 +1093,32 @@ highlight ColorColumn ctermbg=235 guibg=#003333
 " -----------------------------------------------------------------------------
 autocmd VimResized * execute "normal! \<C-w>="
 "}}}1
+
+" GitLogSplit {{{1
+" -----------------------------------------------------------------------------
+if executable('git')
+    "git log --graph --pretty=oneline
+endif
+" }}}1
+
+" Netrw {{{1
+" -----------------------------------------------------------------------------
+function! ToggleNetrw()
+    let i = bufnr("$")
+    let wasOpen = 0
+    while (i >= 1)
+	if (getbufvar(i, "&filetype") == "netrw")
+	    silent exe "bwipeout " . i
+	    let wasOpen = 1
+	endif
+	let i-=1
+    endwhile
+    if !wasOpen
+	silent Lexplore
+    endif
+endfunction
+map <F3> :call ToggleNetrw() <CR>
+" -----------------------------------------------------------------------------
 
 " =============================================================================
 " TODO:
