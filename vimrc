@@ -79,6 +79,7 @@ Plug 'vim-airline/vim-airline'		" Status bar.
 Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
 Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
 Plug 'w0rp/ale' 			" Linter.
+Plug 'wellle/context.vim' 		" Context plugin
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
 " Plug 'AndrewRadev/splitjoin.vim'	" Split or join lines.
 " Plug 'ap/vim-css-color' 		" Colorizer.
@@ -862,6 +863,19 @@ let g:lens#disabled_filetypes = ['nerdtree', 'fzf']
 " let g:lens#height_resize_min = 5
 " let g:lens#width_resize_max = 80
 " let g:lens#width_resize_min = 20
+" }}}1
+
+" Lens and Animate {{{1
+" -----------------------------------------------------------------------------
+" let g:context_enabled = 1
+" let g:context_filetype_blacklist = []
+" let g:context_presenter = nvim-float/vim-popup
+" let g:context_max_height = 21
+" let g:context_max_per_indent = 5
+" g:context_border_char = '▬'
+" let g:context_highlight_normal = 'Normal'
+" let g:context_highlight_border = 'Comment'
+" let g:context_highlight_tag    = 'Special'
 " }}}1
 
 " =============================================================================
