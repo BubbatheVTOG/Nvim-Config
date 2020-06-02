@@ -295,8 +295,8 @@ map <C-h> <C-W>h
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-L> <C-W>l
-
 " Visual mode code block indentation.
+
 " -----------------------------------------------------------------------------
 " When visually selecting a block and changing the indentation, don't unselect.
 vnoremap < <gv
@@ -341,9 +341,9 @@ function! s:check_back_space() abort
 endfunction
 
 inoremap <silent><expr> <TAB>
-			\ pumvisible() ? "\<C-n>" :
-			\ <SID>check_back_space() ? "\<TAB>" : \
-			\ coc#refresh()
+\ pumvisible() ? "\<C-n>" :
+\ <SID>check_back_space() ? "\<TAB>" :
+\ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <silent><expr> <C-space> coc#refresh()
 
