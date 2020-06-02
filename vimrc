@@ -160,7 +160,7 @@ set showmatch				" While search, show exact matches.
 if executable('rg')
 	set grepprg=rg\ --vimgrep
 endif
-nnoremap <silent> <leader>fa :vimgrep! <cword> * <CR>:copen<CR>
+nnoremap <silent> K :vimgrep! <cword> * <CR>:copen<CR>
 
 " Line Numbers
 " -----------------------------------------------------------------------------
