@@ -128,7 +128,6 @@ set showmatch				" Show matching brackets.
 set splitright 				" Open new horizontal splits right of the current one.
 set splitbelow 				" Open new vertical splits below the current one.
 set completeopt=longest,menuone,preview	" Better autocompletion.
-" set autowriteall 			" Autosave files.
 " set hidden 				" Buffers become hidden when abandoned.
 set autoread 				" Reload the file when it changes outside of (n)vim.
 set visualbell 				" Use visual bell instead of beeping.
@@ -850,12 +849,12 @@ command Sudo silent! call Sudo()
 let g:UserColorColumnBool=0
 function! UserColorColumn()
     if g:UserColorColumnBool==1
-		let &colorcolumn=0
-		let g:UserColorColumnBool=0
+				let &colorcolumn=0
+				let g:UserColorColumnBool=0
     else
-		let &colorcolumn=join(range(81,81),",")			" Set bar at column 81
-		let &colorcolumn="80,".join(range(121,121),",")		" Set bar at column121
-		let g:UserColorColumnBool=1
+				let &colorcolumn=join(range(81,81),",")			" Set bar at column 81
+				let &colorcolumn="80,".join(range(121,121),",")		" Set bar at column121
+				let g:UserColorColumnBool=1
     endif
 endfunction
 command UserColorColumn silent call UserColorColumn()
@@ -883,14 +882,14 @@ function! ToggleNetrw()
     let i = bufnr("$")
     let wasOpen = 0
     while (i >= 1)
-		if (getbufvar(i, "&filetype") == "netrw")
-			silent exe "bwipeout " . i
-			let wasOpen = 1
-		endif
-		let i-=1
+				if (getbufvar(i, "&filetype") == "netrw")
+					silent exe "bwipeout " . i
+					let wasOpen = 1
+				endif
+				let i-=1
     endwhile
     if !wasOpen
-		silent Lexplore
+				silent Lexplore
     endif
 endfunction
 map <F3> :call ToggleNetrw() <CR>
