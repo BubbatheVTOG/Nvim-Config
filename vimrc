@@ -130,6 +130,7 @@ set undolevels=1000 			" Increase undo levels.
 set scrolloff=5 			" Sets the scroll off set.
 set confirm 				" Prompt conformation dialogs
 set tags=tags; 				" Sets tag file to recursively up directory hierarchy. (The `;` is VERY important)
+set clipboard=unnamedplus	" Allow us to paste to the system clipboard by default.
 set noexpandtab 			" Ensures that we use tabs an not spaces.
 set tabstop=4
 set softtabstop=4
@@ -141,7 +142,7 @@ endif
 if has('neovim')
     set inccommand=nosplit
 endif
-set list listchars=tab:\|\
+set list listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 
 " Folding
 " -----------------------------------------------------------------------------
@@ -370,14 +371,6 @@ let NERDTreeCascadeOpenSingleChildDir = 0
 nmap <leader>gl :diffget //3<CR>
 nmap <leader>gh :diffget //2<CR>
 nmap <leader>gs :G<CR>
-
-" IndentLines Config
-" -----------------------------------------------------------------------------
-let g:indentLine_enabled = 1		" Enable indentLine
-let g:indentLine_faster = 1		" DO NOT DISABLE WHILE USING THIS PLUGIN
-let g:indentLine_color_term = 239	" Set indentLine color
-let g:indentLine_char = ""		" Set indentLine symbol(This does nothing apparently)
-set list lcs=tab:\·\ 			" set indentLine for tabs (this actually changes the symbol lol)
 
 " GitGutter Config
 " -----------------------------------------------------------------------------
