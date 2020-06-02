@@ -1,9 +1,9 @@
-	     " ██████╗ ██╗   ██╗██████╗ ██████╗  █████╗ ███████╗
-	     " ██╔══██╗██║   ██║██╔══██╗██╔══██╗██╔══██╗██╔════╝
-	     " ██████╔╝██║   ██║██████╔╝██████╔╝███████║███████╗
-	     " ██╔══██╗██║   ██║██╔══██╗██╔══██╗██╔══██║╚════██║
-	     " ██████╔╝╚██████╔╝██████╔╝██████╔╝██║  ██║███████║
-	     " ╚═════╝  ╚═════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
+		 " ██████╗ ██╗   ██╗██████╗ ██████╗  █████╗ ███████╗
+		 " ██╔══██╗██║   ██║██╔══██╗██╔══██╗██╔══██╗██╔════╝
+		 " ██████╔╝██║   ██║██████╔╝██████╔╝███████║███████╗
+		 " ██╔══██╗██║   ██║██╔══██╗██╔══██╗██╔══██║╚════██║
+		 " ██████╔╝╚██████╔╝██████╔╝██████╔╝██║  ██║███████║
+		 " ╚═════╝  ╚═════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
 
 	 "  ██╗███╗   ██╗██╗ ██╗   ██╗██╗███╗   ███╗██████╗  ██████╗
 	 " ██╔╝████╗  ██║╚██╗██║   ██║██║████╗ ████║██╔══██╗██╔════╝
@@ -52,57 +52,37 @@ Plug 'Xuyuanp/nerdtree-git-plugin'	" Git plugin for NerdTree.
 Plug 'Yggdroot/indentLine'		" Shows line indents.
 Plug 'airblade/vim-gitgutter'		" Shows staged lines.
 Plug 'bronson/vim-trailing-whitespace'	" Fix white space by :FixWhitespace
-Plug 'camspiers/animate.vim' 		" Window animations.
-Plug 'camspiers/lens.vim' 		" Window animations.
-Plug 'christoomey/vim-conflicted' 	" A git merging tool.
-Plug 'ctrlpvim/ctrlp.vim' 		" ControlP (this could be triggerd but then the bind doesn't work) {'on':['CtrlP','CtrlPBuffer','CtrlPMRU','CtrlPMixed']}
+Plug 'camspiers/animate.vim'		" Window animations.
+Plug 'camspiers/lens.vim'		" Window animations.
+Plug 'ctrlpvim/ctrlp.vim'		" ControlP (this could be triggerd but then the bind doesn't work) {'on':['CtrlP','CtrlPBuffer','CtrlPMRU','CtrlPMixed']}
 Plug 'ervandew/supertab'		" Tab completion.
-Plug 'junegunn/vim-easy-align' 		" Easily align text.
 Plug 'lilydjwg/colorizer'		" Hex code colorizer. This used to be a triggered plugin. {'on':['ColorToggle']}
 Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
-Plug 'majutsushi/tagbar' 		" Shows all methods and variables.
+Plug 'majutsushi/tagbar'		" Shows all methods and variables.
 Plug 'matze/vim-move'			" Move text selections.
-Plug 'mboughaba/i3config.vim' 		" i3 syntax highlighting support.
-Plug 'scrooloose/nerdcommenter' 	" Commenting plugin.
+Plug 'mboughaba/i3config.vim'		" i3 syntax highlighting support.
 Plug 'sheerun/vim-polyglot'		" Syntax highlighting for a lot of languages. (Striped down, install specific ones if needed.)
-Plug 'terryma/vim-multiple-cursors' 	" Multiple cursors.
 Plug 'thaerkh/vim-workspace'		" Save workspace.
-Plug 'tomasr/molokai' 			" color theme for when wal is not installed.
-Plug 'tpope/vim-commentary' 		" Commenting Plugin (Tring this instead of nerd commenter)
+Plug 'tomasr/molokai'			" color theme for when wal is not installed.
+Plug 'tpope/vim-commentary'			" Commenting Plugin (Tring this instead of nerd commenter)
 Plug 'tpope/vim-fugitive'		" Git commands from ex mode.
-Plug 'tpope/vim-repeat' 		" Repeat support for plugins.
-Plug 'tpope/vim-sleuth' 		" Heuristic tabsizes.
+Plug 'tpope/vim-repeat'			" Repeat support for plugins.
+Plug 'tpope/vim-sleuth'			" Heuristic tabsizes.
 Plug 'tpope/vim-surround'		" Surround movement command.
-Plug 'tpope/vim-vinegar' 		" Netrw oil.
+Plug 'tpope/vim-vinegar'		" Netrw oil.
 Plug 'vim-airline/vim-airline'		" Status bar.
 Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
 Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
-Plug 'w0rp/ale' 			" Linter.
-Plug 'wellle/context.vim' 		" Context plugin
+Plug 'w0rp/ale'				" Linter.
+Plug 'wellle/context.vim'		" Context plugin
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
-Plug 'vim-scripts/AnsiEsc.vim' 		" show ansii colors
-" Plug 'AndrewRadev/splitjoin.vim'	" Split or join lines.
-" Plug 'ap/vim-css-color' 		" Colorizer.
-" Plug 'apalmer1377/factorus'		" Refactoring Plugin.
-" Plug 'easymotion/vim-easymotion'	" Motions on speed.
-" Plug 'godlygeek/tabular'		" Text alignment.
-" Plug 'kana/vim-textobj-indent' 	" Defines indent object.(Currently broken.)
-" Plug 'kana/vim-textobj-line' 		" Defines line object.(Currently broken.)
-" Plug 'machakann/vim-sandwich'		" Adds sandwich command for surrounding objects.
-" Plug 'reedes/vim-wordy' 		" Word usage for writing.
-" Plug 'rhysd/clever-f.vim'		" Super slick t/f movements.
-" Plug 'suan/vim-instant-markdow'	" Instant markdown preview.
-" Plug 'vim-pandoc/vim-pandoc-syntax' 	" Pandoc syntax.
-" Plug 'vim-scripts/Tabmerge'		" Merge tab into split.
-" Plug 'vim-scripts/vimwiki'		" Build a wiki -> html.
 
 " Plugins Requiring Host Packages
 " -----------------------------------------------------------------------------
-Plug 'Chiel92/vim-autoformat' 			" Auto code formating. May require system packages.
-
 if executable('ack') || executable ('ag')
-    Plug 'mileszs/ack.vim' 			" Project text searching.
+    Plug 'mileszs/ack.vim'			" Project text searching.
 endif
+
 if executable('wal')
     Plug 'dylanaraps/wal.vim'			" Wal color setting.
 endif
@@ -110,37 +90,20 @@ endif
 " Change linters and completion for vim and neovim.
 " -----------------------------------------------------------------------------
 if has('nvim')
-	Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'} 	" Omnicompletion for neovim
-	Plug 'w0rp/ale' 		" Linter.
+	Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'}	" Omnicompletion for neovim
+	Plug 'w0rp/ale'			" Linter.
 else
-	Plug 'valloric/youcompleteme' 	" Vim completion 	 may require `~/.vim/plugged/youcompleteme/install.py` on updates.
+	Plug 'valloric/youcompleteme'	" Vim completion	 may require `~/.vim/plugged/youcompleteme/install.py` on updates.
 	Plug 'vim-syntastic/syntastic'	" Syntastic linter.
 endif
 
-
-
 " Triggered Plugins
 Plug 'artur-shaik/vim-javacomplete2',	{'for':['java']}		" Auto complete for Java...but only in java files.
-Plug 'cohama/agit.vim', 		{'on':['Agit']} 		" Git log viewer.
-Plug 'junegunn/goyo.vim', 		{'on':['Goyo']} 		" Distraction free writing.
-Plug 'lervag/vimtex',			{'for':['tex']}			" Tex Utility
+Plug 'cohama/agit.vim',			{'on':['Agit']}			" Git log viewer.
+Plug 'junegunn/goyo.vim',		{'on':['Goyo']}			" Distraction free writing.
 Plug 'mbbill/undotree',			{'on':['UndotreeToggle']}	" Create an undotree.
-Plug 'roman/golden-ratio', 		{'on':['GoldenRatioToggle']} 	" Change split sizes on focus change. This used to be a triggerd plugin.
+Plug 'roman/golden-ratio',		{'on':['GoldenRatioToggle']}	" Change split sizes on focus change. This used to be a triggerd plugin.
 Plug 'scrooloose/nerdtree',		{'on':['NERDTreeToggle']}	" Its NerdTree...but only when its toggled.
-Plug 'vim-scripts/todo-vim',		{'on':['TODOToggle']} 		" Todo list
-Plug 'xuhdev/vim-latex-live-preview',	{'for':['tex']}			" A Vim Plugin for Lively Previewing LaTeX PDF Output
-Plug 'zchee/deoplete-jedi', 		{'for':['python']} 		" Competion engin for python.
-" Keep these next two plugins ordered and formated like this!
-" Plug 'aserebryakov/vim-todo-lists',	{'for':['todo']} 		" todo list on .todo files.
-" Plug 'davidbeckingsale/writegood.vim',	{'on':['WritegoodToggle']} 	" Writting utility.
-" Plug 'dhruvasagar/vim-table-mode', 	{'on':['TableModeToggle']} 	" Table creation plugin.
-" Plug 'johngrib/vim-game-code-break',	{'on':['VimGameCodeBreak']}	" Brick Breaker
-" Plug 'johngrib/vim-game-snake', 	{'on':['VimGameSnake']} 	" Snake!
-" Plug 'mattn/webapi-vim', 		{'for':['markdown']} 		" Webapi for vim-quicklink.
-" 	Plug 'christoomey/vim-quicklink', 	{'for':['markdown']} 	" Quickly create links in markdown files.
-" Plug 'metakirby5/codi.vim',		{'on':['Codi']}			" Interactive scratchpad.
-" Plug 'omaraboumrad/vim-life', 		{'on':['GOL']} 			" Game of life
-" Plug 'vim-scripts/LanguageTool',	{'on':['LanguageToolCheck','LanguageToolClear']}	" Grammar checking.
 call plug#end()				" required
 
 
@@ -157,25 +120,25 @@ set background=dark			" Use text colors that look good on a dark background.
 set autoindent				" Auto intent to the same col when on new line.
 set smarttab				" Auto insert tabs spaces for curly braces.
 set ruler				" Enables cursor location.
-set wrap lbr 				" Wrap on words.
+set wrap lbr				" Wrap on words.
 set nocompatible			" Disables legacy stuff. (for vim)
 set showmode				" Shows what mode you're in.
 set showcmd				" Show partial command in status line.
 set showmatch				" Show matching brackets.
-set splitright 				" Open new horizontal splits right of the current one.
-set splitbelow 				" Open new vertical splits below the current one.
+set splitright				" Open new horizontal splits right of the current one.
+set splitbelow				" Open new vertical splits below the current one.
 set completeopt=longest,menuone,preview	" Better autocompletion.
-" set autowriteall 			" Autosave files.
-" set hidden 				" Buffers become hidden when abandoned.
-set autoread 				" Reload the file when it changes outside of (n)vim.
-set visualbell 				" Use visual bell instead of beeping.
-set history=1000 			" Increase history.
-set undolevels=1000 			" Increase undo levels.
-set scrolloff=5 			" Sets the scroll off set.
-set confirm 				" Prompt conformation dialogs
-set tags=tags; 				" Sets tag file to recursively up directory hierarchy. (The `;` is VERY important)
+" set hidden				" Buffers become hidden when abandoned.
+set autoread				" Reload the file when it changes outside of (n)vim.
+set visualbell				" Use visual bell instead of beeping.
+set history=1000			" Increase history.
+set undolevels=1000				" Increase undo levels.
+set scrolloff=5				" Sets the scroll off set.
+set confirm					" Prompt conformation dialogs
+set tags=tags;				" Sets tag file to recursively up directory hierarchy. (The `;` is VERY important)
+set noexpandtab				" Ensures that we use tabs an not spaces.
 if has('mouse')
-    set mouse=a 			" Enables mouse.
+    set mouse=a				" Enables mouse.
 endif
 if has('neovim')
     set inccommand=nosplit
@@ -186,30 +149,19 @@ endif
 " -----------------------------------------------------------------------------
 set foldmethod=marker			" sets manual foldmarkers
 highlight Folded ctermbg=black ctermfg=blue
-" nmap <leader>f0 :set foldlevel=0<CR>
-" nmap <leader>f1 :set foldlevel=1<CR>
-" nmap <leader>f2 :set foldlevel=2<CR>
-" nmap <leader>f3 :set foldlevel=3<CR>
-" nmap <leader>f4 :set foldlevel=4<CR>
-" nmap <leader>f5 :set foldlevel=5<CR>
-" nmap <leader>f6 :set foldlevel=6<CR>
-" nmap <leader>f7 :set foldlevel=7<CR>
-" nmap <leader>f8 :set foldlevel=8<CR>
-" nmap <leader>f9 :set foldlevel=9<CR>
-" autocmd BufWinLeave *.* mkview		" Save folds on exit.
-" autocmd BufWinEnter *.* silent loadview	" Create folds from save.
+autocmd BufWinLeave *.* mkview		" Save folds on exit.
+autocmd BufWinEnter *.* silent loadview	" Create folds from save.
 
 " Search
 " -----------------------------------------------------------------------------
 set hlsearch				" While searching, highlight (and search) as you type.
-" This will be removed when #2198 becomes released.
 set incsearch				" While searching, take you directly to where the so far typed pattern matches.
 set ignorecase				" While searching, ignore case.
 set smartcase				" While searching, use capitals when you use capitals.
 set showmatch				" While search, show exact matches.
 
-
 " Line Numbers
+
 " -----------------------------------------------------------------------------
 set relativenumber			" Enable relative number position when using 'set number'
 set number				" Enable line numbering.
@@ -217,8 +169,8 @@ set number				" Enable line numbering.
 
 " Backups
 " -----------------------------------------------------------------------------
-set nobackup 				" Disable backups. YOLO
-set noswapfile 				" Disable swapfiles.
+set nobackup				" Disable backups. YOLO
+set noswapfile				" Disable swapfiles.
 
 
 " Persistant Undo
@@ -262,62 +214,6 @@ let g:netrw_winsize = 25
 autocmd FileType java let java_highlight_debug=1
 autocmd FileType java let java_highlight_functions="style"
 
-" This requires "asytle" to be installed.
-" augroup Fix_mah_Java
-	" autocmd!
-	" autocmd BufWritePre *.java exec ":Autoformat"
-" augroup END
-
-
-" Python
-" -----------------------------------------------------------------------------
-" This requires "pep8" to be installed.
-" augroup Fix_mah_Python
-	" autocmd!
-	" autocmd BufWritePre *.py exec ":Autoformat"
-" augroup END
-
-" For highlighted numbers:
-let python_no_number_highlight = 0
-
-" For highlighted builtin functions:
-let python_no_builtin_highlight = 0
-
-" For highlighted standard exceptions:
-let python_no_exception_highlight = 0
-
-" For highlighted doctests and code inside:
-let python_no_doctest_highlight = 0
-
-
-
-" Vimwiki/Markdown
-" -----------------------------------------------------------------------------
-" Binds
-autocmd Filetype vimwiki,markdown nnoremap <leader>cl i[<++>](<++>)
-
-" Filetype Configuration.
-augroup filetype_wiki
-	autocmd!
-	autocmd FileType vimwiki,markdown set tabstop=4
-	autocmd FileType vimwiki,markdown set shiftwidth=4
-augroup END
-
-" This needs to be replaced with:
-" let g:pandoc#command#custom_open
-" let g:pandoc#command#autoexec_on_writes
-
-" augroup md_to_pdf_and_update_view
-	" autocmd!
-	" autocmd BufWritePost *.{mmd,md,mdown,mkd,mkdn,markdown,mdwn} exec ":Pandoc pdf"
-	" autocmd BufWritePost *.{mmd,md,mdown,mkd,mkdn,markdown,mdwn} exec ":Pandoc html"
-	" if has('nvim')
-		" autocmd Filetype vimwiki,markdown call jobstart(['zathura', expand('%<') . '.pdf'])
-		" autocmd Filetype vimwiki,markdown call jobstart(['python', "-m", "http.server", "8000"])
-	" endif
-" augroup END
-
-
 
 " HTML
 " -----------------------------------------------------------------------------
@@ -346,13 +242,13 @@ nnoremap <leader>nh	:noh<CR>
 
 " Fold Binds
 " -----------------------------------------------------------------------------
-nnoremap <Space> 	za
+nnoremap <Space>	za
 " Create classic fold.
-nnoremap <leader>of 	:fold<CR>
+nnoremap <leader>of		:fold<CR>
 " Create unnumberd fold.
-nnoremap <leader>cf 	:fold<CR>4li<CR><ESC>ka<SPACE><SPACE><ESC>i
+nnoremap <leader>cf		:fold<CR>4li<CR><ESC>ka<SPACE><SPACE><ESC>i
 " Create numbered fold.
-nnoremap <leader>nf 	:fold<CR>4li<++><CR><ESC>A<++><ESC><S-o><BS><++><ESC>k2hi<SPACE><SPACE><ESC>i
+nnoremap <leader>nf		:fold<CR>4li<++><CR><ESC>A<++><ESC><S-o><BS><++><ESC>k2hi<SPACE><SPACE><ESC>i
 
 
 " Change movement behavior for wrapped lines.
@@ -375,12 +271,11 @@ nnoremap <leader>fc	:Flash<CR>
 nnoremap <leader>sc	:ToggleSpell<CR>
 nnoremap <leader>bg	:ToggleBG<CR>
 nnoremap <leader>so	:Source<CR>
-nnoremap <leader>st 	:SourceThis<CR>
+nnoremap <leader>st		:SourceThis<CR>
 nnoremap <leader>su	:Sudo<CR>
 nnoremap <leader>ev	:e $MYVIMRC<CR>
-nnoremap <leader>tg	:TODOToggle<CR>
 nnoremap <leader>sf	:SpellFix<CR>
-nnoremap <leader>us 	:UserColorColumn<CR>
+nnoremap <leader>us		:UserColorColumn<CR>
 
 
 " Only create these binds if in neovim.
@@ -415,35 +310,22 @@ vnoremap < <gv
 vnoremap > >gv
 
 
-" Custom keybinds for tabs.
-" -----------------------------------------------------------------------------
-" Tab navigation similar to web browser behaviors.
-" tab new (requires file name or path or %)
-" nnoremap <C-t>		:tabnew
-" tab new in insert mode (requires file name or path or %)
-" inoremap <C-t>		<Esc>:tabnew
-" insert mode tab new
-" nnoremap <C-q>		:tabclose<CR>
-" insert mode tab close
-" inoremap <C-q>		<Esc>:tabclose<CR>
-
-
 " Buffer Binds
 " -----------------------------------------------------------------------------
 " These binds are for changing buffers.
 nnoremap <leader>ls	:ls<CR>
-inoremap <leader>bn 	<ESC>:bnext<CR>
-inoremap <leader>bp 	<ESC>:bprevious<CR>
-nnoremap <leader>bn  	:bnext<CR>
-nnoremap <leader>bp 	:bprevious<CR>
-nnoremap <leader>bo 	:buffers<CR>:buffer<Space> 	" Open buffer
-nnoremap <leader>bd 	:buffers<CR>:bdelete<Space> 	" Delete buffer<Paste>
+inoremap <leader>bn		<ESC>:bnext<CR>
+inoremap <leader>bp		<ESC>:bprevious<CR>
+nnoremap <leader>bn		:bnext<CR>
+nnoremap <leader>bp		:bprevious<CR>
+nnoremap <leader>bo		:buffers<CR>:buffer<Space>	" Open buffer
+nnoremap <leader>bd		:buffers<CR>:bdelete<Space>		" Delete buffer<Paste>
 
 
 " Reformating Binds
 " -----------------------------------------------------------------------------
-nnoremap <leader>rf gg=G`` 				" Format the whole file
-nnoremap <leader>ra gggqgG'' 				" Include list
+nnoremap <leader>rf gg=G``				" Format the whole file
+nnoremap <leader>ra gggqgG''				" Include list
 
 
 " Ctags Setup
@@ -452,7 +334,7 @@ nnoremap <leader>ra gggqgG'' 				" Include list
 " g^] for amiguous tags
 " ^t to jump back to the tag stack
 
-" Assums ctags istalled in /usr/bin/
+" Gates functionality predicated on ctags being installed in path.
 if executable('ctags')
     command! MakeTags !ctags -R --fields=+iaS --extra=+q --exclude=.git .
 endif
@@ -501,7 +383,7 @@ let g:indentLine_enabled = 1		" Enable indentLine
 let g:indentLine_faster = 1		" DO NOT DISABLE WHILE USING THIS PLUGIN
 let g:indentLine_color_term = 239	" Set indentLine color
 let g:indentLine_char = '.'		" Set indentLine symbol(This does nothing apparently)
-set list lcs=tab:\·\ 			" set indentLine for tabs (this actually changes the symbol lol)
+set list lcs=tab:\·\			" set indentLine for tabs (this actually changes the symbol lol)
 
 
 " GitGutter Config
@@ -569,14 +451,6 @@ if has('nvim')
 endif
 
 
-" LaTeX Settings
-" -----------------------------------------------------------------------------
-" :LLPStartPreview	" To start live preview
-" let g:livepreview_engine = 'your_engine' . ' [options]'	" To change compiler
-" let g:livepreview_engine 	= 'pdftex'
-let g:livepreview_previewer 	= 'zathura'
-
-
 " CSS Color Settings
 " -----------------------------------------------------------------------------
 " ColorToggle
@@ -599,19 +473,6 @@ let g:comfortable_motion_scroll_up_key = "k"
 let g:comfortable_motion_interval = 1000/60	" Default = 1000/60
 let g:comfortable_motion_friction = 80.0	" Default = 80.0
 let g:comfortable_motion_air_drag = 2.0		" Default = 2.0
-
-
-" SplitJoin
-" -----------------------------------------------------------------------------
-" Split a single line with gS
-" Join a block to a line with gJ
-
-
-" Tabular
-" -----------------------------------------------------------------------------
-" HOW TO USE:
-" http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
-
 
 " Vim-Highlightedyank
 " -----------------------------------------------------------------------------
@@ -666,91 +527,12 @@ let g:deoplete#enable_smart_case = 1
 "let g:deoplete#complete_method = 'omnifunc'
 
 
-" Vim-wiki
-" -----------------------------------------------------------------------------
-" see :h vimwiki-syntax
-" see :h vimwiki-mappings
-
-" Use real markdown.
-let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
-
-" Mappings.
-autocmd Filetype vimwiki nnoremap <leader>vl :VimwikiVSplitLink<CR>
-autocmd Filetype vimwiki nnoremap <leader>hl :VimwikiSplitLink<CR>
-autocmd Filetype vimwiki nnoremap <leader>ah :VimwikiAll2HTML<CR>
-autocmd Filetype vimwiki nnoremap <leader>bc :Vimwiki2HTMLBrowse<CR>
-
-
-" Vim-instant-markdown
-" -----------------------------------------------------------------------------
-let g:instant_markdown_slow = 1 			" Reduced compile/refresh.
-let g:instant_markdown_autostart = 0 			" Disable autostart. :InstantMarkdownPreview
-" let g:instant_markdown_open_to_the_world = 1 		" Open webserver to the world.
-" let g:instant_markdown_allow_unsafe_content = 1 	" Allow scripts.
-" let g:instant_markdown_allow_external_content = 0 	" Disable external content.
-
-
-" Pandoc
-" -----------------------------------------------------------------------------
-" Disable Pandoc folding.
-let g:pandoc#modules#disabled = ["folding"]
-
-
-" LanguageTool (TODO: @configure LanguageTool)
-" -----------------------------------------------------------------------------
-" :LanguageToolCheck
-" :LanguageToolClear
-
-
-" Todo-vim
-" -----------------------------------------------------------------------------
-" :TODOToggle
-" nnoremap <leader>td	:TODOToggle<CR>\<C-w>
-
-
 " Golden-ratio
 " -----------------------------------------------------------------------------
 nnoremap <leader>gr	:GoldenRatioToggle<CR>
 " :h golden-ratio
 " :GoldenRatioToggle
 " :GoldenRatioResize
-
-
-" Easymotion (TODO: @configure easymotion)
-" -----------------------------------------------------------------------------
-" help easymotion.txt
-
-
-" Vim-easy-align (TODO: @configure vim-easy-align)
-" -----------------------------------------------------------------------------
-" :h vim-easy-align
-
-
-" Vim-multiple-cursors (TODO: @configure vim-multiple-cursors)
-" -----------------------------------------------------------------------------
-" h; vim-multiple-cursors
-
-
-" Wordy (TODO: @configure wordy)
-" -----------------------------------------------------------------------------
-" :Wordy
-
-
-" Writegood (TODO: @configure writegood)
-" -----------------------------------------------------------------------------
-" :h writegood.txt
-
-
-" Vimgamesnake
-" -----------------------------------------------------------------------------
-" Use: ":VimGameSnake"
-
-
-" GOL (Game of Life)
-" -----------------------------------------------------------------------------
-" :e glider.txt
-" :GOL (to start)
-" :GOL (to stop)
 
 
 " Goyo (distraction free writing)
@@ -776,8 +558,8 @@ let g:ctrlp_working_path_mode = 'r'
 " Tag Bar
 " -----------------------------------------------------------------------------
 " This is all the config for tag bar.
-nnoremap <leader>tb 	:TagbarToggle<CR>
-inoremap <leader>tb 	<ESC>:TagbarToggle<CR>
+nnoremap <leader>tb		:TagbarToggle<CR>
+inoremap <leader>tb		<ESC>:TagbarToggle<CR>
 
 
 " Ale
@@ -835,20 +617,6 @@ if executable('ag')
 endif
 
 
-" Vim-Cpp-Enhanced-Highlight
-" -----------------------------------------------------------------------------
-" Class scopes.
-let g:cpp_class_scope_highlight = 1
-" Member variables.
-let g:cpp_member_variable_highlight = 1
-" Class declerations.
-let g:cpp_class_decl_highlight = 1
-" Templates (experimental option).
-let g:cpp_experimental_template_highlight = 1
-" Library Concepts.
-let g:cpp_concepts_highlight = 1
-
-
 " Lens and Animate
 " -----------------------------------------------------------------------------
 let g:lens#disabled_filetypes = ['nerdtree', 'fzf']
@@ -899,15 +667,15 @@ if has('nvim')
 	" This executes ttyclock in a new full screen tab.
 	" Requires the host to have tty-clock installed.
 	if executable('tty-clock')
-	    function! TTYClock()
-		    if system('if [ -e /usr/bin/tty-clock ]; then echo true; fi') =~ "true"
-			    let g:indentLine_enabled = 0
-			    exec "tabnew term://tty-clock -C 6 -txbsrc"
-		    else
-			    echom "TTYClock NOT installed on host system!"
-		    endif
-	    endfunction
-	    command! TTYClock silent! call TTYClock()
+		function! TTYClock()
+			if system('if [ -e /usr/bin/tty-clock ]; then echo true; fi') =~ "true"
+				let g:indentLine_enabled = 0
+				exec "tabnew term://tty-clock -C 6 -txbsrc"
+			else
+				echom "TTYClock NOT installed on host system!"
+			endif
+		endfunction
+		command! TTYClock silent! call TTYClock()
 	endif
 
 
@@ -916,15 +684,15 @@ if has('nvim')
 	" This executes cmatrix in a new full screen tab.
 	" Requires the host to have cmatrix installed.
 	if executable('cmatrix')
-	    function! Cmatrix()
-		    if system('if [ -e /usr/bin/cmatrix ]; then echo true; fi') =~ "true"
-			    let g:indentLine_enabled = 0
-			    exec "tabnew term://cmatrix -a -C cyan"
-		    else
-			    echom "Cmatrix NOT installed on host system!"
-		    endif
-	    endfunction
-	    command! Cmatrix silent! call Cmatrix()
+		function! Cmatrix()
+			if system('if [ -e /usr/bin/cmatrix ]; then echo true; fi') =~ "true"
+				let g:indentLine_enabled = 0
+				exec "tabnew term://cmatrix -a -C cyan"
+			else
+				echom "Cmatrix NOT installed on host system!"
+			endif
+		endfunction
+		command! Cmatrix silent! call Cmatrix()
 	endif
 
 
@@ -933,22 +701,22 @@ if has('nvim')
 	" This executes htop in a new full screen tab.
 	" Requires the host to have htop installed.
 	if executable('htop')
-	    function! Htop(window)
-		    if system('if [ -e /usr/bin/htop ]; then echo true; fi') =~ "true"
-			    if a:window ==? "tabnew"
-				    exec "tabnew term://htop"
-			    elseif a:window ==? "vsplit"
-				    exec "vsplit term://htop"
-				    " exec "normal! \<C-w>r\<C-w>\<C-w>"
-			    else
-				    echom "Bad command!"
-			    endif
-		    else
-			    echom "Htop is NOT installed on the host system!"
-		    endif
-	    endfunction
-	    command! HtopTab silent! call Htop("tabnew")
-	    command! HtopVsplit silent! call Htop("vsplit")
+		function! Htop(window)
+			if system('if [ -e /usr/bin/htop ]; then echo true; fi') =~ "true"
+				if a:window ==? "tabnew"
+					exec "tabnew term://htop"
+				elseif a:window ==? "vsplit"
+					exec "vsplit term://htop"
+					" exec "normal! \<C-w>r\<C-w>\<C-w>"
+				else
+					echom "Bad command!"
+				endif
+			else
+				echom "Htop is NOT installed on the host system!"
+			endif
+		endfunction
+		command! HtopTab silent! call Htop("tabnew")
+		command! HtopVsplit silent! call Htop("vsplit")
 	endif
 
 
@@ -1114,14 +882,14 @@ function! ToggleNetrw()
     let i = bufnr("$")
     let wasOpen = 0
     while (i >= 1)
-	if (getbufvar(i, "&filetype") == "netrw")
-	    silent exe "bwipeout " . i
-	    let wasOpen = 1
-	endif
-	let i-=1
+		if (getbufvar(i, "&filetype") == "netrw")
+			silent exe "bwipeout " . i
+			let wasOpen = 1
+		endif
+		let i-=1
     endwhile
     if !wasOpen
-	silent Lexplore
+		silent Lexplore
     endif
 endfunction
 map <F3> :call ToggleNetrw() <CR>
@@ -1133,7 +901,7 @@ map <F3> :call ToggleNetrw() <CR>
 "
 " (Enhancement) skeleton file insertion
 " (Enhancement) SpellFix() confirms replacement, or at least echo's changes.
-" (FIX) 	LineIndent colorschemes clash.
-" (Fix) 	md_to_pdf_and_update_view, make this togglable.
+" (FIX)		LineIndent colorschemes clash.
+" (Fix)		md_to_pdf_and_update_view, make this togglable.
 
-" vim:tw=78:ts=8:fdm=marker
+" vim:tw=78:ts=4:fdm=marker
