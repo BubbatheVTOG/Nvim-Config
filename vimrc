@@ -49,7 +49,6 @@ endif
 " -----------------------------------------------------------------------------
 call plug#begin()
 Plug 'Xuyuanp/nerdtree-git-plugin'	" Git plugin for NerdTree.
-Plug 'Yggdroot/indentLine'		" Shows line indents.
 Plug 'airblade/vim-gitgutter'		" Shows staged lines.
 Plug 'camspiers/animate.vim' 		" Window animations.
 Plug 'camspiers/lens.vim' 		" Window animations.
@@ -142,14 +141,14 @@ endif
 if has('neovim')
     set inccommand=nosplit
 endif
-
+set list listchars=tab:\|\
 
 " Folding
 " -----------------------------------------------------------------------------
 set foldmethod=marker			" sets manual foldmarkers
 highlight Folded ctermbg=black ctermfg=blue
-autocmd BufWinLeave *.* mkview		" Save folds on exit.
-autocmd BufWinEnter *.* silent loadview	" Create folds from save.
+"autocmd BufWinLeave *.* mkview		" Save folds on exit.
+"autocmd BufWinEnter *.* silent loadview	" Create folds from save.
 
 " Search
 " -----------------------------------------------------------------------------
@@ -377,7 +376,7 @@ nmap <leader>gs :G<CR>
 let g:indentLine_enabled = 1		" Enable indentLine
 let g:indentLine_faster = 1		" DO NOT DISABLE WHILE USING THIS PLUGIN
 let g:indentLine_color_term = 239	" Set indentLine color
-let g:indentLine_char = '	'		" Set indentLine symbol(This does nothing apparently)
+let g:indentLine_char = ""		" Set indentLine symbol(This does nothing apparently)
 set list lcs=tab:\·\ 			" set indentLine for tabs (this actually changes the symbol lol)
 
 " GitGutter Config
