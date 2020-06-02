@@ -76,13 +76,10 @@ Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
 Plug 'w0rp/ale' 			" Linter.
 Plug 'wellle/context.vim' 		" Context plugin
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
+" Plug 'mileszs/ack.vim' 			" Project text searching.
 
 " Plugins Requiring Host Packages
 " -----------------------------------------------------------------------------
-if executable('ack') || executable ('ag')
-    Plug 'mileszs/ack.vim' 			" Project text searching.
-endif
-
 if executable('wal')
     Plug 'dylanaraps/wal.vim'			" Wal color setting.
 endif
@@ -106,8 +103,8 @@ Plug 'roman/golden-ratio', 		{'on':['GoldenRatioToggle']} 	" Change split sizes 
 Plug 'scrooloose/nerdtree',		{'on':['NERDTreeToggle']}	" Its NerdTree...but only when its toggled.
 call plug#end()				" required
 
-
 " =============================================================================
+
 " GENERAL CONFIGURATION
 " =============================================================================
 
@@ -160,18 +157,20 @@ set ignorecase				" While searching, ignore case.
 set smartcase				" While searching, use capitals when you use capitals.
 set showmatch				" While search, show exact matches.
 
-" Line Numbers
+if executable('rg')
+	set grepprg=rg\ --vimgrep
+endif
+nnoremap <silent> <leader>fa :vimgrep! <cword> * <CR>:copen<CR>
 
+" Line Numbers
 " -----------------------------------------------------------------------------
 set relativenumber			" Enable relative number position when using 'set number'
 set number				" Enable line numbering.
-
 
 " Backups
 " -----------------------------------------------------------------------------
 set nobackup 				" Disable backups. YOLO
 set noswapfile 				" Disable swapfiles.
-
 
 " Persistant Undo
 " -----------------------------------------------------------------------------
@@ -181,7 +180,6 @@ if !isdirectory("/tmp/.vim-undo-dir")
 endif
 set undodir=/tmp/.vim-undo-dir
 set undofile
-
 
 " Color Schemes
 " -----------------------------------------------------------------------------
@@ -195,7 +193,6 @@ else
     colorscheme molokai
 endif
 
-
 " Netrw Config
 " -----------------------------------------------------------------------------
 " let g:netrw_banner = 0
@@ -203,6 +200,7 @@ let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 25
+
 
 " =============================================================================
 " LANGUAGE SPECIFIC SETTINGS
@@ -214,12 +212,10 @@ let g:netrw_winsize = 25
 autocmd FileType java let java_highlight_debug=1
 autocmd FileType java let java_highlight_functions="style"
 
-
 " HTML
 " -----------------------------------------------------------------------------
 " HTML skeleton file insertion
 nnoremap <leader>wh	:-1read $HOME/.vim/templates/html.skel<CR>
-
 
 " =============================================================================
 " CUSTOM KEYBINDS
@@ -229,16 +225,13 @@ nnoremap <leader>wh	:-1read $HOME/.vim/templates/html.skel<CR>
 " -----------------------------------------------------------------------------
 nnoremap ; :
 
-
 " Leader Defined
 " -----------------------------------------------------------------------------
 let mapleader = ","
 
-
 " Clear Search Highlights
 " -----------------------------------------------------------------------------
 nnoremap <leader>nh	:noh<CR>
-
 
 " Fold Binds
 " -----------------------------------------------------------------------------
@@ -250,7 +243,6 @@ nnoremap <leader>cf 	:fold<CR>4li<CR><ESC>ka<SPACE><SPACE><ESC>i
 " Create numbered fold.
 nnoremap <leader>nf 	:fold<CR>4li<++><CR><ESC>A<++><ESC><S-o><BS><++><ESC>k2hi<SPACE><SPACE><ESC>i
 
-
 " Change movement behavior for wrapped lines.
 " -----------------------------------------------------------------------------
 noremap  <buffer> <silent> k gk
@@ -258,12 +250,10 @@ noremap  <buffer> <silent> j gj
 noremap  <buffer> <silent> 0 g0
 noremap  <buffer> <silent> $ g$
 
-
 " Change movement behavior for wrapped lines in operator-pending mode(ex:d6j)
 " -----------------------------------------------------------------------------
 onoremap <silent> j gj
 onoremap <silent> k gk
-
 
 " Keymaps for custom functions.
 " -----------------------------------------------------------------------------
@@ -277,7 +267,6 @@ nnoremap <leader>ev	:e $MYVIMRC<CR>
 nnoremap <leader>sf	:SpellFix<CR>
 nnoremap <leader>us 	:UserColorColumn<CR>
 
-
 " Only create these binds if in neovim.
 if has('nvim')
 	nnoremap <leader>ts	:TermSplit<CR>
@@ -287,12 +276,10 @@ if has('nvim')
 	nnoremap <leader>tc	:TTYClock<CR>
 endif
 
-
 " Marker Replace
 " -----------------------------------------------------------------------------
 inoremap <leader>mr <ESC>/<++><CR>"_d4l:noh<CR>a
 nnoremap <leader>mr /<++><CR>"_d4l:noh<CR>a
-
 
 " Split movement.
 " -----------------------------------------------------------------------------
@@ -302,13 +289,11 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-L> <C-W>l
 
-
 " Visual mode code block indentation.
 " -----------------------------------------------------------------------------
 " When visually selecting a block and changing the indentation, don't unselect.
 vnoremap < <gv
 vnoremap > >gv
-
 
 " Buffer Binds
 " -----------------------------------------------------------------------------
@@ -321,12 +306,10 @@ nnoremap <leader>bp 	:bprevious<CR>
 nnoremap <leader>bo 	:buffers<CR>:buffer<Space> 	" Open buffer
 nnoremap <leader>bd 	:buffers<CR>:bdelete<Space> 	" Delete buffer<Paste>
 
-
 " Reformating Binds
 " -----------------------------------------------------------------------------
 nnoremap <leader>rf gg=G`` 				" Format the whole file
 nnoremap <leader>ra gggqgG'' 				" Include list
-
 
 " Ctags Setup
 " -----------------------------------------------------------------------------
@@ -338,7 +321,6 @@ nnoremap <leader>ra gggqgG'' 				" Include list
 if executable('ctags')
     command! MakeTags !ctags -R --fields=+iaS --extra=+q --exclude=.git .
 endif
-
 
 " =============================================================================
 " PLUGIN CONFIGURATION
@@ -358,7 +340,6 @@ let NERDTreeChDirMode = 2
 let NERDTreeCascadeSingleChildDir = 0
 let NERDTreeCascadeOpenSingleChildDir = 0
 
-
 " Java Complete 2 Config
 " -----------------------------------------------------------------------------
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
@@ -376,7 +357,6 @@ imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
 nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 
-
 " IndentLines Config
 " -----------------------------------------------------------------------------
 let g:indentLine_enabled = 1		" Enable indentLine
@@ -385,7 +365,6 @@ let g:indentLine_color_term = 239	" Set indentLine color
 let g:indentLine_char = '.'		" Set indentLine symbol(This does nothing apparently)
 set list lcs=tab:\·\ 			" set indentLine for tabs (this actually changes the symbol lol)
 
-
 " GitGutter Config
 " -----------------------------------------------------------------------------
 " let g:gitgutter_realtime = 0
@@ -393,11 +372,9 @@ set list lcs=tab:\·\ 			" set indentLine for tabs (this actually changes the sy
 set updatetime=250			" update vim faster
 let g:gitgutter_enabled = 1		" enable gitgutter
 
-
 " SuperTab
 " -----------------------------------------------------------------------------
 let g:SuperTabDefaultCompletionType = "<c-n>"
-
 
 " Neovim Terminal Mode Config
 " -----------------------------------------------------------------------------
@@ -405,7 +382,6 @@ if has('nvim')
 	tnoremap <Esc> <C-\><C-n>
 	autocmd TermOpen * setlocal statusline=%{b:term_title}
 endif
-
 
 " Airline Config
 " -----------------------------------------------------------------------------
@@ -433,7 +409,6 @@ else
     let g:airline_symbols.whitespace = 'Ξ'
 endif
 
-
 " Syntastic recommended settings.
 " -----------------------------------------------------------------------------
 " Global Settings:
@@ -450,7 +425,6 @@ if has('nvim')
 	let g:syntastic_check_on_wq = 1
 endif
 
-
 " CSS Color Settings
 " -----------------------------------------------------------------------------
 " ColorToggle
@@ -461,7 +435,6 @@ let g:colorizer_nomap = 1
 let g:colorizer_auto_color	= 1
 let g:colorizer_x11_name	= 1
 let g:colorizer_maxlines	= 500
-
 
 " Smooth Scroll Settings
 " -----------------------------------------------------------------------------
@@ -481,16 +454,13 @@ map y <Plug>(highlightedyank)
 " Highlight time in milliseconds. '-1' makes in infinite.
 let g:highlightedyank_highlight_duration = 1000
 
-
 " Aget
 " -----------------------------------------------------------------------------
 nnoremap <leader>ag	:Agit<CR>
 
-
 " UndoTree
 " -----------------------------------------------------------------------------
 nnoremap <leader>ut :UndotreeToggle<CR>
-
 
 " Vim-Session
 " -----------------------------------------------------------------------------
@@ -499,25 +469,21 @@ nnoremap <leader>ss	:ToggleWorkspace<CR>
 " Save session default name
 let g:workspace_session_name = '.saved_session.vim'
 
-
 " Wal
 " -----------------------------------------------------------------------------
 " Set the colorscheme to wal
 " (Enabling this messes up indentLine plugin, and is unneeded.)
 " colorscheme wal
 
-
 " Vim-move
 " -----------------------------------------------------------------------------
 let g:move_key_modifier = 'C'
-
 
 " NERDCommenter
 " -----------------------------------------------------------------------------
 let NERDSpaceDelims = 1
 let NERDRemoveExtraSpaces = 1
 let NERDTrimTraillingWhitespace = 1
-
 
 " Deoplete
 " -----------------------------------------------------------------------------
@@ -526,7 +492,6 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 "let g:deoplete#complete_method = 'omnifunc'
 
-
 " Golden-ratio
 " -----------------------------------------------------------------------------
 nnoremap <leader>gr	:GoldenRatioToggle<CR>
@@ -534,12 +499,10 @@ nnoremap <leader>gr	:GoldenRatioToggle<CR>
 " :GoldenRatioToggle
 " :GoldenRatioResize
 
-
 " Goyo (distraction free writing)
 " -----------------------------------------------------------------------------
 " TODO: make a meaningful bind
 nnoremap <leader>gy :Goyo<cr>
-
 
 " CtrlP
 " -----------------------------------------------------------------------------
@@ -549,18 +512,16 @@ nnoremap <leader>gy :Goyo<cr>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 " Ignore .git directory.
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_user_command=['.git', 'cd %s && git ls-files -co --exclude-standard']
 " Start search from start of directory containinng .git folder.
 " More options here: https://github.com/ctrlpvim/ctrlp.vim
-let g:ctrlp_working_path_mode = 'r'
-
+let g:ctrlp_working_path_mode='ra'
 
 " Tag Bar
 " -----------------------------------------------------------------------------
 " This is all the config for tag bar.
 nnoremap <leader>tb 	:TagbarToggle<CR>
 inoremap <leader>tb 	<ESC>:TagbarToggle<CR>
-
 
 " Ale
 " -----------------------------------------------------------------------------
@@ -603,19 +564,23 @@ let g:ale_fix_on_save = 1
 
 " Ack
 " -----------------------------------------------------------------------------
-if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
-
-    " Use ag over grep
-    set grepprg=ag\ --nogroup\ --nocolor
-
-    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-    " bind K to grep word under cursor
-    nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-endif
-
+" if executable('rg')
+"     " Use ripgrep over grep
+" 	set grepprg=rg\ --color=never
+"     " Use ripgrep in CtrlP for listing files. Lightning fast and respects .gitignore
+" 	let g:ctrlp_user_command='rg %s --files --color=never --glob ""'
+"     " bind K to grep word under cursor
+"     nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" endif
+" if executable('ag')
+" 	let g:ackprg='ag --vimgrep'
+"     " Use ag over grep
+"     set grepprg=ag\ --nogroup\ --nocolor
+"     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+"     let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
+"     " bind K to grep word under cursor
+"     nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" endif
 
 " Lens and Animate
 " -----------------------------------------------------------------------------
@@ -626,7 +591,6 @@ let g:lens#disabled_filetypes = ['nerdtree', 'fzf']
 " let g:lens#height_resize_min = 5
 " let g:lens#width_resize_max = 80
 " let g:lens#width_resize_min = 20
-
 
 " Lens and Animate
 " -----------------------------------------------------------------------------
@@ -678,7 +642,6 @@ if has('nvim')
 	    command! TTYClock silent! call TTYClock()
 	endif
 
-
 	" Cmatrix()
 " -----------------------------------------------------------------------------
 	" This executes cmatrix in a new full screen tab.
@@ -694,7 +657,6 @@ if has('nvim')
 	    endfunction
 	    command! Cmatrix silent! call Cmatrix()
 	endif
-
 
 	" Htop()
 " -----------------------------------------------------------------------------
@@ -719,7 +681,6 @@ if has('nvim')
 	    command! HtopVsplit silent! call Htop("vsplit")
 	endif
 
-
 	" Terminal Split
 " -----------------------------------------------------------------------------
 	" Just make a terminal and split it on the right side.
@@ -731,7 +692,6 @@ if has('nvim')
 	endfunction
 	command TermSplit silent! call TermSplit()
 
-
 	" Terminal Tab
 " -----------------------------------------------------------------------------
 	" Just make a terminal in a new tab ffs.
@@ -740,9 +700,7 @@ if has('nvim')
 		exec "terminal!"
 	endfunction
 	command TermTab silent! call TermTab()
-
 endif
-
 
 " Speed Profiling
 " -----------------------------------------------------------------------------
@@ -755,14 +713,11 @@ function! ProfileStart() "
 endfunction
 command ProfileStart silent! call ProfileStart()
 
-
 function! ProfileEnd() "
 	exec "profile pause"
 	exec "noautocmd qall!"
 endfunction
 command ProfileEnd silent! call ProfileEnd()
-
-
 
 " Crosshair Flash()
 " -----------------------------------------------------------------------------
@@ -774,7 +729,6 @@ function! Flash()
 	set nocursorline nocursorcolumn
 endfunction
 command Flash silent! call Flash()
-
 
 " ToggleSpell()
 " -----------------------------------------------------------------------------
@@ -790,14 +744,12 @@ function! ToggleSpell()
 endfunction
 command ToggleSpell silent! call ToggleSpell()
 
-
 " SpellFix()
 " -----------------------------------------------------------------------------
 function! SpellFix()
 	normal! mp[s1z=`p
 endfunction
 command SpellFix silent! call SpellFix()
-
 
 " ToggleBG()
 " -----------------------------------------------------------------------------
@@ -813,7 +765,6 @@ function! ToggleBG()
 endfunction
 command ToggleBG silent! call ToggleBG()
 
-
 " Source()
 " -----------------------------------------------------------------------------
 " Sources the vimrc file dynamically.
@@ -823,7 +774,6 @@ function! Source()
 	exec "AirlineRefresh"
 endfunction
 command Source silent! call Source()
-
 
 " SourceThis()
 " -----------------------------------------------------------------------------
@@ -835,14 +785,12 @@ function! SourceThis()
 endfunction
 command SourceThis silent! call SourceThis()
 
-
 " Sudo() - Reopen a file with sudo permission
 " -----------------------------------------------------------------------------
 function! Sudo()
 	exec "w !sudo tee %"
 endfunction
 command Sudo silent! call Sudo()
-
 
 " Configure Color Column
 " -----------------------------------------------------------------------------
@@ -863,18 +811,15 @@ call UserColorColumn()
 " Make that line black w/ a bit of blue.
 highlight ColorColumn ctermbg=235 guibg=#003333
 
-
 " Auto-Resize
 " -----------------------------------------------------------------------------
 autocmd VimResized * execute "normal! \<C-w>="
-
 
 " GitLogSplit
 " -----------------------------------------------------------------------------
 if executable('git')
     "git log --graph --pretty=oneline
 endif
-
 
 " Netrw
 " -----------------------------------------------------------------------------
@@ -894,6 +839,7 @@ function! ToggleNetrw()
 endfunction
 map <F3> :call ToggleNetrw() <CR>
 " -----------------------------------------------------------------------------
+
 
 " =============================================================================
 " TODO:
