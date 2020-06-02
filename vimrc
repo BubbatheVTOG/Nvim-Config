@@ -1,9 +1,9 @@
-		 " ██████╗ ██╗   ██╗██████╗ ██████╗  █████╗ ███████╗
-		 " ██╔══██╗██║   ██║██╔══██╗██╔══██╗██╔══██╗██╔════╝
-		 " ██████╔╝██║   ██║██████╔╝██████╔╝███████║███████╗
-		 " ██╔══██╗██║   ██║██╔══██╗██╔══██╗██╔══██║╚════██║
-		 " ██████╔╝╚██████╔╝██████╔╝██████╔╝██║  ██║███████║
-		 " ╚═════╝  ╚═════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
+	     " ██████╗ ██╗   ██╗██████╗ ██████╗  █████╗ ███████╗
+	     " ██╔══██╗██║   ██║██╔══██╗██╔══██╗██╔══██╗██╔════╝
+	     " ██████╔╝██║   ██║██████╔╝██████╔╝███████║███████╗
+	     " ██╔══██╗██║   ██║██╔══██╗██╔══██╗██╔══██║╚════██║
+	     " ██████╔╝╚██████╔╝██████╔╝██████╔╝██║  ██║███████║
+	     " ╚═════╝  ╚═════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
 
 	 "  ██╗███╗   ██╗██╗ ██╗   ██╗██╗███╗   ███╗██████╗  ██████╗
 	 " ██╔╝████╗  ██║╚██╗██║   ██║██║████╗ ████║██╔══██╗██╔════╝
@@ -52,35 +52,35 @@ Plug 'Xuyuanp/nerdtree-git-plugin'	" Git plugin for NerdTree.
 Plug 'Yggdroot/indentLine'		" Shows line indents.
 Plug 'airblade/vim-gitgutter'		" Shows staged lines.
 Plug 'bronson/vim-trailing-whitespace'	" Fix white space by :FixWhitespace
-Plug 'camspiers/animate.vim'		" Window animations.
-Plug 'camspiers/lens.vim'		" Window animations.
-Plug 'ctrlpvim/ctrlp.vim'		" ControlP (this could be triggerd but then the bind doesn't work) {'on':['CtrlP','CtrlPBuffer','CtrlPMRU','CtrlPMixed']}
+Plug 'camspiers/animate.vim' 		" Window animations.
+Plug 'camspiers/lens.vim' 		" Window animations.
+Plug 'ctrlpvim/ctrlp.vim' 		" ControlP (this could be triggerd but then the bind doesn't work) {'on':['CtrlP','CtrlPBuffer','CtrlPMRU','CtrlPMixed']}
 Plug 'ervandew/supertab'		" Tab completion.
 Plug 'lilydjwg/colorizer'		" Hex code colorizer. This used to be a triggered plugin. {'on':['ColorToggle']}
 Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
-Plug 'majutsushi/tagbar'		" Shows all methods and variables.
+Plug 'majutsushi/tagbar' 		" Shows all methods and variables.
 Plug 'matze/vim-move'			" Move text selections.
-Plug 'mboughaba/i3config.vim'		" i3 syntax highlighting support.
+Plug 'mboughaba/i3config.vim' 		" i3 syntax highlighting support.
 Plug 'sheerun/vim-polyglot'		" Syntax highlighting for a lot of languages. (Striped down, install specific ones if needed.)
 Plug 'thaerkh/vim-workspace'		" Save workspace.
-Plug 'tomasr/molokai'			" color theme for when wal is not installed.
-Plug 'tpope/vim-commentary'			" Commenting Plugin (Tring this instead of nerd commenter)
+Plug 'tomasr/molokai' 			" color theme for when wal is not installed.
+Plug 'tpope/vim-commentary' 		" Commenting Plugin (Tring this instead of nerd commenter)
 Plug 'tpope/vim-fugitive'		" Git commands from ex mode.
-Plug 'tpope/vim-repeat'			" Repeat support for plugins.
-Plug 'tpope/vim-sleuth'			" Heuristic tabsizes.
+Plug 'tpope/vim-repeat' 		" Repeat support for plugins.
+Plug 'tpope/vim-sleuth' 		" Heuristic tabsizes.
 Plug 'tpope/vim-surround'		" Surround movement command.
-Plug 'tpope/vim-vinegar'		" Netrw oil.
+Plug 'tpope/vim-vinegar' 		" Netrw oil.
 Plug 'vim-airline/vim-airline'		" Status bar.
 Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
 Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
-Plug 'w0rp/ale'				" Linter.
-Plug 'wellle/context.vim'		" Context plugin
+Plug 'w0rp/ale' 			" Linter.
+Plug 'wellle/context.vim' 		" Context plugin
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
 
 " Plugins Requiring Host Packages
 " -----------------------------------------------------------------------------
 if executable('ack') || executable ('ag')
-    Plug 'mileszs/ack.vim'			" Project text searching.
+    Plug 'mileszs/ack.vim' 			" Project text searching.
 endif
 
 if executable('wal')
@@ -90,19 +90,19 @@ endif
 " Change linters and completion for vim and neovim.
 " -----------------------------------------------------------------------------
 if has('nvim')
-	Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'}	" Omnicompletion for neovim
-	Plug 'w0rp/ale'			" Linter.
+	Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'} 	" Omnicompletion for neovim
+	Plug 'w0rp/ale' 		" Linter.
 else
-	Plug 'valloric/youcompleteme'	" Vim completion	 may require `~/.vim/plugged/youcompleteme/install.py` on updates.
+	Plug 'valloric/youcompleteme' 	" Vim completion 	 may require `~/.vim/plugged/youcompleteme/install.py` on updates.
 	Plug 'vim-syntastic/syntastic'	" Syntastic linter.
 endif
 
 " Triggered Plugins
 Plug 'artur-shaik/vim-javacomplete2',	{'for':['java']}		" Auto complete for Java...but only in java files.
-Plug 'cohama/agit.vim',			{'on':['Agit']}			" Git log viewer.
-Plug 'junegunn/goyo.vim',		{'on':['Goyo']}			" Distraction free writing.
+Plug 'cohama/agit.vim', 		{'on':['Agit']} 		" Git log viewer.
+Plug 'junegunn/goyo.vim', 		{'on':['Goyo']} 		" Distraction free writing.
 Plug 'mbbill/undotree',			{'on':['UndotreeToggle']}	" Create an undotree.
-Plug 'roman/golden-ratio',		{'on':['GoldenRatioToggle']}	" Change split sizes on focus change. This used to be a triggerd plugin.
+Plug 'roman/golden-ratio', 		{'on':['GoldenRatioToggle']} 	" Change split sizes on focus change. This used to be a triggerd plugin.
 Plug 'scrooloose/nerdtree',		{'on':['NERDTreeToggle']}	" Its NerdTree...but only when its toggled.
 call plug#end()				" required
 
@@ -120,25 +120,26 @@ set background=dark			" Use text colors that look good on a dark background.
 set autoindent				" Auto intent to the same col when on new line.
 set smarttab				" Auto insert tabs spaces for curly braces.
 set ruler				" Enables cursor location.
-set wrap lbr				" Wrap on words.
+set wrap lbr 				" Wrap on words.
 set nocompatible			" Disables legacy stuff. (for vim)
 set showmode				" Shows what mode you're in.
 set showcmd				" Show partial command in status line.
 set showmatch				" Show matching brackets.
-set splitright				" Open new horizontal splits right of the current one.
-set splitbelow				" Open new vertical splits below the current one.
+set splitright 				" Open new horizontal splits right of the current one.
+set splitbelow 				" Open new vertical splits below the current one.
 set completeopt=longest,menuone,preview	" Better autocompletion.
-" set hidden				" Buffers become hidden when abandoned.
-set autoread				" Reload the file when it changes outside of (n)vim.
-set visualbell				" Use visual bell instead of beeping.
-set history=1000			" Increase history.
-set undolevels=1000				" Increase undo levels.
-set scrolloff=5				" Sets the scroll off set.
-set confirm					" Prompt conformation dialogs
-set tags=tags;				" Sets tag file to recursively up directory hierarchy. (The `;` is VERY important)
-set noexpandtab				" Ensures that we use tabs an not spaces.
+" set autowriteall 			" Autosave files.
+" set hidden 				" Buffers become hidden when abandoned.
+set autoread 				" Reload the file when it changes outside of (n)vim.
+set visualbell 				" Use visual bell instead of beeping.
+set history=1000 			" Increase history.
+set undolevels=1000 			" Increase undo levels.
+set scrolloff=5 			" Sets the scroll off set.
+set confirm 				" Prompt conformation dialogs
+set tags=tags; 				" Sets tag file to recursively up directory hierarchy. (The `;` is VERY important)
+set noexpandtab 			" Ensures that we use tabs an not spaces.
 if has('mouse')
-    set mouse=a				" Enables mouse.
+    set mouse=a 			" Enables mouse.
 endif
 if has('neovim')
     set inccommand=nosplit
@@ -169,8 +170,8 @@ set number				" Enable line numbering.
 
 " Backups
 " -----------------------------------------------------------------------------
-set nobackup				" Disable backups. YOLO
-set noswapfile				" Disable swapfiles.
+set nobackup 				" Disable backups. YOLO
+set noswapfile 				" Disable swapfiles.
 
 
 " Persistant Undo
@@ -242,13 +243,13 @@ nnoremap <leader>nh	:noh<CR>
 
 " Fold Binds
 " -----------------------------------------------------------------------------
-nnoremap <Space>	za
+nnoremap <Space> 	za
 " Create classic fold.
-nnoremap <leader>of		:fold<CR>
+nnoremap <leader>of 	:fold<CR>
 " Create unnumberd fold.
-nnoremap <leader>cf		:fold<CR>4li<CR><ESC>ka<SPACE><SPACE><ESC>i
+nnoremap <leader>cf 	:fold<CR>4li<CR><ESC>ka<SPACE><SPACE><ESC>i
 " Create numbered fold.
-nnoremap <leader>nf		:fold<CR>4li<++><CR><ESC>A<++><ESC><S-o><BS><++><ESC>k2hi<SPACE><SPACE><ESC>i
+nnoremap <leader>nf 	:fold<CR>4li<++><CR><ESC>A<++><ESC><S-o><BS><++><ESC>k2hi<SPACE><SPACE><ESC>i
 
 
 " Change movement behavior for wrapped lines.
@@ -271,11 +272,11 @@ nnoremap <leader>fc	:Flash<CR>
 nnoremap <leader>sc	:ToggleSpell<CR>
 nnoremap <leader>bg	:ToggleBG<CR>
 nnoremap <leader>so	:Source<CR>
-nnoremap <leader>st		:SourceThis<CR>
+nnoremap <leader>st 	:SourceThis<CR>
 nnoremap <leader>su	:Sudo<CR>
 nnoremap <leader>ev	:e $MYVIMRC<CR>
 nnoremap <leader>sf	:SpellFix<CR>
-nnoremap <leader>us		:UserColorColumn<CR>
+nnoremap <leader>us 	:UserColorColumn<CR>
 
 
 " Only create these binds if in neovim.
@@ -314,18 +315,18 @@ vnoremap > >gv
 " -----------------------------------------------------------------------------
 " These binds are for changing buffers.
 nnoremap <leader>ls	:ls<CR>
-inoremap <leader>bn		<ESC>:bnext<CR>
-inoremap <leader>bp		<ESC>:bprevious<CR>
-nnoremap <leader>bn		:bnext<CR>
-nnoremap <leader>bp		:bprevious<CR>
-nnoremap <leader>bo		:buffers<CR>:buffer<Space>	" Open buffer
-nnoremap <leader>bd		:buffers<CR>:bdelete<Space>		" Delete buffer<Paste>
+inoremap <leader>bn 	<ESC>:bnext<CR>
+inoremap <leader>bp 	<ESC>:bprevious<CR>
+nnoremap <leader>bn  	:bnext<CR>
+nnoremap <leader>bp 	:bprevious<CR>
+nnoremap <leader>bo 	:buffers<CR>:buffer<Space> 	" Open buffer
+nnoremap <leader>bd 	:buffers<CR>:bdelete<Space> 	" Delete buffer<Paste>
 
 
 " Reformating Binds
 " -----------------------------------------------------------------------------
-nnoremap <leader>rf gg=G``				" Format the whole file
-nnoremap <leader>ra gggqgG''				" Include list
+nnoremap <leader>rf gg=G`` 				" Format the whole file
+nnoremap <leader>ra gggqgG'' 				" Include list
 
 
 " Ctags Setup
@@ -383,7 +384,7 @@ let g:indentLine_enabled = 1		" Enable indentLine
 let g:indentLine_faster = 1		" DO NOT DISABLE WHILE USING THIS PLUGIN
 let g:indentLine_color_term = 239	" Set indentLine color
 let g:indentLine_char = '.'		" Set indentLine symbol(This does nothing apparently)
-set list lcs=tab:\·\			" set indentLine for tabs (this actually changes the symbol lol)
+set list lcs=tab:\·\ 			" set indentLine for tabs (this actually changes the symbol lol)
 
 
 " GitGutter Config
@@ -558,8 +559,8 @@ let g:ctrlp_working_path_mode = 'r'
 " Tag Bar
 " -----------------------------------------------------------------------------
 " This is all the config for tag bar.
-nnoremap <leader>tb		:TagbarToggle<CR>
-inoremap <leader>tb		<ESC>:TagbarToggle<CR>
+nnoremap <leader>tb 	:TagbarToggle<CR>
+inoremap <leader>tb 	<ESC>:TagbarToggle<CR>
 
 
 " Ale
@@ -667,15 +668,15 @@ if has('nvim')
 	" This executes ttyclock in a new full screen tab.
 	" Requires the host to have tty-clock installed.
 	if executable('tty-clock')
-		function! TTYClock()
-			if system('if [ -e /usr/bin/tty-clock ]; then echo true; fi') =~ "true"
-				let g:indentLine_enabled = 0
-				exec "tabnew term://tty-clock -C 6 -txbsrc"
-			else
-				echom "TTYClock NOT installed on host system!"
-			endif
-		endfunction
-		command! TTYClock silent! call TTYClock()
+	    function! TTYClock()
+		    if system('if [ -e /usr/bin/tty-clock ]; then echo true; fi') =~ "true"
+			    let g:indentLine_enabled = 0
+			    exec "tabnew term://tty-clock -C 6 -txbsrc"
+		    else
+			    echom "TTYClock NOT installed on host system!"
+		    endif
+	    endfunction
+	    command! TTYClock silent! call TTYClock()
 	endif
 
 
@@ -684,15 +685,15 @@ if has('nvim')
 	" This executes cmatrix in a new full screen tab.
 	" Requires the host to have cmatrix installed.
 	if executable('cmatrix')
-		function! Cmatrix()
-			if system('if [ -e /usr/bin/cmatrix ]; then echo true; fi') =~ "true"
-				let g:indentLine_enabled = 0
-				exec "tabnew term://cmatrix -a -C cyan"
-			else
-				echom "Cmatrix NOT installed on host system!"
-			endif
-		endfunction
-		command! Cmatrix silent! call Cmatrix()
+	    function! Cmatrix()
+		    if system('if [ -e /usr/bin/cmatrix ]; then echo true; fi') =~ "true"
+			    let g:indentLine_enabled = 0
+			    exec "tabnew term://cmatrix -a -C cyan"
+		    else
+			    echom "Cmatrix NOT installed on host system!"
+		    endif
+	    endfunction
+	    command! Cmatrix silent! call Cmatrix()
 	endif
 
 
@@ -701,22 +702,22 @@ if has('nvim')
 	" This executes htop in a new full screen tab.
 	" Requires the host to have htop installed.
 	if executable('htop')
-		function! Htop(window)
-			if system('if [ -e /usr/bin/htop ]; then echo true; fi') =~ "true"
-				if a:window ==? "tabnew"
-					exec "tabnew term://htop"
-				elseif a:window ==? "vsplit"
-					exec "vsplit term://htop"
-					" exec "normal! \<C-w>r\<C-w>\<C-w>"
-				else
-					echom "Bad command!"
-				endif
-			else
-				echom "Htop is NOT installed on the host system!"
-			endif
-		endfunction
-		command! HtopTab silent! call Htop("tabnew")
-		command! HtopVsplit silent! call Htop("vsplit")
+	    function! Htop(window)
+		    if system('if [ -e /usr/bin/htop ]; then echo true; fi') =~ "true"
+			    if a:window ==? "tabnew"
+				    exec "tabnew term://htop"
+			    elseif a:window ==? "vsplit"
+				    exec "vsplit term://htop"
+				    " exec "normal! \<C-w>r\<C-w>\<C-w>"
+			    else
+				    echom "Bad command!"
+			    endif
+		    else
+			    echom "Htop is NOT installed on the host system!"
+		    endif
+	    endfunction
+	    command! HtopTab silent! call Htop("tabnew")
+	    command! HtopVsplit silent! call Htop("vsplit")
 	endif
 
 
@@ -849,12 +850,12 @@ command Sudo silent! call Sudo()
 let g:UserColorColumnBool=0
 function! UserColorColumn()
     if g:UserColorColumnBool==1
-	let &colorcolumn=0
-	let g:UserColorColumnBool=0
+		let &colorcolumn=0
+		let g:UserColorColumnBool=0
     else
-	let &colorcolumn=join(range(81,81),",")			" Set bar at column 81
-	let &colorcolumn="80,".join(range(121,121),",")		" Set bar at column121
-	let g:UserColorColumnBool=1
+		let &colorcolumn=join(range(81,81),",")			" Set bar at column 81
+		let &colorcolumn="80,".join(range(121,121),",")		" Set bar at column121
+		let g:UserColorColumnBool=1
     endif
 endfunction
 command UserColorColumn silent call UserColorColumn()
@@ -901,7 +902,7 @@ map <F3> :call ToggleNetrw() <CR>
 "
 " (Enhancement) skeleton file insertion
 " (Enhancement) SpellFix() confirms replacement, or at least echo's changes.
-" (FIX)		LineIndent colorschemes clash.
-" (Fix)		md_to_pdf_and_update_view, make this togglable.
+" (FIX) 	LineIndent colorschemes clash.
+" (Fix) 	md_to_pdf_and_update_view, make this togglable.
 
 " vim:tw=78:ts=4:fdm=marker
