@@ -71,11 +71,10 @@ Plug 'tpope/vim-vinegar' 		" Netrw oil.
 Plug 'vim-airline/vim-airline'		" Status bar.
 Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
 Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
-Plug 'w0rp/ale' 			" Linter.
 Plug 'wellle/context.vim' 		" Context plugin
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
 Plug 'neoclide/coc.nvim', {'branch': 'release'}		" Completion using lsp
-" Plug 'ervandew/supertab'		" Tab completion.
+Plug 'ervandew/supertab'		" Tab completion.
 
 " Plugins Requiring Host Packages
 " -----------------------------------------------------------------------------
@@ -89,12 +88,11 @@ if has('nvim')
 	" Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'} 	" Omnicompletion for neovim
 	Plug 'w0rp/ale' 		" Linter.
 else
-	" Plug 'valloric/youcompleteme' 	" Vim completion 	 may require `~/.vim/plugged/youcompleteme/install.py` on updates.
+	" Plug 'valloric/youcompleteme' 	" Vim completion. May require `~/.vim/plugged/youcompleteme/install.py` on updates.
 	Plug 'vim-syntastic/syntastic'	" Syntastic linter.
 endif
 
 " Triggered Plugins
-Plug 'artur-shaik/vim-javacomplete2',	{'for':['java']}		" Auto complete for Java...but only in java files.
 Plug 'cohama/agit.vim', 		{'on':['Agit']} 		" Git log viewer.
 Plug 'junegunn/goyo.vim', 		{'on':['Goyo']} 		" Distraction free writing.
 Plug 'mbbill/undotree',			{'on':['UndotreeToggle']}	" Create an undotree.
@@ -211,11 +209,6 @@ let g:netrw_winsize = 25
 " LANGUAGE SPECIFIC SETTINGS
 " From :h ft-$LANGUAGE
 " =============================================================================
-
-" Java
-" -----------------------------------------------------------------------------
-autocmd FileType java let java_highlight_debug=1
-autocmd FileType java let java_highlight_functions="style"
 
 " HTML
 " -----------------------------------------------------------------------------
@@ -349,9 +342,9 @@ inoremap <silent><expr> <C-space> coc#refresh()
 
 " GoTo code navigation.
 nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gy <Plug>(coc-type-definition)
+nmap <leader>gt <Plug>(coc-type-definition)
 nmap <leader>gi <Plug>(coc-implementation)
-nmap <leader>gr <Plug>(coc-references)
+nmap <leader>gc <Plug>(coc-references)
 nmap <leader>rr <Plug>(coc-rename)
 nmap <leader>g[ <Plug>(coc-diagnostic-prev)
 nmap <leader>g] <Plug>(coc-diagnostic-next)
@@ -372,23 +365,6 @@ let NERDTreeHijackNetrw = 1
 let NERDTreeChDirMode = 2
 let NERDTreeCascadeSingleChildDir = 0
 let NERDTreeCascadeOpenSingleChildDir = 0
-
-" Java Complete 2 Config
-" -----------------------------------------------------------------------------
-autocmd FileType java setlocal omnifunc=javacomplete#Complete
-autocmd Filetype java setlocal completefunc=javacomplete#CompleteParamsInfo
-" Enable smart inserting class imports with F4
-nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-" Enable unusual inserting class imports with F5
-nmap <F5> <Plug>(JavaComplete-Imports-Add)
-imap <F5> <Plug>(JavaComplete-Imports-Add)
-" Add all missing imports with F5
-nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-" Remove all missing imports with F7
-nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 
 " FuGITive
 " -----------------------------------------------------------------------------
