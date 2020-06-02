@@ -74,7 +74,7 @@ Plug 'vim-scripts/SearchComplete'		" Tab completion inside of '/' search.
 Plug 'wellle/context.vim'				" Context plugin
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
 Plug 'neoclide/coc.nvim', {'branch': 'release'}		" Completion using lsp
-Plug 'ervandew/supertab'				" Tab completion.
+" Plug 'ervandew/supertab'				" Tab completion.
 
 " Plugins Requiring Host Packages
 " -----------------------------------------------------------------------------
@@ -289,8 +289,11 @@ nnoremap <leader>mr /<++><CR>"_d4l:noh<CR>a
 " Split movement.
 " -----------------------------------------------------------------------------
 " This maps keys to move between splits easier.
-nnoremap <Leader>+ :vertical resize +5<CR>
-nnoremap <Leader>- :vertical resize -5<CR>
+nnoremap <silent> <leader>= :call animate#window_delta_width(10)<CR>
+nnoremap <silent> <leader>- :call animate#window_delta_width(-10)<CR>
+" If animate plugin is ever removed, this is the same behavior.
+" nnoremap <silent> <leader>= :vertical resize +10<CR>
+" nnoremap <silent> <leader>- :vertical resize -10<CR>
 map <C-h> <C-W>h
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -386,7 +389,7 @@ let g:gitgutter_enabled = 1		" enable gitgutter
 
 " SuperTab
 " -----------------------------------------------------------------------------
-let g:SuperTabDefaultCompletionType = "<c-n>"
+"let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " Neovim Terminal Mode Config
 " -----------------------------------------------------------------------------
@@ -833,6 +836,12 @@ autocmd BufWritePre * :call TrimWhitespace()
 "   autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
 " augroup END
 " autocmd! FileType help :wincmd L | :vert resize 90
+
+augroup BgHighlight
+    autocmd!
+    autocmd WinEnter * silent execute set local syntax=ON
+    autocmd WinLeave * silent execute set local syntax=OFF
+augroup END
 
 
 " =============================================================================
