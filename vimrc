@@ -18,12 +18,12 @@
 
 " Environmental Setup
 " -----------------------------------------------------------------------------
-" Set some sane envirment values.
+" Set some sane environment values.
 set encoding=utf-8
 scriptencoding utf-8
 set t_Co=256
 
-" Use `$nvim -u $(location to vimrc)` to tirgger this event.
+" Use `$nvim -u $(location to vimrc)` to trigger this event.
 if has('nvim')
 	if empty(glob('~/.config/nvim/init.vim'))
 		silent !mkdir -p ~/.config/nvim
@@ -95,7 +95,7 @@ endif
 Plug 'cohama/agit.vim',			{'on':['Agit']}					" Git log viewer.
 Plug 'junegunn/goyo.vim',		{'on':['Goyo']}					" Distraction free writing.
 Plug 'mbbill/undotree',			{'on':['UndotreeToggle']}		" Create an undotree.
-Plug 'roman/golden-ratio',		{'on':['GoldenRatioToggle']}	" Change split sizes on focus change. This used to be a triggerd plugin.
+Plug 'roman/golden-ratio',		{'on':['GoldenRatioToggle']}	" Change split sizes on focus change. This used to be a trigged plugin.
 Plug 'scrooloose/nerdtree',		{'on':['NERDTreeToggle']}		" Its NerdTree...but only when its toggled.
 call plug#end()
 
@@ -105,10 +105,10 @@ call plug#end()
 " =============================================================================
 
 " General Configuration
-filetype plugin indent on		" Syntax for different file types. Plus autoindent for that file type.
+filetype plugin indent on		" Syntax for different file types. Plus auto indent for that file type.
 set path+=**					" appends $PATH to find command
 syntax on						" Syntax on bitch.
-set wildmenu					" Allows us to use the wildcard file menu
+set wildmenu					" Allows us to use the wild card file menu
 set background=dark				" Use text colors that look good on a dark background.
 set autoindent					" Auto intent to the same col when on new line.
 set smarttab					" Auto insert tabs spaces for curly braces.
@@ -147,7 +147,7 @@ if has('nvim')
 endif
 
 set list
-set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·,eol:$
+set listchars=tab:·\ ,extends:›,precedes:‹,nbsp:·,trail:·
 highlight Whitespace ctermfg=8 guifg=DarkGray
 
 
@@ -179,10 +179,10 @@ set number					" Enable line numbering.
 
 " Backups
 " -----------------------------------------------------------------------------
-set nobackup				" Disable backups. YOLO
-set noswapfile				" Disable swapfiles.
+set nobackup				" Disable backups.
+set noswapfile				" Disable swap files.
 
-" Persistant Undo
+" Persistent Undo
 " -----------------------------------------------------------------------------
 " " Use persistent history.
 if !isdirectory("/tmp/.vim-undo-dir")
@@ -223,7 +223,7 @@ let g:netrw_winsize = 25
 nnoremap <leader>wh :-1read $HOME/.vim/templates/html.skel<CR>
 
 " =============================================================================
-" CUSTOM KEYBINDS
+" CUSTOM KEY BINDS
 " =============================================================================
 
 " CONTROVERSY
@@ -243,7 +243,7 @@ nnoremap <leader>nh :noh<CR>
 nnoremap <Space> za
 " Create classic fold.
 nnoremap <leader>of :fold<CR>
-" Create unnumberd fold.
+" Create unnumbered fold.
 nnoremap <leader>cf :fold<CR>4li<CR><ESC>ka<SPACE><SPACE><ESC>i
 " Create numbered fold.
 nnoremap <leader>nf :fold<CR>4li<++><CR><ESC>A<++><ESC><S-o><BS><++><ESC>k2hi<SPACE><SPACE><ESC>i
@@ -260,7 +260,7 @@ noremap <buffer> <silent> $ g$
 onoremap <silent> j gj
 onoremap <silent> k gk
 
-" Keymaps for custom functions.
+" Key maps for custom functions.
 " -----------------------------------------------------------------------------
 nnoremap <leader>fc :Flash<CR>
 nnoremap <leader>sc :ToggleSpell<CR>
@@ -312,7 +312,7 @@ nnoremap <leader>bp :bprevious<CR>
 nnoremap <leader>bo :buffers<CR>:buffer<Space>		" Open buffer
 nnoremap <leader>bd :buffers<CR>:bdelete<Space>		" Delete buffer<Paste>
 
-" Reformating Binds
+" Reformatting Binds
 " -----------------------------------------------------------------------------
 nnoremap <leader>rf gg=G``							" Format the whole file
 nnoremap <leader>ra gggqgG''						" Include list
@@ -320,7 +320,7 @@ nnoremap <leader>ra gggqgG''						" Include list
 " Ctags Setup
 " -----------------------------------------------------------------------------
 " ^] to jump to tag under cursor
-" g^] for amiguous tags
+" g^] for ambiguous tags
 " ^t to jump back to the tag stack
 
 " Gates functionality predicated on ctags being installed in path.
@@ -346,7 +346,7 @@ inoremap <silent><expr> <TAB>
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <silent><expr> <C-space> coc#refresh()
 
-" GoTo code navigation.
+" Go to code navigation.
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gt <Plug>(coc-type-definition)
 nmap <leader>gi <Plug>(coc-implementation)
@@ -517,7 +517,7 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 " Ignore .git directory.
 let g:ctrlp_user_command=['.git', 'cd %s && git ls-files -co --exclude-standard']
-" Start search from start of directory containinng .git folder.
+" Start search from start of directory containing .git folder.
 " More options here: https://github.com/ctrlpvim/ctrlp.vim
 let g:ctrlp_working_path_mode='ra'
 
@@ -545,7 +545,7 @@ let g:ale_open_list = 0
 
 " Linter engines:
 " PYTHON REQUIRES: flake8,mypy,pycodestyle,pylint installed!
-" JavaScript REQURIES: eslint
+" JavaScript REQUIRES: eslint
 " HTML REQUIRES: htmlhint (requires node)
 let g:ale_linters = {'python': ['flake8', 'mypy', 'pycodestyle', 'pylint'],
 		\ 'javascript': ['eslint'],
@@ -798,12 +798,6 @@ highlight ColorColumn ctermbg=235 guibg=#003333
 " Auto-Resize
 " -----------------------------------------------------------------------------
 autocmd VimResized * execute "normal! \<C-w>="
-
-" GitLogSplit
-" -----------------------------------------------------------------------------
-if executable('git')
-	"git log --graph --pretty=oneline
-endif
 
 " Netrw
 " -----------------------------------------------------------------------------
