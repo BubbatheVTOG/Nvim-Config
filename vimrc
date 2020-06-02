@@ -19,7 +19,8 @@
 " Environmental Setup
 " -----------------------------------------------------------------------------
 " Set some sane envirment values.
-set encoding=utf8
+set encoding=utf-8
+scriptencoding utf-8
 set t_Co=256
 
 " Use `$nvim -u $(location to vimrc)` to tirgger this event.
@@ -84,8 +85,7 @@ endif
 " Change linters and completion for vim and neovim.
 " -----------------------------------------------------------------------------
 if has('nvim')
-	" Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'}	" Omnicompletion for neovim
-	Plug 'w0rp/ale'			" Linter.
+	" Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'}	" Omnicompletion for neovim Plug 'w0rp/ale'			" Linter.
 else
 	" Plug 'valloric/youcompleteme'		" Vim completion. May require `~/.vim/plugged/youcompleteme/install.py` on updates.
 	Plug 'vim-syntastic/syntastic'	" Syntastic linter.
@@ -142,18 +142,20 @@ if has('mouse')
 	set mouse=a					" Enables mouse.
 endif
 
-if has('neovim')
+if has('nvim')
 	set inccommand=nosplit
 endif
 
-set list listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+set list
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·,eol:$
+highlight Whitespace ctermfg=8 guifg=DarkGray
 
 
 " Folding
 " -----------------------------------------------------------------------------
-set foldmethod=marker			" Sets manual foldmarkers.
+set foldmethod=marker						" Sets manual foldmarkers.
 highlight Folded ctermbg=black ctermfg=blue
-"autocmd BufWinLeave *.* mkview		" Save folds on exit.
+"autocmd BufWinLeave *.* mkview				" Save folds on exit.
 "autocmd BufWinEnter *.* silent loadview	" Create folds from save.
 
 " Search
@@ -782,7 +784,7 @@ function! UserColorColumn()
 		let &colorcolumn=0
 		let g:UserColorColumnBool=0
 	else
-		let &colorcolumn=join(range(81,81),",")			" Set bar at column 81
+		let &colorcolumn=join(range(81,81),",")				" Set bar at column 81
 		let &colorcolumn="80,".join(range(121,121),",")		" Set bar at column121
 		let g:UserColorColumnBool=1
 	endif
@@ -829,6 +831,14 @@ fun! TrimWhitespace()
 	call winrestview(l:save)
 endfun
 autocmd BufWritePre * :call TrimWhitespace()
+
+" Open help in vertical split
+" -----------------------------------------------------------------------------
+" augroup vimrc_help
+"   autocmd!
+"   autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
+" augroup END
+" autocmd! FileType help :wincmd L | :vert resize 90
 
 
 " =============================================================================
