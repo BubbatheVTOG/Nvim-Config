@@ -837,12 +837,6 @@ autocmd BufWritePre * :call TrimWhitespace()
 " augroup END
 " autocmd! FileType help :wincmd L | :vert resize 90
 
-augroup BgHighlight
-    autocmd!
-    autocmd WinEnter * silent execute set local syntax=ON
-    autocmd WinLeave * silent execute set local syntax=OFF
-augroup END
-
 
 " =============================================================================
 " TODO:
