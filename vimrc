@@ -1,16 +1,16 @@
-	     " ██████╗ ██╗   ██╗██████╗ ██████╗  █████╗ ███████╗
-	     " ██╔══██╗██║   ██║██╔══██╗██╔══██╗██╔══██╗██╔════╝
-	     " ██████╔╝██║   ██║██████╔╝██████╔╝███████║███████╗
-	     " ██╔══██╗██║   ██║██╔══██╗██╔══██╗██╔══██║╚════██║
-	     " ██████╔╝╚██████╔╝██████╔╝██████╔╝██║  ██║███████║
-	     " ╚═════╝  ╚═════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
+ " ██████╗ ██╗   ██╗██████╗ ██████╗  █████╗ ███████╗
+ " ██╔══██╗██║   ██║██╔══██╗██╔══██╗██╔══██╗██╔════╝
+ " ██████╔╝██║   ██║██████╔╝██████╔╝███████║███████╗
+ " ██╔══██╗██║   ██║██╔══██╗██╔══██╗██╔══██║╚════██║
+ " ██████╔╝╚██████╔╝██████╔╝██████╔╝██║  ██║███████║
+ " ╚═════╝  ╚═════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
 
-	 "  ██╗███╗   ██╗██╗ ██╗   ██╗██╗███╗   ███╗██████╗  ██████╗
-	 " ██╔╝████╗  ██║╚██╗██║   ██║██║████╗ ████║██╔══██╗██╔════╝
-	 " ██║ ██╔██╗ ██║ ██║██║   ██║██║██╔████╔██║██████╔╝██║
-	 " ██║ ██║╚██╗██║ ██║╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║
-	 " ╚██╗██║ ╚████║██╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╗
-	 "  ╚═╝╚═╝  ╚═══╝╚═╝   ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
+ "  ██╗███╗   ██╗██╗ ██╗   ██╗██╗███╗   ███╗██████╗  ██████╗
+ " ██╔╝████╗  ██║╚██╗██║   ██║██║████╗ ████║██╔══██╗██╔════╝
+ " ██║ ██╔██╗ ██║ ██║██║   ██║██║██╔████╔██║██████╔╝██║
+ " ██║ ██║╚██╗██║ ██║╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║
+ " ╚██╗██║ ╚████║██╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╗
+ "  ╚═╝╚═╝  ╚═══╝╚═╝   ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
 
 " =============================================================================
 " PLUGINS
@@ -51,11 +51,9 @@ call plug#begin()
 Plug 'Xuyuanp/nerdtree-git-plugin'	" Git plugin for NerdTree.
 Plug 'Yggdroot/indentLine'		" Shows line indents.
 Plug 'airblade/vim-gitgutter'		" Shows staged lines.
-Plug 'bronson/vim-trailing-whitespace'	" Fix white space by :FixWhitespace
 Plug 'camspiers/animate.vim' 		" Window animations.
 Plug 'camspiers/lens.vim' 		" Window animations.
 Plug 'ctrlpvim/ctrlp.vim' 		" ControlP (this could be triggerd but then the bind doesn't work) {'on':['CtrlP','CtrlPBuffer','CtrlPMRU','CtrlPMixed']}
-Plug 'ervandew/supertab'		" Tab completion.
 Plug 'lilydjwg/colorizer'		" Hex code colorizer. This used to be a triggered plugin. {'on':['ColorToggle']}
 Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
 Plug 'majutsushi/tagbar' 		" Shows all methods and variables.
@@ -76,7 +74,8 @@ Plug 'vim-scripts/SearchComplete'	" Tab completion inside of '/' search.
 Plug 'w0rp/ale' 			" Linter.
 Plug 'wellle/context.vim' 		" Context plugin
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
-" Plug 'mileszs/ack.vim' 			" Project text searching.
+Plug 'neoclide/coc.nvim', {'branch': 'release'}		" Completion using lsp
+" Plug 'ervandew/supertab'		" Tab completion.
 
 " Plugins Requiring Host Packages
 " -----------------------------------------------------------------------------
@@ -87,10 +86,10 @@ endif
 " Change linters and completion for vim and neovim.
 " -----------------------------------------------------------------------------
 if has('nvim')
-	Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'} 	" Omnicompletion for neovim
+	" Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'} 	" Omnicompletion for neovim
 	Plug 'w0rp/ale' 		" Linter.
 else
-	Plug 'valloric/youcompleteme' 	" Vim completion 	 may require `~/.vim/plugged/youcompleteme/install.py` on updates.
+	" Plug 'valloric/youcompleteme' 	" Vim completion 	 may require `~/.vim/plugged/youcompleteme/install.py` on updates.
 	Plug 'vim-syntastic/syntastic'	" Syntastic linter.
 endif
 
@@ -125,6 +124,7 @@ set showmatch				" Show matching brackets.
 set splitright 				" Open new horizontal splits right of the current one.
 set splitbelow 				" Open new vertical splits below the current one.
 set completeopt=longest,menuone,preview	" Better autocompletion.
+set shortmess+=c			" Don't send short messages to |ins-completion-menu|
 " set hidden 				" Buffers become hidden when abandoned.
 set autoread 				" Reload the file when it changes outside of (n)vim.
 set visualbell 				" Use visual bell instead of beeping.
@@ -134,6 +134,10 @@ set scrolloff=5 			" Sets the scroll off set.
 set confirm 				" Prompt conformation dialogs
 set tags=tags; 				" Sets tag file to recursively up directory hierarchy. (The `;` is VERY important)
 set noexpandtab 			" Ensures that we use tabs an not spaces.
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set updatetime=50			" set update time to 50ms (default: 4s)
 if has('mouse')
     set mouse=a 			" Enables mouse.
 endif
@@ -158,6 +162,7 @@ set smartcase				" While searching, use capitals when you use capitals.
 set showmatch				" While search, show exact matches.
 
 if executable('rg')
+	let g:rg_derive_root='true'
 	set grepprg=rg\ --vimgrep
 endif
 nnoremap <silent> K :vimgrep! <cword> * <CR>:copen<CR>
@@ -284,6 +289,8 @@ nnoremap <leader>mr /<++><CR>"_d4l:noh<CR>a
 " Split movement.
 " -----------------------------------------------------------------------------
 " This maps keys to move between splits easier.
+nnoremap <Leader>+ :vertical resize +5<CR>
+nnoremap <Leader>- :vertical resize -5<CR>
 map <C-h> <C-W>h
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -326,6 +333,32 @@ endif
 " PLUGIN CONFIGURATION
 " =============================================================================
 
+" COC
+" -----------------------------------------------------------------------------
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+			\ pumvisible() ? "\<C-n>" :
+			\ <SID>check_back_space() ? "\<TAB>" : \
+			\ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <silent><expr> <C-space> coc#refresh()
+
+" GoTo code navigation.
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gy <Plug>(coc-type-definition)
+nmap <leader>gi <Plug>(coc-implementation)
+nmap <leader>gr <Plug>(coc-references)
+nmap <leader>rr <Plug>(coc-rename)
+nmap <leader>g[ <Plug>(coc-diagnostic-prev)
+nmap <leader>g] <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>gn <Plug>(coc-diagnostic-next)
+nnoremap <leader>cr :CocRestart<CR><CR>
+
 " NERDTree config
 " -----------------------------------------------------------------------------
 " Open NERDTree bind
@@ -357,12 +390,18 @@ imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
 nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 
+" FuGITive
+" -----------------------------------------------------------------------------
+nmap <leader>gl :diffget //3<CR>
+nmap <leader>gh :diffget //2<CR>
+nmap <leader>gs :G<CR>
+
 " IndentLines Config
 " -----------------------------------------------------------------------------
 let g:indentLine_enabled = 1		" Enable indentLine
 let g:indentLine_faster = 1		" DO NOT DISABLE WHILE USING THIS PLUGIN
 let g:indentLine_color_term = 239	" Set indentLine color
-let g:indentLine_char = '.'		" Set indentLine symbol(This does nothing apparently)
+let g:indentLine_char = '	'		" Set indentLine symbol(This does nothing apparently)
 set list lcs=tab:\·\ 			" set indentLine for tabs (this actually changes the symbol lol)
 
 " GitGutter Config
@@ -560,26 +599,6 @@ let g:ale_fix_on_save = 1
 " " Change linting to insertleave event. (default:1,0)
 " let g:ale_lint_on_insert_leave = 1
 
-" Ack
-" -----------------------------------------------------------------------------
-" if executable('rg')
-"     " Use ripgrep over grep
-" 	set grepprg=rg\ --color=never
-"     " Use ripgrep in CtrlP for listing files. Lightning fast and respects .gitignore
-" 	let g:ctrlp_user_command='rg %s --files --color=never --glob ""'
-"     " bind K to grep word under cursor
-"     nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-" endif
-" if executable('ag')
-" 	let g:ackprg='ag --vimgrep'
-"     " Use ag over grep
-"     set grepprg=ag\ --nogroup\ --nocolor
-"     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-"     let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
-"     " bind K to grep word under cursor
-"     nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-" endif
-
 " Lens and Animate
 " -----------------------------------------------------------------------------
 let g:lens#disabled_filetypes = ['nerdtree', 'fzf']
@@ -751,7 +770,7 @@ command SpellFix silent! call SpellFix()
 
 " ToggleBG()
 " -----------------------------------------------------------------------------
-" Toggle background between light and dark
+" Toggle background between light dark
 " This can be rewritten like this:
 " nnomap <leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 function! ToggleBG()
@@ -836,7 +855,15 @@ function! ToggleNetrw()
     endif
 endfunction
 map <F3> :call ToggleNetrw() <CR>
+
+" Fix TrailingWhitespace
 " -----------------------------------------------------------------------------
+fun! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
+autocmd BufWritePre * :call TrimWhitespace()
 
 
 " =============================================================================
