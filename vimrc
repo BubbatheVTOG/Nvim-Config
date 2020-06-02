@@ -487,9 +487,7 @@ let NERDTrimTraillingWhitespace = 1
 
 " Deoplete
 " -----------------------------------------------------------------------------
-" 1500 lines of config...ugh, just Google it.
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
 "let g:deoplete#complete_method = 'omnifunc'
 
 " Golden-ratio
