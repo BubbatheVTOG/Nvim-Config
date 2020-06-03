@@ -55,7 +55,6 @@ Plug 'ctrlpvim/ctrlp.vim'				" ControlP (this could be triggerd but then the bin
 Plug 'lilydjwg/colorizer'				" Hex code colorizer. This used to be a triggered plugin. {'on':['ColorToggle']}
 Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
 Plug 'majutsushi/tagbar'				" Shows all methods and variables.
-Plug 'matze/vim-move'					" Move text selections.
 Plug 'mboughaba/i3config.vim'			" i3 syntax highlighting support.
 Plug 'sheerun/vim-polyglot'				" Syntax highlighting for a lot of languages. (Striped down, install specific ones if needed.)
 Plug 'thaerkh/vim-workspace'			" Save workspace.
@@ -325,6 +324,11 @@ nnoremap <leader>bd :buffers<CR>:bdelete<Space>		" Delete buffer<Paste>
 nnoremap <leader>rf gg=G``							" Format the whole file
 nnoremap <leader>ra gggqgG''						" Include list
 
+" Moving binds
+" -----------------------------------------------------------------------------
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '>-2<CR>gv=gv
+
 " Ctags Setup
 " -----------------------------------------------------------------------------
 " ^] to jump to tag under cursor
@@ -489,10 +493,6 @@ nnoremap <leader>ut :UndotreeToggle<CR>
 nnoremap <leader>ss	:ToggleWorkspace<CR>
 " Save session default name
 let g:workspace_session_name = '.saved_session.vim'
-
-" Vim-move
-" -----------------------------------------------------------------------------
-let g:move_key_modifier = 'C'
 
 " NERDCommenter
 " -----------------------------------------------------------------------------
