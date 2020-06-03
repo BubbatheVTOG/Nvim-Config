@@ -170,11 +170,13 @@ nnoremap <silent> K :vimgrep! <cword> * <CR>:copen<CR>
 set relativenumber			" Enable relative number position when using 'set number'
 set number					" Enable line numbering.
 
-" No line numbers in terminal window.
-autocmd TermOpen * setlocal listchars= nonumber norelativenumber
-autocmd TermOpen * startinsert
-autocmd BufEnter,BufWinEnter,WinEnter term://* startinsert
-autocmd BufLeave term://* stopinsert
+" No line numbers in terminal window on nvim
+if has('nvim')
+	autocmd TermOpen * setlocal listchars= nonumber norelativenumber
+	autocmd TermOpen * startinsert
+	autocmd BufEnter,BufWinEnter,WinEnter term://* startinsert
+	autocmd BufLeave term://* stopinsert
+endif
 
 " Backups
 " -----------------------------------------------------------------------------
