@@ -199,7 +199,6 @@ if executable('/usr/bin/wal') && !empty($DISPLAY)
 	" Wal is installed and we are not on tty or ssh.
 	let g:airline_theme = 'wal'
 	colorscheme wal
-	set termguicolors!
 elseif !empty($DISPLAY)
 	" Wal is not installed and we are not on tty or ssh.
 	colorscheme challenger_deep
@@ -207,7 +206,6 @@ elseif !empty($DISPLAY)
 else
 	" We are tty or ssh.
 	colorscheme monokai
-	set termguicolors!
 endif
 
 " Netrw Config
