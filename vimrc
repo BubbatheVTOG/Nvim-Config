@@ -549,12 +549,7 @@ if has('nvim')
 	" Requires the host to have tty-clock installed.
 	if executable('tty-clock')
 		function! TTYClock()
-			if system('if [ -e /usr/bin/tty-clock ]; then echo true; fi') =~ "true"
-				let g:indentLine_enabled = 0
-				exec "tabnew term://tty-clock -C 6 -txbsrc"
-			else
-				echom "TTYClock NOT installed on host system!"
-			endif
+			exec "tabnew term://tty-clock -C 6 -txbsrc"
 		endfunction
 		command! TTYClock silent! call TTYClock()
 	endif
@@ -565,12 +560,7 @@ if has('nvim')
 	" Requires the host to have cmatrix installed.
 	if executable('cmatrix')
 		function! Cmatrix()
-			if system('if [ -e /usr/bin/cmatrix ]; then echo true; fi') =~ "true"
-				let g:indentLine_enabled = 0
-				exec "tabnew term://cmatrix -a -C cyan"
-			else
-				echom "Cmatrix NOT installed on host system!"
-			endif
+			exec "tabnew term://cmatrix -a -C cyan"
 		endfunction
 		command! Cmatrix silent! call Cmatrix()
 	endif
@@ -602,8 +592,6 @@ if has('nvim')
 " -----------------------------------------------------------------------------
 	" Just make a terminal and split it on the right side.
 	function! TermSplit()
-		let g:indentLine_enabled=0
-		" TODO: change the next line to open in working directory"
 		exec "vsplit term://zsh"
 		exec "terminal!"
 	endfunction
