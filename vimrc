@@ -83,7 +83,7 @@ endif
 " Change linters and completion for vim and neovim.
 " -----------------------------------------------------------------------------
 if has('nvim')
-	" Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'}	" Omnicompletion for neovim Plug 'w0rp/ale'			" Linter.
+	" Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'}	" Omnicompletion for neovim.
 else
 	" Plug 'valloric/youcompleteme'		" Vim completion. May require `~/.vim/plugged/youcompleteme/install.py` on updates.
 	Plug 'vim-syntastic/syntastic'	" Syntastic linter.
@@ -527,45 +527,6 @@ let g:ctrlp_working_path_mode='ra'
 nnoremap <leader>tb :TagbarToggle<CR>
 inoremap <leader>tb <ESC>:TagbarToggle<CR>
 
-" Ale
-" -----------------------------------------------------------------------------
-" Set this. Airline will handle the rest.
-let g:airline#extensions#ale#enabled = 1
-
-" Disable constant linting
-" TODO: Make this specific to laptops by glob'ing battery
-" let g:ale_lint_on_text_changed = 'never'
-
-" You can disable this option too
-" if you don't want linters to run on opening a file
-let g:ale_lint_on_enter = 0
-
-" Enable error list
-let g:ale_open_list = 0
-
-" Linter engines:
-" PYTHON REQUIRES: flake8,mypy,pycodestyle,pylint installed!
-" JavaScript REQUIRES: eslint
-" HTML REQUIRES: htmlhint (requires node)
-let g:ale_linters = {'python': ['flake8', 'mypy', 'pycodestyle', 'pylint'],
-		\ 'javascript': ['eslint'],
-		\ 'html': ['htmlhint']
-		\ }
-
-" Fixer engines:
-" REQUIRES autopep8,isort,yapf installed!
-let g:ale_fixers = {'python': ['autopep8', 'isort', 'yapf']}
-
-" Lint on save enable (disable other linting times)
-let g:ale_fix_on_save = 1
-
-" " Change linting frequency. (default:always,never,insert,normal)
-" let g:ale_lint_on_text_changed = never
-" let g:ale_lint_on_text_changed = normal
-
-" " Change linting to insertleave event. (default:1,0)
-" let g:ale_lint_on_insert_leave = 1
-
 
 " =============================================================================
 " CUSTOM FUNCTIONS
@@ -825,11 +786,13 @@ autocmd BufWritePre * :call TrimWhitespace()
 
 " Open help in vertical split
 " -----------------------------------------------------------------------------
-" augroup vimrc_help
-"   autocmd!
-"   autocmd BufEnter *.txt if &buftype == 'help' | wincmd L | endif
-" augroup END
-" autocmd! FileType help :wincmd L | :vert resize 90
+augroup vimrc_help
+	autocmd!
+	autocmd FileType help
+		\  wincmd L
+		\| setlocal nonumber
+		\| vertical resize 90
+augroup END
 
 
 " =============================================================================
