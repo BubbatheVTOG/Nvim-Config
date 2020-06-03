@@ -51,8 +51,6 @@ endif
 call plug#begin()
 Plug 'Xuyuanp/nerdtree-git-plugin'		" Git plugin for NerdTree.
 Plug 'airblade/vim-gitgutter'			" Shows staged lines.
-Plug 'camspiers/animate.vim'			" Window animations.
-Plug 'camspiers/lens.vim'				" Window animations.
 Plug 'ctrlpvim/ctrlp.vim'				" ControlP (this could be triggerd but then the bind doesn't work) {'on':['CtrlP','CtrlPBuffer','CtrlPMRU','CtrlPMixed']}
 Plug 'lilydjwg/colorizer'				" Hex code colorizer. This used to be a triggered plugin. {'on':['ColorToggle']}
 Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
@@ -263,16 +261,16 @@ onoremap <silent> k gk
 
 " Key maps for custom functions.
 " -----------------------------------------------------------------------------
-nnoremap <leader>fc :Flash<CR>
-nnoremap <leader>sc :ToggleSpell<CR>
-nnoremap <leader>bg :ToggleBG<CR>
 nnoremap <leader>so :Source<CR>
 nnoremap <leader>st :SourceThis<CR>
-nnoremap <leader>su :Sudo<CR>
-nnoremap <leader>ev :e $MYVIMRC<CR>
-nnoremap <leader>sf :SpellFix<CR>
-nnoremap <leader>sl :UserColorColumn<CR>
-nnoremap <leader>sw :UserVisibleWhitespace<CR>
+nnoremap <silent><leader>fc :Flash<CR>
+nnoremap <silent><leader>sc :ToggleSpell<CR>
+nnoremap <silent><leader>bg :ToggleBG<CR>
+nnoremap <silent><leader>su :Sudo<CR>
+nnoremap <silent><leader>ev :e $MYVIMRC<CR>
+nnoremap <silent><leader>sf :SpellFix<CR>
+nnoremap <silent><leader>sl :UserColorColumn<CR>
+nnoremap <silent><leader>sw :UserVisibleWhitespace<CR>
 
 " Only create these binds if in neovim.
 if has('nvim')
@@ -291,11 +289,8 @@ nnoremap <leader>mr /<++><CR>"_d4l:noh<CR>a
 " Split movement.
 " -----------------------------------------------------------------------------
 " This maps keys to move between splits easier.
-nnoremap <silent> <leader>= :call animate#window_delta_width(10)<CR>
-nnoremap <silent> <leader>- :call animate#window_delta_width(-10)<CR>
-" If animate plugin is ever removed, this is the same behavior.
-" nnoremap <silent> <leader>= :vertical resize +10<CR>
-" nnoremap <silent> <leader>- :vertical resize -10<CR>
+nnoremap <silent> <leader>= :vertical resize +10<CR>
+nnoremap <silent> <leader>- :vertical resize -10<CR>
 map <C-h> <C-W>h
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -570,28 +565,6 @@ let g:ale_fix_on_save = 1
 
 " " Change linting to insertleave event. (default:1,0)
 " let g:ale_lint_on_insert_leave = 1
-
-" Lens and Animate
-" -----------------------------------------------------------------------------
-let g:lens#disabled_filetypes = ['nerdtree', 'fzf']
-" let g:lens#disabled = 1
-" let g:lens#animate = 0
-" let g:lens#height_resize_max = 20
-" let g:lens#height_resize_min = 5
-" let g:lens#width_resize_max = 80
-" let g:lens#width_resize_min = 20
-
-" Lens and Animate
-" -----------------------------------------------------------------------------
-" let g:context_enabled = 1
-" let g:context_filetype_blacklist = []
-" let g:context_presenter = nvim-float/vim-popup
-" let g:context_max_height = 21
-" let g:context_max_per_indent = 5
-" g:context_border_char = '▬'
-" let g:context_highlight_normal = 'Normal'
-" let g:context_highlight_border = 'Comment'
-" let g:context_highlight_tag	 = 'Special'
 
 
 " =============================================================================
