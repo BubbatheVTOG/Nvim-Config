@@ -540,12 +540,6 @@ if !empty(glob('/sys/class/leds/chromeos::kbd_backlight/brightness'))
 	autocmd InsertLeave * silent! call system('echo 1 > /sys/class/leds/chromeos::kbd_backlight/brightness')
 endif
 
-" Only do this if on a samsung.
-if !empty(glob('/sys/class/leds/samsung::kbd_backlight/brightness'))
-	autocmd InsertEnter * silent! call system('echo 6 > /sys/class/leds/samsung::kbd_backlight/brightness')
-	autocmd InsertLeave * silent! call system('echo 1 > /sys/class/leds/samsung::kbd_backlight/brightness')
-endif
-
 " Only create these functions if we are in neovim.
 if has('nvim')
 
