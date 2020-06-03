@@ -296,7 +296,9 @@ nnoremap <silent> <leader>- :vertical resize -10<CR>
 map <C-h> <C-W>h
 map <C-j> <C-W>j
 map <C-k> <C-W>k
-map <C-L> <C-W>l
+map <C-l> <C-W>l
+map <C-o> <C-W>o
+map <C-c> <C-W>c
 
 " -----------------------------------------------------------------------------
 " When visually selecting a block and changing the indentation, don't unselect.
@@ -364,6 +366,7 @@ nnoremap <leader>cr :CocRestart<CR><CR>
 " -----------------------------------------------------------------------------
 " Open NERDTree bind
 nnoremap <leader>nt	:NERDTreeToggle<CR>
+nnoremap <leader>nf :NERDTreeFind<CR>
 let NERDTreeMouseMode = 3
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeCaseSensitiveSort = 1
