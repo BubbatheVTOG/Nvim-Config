@@ -146,11 +146,6 @@ if has('nvim')
 	set inccommand=nosplit
 endif
 
-set list
-set listchars=tab:·\ ,extends:›,precedes:‹,nbsp:·,trail:·
-highlight Whitespace ctermfg=8 guifg=DarkGray
-
-
 " Folding
 " -----------------------------------------------------------------------------
 set foldmethod=marker						" Sets manual foldmarkers.
@@ -270,7 +265,8 @@ nnoremap <leader>st :SourceThis<CR>
 nnoremap <leader>su :Sudo<CR>
 nnoremap <leader>ev :e $MYVIMRC<CR>
 nnoremap <leader>sf :SpellFix<CR>
-nnoremap <leader>us :UserColorColumn<CR>
+nnoremap <leader>sl :UserColorColumn<CR>
+nnoremap <leader>sw :UserVisibleWhitespace<CR>
 
 " Only create these binds if in neovim.
 if has('nvim')
@@ -793,10 +789,29 @@ function! UserColorColumn()
 	endif
 endfunction
 command UserColorColumn silent call UserColorColumn()
-call UserColorColumn()
+" call UserColorColumn() " Uncomment to turn on by default.
 
 " Make that line black w/ a bit of blue.
 highlight ColorColumn ctermbg=235 guibg=#003333
+
+" Configure Visible Whitespace
+" -----------------------------------------------------------------------------
+let g:UserVisibleWhitespace=0
+function! UserVisibleWhitespace()
+	if &list
+		set nolist
+		echom "Visble Whitespace OFF"
+	else
+		set list
+		echom "Visble Whitespace ON"
+	endif
+endfunction
+command UserVisibleWhitespace silent call UserVisibleWhitespace()
+" call UserVisibleWhitespace() " Ucomment to turn on by default.
+
+set listchars=tab:·\ ,extends:›,precedes:‹,nbsp:·,trail:·
+highlight Whitespace ctermfg=8 guifg=DarkGray
+
 
 " Auto-Resize
 " -----------------------------------------------------------------------------
