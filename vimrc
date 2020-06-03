@@ -59,7 +59,6 @@ Plug 'matze/vim-move'					" Move text selections.
 Plug 'mboughaba/i3config.vim'			" i3 syntax highlighting support.
 Plug 'sheerun/vim-polyglot'				" Syntax highlighting for a lot of languages. (Striped down, install specific ones if needed.)
 Plug 'thaerkh/vim-workspace'			" Save workspace.
-Plug 'tomasr/molokai'					" color theme for when wal is not installed.
 Plug 'tpope/vim-commentary'				" Commenting Plugin (Tring this instead of nerd commenter)
 Plug 'tpope/vim-fugitive'				" Git commands from ex mode.
 Plug 'tpope/vim-repeat'					" Repeat support for plugins.
@@ -71,8 +70,7 @@ Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
 Plug 'vim-scripts/SearchComplete'		" Tab completion inside of '/' search.
 Plug 'wellle/context.vim'				" Context plugin
 Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
-Plug 'neoclide/coc.nvim', {'branch': 'release'}		" Completion using lsp
-" Plug 'ervandew/supertab'				" Tab completion.
+Plug 'sickill/vim-monokai'				" A theme used when all else fails.
 
 " Plugins Requiring Host Packages
 " -----------------------------------------------------------------------------
@@ -89,12 +87,13 @@ else
 	Plug 'vim-syntastic/syntastic'	" Syntastic linter.
 endif
 
-" Triggered Plugins
-Plug 'cohama/agit.vim',			{'on':['Agit']}					" Git log viewer.
-Plug 'junegunn/goyo.vim',		{'on':['Goyo']}					" Distraction free writing.
-Plug 'mbbill/undotree',			{'on':['UndotreeToggle']}		" Create an undotree.
-Plug 'roman/golden-ratio',		{'on':['GoldenRatioToggle']}	" Change split sizes on focus change. This used to be a trigged plugin.
-Plug 'scrooloose/nerdtree',		{'on':['NERDTreeToggle']}		" Its NerdTree...but only when its toggled.
+Plug 'neoclide/coc.nvim', {'branch': 'release'}		" Completion using lsp
+Plug 'challenger-deep-theme/vim',	{ 'as': 'challenger-deep' }		" An interesting theme.
+Plug 'cohama/agit.vim',				{'on':['Agit']}					" Git log viewer.
+Plug 'junegunn/goyo.vim',			{'on':['Goyo']}					" Distraction free writing.
+Plug 'mbbill/undotree',				{'on':['UndotreeToggle']}		" Create an undotree.
+Plug 'roman/golden-ratio',			{'on':['GoldenRatioToggle']}	" Change split sizes on focus change. This used to be a trigged plugin.
+Plug 'scrooloose/nerdtree',			{'on':['NERDTreeToggle']}		" Its NerdTree...but only when its toggled.
 call plug#end()
 
 " =============================================================================
@@ -196,12 +195,19 @@ set undofile
 " -----------------------------------------------------------------------------
 " This will manage color scheme stuff since we don't know if the host has wal
 " installed.
-if executable('/usr/bin/wal')
+if executable('/usr/bin/wal') && !empty($DISPLAY)
+	" Wal is installed and we are not on tty or ssh.
 	let g:airline_theme = 'wal'
 	colorscheme wal
+	set termguicolors!
+elseif !empty($DISPLAY)
+	" Wal is not installed and we are not on tty or ssh.
+	colorscheme challenger_deep
+	set termguicolors
 else
-	let g:airline_theme = 'molokai'
-	colorscheme molokai
+	" We are tty or ssh.
+	colorscheme monokai
+	set termguicolors!
 endif
 
 " Netrw Config
