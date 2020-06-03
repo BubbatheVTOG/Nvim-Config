@@ -161,7 +161,7 @@ if executable('rg')
 	let g:rg_derive_root='true'
 	set grepprg=rg\ --vimgrep
 endif
-nnoremap <silent> K :vimgrep! <cword> * <CR>:copen<CR>
+nnoremap <silent> S :vimgrep! <cword> * <CR>:copen<CR>
 
 " Line Numbers
 " -----------------------------------------------------------------------------
@@ -357,6 +357,19 @@ inoremap <silent><expr> <TAB>
 \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <silent><expr> <C-space> coc#refresh()
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Go to code navigation.
 nmap <leader>gd <Plug>(coc-definition)
