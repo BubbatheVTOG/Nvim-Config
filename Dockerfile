@@ -2,7 +2,7 @@ FROM alpine
 
 ENV CONTAINER=true
 
-RUN apk add --no-cache nodejs npm neovim python3 python2 git curl sed py3-pip py-pip \
+RUN apk add --no-cache nodejs npm neovim python3 python2 git curl sed py3-pip py-pip cmatrix htop \
 	&& npm install -g neovim \
 	# && pip3 install neovim \
 	# && pip install neovim \
@@ -23,4 +23,4 @@ RUN nvim -u .vimrc -c 'CocInstall -sync coc-pairs coc-marketplace coc-github coc
 
 WORKDIR /home/nvim/mountpoint
 
-CMD /usr/bin/nvim -u /home/nvim/.vimrc
+ENTRYPOINT /usr/bin/nvim -u /home/nvim/.vimrc
