@@ -80,13 +80,18 @@ endif
 " Change linters and completion for vim and neovim.
 " -----------------------------------------------------------------------------
 if has('nvim')
-	" Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'}	" Omnicompletion for neovim.
+	if executable('node')
+		Plug 'neoclide/coc.nvim', {'branch': 'release'}		" Completion using lsp
+	else
+		Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'}	" Completion using linters.
+	endif
 else
-	" Plug 'valloric/youcompleteme'		" Vim completion. May require `~/.vim/plugged/youcompleteme/install.py` on updates.
-	Plug 'vim-syntastic/syntastic'	" Syntastic linter.
+	" Completion using linters.
+	Plug 'Shougo/deoplete.nvim'
+	Plug 'roxma/nvim-yarp'
+	Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}		" Completion using lsp
 Plug 'challenger-deep-theme/vim',	{ 'as': 'challenger-deep' }		" An interesting theme.
 Plug 'cohama/agit.vim',				{'on':['Agit']}					" Git log viewer.
 Plug 'junegunn/goyo.vim',			{'on':['Goyo']}					" Distraction free writing.
