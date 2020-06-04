@@ -36,13 +36,19 @@ if has('nvim')
 	if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 		silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
 			\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-		autocmd vimEnter * PlugInstall --sync | source $MYVIMRC
+		" Sourcing the vimrc might not be needed.
+		if !$CONTAINER == "true"
+			autocmd vimEnter * PlugInstall --sync " | source $MYVIMRC
+		endif
 	endif
 else
 	if empty(glob('~/.vim/autoload/plug.vim'))
 		silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
 			\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-		autocmd vimEnter * PlugInstall --sync | source $MYVIMRC
+		" Sourcing the vimrc might not be needed.
+		if !$CONTAINER == "true"
+			autocmd vimEnter * PlugInstall --sync " | source $MYVIMRC
+		endif
 	endif
 endif
 
@@ -203,7 +209,7 @@ if executable('/usr/bin/wal') && !empty($DISPLAY)
 	" Wal is installed and we are not on tty or ssh.
 	let g:airline_theme = 'wal'
 	colorscheme wal
-elseif !empty($DISPLAY)
+elseif !empty($DISPLAY) || ($CONTAINER == "true")
 	" Wal is not installed and we are not on tty or ssh.
 	colorscheme challenger_deep
 	set termguicolors
