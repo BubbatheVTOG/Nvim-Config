@@ -179,13 +179,14 @@ if executable('rg')
 	set grepprg=rg\ --vimgrep
 endif
 
-nnoremap <silent> S :vimgrep! <cword> * <CR>:copen<CR>
 
 if executable('fzf')
 	nnoremap <C-p> :GFiles<CR>
 	nnoremap <leader>rg :Rg<CR>
+	nnoremap <silent> S :Rg <cword><CR>
 else
 	nnoremap <leader>:vimgrep<CR>
+	nnoremap <silent> S :vimgrep! <cword> * <CR>:copen<CR>
 endif
 
 " Line Numbers
