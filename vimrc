@@ -57,7 +57,6 @@ endif
 call plug#begin()
 Plug 'Xuyuanp/nerdtree-git-plugin'		" Git plugin for NerdTree.
 Plug 'airblade/vim-gitgutter'			" Shows staged lines.
-Plug 'ctrlpvim/ctrlp.vim'				" ControlP (this could be triggerd but then the bind doesn't work) {'on':['CtrlP','CtrlPBuffer','CtrlPMRU','CtrlPMixed']}
 Plug 'lilydjwg/colorizer'				" Hex code colorizer. This used to be a triggered plugin. {'on':['ColorToggle']}
 Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
 Plug 'majutsushi/tagbar'				" Shows all methods and variables.
@@ -81,6 +80,13 @@ Plug 'sickill/vim-monokai'				" A theme used when all else fails.
 " -----------------------------------------------------------------------------
 if executable('wal')
 	Plug 'dylanaraps/wal.vim'			" Wal color setting.
+endif
+
+if executable('fzf')
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'junegunn/fzf.vim'
+else
+	Plug 'ctrlpvim/ctrlp.vim'
 endif
 
 " Change linters and completion for vim and neovim.
@@ -172,7 +178,15 @@ if executable('rg')
 	let g:rg_derive_root='true'
 	set grepprg=rg\ --vimgrep
 endif
+
 nnoremap <silent> S :vimgrep! <cword> * <CR>:copen<CR>
+
+if executable('fzf')
+	nnoremap <C-p> :GFiles<CR>
+	nnoremap <leader>rg :Rg<CR>
+else
+	nnoremap <leader>:vimgrep<CR>
+endif
 
 " Line Numbers
 " -----------------------------------------------------------------------------
@@ -546,13 +560,16 @@ nnoremap <leader>gy :Goyo<cr>
 " Config for CtrlP.
 " :h ctrlp@en
 " Mapings for CtlP.
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-" Ignore .git directory.
-let g:ctrlp_user_command=['.git', 'cd %s && git ls-files -co --exclude-standard']
-" Start search from start of directory containing .git folder.
-" More options here: https://github.com/ctrlpvim/ctrlp.vim
-let g:ctrlp_working_path_mode='ra'
+
+if !executable('fzf')
+	let g:ctrlp_map = '<c-p>'
+	let g:ctrlp_cmd = 'CtrlP'
+	" Ignore .git directory.
+	let g:ctrlp_user_command=['.git', 'cd %s && git ls-files -co --exclude-standard']
+	" Start search from start of directory containing .git folder.
+	" More options here: https://github.com/ctrlpvim/ctrlp.vim
+	let g:ctrlp_working_path_mode='ra'
+endif
 
 " Tag Bar
 " -----------------------------------------------------------------------------
