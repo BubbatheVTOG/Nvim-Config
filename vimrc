@@ -313,7 +313,6 @@ endif
 
 " Marker Replace
 " -----------------------------------------------------------------------------
-inoremap <leader>mr <ESC>/<++><CR>"_d4l:noh<CR>a
 nnoremap <leader>mr /<++><CR>"_d4l:noh<CR>a
 
 " Split movement.
@@ -337,8 +336,6 @@ vnoremap > >gv
 " -----------------------------------------------------------------------------
 " These binds are for changing buffers.
 nnoremap <leader>ls :ls<CR>
-inoremap <leader>bn <ESC>:bnext<CR>
-inoremap <leader>bp <ESC>:bprevious<CR>
 nnoremap <leader>bn :bnext<CR>
 nnoremap <leader>bp :bprevious<CR>
 nnoremap <leader>bo :buffers<CR>:buffer<Space>
@@ -571,7 +568,6 @@ endif
 " -----------------------------------------------------------------------------
 " This is all the config for tag bar.
 nnoremap <leader>tb :TagbarToggle<CR>
-inoremap <leader>tb <ESC>:TagbarToggle<CR>
 
 
 " =============================================================================
