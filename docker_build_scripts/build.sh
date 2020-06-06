@@ -48,28 +48,45 @@ function parse_args () {
 	done
 }
 
-
 BUILD_JAVA=false
 BUILD_CPP=false
 TEN_X_DEV=false
-PUBLISH=fasle
+PUBLISH=false
 
 parse_args "$@"
 
-eval "${BUILD_CMD}"
+# TODO: This logic is fucking horrible. This needs to be function.
+
+# Build the default image first.
+BRANCH="base"
+eval "${DOCKER_BIN} build --target ${BRANCH} -t ${DOCKER_TAG}:${BRANCH} ${PROJ_ROOT}"
+
+if $PUBLISH; then
+	eval "${DOCKER_BIN} push ${DOCKER_TAG}:${BRANCH}"
+fi
+
 
 if $BUILD_JAVA; then
 	BRANCH="java"
-	eval "${BUILD_CMD}"
+	eval "${DOCKER_BIN} build --target ${BRANCH} -t ${DOCKER_TAG}:${BRANCH} ${PROJ_ROOT}"
+	if $PUBLISH; then
+		eval "${DOCKER_BIN} push ${DOCKER_TAG}:${BRANCH}"
+	fi
 fi
 
 if $BUILD_CPP; then
 	BRANCH="cpp"
-	eval "${BUILD_CMD}"
+	eval "${DOCKER_BIN} build --target ${BRANCH} -t ${DOCKER_TAG}:${BRANCH} ${PROJ_ROOT}"
+	if $PUBLISH; then
+		eval "${DOCKER_BIN} push ${DOCKER_TAG}:${BRANCH}"
+	fi
 fi
 
 if $TEN_X_DEV; then
 	BRANCH="tenXdev"
-	eval "${BUILD_CMD}"
+	eval "${DOCKER_BIN} build --target ${BRANCH} -t ${DOCKER_TAG}:${BRANCH} ${PROJ_ROOT}"
+	if $PUBLISH; then
+		eval "${DOCKER_BIN} push ${DOCKER_TAG}:${BRANCH}"
+	fi
 fi
 
