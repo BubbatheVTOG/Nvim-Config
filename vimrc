@@ -1,4 +1,4 @@
- " ██████╗ ██╗	 ██╗██████╗ ██████╗  █████╗ ███████╗
+ " ██████╗ ██╗	 ██╗██████╗ ███		███╗  █████╗ ███████╗
  " ██╔══██╗██║	 ██║██╔══██╗██╔══██╗██╔══██╗██╔════╝
  " ██████╔╝██║	 ██║██████╔╝██████╔╝███████║███████╗
  " ██╔══██╗██║	 ██║██╔══██╗██╔══██╗██╔══██║╚════██║
@@ -112,7 +112,6 @@ Plug 'scrooloose/nerdtree',			{'on':['NERDTreeToggle']}		" Its NerdTree...but on
 call plug#end()
 
 " =============================================================================
-
 " GENERAL CONFIGURATION
 " =============================================================================
 
@@ -126,7 +125,6 @@ set autoindent					" Auto intent to the same col when on new line.
 set smarttab					" Auto insert tabs spaces for curly braces.
 set ruler						" Enables cursor location.
 set wrap lbr					" Wrap on words.
-set nocompatible				" Disables legacy stuff. (for vim)
 set showmode					" Shows what mode you're in.
 set showcmd						" Show partial command in status line.
 set showmatch					" Show matching brackets.
@@ -157,6 +155,8 @@ endif
 
 if has('nvim')
 	set inccommand=nosplit
+else
+	set nocompatible			" Disables legacy stuff. (for vim)
 endif
 
 " Folding
@@ -347,8 +347,7 @@ nnoremap <leader>tp :tabprevious<CR>
 nnoremap <leader>to :tabnew<CR>
 nnoremap <leader>td :tabclose<CR>
 
-
-" Reffrmatting Binds
+" Reformatting Binds
 " -----------------------------------------------------------------------------
 nnoremap <leader>rf gg=G``							" Format the whole file
 nnoremap <leader>ra gggqgG''						" Include list
@@ -476,22 +475,6 @@ else
 	let g:airline_symbols.whitespace = 'Ξ'
 endif
 
-" Syntastic recommended settings.
-" -----------------------------------------------------------------------------
-" Global Settings:
-if has('nvim')
-	set statusline+=%#warningmsg#
-	set statusline+=%{SyntasticStatuslineFlag()}
-	set statusline+=%*
-
-	let g:syntastic_always_populate_loc_list = 1
-	" Disable the location list (it is annoying)
-	let g:syntastic_auto_loc_list = 0
-	" let g:syntastic_auto_loc_list = 1
-	let g:syntastic_check_on_open = 1
-	let g:syntastic_check_on_wq = 1
-endif
-
 " CSS Color Settings
 " -----------------------------------------------------------------------------
 " ColorToggle
@@ -512,18 +495,11 @@ let g:highlightedyank_highlight_duration = 1000
 
 " Aget
 " -----------------------------------------------------------------------------
-nnoremap <leader>ag	:Agit<CR>
+nnoremap <silent><leader>ag	:Agit<CR>
 
 " UndoTree
 " -----------------------------------------------------------------------------
-nnoremap <leader>ut :UndotreeToggle<CR>
-
-" Vim-Session
-" -----------------------------------------------------------------------------
-" Save session
-nnoremap <leader>ss	:ToggleWorkspace<CR>
-" Save session default name
-let g:workspace_session_name = '.saved_session.vim'
+nnoremap <silent><leader>ut :UndotreeToggle<CR>
 
 " NERDCommenter
 " -----------------------------------------------------------------------------
@@ -567,7 +543,7 @@ endif
 " Tag Bar
 " -----------------------------------------------------------------------------
 " This is all the config for tag bar.
-nnoremap <leader>tb :TagbarToggle<CR>
+nnoremap <silent><leader>tb :TagbarToggle<CR>
 
 
 " =============================================================================
