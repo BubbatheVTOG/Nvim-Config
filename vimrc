@@ -791,7 +791,7 @@ augroup vimrc_help
 	autocmd FileType help
 		\  wincmd L
 		\| setlocal nonumber
-		\| vertical resize 80
+		\| vertical resize 82
 augroup END
 
 
