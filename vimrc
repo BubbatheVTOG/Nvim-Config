@@ -57,12 +57,12 @@ endif
 call plug#begin()
 Plug 'Xuyuanp/nerdtree-git-plugin'		" Git plugin for NerdTree.
 Plug 'airblade/vim-gitgutter'			" Shows staged lines.
-Plug 'lilydjwg/colorizer'				" Hex code colorizer. This used to be a triggered plugin. {'on':['ColorToggle']}
+Plug 'lilydjwg/colorizer'				" Hex code colorizer.
 Plug 'majutsushi/tagbar'				" Shows all methods and variables.
 Plug 'mboughaba/i3config.vim'			" i3 syntax highlighting support.
-Plug 'sheerun/vim-polyglot'				" Syntax highlighting for a lot of languages. (Striped down, install specific ones if needed.)
+Plug 'sheerun/vim-polyglot'				" Syntax highlighting for a lot of languages.
 Plug 'thaerkh/vim-workspace'			" Save workspace.
-Plug 'tpope/vim-commentary'				" Commenting Plugin (Tring this instead of nerd commenter)
+Plug 'tpope/vim-commentary'				" Commenting plugin.
 Plug 'tpope/vim-fugitive'				" Git commands from ex mode.
 Plug 'tpope/vim-repeat'					" Repeat support for plugins.
 Plug 'tpope/vim-sleuth'					" Heuristic tabsizes.
@@ -177,13 +177,12 @@ if executable('rg')
 	set grepprg=rg\ --vimgrep
 endif
 
-
 if executable('fzf')
-	nnoremap <C-p> :GFiles<CR>
-	nnoremap <leader>rg :Rg<CR>
+	nnoremap <C-p> :Files<CR>
+	nnoremap \ :Rg<CR>
 	nnoremap <silent> S :Rg <cword><CR>
 else
-	nnoremap <leader>rg :vimgrep<CR>
+	nnoremap \ :vimgrep<CR>
 	nnoremap <silent> S :vimgrep! <cword> * <CR>:copen<CR>
 endif
 
@@ -262,7 +261,7 @@ nnoremap ; :
 
 " Leader Defined
 " -----------------------------------------------------------------------------
-let mapleader = ","
+let mapleader = " "
 
 " Clear Search Highlights
 " -----------------------------------------------------------------------------
@@ -270,13 +269,13 @@ nnoremap <leader>nh :noh<CR>
 
 " Fold Binds
 " -----------------------------------------------------------------------------
-nnoremap <Space> za
+nnoremap <leader>ft za
 " Create classic fold.
-nnoremap <leader>of :fold<CR>
+nnoremap <leader>fo :fold<CR>
 " Create unnumbered fold.
-nnoremap <leader>cf :fold<CR>4li<CR><ESC>ka<SPACE><SPACE><ESC>i
+nnoremap <leader>fc :fold<CR>4li<CR><ESC>ka<SPACE><SPACE><ESC>i
 " Create numbered fold.
-nnoremap <leader>nf :fold<CR>4li<++><CR><ESC>A<++><ESC><S-o><BS><++><ESC>k2hi<SPACE><SPACE><ESC>i
+nnoremap <leader>fn :fold<CR>4li<++><CR><ESC>A<++><ESC><S-o><BS><++><ESC>k2hi<SPACE><SPACE><ESC>i
 
 " Change movement behavior for wrapped lines.
 " -----------------------------------------------------------------------------
@@ -345,7 +344,7 @@ nnoremap <leader>bp :bprevious<CR>
 nnoremap <leader>bo :buffers<CR>:buffer<Space>		" Open buffer
 nnoremap <leader>bd :buffers<CR>:bdelete<Space>		" Delete buffer<Paste>
 
-" Reformatting Binds
+" Reffrmatting Binds
 " -----------------------------------------------------------------------------
 nnoremap <leader>rf gg=G``							" Format the whole file
 nnoremap <leader>ra gggqgG''						" Include list
@@ -824,7 +823,7 @@ augroup vimrc_help
 	autocmd FileType help
 		\  wincmd L
 		\| setlocal nonumber
-		\| vertical resize 90
+		\| vertical resize 80
 augroup END
 
 
