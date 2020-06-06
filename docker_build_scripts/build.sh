@@ -30,6 +30,10 @@ function parse_args () {
 				TEN_X_DEV=true
 				shift
 				;;
+			-i|--ignore-cache)
+				NO_CACHE=true
+				shift
+				;;
 			--)
 				shift
 				;;
@@ -48,13 +52,14 @@ function parse_args () {
 BUILD_JAVA=false
 BUILD_CPP=false
 TEN_X_DEV=false
+NO_CACHE=false
 PUBLISH=false
 
 parse_args "$@"
 
 # Build the default image first.
 BRANCH="base"
-build $BRANCH
+build $BRANCH $NO_CACHE
 
 if $PUBLISH; then
 	push $BRANCH
@@ -63,7 +68,7 @@ fi
 
 if $BUILD_JAVA; then
 	BRANCH="java"
-	build $BRANCH
+	build $BRANCH $NO_CACHE
 	if $PUBLISH; then
 		push $BRANCH
 	fi
@@ -71,7 +76,7 @@ fi
 
 if $BUILD_CPP; then
 	BRANCH="cpp"
-	build $BRANCH
+	build $BRANCH $NO_CACHE
 	if $PUBLISH; then
 		push $BRANCH
 	fi
@@ -79,7 +84,7 @@ fi
 
 if $TEN_X_DEV; then
 	BRANCH="tenXdev"
-	build $BRANCH
+	build $BRANCH $NO_CACHE
 	if $PUBLISH; then
 		push $BRANCH
 	fi

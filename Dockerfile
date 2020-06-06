@@ -35,6 +35,7 @@ RUN dnf install -y clang
 USER nvim
 WORKDIR /home/nvim
 RUN ./squashfs-root/usr/bin/nvim -u .vimrc -c 'CocInstall -sync coc-clangd | qall'
+WORKDIR /home/nvim/mountpoint
 ENTRYPOINT /home/nvim/squashfs-root/usr/bin/nvim -u /home/nvim/.vimrc
 
 FROM base as java
@@ -44,6 +45,7 @@ RUN dnf install -y java-11-openjdk-devel
 USER nvim
 WORKDIR /home/nvim
 RUN ./squashfs-root/usr/bin/nvim -u .vimrc -c 'CocInstall -sync coc-java | qall'
+WORKDIR /home/nvim/mountpoint
 ENTRYPOINT /home/nvim/squashfs-root/usr/bin/nvim -u /home/nvim/.vimrc
 
 FROM base as tenXdev
@@ -53,4 +55,5 @@ RUN dnf install -y java-11-openjdk-devel clang
 USER nvim
 WORKDIR /home/nvim
 RUN ./squashfs-root/usr/bin/nvim -u .vimrc -c 'CocInstall -sync coc-java coc-clangd | qall'
+WORKDIR /home/nvim/mountpoint
 ENTRYPOINT /home/nvim/squashfs-root/usr/bin/nvim -u /home/nvim/.vimrc
