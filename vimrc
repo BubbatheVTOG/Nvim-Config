@@ -415,8 +415,8 @@ nnoremap <leader>cr :CocRestart<CR><CR>
 " NERDTree config
 " -----------------------------------------------------------------------------
 " Open NERDTree bind
-nnoremap <leader>nt	:NERDTreeToggle<CR>
-nnoremap <leader>nf :NERDTreeFind<CR>
+nnoremap <silent><leader>nt	:NERDTreeToggle<CR>
+nnoremap <silent><leader>nf :NERDTreeFind<CR>
 let NERDTreeMouseMode = 3
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeCaseSensitiveSort = 1
