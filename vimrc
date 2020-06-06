@@ -491,7 +491,7 @@ let g:colorizer_maxlines = 500
 " Bind y to activate plugin.
 map y <Plug>(highlightedyank)
 " Highlight time in milliseconds. '-1' makes in infinite.
-let g:highlightedyank_highlight_duration = 1000
+let g:highlightedyank_highlight_duration = 50
 
 " Aget
 " -----------------------------------------------------------------------------

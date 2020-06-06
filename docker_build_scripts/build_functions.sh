@@ -1,7 +1,7 @@
 source $(dirname $0)/set_environment.sh
 
 function build () {
-	eval "${DOCKER_BIN} build --target $1 -t ${DOCKER_TAG}:$1 ${PROJ_ROOT}."
+	eval "${DOCKER_BIN} build --no-cache --target $1 -t ${DOCKER_TAG}:$1 ${PROJ_ROOT}."
 }
 
 function push () {

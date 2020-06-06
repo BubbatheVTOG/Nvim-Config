@@ -24,6 +24,10 @@ function parse_args () {
 				PUBLISH=true
 				shift
 				;;
+			-a|--all)
+				BUILD_JAVA=true
+				BUILD_CPP=true
+				TEN_X_DEV=true
 			--)
 				shift
 				;;
