@@ -134,12 +134,12 @@ set splitright					" Open new horizontal splits right of the current one.
 set splitbelow					" Open new vertical splits below the current one.
 set completeopt=longest,menuone,preview	" Better autocompletion.
 set shortmess+=c				" Don't send short messages to |ins-completion-menu|
-" set hidden					" Buffers become hidden when abandoned.
+set hidden					" Buffers become hidden when abandoned.
 set autoread					" Reload the file when it changes outside of (n)vim.
 set visualbell					" Use visual bell instead of beeping.
 set history=1000				" Increase history.
 set undolevels=1000				" Increase undo levels.
-set scrolloff=5					" Sets the scroll off set.
+set scrolloff=10				" Sets the scroll off set.
 set confirm						" Prompt conformation dialogs
 set tags=tags;					" Sets tag file to recursively up directory hierarchy. (The `;` is VERY important)
 set clipboard=unnamedplus		" Allow us to paste to the system clipboard by default.
@@ -333,7 +333,7 @@ map <C-c> <C-W>c
 vnoremap < <gv
 vnoremap > >gv
 
-" Buffer Binds
+" Buffer & Tab Binds
 " -----------------------------------------------------------------------------
 " These binds are for changing buffers.
 nnoremap <leader>ls :ls<CR>
@@ -341,8 +341,15 @@ inoremap <leader>bn <ESC>:bnext<CR>
 inoremap <leader>bp <ESC>:bprevious<CR>
 nnoremap <leader>bn :bnext<CR>
 nnoremap <leader>bp :bprevious<CR>
-nnoremap <leader>bo :buffers<CR>:buffer<Space>		" Open buffer
-nnoremap <leader>bd :buffers<CR>:bdelete<Space>		" Delete buffer<Paste>
+nnoremap <leader>bo :buffers<CR>:buffer<Space>
+nnoremap <leader>bd :buffers<CR>:bdelete<Space>
+
+" These binds are for managing tabs.
+nnoremap <leader>tn :tabnext<CR>
+nnoremap <leader>tp :tabprevious<CR>
+nnoremap <leader>to :tabnew<CR>
+nnoremap <leader>td :tabclose<CR>
+
 
 " Reffrmatting Binds
 " -----------------------------------------------------------------------------
@@ -498,17 +505,6 @@ let g:colorizer_nomap = 1
 let g:colorizer_auto_color = 1
 let g:colorizer_x11_name = 1
 let g:colorizer_maxlines = 500
-
-" Smooth Scroll Settings
-" -----------------------------------------------------------------------------
-" Smooth Scroll the j and k keys.
-let g:comfortable_motion_scroll_down_key = "j"
-let g:comfortable_motion_scroll_up_key = "k"
-"
-" Intervals
-let g:comfortable_motion_interval = 1000/60		" Default = 1000/60
-let g:comfortable_motion_friction = 80.0		" Default = 80.0
-let g:comfortable_motion_air_drag = 2.0			" Default = 2.0
 
 " Vim-Highlightedyank
 " -----------------------------------------------------------------------------
