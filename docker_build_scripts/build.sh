@@ -28,6 +28,8 @@ function parse_args () {
 				BUILD_JAVA=true
 				BUILD_CPP=true
 				TEN_X_DEV=true
+				shift
+				;;
 			--)
 				shift
 				;;
