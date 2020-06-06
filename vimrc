@@ -37,7 +37,7 @@ if has('nvim')
 		silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
 			\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 		" Sourcing the vimrc might not be needed.
-		if !$CONTAINER == "true"
+		if !$CONTAINER ==? "true"
 			autocmd vimEnter * PlugInstall --sync " | source $MYVIMRC
 		endif
 	endif
@@ -46,7 +46,7 @@ else
 		silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
 			\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 		" Sourcing the vimrc might not be needed.
-		if !$CONTAINER == "true"
+		if !$CONTAINER ==? "true"
 			autocmd vimEnter * PlugInstall --sync " | source $MYVIMRC
 		endif
 	endif
@@ -58,7 +58,6 @@ call plug#begin()
 Plug 'Xuyuanp/nerdtree-git-plugin'		" Git plugin for NerdTree.
 Plug 'airblade/vim-gitgutter'			" Shows staged lines.
 Plug 'lilydjwg/colorizer'				" Hex code colorizer. This used to be a triggered plugin. {'on':['ColorToggle']}
-Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
 Plug 'majutsushi/tagbar'				" Shows all methods and variables.
 Plug 'mboughaba/i3config.vim'			" i3 syntax highlighting support.
 Plug 'sheerun/vim-polyglot'				" Syntax highlighting for a lot of languages. (Striped down, install specific ones if needed.)
@@ -73,8 +72,8 @@ Plug 'vim-airline/vim-airline'			" Status bar.
 Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
 Plug 'vim-scripts/SearchComplete'		" Tab completion inside of '/' search.
 Plug 'wellle/context.vim'				" Context plugin
-Plug 'yuttie/comfortable-motion.vim'	" Smooth scrolling.
 Plug 'sickill/vim-monokai'				" A theme used when all else fails.
+Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
 
 " Plugins Requiring Host Packages
 " -----------------------------------------------------------------------------
@@ -98,7 +97,7 @@ if has('nvim')
 		Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'}	" Completion using linters.
 	endif
 else
-	" Completion using linters.
+	" Completion using linters under default vim.
 	Plug 'Shougo/deoplete.nvim'
 	Plug 'roxma/nvim-yarp'
 	Plug 'roxma/vim-hug-neovim-rpc'
@@ -145,6 +144,7 @@ set confirm						" Prompt conformation dialogs
 set tags=tags;					" Sets tag file to recursively up directory hierarchy. (The `;` is VERY important)
 set clipboard=unnamedplus		" Allow us to paste to the system clipboard by default.
 set noexpandtab					" Ensures that we use tabs an not spaces.
+set noerrorbells				" No error bells.
 set novisualbell				" No visual bell.
 set tabstop=4
 set softtabstop=4
@@ -163,8 +163,6 @@ endif
 " -----------------------------------------------------------------------------
 set foldmethod=marker						" Sets manual foldmarkers.
 highlight Folded ctermbg=black ctermfg=blue
-"autocmd BufWinLeave *.* mkview				" Save folds on exit.
-"autocmd BufWinEnter *.* silent loadview	" Create folds from save.
 
 " Search
 " -----------------------------------------------------------------------------
@@ -185,7 +183,7 @@ if executable('fzf')
 	nnoremap <leader>rg :Rg<CR>
 	nnoremap <silent> S :Rg <cword><CR>
 else
-	nnoremap <leader>:vimgrep<CR>
+	nnoremap <leader>rg :vimgrep<CR>
 	nnoremap <silent> S :vimgrep! <cword> * <CR>:copen<CR>
 endif
 
@@ -209,12 +207,14 @@ set noswapfile				" Disable swap files.
 
 " Persistent Undo
 " -----------------------------------------------------------------------------
-" " Use persistent history.
-if !isdirectory("/tmp/.vim-undo-dir")
-	call mkdir("/tmp/.vim-undo-dir", "", 0700)
+" Use persistent history.
+if $CONTAINER !=? "true"
+	if !isdirectory("/tmp/.vim-undo-dir")
+		call mkdir("/tmp/.vim-undo-dir", "", 0700)
+	endif
+	set undodir=/tmp/.vim-undo-dir
+	set undofile
 endif
-set undodir=/tmp/.vim-undo-dir
-set undofile
 
 " Color Schemes
 " -----------------------------------------------------------------------------
@@ -224,7 +224,7 @@ if executable('/usr/bin/wal') && !empty($DISPLAY)
 	" Wal is installed and we are not on tty or ssh.
 	let g:airline_theme = 'wal'
 	colorscheme wal
-elseif !empty($DISPLAY) || ($CONTAINER == "true")
+elseif !empty($DISPLAY) || ($CONTAINER ==? "true")
 	" Wal is not installed and we are not on tty or ssh.
 	colorscheme challenger_deep
 	set termguicolors
