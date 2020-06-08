@@ -145,7 +145,7 @@ set scrolloff=10				" Sets the scroll off set.
 set confirm						" Prompt conformation dialogs
 set tags=tags;					" Sets tag file to recursively up directory hierarchy. (The `;` is VERY important)
 set clipboard=unnamedplus		" Allow us to paste to the system clipboard by default.
-set noexpandtab					" Ensures that we use tabs an not spaces.
+set noexpandtab					" Ensures that we use tabs and not spaces.
 set noerrorbells				" No error bells.
 set novisualbell				" No visual bell.
 set tabstop=4
@@ -182,9 +182,9 @@ if executable('rg')
 endif
 
 if executable('fzf')
-	nnoremap <C-p> :Files<CR>
+	nnoremap <C-p> :GFiles<CR>
 	nnoremap \ :Rg<CR>
-	nnoremap <silent> S :Rg <C-R>=expand("<cword>")<CR><CR>
+	noremap <silent> S :Rg <C-R>=expand("<cword>")<CR><CR>
 else
 	nnoremap \ :vimgrep<CR>
 	nnoremap <silent> S :vimgrep! <cword> * <CR>:copen<CR>
@@ -258,10 +258,6 @@ nnoremap <leader>wh :-1read $HOME/.vim/templates/html.skel<CR>
 " =============================================================================
 " CUSTOM KEY BINDS
 " =============================================================================
-
-" CONTROVERSY
-" -----------------------------------------------------------------------------
-nnoremap ; :
 
 " Leader Defined
 " -----------------------------------------------------------------------------
@@ -426,10 +422,12 @@ endif
 
 " FireNvim
 " -----------------------------------------------------------------------------
-if exists('g:started_by_firenvim') && !$CONTAINER
+if exists('g:started_by_firenvim')
 	set statusline=0
+	normal! :AirlineToggle
 else
-	set statusline=1
+	set statusline=2
+	normal! :AirlineToggle
 endif
 
 " NERDTree config
