@@ -184,7 +184,7 @@ endif
 if executable('fzf')
 	nnoremap <C-p> :Files<CR>
 	nnoremap \ :Rg<CR>
-	nnoremap <silent> S :Rg <cword><CR>
+	nnoremap <silent> S :Rg <C-R>=expand("<cword>")<CR><CR>
 else
 	nnoremap \ :vimgrep<CR>
 	nnoremap <silent> S :vimgrep! <cword> * <CR>:copen<CR>
