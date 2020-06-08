@@ -101,6 +101,7 @@ else
 	Plug 'Shougo/deoplete.nvim'
 	Plug 'roxma/nvim-yarp'
 	Plug 'roxma/vim-hug-neovim-rpc'
+	Plug 'ervandew/supertab'
 endif
 
 Plug 'challenger-deep-theme/vim',	{ 'as': 'challenger-deep' }		" An interesting theme.
@@ -374,42 +375,51 @@ endif
 
 " COC
 " -----------------------------------------------------------------------------
-function! s:check_back_space() abort
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+if has('nvim')
+	function! s:check_back_space() abort
+		let col = col('.') - 1
+		return !col || getline('.')[col - 1]  =~# '\s'
+	endfunction
 
-inoremap <silent><expr> <TAB>
-\ pumvisible() ? "\<C-n>" :
-\ <SID>check_back_space() ? "\<TAB>" :
-\ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap <silent><expr> <C-space> coc#refresh()
+	inoremap <silent><expr> <TAB>
+	\ pumvisible() ? "\<C-n>" :
+	\ <SID>check_back_space() ? "\<TAB>" :
+	\ coc#refresh()
+	inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+	inoremap <silent><expr> <C-space> coc#refresh()
 
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+	nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+	function! s:show_documentation()
+	  if (index(['vim','help'], &filetype) >= 0)
+		execute 'h '.expand('<cword>')
+	  else
+		call CocAction('doHover')
+	  endif
+	endfunction
 
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+	" Highlight the symbol and its references when holding the cursor.
+	autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Go to code navigation.
-nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gt <Plug>(coc-type-definition)
-nmap <leader>gi <Plug>(coc-implementation)
-nmap <leader>gc <Plug>(coc-references)
-nmap <leader>rr <Plug>(coc-rename)
-nmap <leader>g[ <Plug>(coc-diagnostic-prev)
-nmap <leader>g] <Plug>(coc-diagnostic-next)
-nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev-error)
-nmap <silent> <leader>gn <Plug>(coc-diagnostic-next-error)
-nnoremap <leader>cr :CocRestart<CR><CR>
+	" Go to code navigation.
+	nmap <leader>gd <Plug>(coc-definition)
+	nmap <leader>gt <Plug>(coc-type-definition)
+	nmap <leader>gi <Plug>(coc-implementation)
+	nmap <leader>gc <Plug>(coc-references)
+	nmap <leader>rr <Plug>(coc-rename)
+	nmap <leader>g[ <Plug>(coc-diagnostic-prev)
+	nmap <leader>g] <Plug>(coc-diagnostic-next)
+	nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev-error)
+	nmap <silent> <leader>gn <Plug>(coc-diagnostic-next-error)
+	nnoremap <leader>cr :CocRestart<CR><CR>
+endif
+
+" SuperTab Completer
+" -----------------------------------------------------------------------------
+" This is only used with deoplete when we don't have coc installed.
+if !has('nvim')
+	let g:SuperTabDefaultCompletionType = "<c-n>"
+endif
 
 " NERDTree config
 " -----------------------------------------------------------------------------
