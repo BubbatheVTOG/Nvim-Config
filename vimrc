@@ -432,6 +432,8 @@ function! OnUIEnter(event) abort
 	if s:IsFirenvimActive(a:event)
 		set laststatus=0
 		normal! :AirlineToggle
+		colorscheme challenger_deep
+		set termguicolors
 	endif
 endfunction
 autocmd UIEnter * call OnUIEnter(deepcopy(v:event))
