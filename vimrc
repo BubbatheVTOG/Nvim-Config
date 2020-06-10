@@ -19,8 +19,8 @@
 " Environmental Setup
 " -----------------------------------------------------------------------------
 " Set some sane environment values.
-set encoding=utf-8
-scriptencoding utf-8
+set encoding=UTF-8
+scriptencoding UTF-8
 set t_Co=256
 
 " Use `$nvim -u $(location to vimrc)` to trigger this event.
@@ -366,6 +366,34 @@ endif
 " COC
 " -----------------------------------------------------------------------------
 if has('nvim')
+
+	let g:coc_global_extensions = [
+		\ 'coc-clock',
+		\ 'coc-discord',
+		\ 'coc-docker',
+		\ 'coc-eslint',
+		\ 'coc-json',
+		\ 'coc-marketplace',
+		\ 'coc-sh',
+		\ 'coc-tag',
+		\ 'coc-vimlsp',
+		\ 'coc-yaml',
+		\ 'coc-sql',
+		\ 'coc-python',
+		\ 'coc-phpls',
+		\ 'coc-markdownlint',
+		\ 'coc-import-cost',
+		\ 'coc-html',
+		\ ]
+
+	if executable('javac')
+		call coc#add_extension('coc-java')
+	endif
+
+	if executable('clang')
+		call coc#add_extension('coc-clangd')
+	endif
+
 	function! s:check_back_space() abort
 		let col = col('.') - 1
 		return !col || getline('.')[col - 1]  =~# '\s'
