@@ -369,7 +369,6 @@ if has('nvim')
 
 	let g:coc_global_extensions = [
 		\ 'coc-clock',
-		\ 'coc-discord',
 		\ 'coc-docker',
 		\ 'coc-eslint',
 		\ 'coc-json',
@@ -378,13 +377,16 @@ if has('nvim')
 		\ 'coc-tag',
 		\ 'coc-vimlsp',
 		\ 'coc-yaml',
-		\ 'coc-sql',
 		\ 'coc-python',
 		\ 'coc-phpls',
 		\ 'coc-markdownlint',
 		\ 'coc-import-cost',
 		\ 'coc-html',
 		\ ]
+
+	if executable('discord')
+		call coc#add_extension('coc-discord')
+	endif
 
 	if executable('javac')
 		call coc#add_extension('coc-java')
