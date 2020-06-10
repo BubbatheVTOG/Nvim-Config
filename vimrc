@@ -55,7 +55,6 @@ endif
 " Plugins
 " -----------------------------------------------------------------------------
 call plug#begin()
-Plug 'Xuyuanp/nerdtree-git-plugin'		" Git plugin for NerdTree.
 Plug 'airblade/vim-gitgutter'			" Shows staged lines.
 Plug 'lilydjwg/colorizer'				" Hex code colorizer.
 Plug 'majutsushi/tagbar'				" Shows all methods and variables.
@@ -113,6 +112,8 @@ Plug 'junegunn/goyo.vim',			{'on':['Goyo']}					" Distraction free writing.
 Plug 'mbbill/undotree',				{'on':['UndotreeToggle']}		" Create an undotree.
 Plug 'roman/golden-ratio',			{'on':['GoldenRatioToggle']}	" Change split sizes on focus change. This used to be a trigged plugin.
 Plug 'scrooloose/nerdtree',			{'on':['NERDTreeToggle']}		" Its NerdTree...but only when its toggled.
+Plug 'Xuyuanp/nerdtree-git-plugin',	{'on':['NERDTreeToggle']}		" Git plugin for NerdTree.
+Plug 'ryanoasis/vim-devicons',		{'on':['NERDTreeToggle']}		" Filetype icons for NerdTree.
 call plug#end()
 
 " =============================================================================
@@ -184,10 +185,10 @@ endif
 if executable('fzf')
 	nnoremap <C-p> :GFiles<CR>
 	nnoremap \ :Rg<CR>
-	noremap <silent> S :Rg <C-R>=expand("<cword>")<CR><CR>
+	nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
 else
 	nnoremap \ :vimgrep<CR>
-	nnoremap <silent> S :vimgrep! <cword> * <CR>:copen<CR>
+	nnoremap <leader>pw :vimgrep! <cword> * <CR>:copen<CR>
 endif
 
 " Line Numbers
