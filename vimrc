@@ -19,8 +19,8 @@
 " Environmental Setup
 " -----------------------------------------------------------------------------
 " Set some sane environment values.
-set encoding=utf-8
-scriptencoding utf-8
+set encoding=UTF-8
+scriptencoding UTF-8
 set t_Co=256
 
 " Use `$nvim -u $(location to vimrc)` to trigger this event.
@@ -55,7 +55,6 @@ endif
 " Plugins
 " -----------------------------------------------------------------------------
 call plug#begin()
-Plug 'Xuyuanp/nerdtree-git-plugin'		" Git plugin for NerdTree.
 Plug 'airblade/vim-gitgutter'			" Shows staged lines.
 Plug 'lilydjwg/colorizer'				" Hex code colorizer.
 Plug 'majutsushi/tagbar'				" Shows all methods and variables.
@@ -113,6 +112,8 @@ Plug 'junegunn/goyo.vim',			{'on':['Goyo']}					" Distraction free writing.
 Plug 'mbbill/undotree',				{'on':['UndotreeToggle']}		" Create an undotree.
 Plug 'roman/golden-ratio',			{'on':['GoldenRatioToggle']}	" Change split sizes on focus change. This used to be a trigged plugin.
 Plug 'scrooloose/nerdtree',			{'on':['NERDTreeToggle']}		" Its NerdTree...but only when its toggled.
+Plug 'Xuyuanp/nerdtree-git-plugin',	{'on':['NERDTreeToggle']}		" Git plugin for NerdTree.
+Plug 'ryanoasis/vim-devicons',		{'on':['NERDTreeToggle']}		" Filetype icons for NerdTree.
 call plug#end()
 
 " =============================================================================
@@ -184,10 +185,10 @@ endif
 if executable('fzf')
 	nnoremap <C-p> :GFiles<CR>
 	nnoremap \ :Rg<CR>
-	noremap <silent> S :Rg <C-R>=expand("<cword>")<CR><CR>
+	nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
 else
 	nnoremap \ :vimgrep<CR>
-	nnoremap <silent> S :vimgrep! <cword> * <CR>:copen<CR>
+	nnoremap <leader>pw :vimgrep! <cword> * <CR>:copen<CR>
 endif
 
 " Line Numbers
@@ -365,6 +366,34 @@ endif
 " COC
 " -----------------------------------------------------------------------------
 if has('nvim')
+
+	let g:coc_global_extensions = [
+		\ 'coc-clock',
+		\ 'coc-discord',
+		\ 'coc-docker',
+		\ 'coc-eslint',
+		\ 'coc-json',
+		\ 'coc-marketplace',
+		\ 'coc-sh',
+		\ 'coc-tag',
+		\ 'coc-vimlsp',
+		\ 'coc-yaml',
+		\ 'coc-sql',
+		\ 'coc-python',
+		\ 'coc-phpls',
+		\ 'coc-markdownlint',
+		\ 'coc-import-cost',
+		\ 'coc-html',
+		\ ]
+
+	if executable('javac')
+		call coc#add_extension('coc-java')
+	endif
+
+	if executable('clang')
+		call coc#add_extension('coc-clangd')
+	endif
+
 	function! s:check_back_space() abort
 		let col = col('.') - 1
 		return !col || getline('.')[col - 1]  =~# '\s'
@@ -412,25 +441,9 @@ endif
 
 " FireNvim
 " -----------------------------------------------------------------------------
-if exists('g:started_by_firenvim')
-	set statusline=0
-	normal! :AirlineToggle
-else
-	set statusline=2
-endif
-
-function! s:IsFirenvimActive(event) abort
-	if !exists('*nvim_get_chan_info')
-		return 0
-	endif
-	let l:ui = nvim_get_chan_info(a:event.chan)
-	return has_key(l:ui, 'client') && has_key(l:ui.client, 'name') &&
-				\ l:ui.client.name =~? 'Firenvim'
-endfunction
-
-function! OnUIEnter(event) abort
-	if s:IsFirenvimActive(a:event)
-		set laststatus=0
+if has('nvim')
+	if exists('g:started_by_firenvim')
+		set statusline=0
 		normal! :AirlineToggle
 		let w:airline_disable_statusline = 1
 		let g:airline#extensions#tabline#enabled = 1
@@ -441,11 +454,29 @@ function! OnUIEnter(event) abort
 		colorscheme challenger_deep
 		set termguicolors
 	endif
-endfunction
-autocmd UIEnter * call OnUIEnter(deepcopy(v:event))
 
-" FireNvim site<->filetype overrides.
-autocmd BufEnter github.com_*.txt set filetype=markdown
+	function! s:IsFirenvimActive(event) abort
+		if !exists('*nvim_get_chan_info')
+			return 0
+		endif
+		let l:ui = nvim_get_chan_info(a:event.chan)
+		return has_key(l:ui, 'client') && has_key(l:ui.client, 'name') &&
+					\ l:ui.client.name =~? 'Firenvim'
+	endfunction
+
+	function! OnUIEnter(event) abort
+		if s:IsFirenvimActive(a:event)
+			set laststatus=0
+			normal! :AirlineToggle
+			colorscheme challenger_deep
+			set termguicolors
+		endif
+	endfunction
+	autocmd UIEnter * call OnUIEnter(deepcopy(v:event))
+
+	" FireNvim site<->filetype overrides.
+	autocmd BufEnter github.com_*.txt set filetype=markdown
+endif
 
 " NERDTree config
 " -----------------------------------------------------------------------------
