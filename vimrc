@@ -382,6 +382,7 @@ if has('nvim')
 		\ 'coc-markdownlint',
 		\ 'coc-import-cost',
 		\ 'coc-html',
+		\ 'coc-tsserver',
 		\ ]
 
 	if executable('discord')
@@ -418,9 +419,6 @@ if has('nvim')
 	  endif
 	endfunction
 
-	" Highlight the symbol and its references when holding the cursor.
-	autocmd CursorHold * silent call CocActionAsync('highlight')
-
 	" Go to code navigation.
 	nmap <leader>gd <Plug>(coc-definition)
 	nmap <leader>gt <Plug>(coc-type-definition)
@@ -432,6 +430,22 @@ if has('nvim')
 	nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev-error)
 	nmap <silent> <leader>gn <Plug>(coc-diagnostic-next-error)
 	nnoremap <leader>cr :CocRestart<CR><CR>
+
+	function! ShowDocIfNoDiagnostic(timer_id)
+		if (coc#util#has_float() == 0)
+			silent call CocActionAsync('doHover')
+		endif
+	endfunction
+
+	function! s:show_hover_doc()
+		call timer_start(500, 'ShowDocIfNoDiagnostic')
+	endfunction
+
+	" Highlight the symbol and its references when holding the cursor.
+	autocmd CursorHold * silent call CocActionAsync('highlight')
+	" Show documentation of stuff on hover.
+	autocmd CursorHoldI * :call <SID>show_hover_doc()
+	autocmd CursorHold * :call <SID>show_hover_doc()
 endif
 
 " SuperTab Completer
