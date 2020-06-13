@@ -220,6 +220,12 @@ if $CONTAINER !=? "true"
 	set undofile
 endif
 
+" Filetype Changes
+" -----------------------------------------------------------------------------
+autocmd FileType ruby setlocal ts=2 sts=2 sw=2 noexpandtab
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2 noexpandtab
+autocmd FileType typescript setlocal ts=2 sts=2 sw=2 noexpandtab
+
 " Color Schemes
 " -----------------------------------------------------------------------------
 " This will manage color scheme stuff since we don't know if the host has wal
@@ -315,8 +321,8 @@ map <C-h> <C-W>h
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-l> <C-W>l
-map <C-o> <C-W>o
-map <C-c> <C-W>c
+" map <C-o> <C-W>o
+" map <C-c> <C-W>c
 
 " -----------------------------------------------------------------------------
 " When visually selecting a block and changing the indentation, don't unselect.
@@ -442,7 +448,7 @@ if has('nvim')
 	endfunction
 
 	" Highlight the symbol and its references when holding the cursor.
-	autocmd CursorHold * silent call CocActionAsync('highlight')
+	" autocmd CursorHold * silent call CocActionAsync('highlight')
 	" Show documentation of stuff on hover.
 	autocmd CursorHoldI * :call <SID>show_hover_doc()
 	autocmd CursorHold * :call <SID>show_hover_doc()
