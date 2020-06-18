@@ -375,20 +375,23 @@ if has('nvim')
 
 	let g:coc_global_extensions = [
 		\ 'coc-clock',
+		\ 'coc-css',
 		\ 'coc-docker',
 		\ 'coc-eslint',
+		\ 'coc-github',
+		\ 'coc-html',
+		\ 'coc-import-cost',
 		\ 'coc-json',
+		\ 'coc-markdownlint',
 		\ 'coc-marketplace',
+		\ 'coc-phpls',
+		\ 'coc-prettier',
+		\ 'coc-python',
 		\ 'coc-sh',
 		\ 'coc-tag',
+		\ 'coc-tsserver',
 		\ 'coc-vimlsp',
 		\ 'coc-yaml',
-		\ 'coc-python',
-		\ 'coc-phpls',
-		\ 'coc-markdownlint',
-		\ 'coc-import-cost',
-		\ 'coc-html',
-		\ 'coc-tsserver',
 		\ ]
 
 	if executable('discord')
@@ -452,6 +455,10 @@ if has('nvim')
 	" Show documentation of stuff on hover.
 	autocmd CursorHoldI * :call <SID>show_hover_doc()
 	autocmd CursorHold * :call <SID>show_hover_doc()
+
+	command! -nargs=0 Prettier :CocCommand prettier.formatFile
+	vnoremap <leader>fs  <Plug>(coc-format-selected)
+	nnoremap <leader>fs  <Plug>(coc-format-selected)
 endif
 
 " SuperTab Completer
