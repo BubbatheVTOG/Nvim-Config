@@ -84,7 +84,7 @@ if executable('fzf')
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
 else
-	Plug 'ctrlpvim/ctrlp.vim'
+	Plug 'kien/ctrlp.vim'
 endif
 
 " Change linters and completion for vim and neovim.
@@ -179,17 +179,22 @@ set showmatch				" While search, show exact matches.
 
 if executable('rg')
 	let g:rg_derive_root='true'
-	set grepprg=rg\ --vimgrep
+	set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 endif
 
 if executable('fzf')
-	nnoremap <C-p> :GFiles<CR>
 	nnoremap \ :Rg<CR>
-	nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
+	nnoremap <C-p> :GFiles<CR>
+	nnoremap <Space>pw :Rg <C-R>=expand("<cword>")<CR><CR>
 else
 	nnoremap \ :vimgrep<CR>
-	nnoremap <leader>pw :vimgrep! <cword> * <CR>:copen<CR>
+	nnoremap <Space>pw :vimgrep! <cword> * <CR>:copen<CR>
 endif
+
+nnoremap <Space>cs :CocSearch <C-R>=expand("<cword>")<CR><CR>
+
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+let $FZF_DEFAULT_OPTS='--reverse'
 
 " Line Numbers
 " -----------------------------------------------------------------------------
@@ -395,7 +400,7 @@ if has('nvim')
 		\ ]
 
 	if executable('discord')
-		call coc#add_extension('coc-discord')
+		call coc#add_extension('coc-discord-neovim')
 	endif
 
 	if executable('javac')
@@ -459,6 +464,7 @@ if has('nvim')
 	command! -nargs=0 Prettier :CocCommand prettier.formatFile
 	vnoremap <leader>fs  <Plug>(coc-format-selected)
 	nnoremap <leader>fs  <Plug>(coc-format-selected)
+
 endif
 
 " SuperTab Completer
