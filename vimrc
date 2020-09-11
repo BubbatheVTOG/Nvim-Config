@@ -83,6 +83,7 @@ endif
 if executable('fzf')
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
+	Plug 'antoinemadec/coc-fzf'
 else
 	Plug 'kien/ctrlp.vim'
 endif
@@ -179,7 +180,8 @@ set showmatch				" While search, show exact matches.
 
 if executable('rg')
 	let g:rg_derive_root='true'
-	set grepprg=rg\ --vimgrep\ --smart-case\ --follow
+	set grepprg=rg\ --vimgrep\ --smart-case\ --follow\ --color=always
+	let $FZF_DEFAULT_COMMAND='rg --files --smart-case --color=always --hidden -g \"!{.git,node_modules,vendor}/*"'
 endif
 
 if executable('fzf')
@@ -193,8 +195,19 @@ endif
 
 nnoremap <Space>cs :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
-let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
-let $FZF_DEFAULT_OPTS='--reverse'
+" nnoremap <leader>gl :Commits<CR>
+nnoremap <leader>bl :BCommits<CR>
+
+" executable bat
+let $FZF_DEFAULT_OPTS="--bind ctrl-a:select-all,ctrl-d:deselect-all,ctrl-t:toggle-all --ansi --layout reverse --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
+let g:fzf_preview_window='right:65%'
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+let g:fzf_tags_command = 'ctags -R --fields=+iaS --extra=+q --exclude=.git'
+
+" By default coc_fzf tries to look like coc-preview. Make it look like our fzf
+let g:coc_fzf_preview = ''
+let g:coc_fzf_opts = []
 
 " Line Numbers
 " -----------------------------------------------------------------------------
@@ -235,18 +248,20 @@ autocmd FileType typescript setlocal ts=2 sts=2 sw=2 noexpandtab
 " -----------------------------------------------------------------------------
 " This will manage color scheme stuff since we don't know if the host has wal
 " installed.
-if executable('/usr/bin/wal') && !empty($DISPLAY)
-	" Wal is installed and we are not on tty or ssh.
-	let g:airline_theme = 'wal'
-	colorscheme wal
-elseif !empty($DISPLAY) || ($CONTAINER ==? "true")
-	" Wal is not installed and we are not on tty or ssh.
-	colorscheme challenger_deep
-	set termguicolors
-else
-	" We are tty or ssh.
-	colorscheme monokai
-endif
+colorscheme challenger_deep
+set termguicolors
+" if executable('/usr/bin/wal') && !empty($DISPLAY)
+" 	" Wal is installed and we are not on tty or ssh.
+" 	let g:airline_theme = 'wal'
+" 	colorscheme wal
+" elseif !empty($DISPLAY) || ($CONTAINER ==? "true")
+" 	" Wal is not installed and we are not on tty or ssh.
+" 	colorscheme challenger_deep
+" 	set termguicolors
+" else
+" 	" We are tty or ssh.
+" 	colorscheme monokai
+" endif
 
 " Netrw Config
 " -----------------------------------------------------------------------------
