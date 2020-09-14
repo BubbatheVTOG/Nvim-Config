@@ -182,7 +182,7 @@ set showmatch				" While search, show exact matches.
 if executable('rg')
 	let g:rg_derive_root='true'
 	set grepprg=rg\ --vimgrep\ --smart-case\ --follow\ --color=always
-	let $FZF_DEFAULT_COMMAND='rg --files --smart-case --color=always --hidden -g \"!{.git,node_modules,vendor}/*"'
+	let $FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case --color=always --hidden -g \"!{.git,node_modules,vendor}/*"'
 endif
 
 if executable('fzf')
@@ -204,7 +204,7 @@ let $FZF_DEFAULT_OPTS="--bind ctrl-a:select-all,ctrl-d:deselect-all,ctrl-t:toggl
 let g:fzf_preview_window='right:65%'
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
-let g:fzf_tags_command = 'ctags -R --fields=+iaS --extra=+q --exclude=.git'
+let g:fzf_tags_command = 'ctags -R --fields=+iaS --extras=+q --exclude=.git'
 
 " By default coc_fzf tries to look like coc-preview. Make it look like our fzf
 let g:coc_fzf_preview = ''
@@ -383,7 +383,7 @@ vnoremap K :m '>-2<CR>gv=gv
 
 " Gates functionality predicated on ctags being installed in path.
 if executable('ctags')
-	command! MakeTags !ctags -R --fields=+iaS --extra=+q --exclude=.git .
+	command! MakeTags !ctags -R --fields=+iaS --extras=+q --exclude=.git,node_modules .
 endif
 
 " =============================================================================
