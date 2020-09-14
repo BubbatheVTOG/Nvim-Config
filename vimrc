@@ -154,6 +154,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set updatetime=50				" set update time to 50ms (default: 4s)
+let &showbreak='>>\ '			" show characters at the begining of wrapped lines.
 
 if has('mouse')
 	set mouse=a					" Enables mouse.
