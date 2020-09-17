@@ -73,6 +73,10 @@ Plug 'vim-scripts/SearchComplete'		" Tab completion inside of '/' search.
 Plug 'wellle/context.vim'				" Context plugin
 Plug 'sickill/vim-monokai'				" A theme used when all else fails.
 Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
+Plug 'rhysd/git-messenger.vim'			" Show git log messages.
+Plug 'osyo-manga/vim-brightest'			" Highlight all instances of cwords.
+Plug 'stefandtw/quickfix-reflector.vim' " Make the quickfix menu editable.
+Plug 'psliwka/vim-smoothie'				" Smooth Scrolling
 
 " Plugins Requiring Host Packages
 " -----------------------------------------------------------------------------
@@ -80,7 +84,7 @@ if executable('wal')
 	Plug 'dylanaraps/wal.vim'			" Wal color setting.
 endif
 
-if executable('fzf')
+if executable('fzf') && executable('rg')
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
 	Plug 'antoinemadec/coc-fzf'
@@ -107,7 +111,7 @@ else
 	Plug 'ervandew/supertab'
 endif
 
-Plug 'challenger-deep-theme/vim',	{ 'as': 'challenger-deep' }		" An interesting theme.
+Plug 'challenger-deep-theme/vim',	{'as': 'challenger-deep'}		" An interesting theme.
 Plug 'cohama/agit.vim',				{'on':['Agit']}					" Git log viewer.
 Plug 'junegunn/goyo.vim',			{'on':['Goyo']}					" Distraction free writing.
 Plug 'mbbill/undotree',				{'on':['UndotreeToggle']}		" Create an undotree.
@@ -115,6 +119,8 @@ Plug 'roman/golden-ratio',			{'on':['GoldenRatioToggle']}	" Change split sizes o
 Plug 'scrooloose/nerdtree',			{'on':['NERDTreeToggle']}		" Its NerdTree...but only when its toggled.
 Plug 'Xuyuanp/nerdtree-git-plugin',	{'on':['NERDTreeToggle']}		" Git plugin for NerdTree.
 Plug 'ryanoasis/vim-devicons',		{'on':['NERDTreeToggle']}		" Filetype icons for NerdTree.
+" Javascript docs snippet.
+Plug 'heavenshell/vim-jsdoc',		{'for':['javascript','javascript.jsx','typescript'],'do': 'make install'}
 call plug#end()
 
 " =============================================================================
@@ -123,6 +129,7 @@ call plug#end()
 
 " General Configuration
 filetype plugin indent on		" Syntax for different file types. Plus auto indent for that file type.
+set fileformats=unix,dos,mac
 set path+=**					" appends $PATH to find command
 syntax on						" Syntax on bitch.
 set wildmenu					" Allows us to use the wild card file menu
@@ -138,7 +145,7 @@ set splitright					" Open new horizontal splits right of the current one.
 set splitbelow					" Open new vertical splits below the current one.
 set completeopt=longest,menuone,preview	" Better autocompletion.
 set shortmess+=c				" Don't send short messages to |ins-completion-menu|
-set hidden					" Buffers become hidden when abandoned.
+set hidden						" Buffers become hidden when abandoned.
 set autoread					" Reload the file when it changes outside of (n)vim.
 set visualbell					" Use visual bell instead of beeping.
 set history=1000				" Increase history.
@@ -146,7 +153,6 @@ set undolevels=1000				" Increase undo levels.
 set scrolloff=10				" Sets the scroll off set.
 set confirm						" Prompt conformation dialogs
 set tags=tags;					" Sets tag file to recursively up directory hierarchy. (The `;` is VERY important)
-set clipboard=unnamedplus		" Allow us to paste to the system clipboard by default.
 set noexpandtab					" Ensures that we use tabs and not spaces.
 set noerrorbells				" No error bells.
 set novisualbell				" No visual bell.
@@ -154,21 +160,30 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set updatetime=50				" set update time to 50ms (default: 4s)
-let &showbreak='>>\ '			" show characters at the begining of wrapped lines.
+let &showbreak='>> '			" show characters at the begining of wrapped lines.
+set matchpairs+=<:>				" add '<' and '>' to pairs
+set signcolumn=yes				" always show sign column (helps with coc and git gutter.)
+
+if has('unnamedplus')
+	set clipboard=unnamed,unnamedplus		" Allow us to paste to the system clipboard by default.
+endif
 
 if has('mouse')
 	set mouse=a					" Enables mouse.
 endif
 
 if has('nvim')
+	set winblend=10				" Enable transparency for floating windows like fzf.
 	set inccommand=nosplit
 else
 	set nocompatible			" Disables legacy stuff. (for vim)
 endif
 
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite,*.o,*.obj,.git,*.rbc,*.pyc,__pycache__,*.java
+
 " Folding
 " -----------------------------------------------------------------------------
-set foldmethod=marker						" Sets manual foldmarkers.
+set foldmethod=marker			" Sets manual foldmarkers.
 highlight Folded ctermbg=black ctermfg=blue
 
 " Search
@@ -179,13 +194,36 @@ set ignorecase				" While searching, ignore case.
 set smartcase				" While searching, use capitals when you use capitals.
 set showmatch				" While search, show exact matches.
 
-if executable('rg')
+if executable('rg') && executable('fzf')
 	let g:rg_derive_root='true'
 	set grepprg=rg\ --vimgrep\ --smart-case\ --follow\ --color=always
-	let $FZF_DEFAULT_COMMAND='rg --files --hidden --smart-case --color=always --hidden -g \"!{.git,node_modules,vendor}/*"'
-endif
 
-if executable('fzf')
+	let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --smart-case --color=always --glob "!{.git/*,node_modules/*}"'
+
+	let $FZF_DEFAULT_OPTS = " --ansi"
+				\ . " --layout reverse"
+				\ . " --margin=1,1"
+				\ . " --prompt='∼ '"
+				\ . " --pointer='▶'"
+				\ . " --marker='✓'"
+				\ . " --bind 'ctrl-a:select-all'"
+				\ . " --bind 'ctrl-d:deselect-all'"
+				\ . " --color=dark"
+				\ . " --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1"
+				\ . " --color=info:0,pointer:12,marker:4,spinner:11,header:-1"
+				\ . " --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'"
+
+	let g:fzf_preview_window='right:65%'
+	let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
+	let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+	let g:fzf_tags_command = 'ctags -R --fields=+iaS --extras=+q --exclude=.git'
+
+	" By default coc_fzf tries to look like coc-preview. Make it look like our fzf
+	let g:coc_fzf_preview = ''
+	let g:coc_fzf_opts = []
+
+	" nnoremap <leader>gl :Commits<CR>
+	nnoremap <leader>bl :BCommits<CR>
 	nnoremap \ :Rg<CR>
 	nnoremap <C-p> :GFiles<CR>
 	nnoremap <Space>pw :Rg <C-R>=expand("<cword>")<CR><CR>
@@ -195,20 +233,6 @@ else
 endif
 
 nnoremap <Space>cs :CocSearch <C-R>=expand("<cword>")<CR><CR>
-
-" nnoremap <leader>gl :Commits<CR>
-nnoremap <leader>bl :BCommits<CR>
-
-" executable bat
-let $FZF_DEFAULT_OPTS="--bind ctrl-a:select-all,ctrl-d:deselect-all,ctrl-t:toggle-all --ansi --layout reverse --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
-let g:fzf_preview_window='right:65%'
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
-let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
-let g:fzf_tags_command = 'ctags -R --fields=+iaS --extras=+q --exclude=.git'
-
-" By default coc_fzf tries to look like coc-preview. Make it look like our fzf
-let g:coc_fzf_preview = ''
-let g:coc_fzf_opts = []
 
 " Line Numbers
 " -----------------------------------------------------------------------------
@@ -239,11 +263,19 @@ if $CONTAINER !=? "true"
 	set undofile
 endif
 
-" Filetype Changes
-" -----------------------------------------------------------------------------
+" =============================================================================
+" Filetype Config
+" =============================================================================
 autocmd FileType ruby setlocal ts=2 sts=2 sw=2 noexpandtab
 autocmd FileType javascript setlocal ts=2 sts=2 sw=2 noexpandtab
 autocmd FileType typescript setlocal ts=2 sts=2 sw=2 noexpandtab
+
+" Javascript
+" =============================================================================
+
+" Jsdoc
+" -----------------------------------------------------------------------------
+nnoremap <silent><leader>jd <Plug>(jsdoc)
 
 " Color Schemes
 " -----------------------------------------------------------------------------
@@ -280,6 +312,23 @@ let g:netrw_winsize = 25
 " Leader Defined
 " -----------------------------------------------------------------------------
 let mapleader = " "
+
+" Remap semicolon
+" -----------------------------------------------------------------------------
+" nnoremap ; :
+" xnoremap ; :
+" xnoremap : ;
+
+" Map jj to escape.
+inoremap jj <Esc>
+" X escapes visual mode
+xnoremap x <Esc>
+" vv selects til end of line (not incl newline)
+vnoremap v $h
+" Y in visual mode copies to selection clipboard
+vnoremap Y "*y
+" Y behave more like C and D
+nnoremap Y y$
 
 " Clear Search Highlights
 " -----------------------------------------------------------------------------
@@ -481,6 +530,7 @@ if has('nvim')
 	vnoremap <leader>fs  <Plug>(coc-format-selected)
 	nnoremap <leader>fs  <Plug>(coc-format-selected)
 
+	let g:airline#extensions#coc#enabled = 1
 endif
 
 " SuperTab Completer
@@ -544,6 +594,14 @@ let NERDTreeChDirMode = 2
 let NERDTreeCascadeSingleChildDir = 0
 let NERDTreeCascadeOpenSingleChildDir = 0
 
+" Devicons
+" -----------------------------------------------------------------------------
+let g:webdevicons_enable = 1
+let g:webdevicons_enable_nerdtree = 1
+let g:webdevicons_enable_airline_statusline = 1
+let g:webdevicons_enable_airline_tabline = 1
+let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+
 " FuGITive
 " -----------------------------------------------------------------------------
 nmap <leader>gl :diffget //3<CR>
@@ -552,13 +610,11 @@ nmap <leader>gs :G<CR>
 
 " GitGutter Config
 " -----------------------------------------------------------------------------
-" let g:gitgutter_realtime = 0
-" let g:gitgutter_eager = 0
 let g:gitgutter_enabled = 1		" enable gitgutter
 
-" SuperTab
+" Git Messanger
 " -----------------------------------------------------------------------------
-"let g:SuperTabDefaultCompletionType = "<c-n>"
+nnoremap <silent><leader>gm :GitMessenger
 
 " Neovim Terminal Mode Config
 " -----------------------------------------------------------------------------
@@ -633,9 +689,6 @@ let g:deoplete#enable_at_startup = 1
 " Golden-ratio
 " -----------------------------------------------------------------------------
 nnoremap <leader>gr	:GoldenRatioToggle<CR>
-" :h golden-ratio
-" :GoldenRatioToggle
-" :GoldenRatioResize
 
 " Goyo (distraction free writing)
 " -----------------------------------------------------------------------------
@@ -644,10 +697,6 @@ nnoremap <leader>gy :Goyo<cr>
 
 " CtrlP
 " -----------------------------------------------------------------------------
-" Config for CtrlP.
-" :h ctrlp@en
-" Mapings for CtlP.
-
 if !executable('fzf')
 	let g:ctrlp_map = '<c-p>'
 	let g:ctrlp_cmd = 'CtrlP'
@@ -662,6 +711,12 @@ endif
 " -----------------------------------------------------------------------------
 " This is all the config for tag bar.
 nnoremap <silent><leader>tb :TagbarToggle<CR>
+
+" VimBrightest
+" -----------------------------------------------------------------------------
+let g:brightest#highlight = {
+	\ "group" : "BrightestUndercurl"
+	\ }
 
 
 " =============================================================================
@@ -870,7 +925,6 @@ command UserVisibleWhitespace silent call UserVisibleWhitespace()
 set listchars=tab:·\ ,extends:›,precedes:‹,nbsp:·,trail:·
 highlight Whitespace ctermfg=8 guifg=DarkGray
 
-
 " Auto-Resize
 " -----------------------------------------------------------------------------
 autocmd VimResized * execute "normal! \<C-w>="
@@ -918,3 +972,7 @@ augroup END
 " =============================================================================
 
 " vim:tw=78:ts=4:fdm=marker
+
+" Prevent security issues.
+set secure
+set exrc
