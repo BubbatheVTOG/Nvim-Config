@@ -809,7 +809,7 @@ if has('nvim')
 	  "The size configuration here may not be so flexible, and there's room for further improvement.
 	  let opts = {
 			\ 'relative': 'editor',
-			\ 'row': height * 0.3,
+			\ 'row': height,
 			\ 'col': col + 30,
 			\ 'width': width * 2 / 3,
 			\ 'height': height / 2
@@ -829,7 +829,7 @@ if has('nvim')
 			\ norelativenumber
 			\ signcolumn=no
 	endfunction
-	command TermWindow silent! call TermWindow()
+	command TermWindow silent! call OpenFloatingWin()
 
 endif
 
