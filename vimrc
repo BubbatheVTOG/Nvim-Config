@@ -377,6 +377,7 @@ if has('nvim')
 	nnoremap <leader>hs :HtopVsplit<CR>
 	nnoremap <leader>ht :HtopTab<CR>
 	nnoremap <leader>tc :TTYClock<CR>
+	nnoremap <leader>\\  :TermWindow<CR>
 endif
 
 " Marker Replace
@@ -818,25 +819,26 @@ if has('nvim')
 " -----------------------------------------------------------------------------
 	" Make a floating terminal window as a scratch pad.
 	function! OpenFloatingWin()
-	  let height = &lines - 3
-	  let width = float2nr(&columns - (&columns * 2 / 10))
-	  let col = float2nr((&columns - width) / 2)
+	  let startX = &lines/10
+	  let startY = &columns/10
+	  let height = startX * 9
+	  let width = startY * 9
 
 	  "Set the position, size, etc. of the floating window.
 	  "The size configuration here may not be so flexible, and there's room for further improvement.
 	  let opts = {
 			\ 'relative': 'editor',
-			\ 'row': height,
-			\ 'col': col + 30,
-			\ 'width': width * 2 / 3,
-			\ 'height': height / 2
+			\ 'row': startX,
+			\ 'col': startY,
+			\ 'width': width,
+			\ 'height': height
 			\ }
 
 	  let buf = nvim_create_buf(v:false, v:true)
 	  let win = nvim_open_win(buf, v:true, opts)
 
 	  "Set Floating Window Highlighting
-	  call setwinvar(win, '&winhl', 'Normal:Pmenu')
+	  call setwinvar(win, '&winhl', 'Terminal:Pmenu')
 
 	  setlocal
 			\ buftype=nofile
@@ -845,6 +847,9 @@ if has('nvim')
 			\ nonumber
 			\ norelativenumber
 			\ signcolumn=no
+
+	exec "terminal!"
+
 	endfunction
 	command TermWindow silent! call OpenFloatingWin()
 
