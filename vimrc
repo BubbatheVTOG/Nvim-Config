@@ -77,6 +77,7 @@ Plug 'rhysd/git-messenger.vim'			" Show git log messages.
 Plug 'osyo-manga/vim-brightest'			" Highlight all instances of cwords.
 Plug 'stefandtw/quickfix-reflector.vim' " Make the quickfix menu editable.
 Plug 'psliwka/vim-smoothie'				" Smooth Scrolling
+Plug 'airblade/vim-rooter'				" Sets working directory based.
 Plug 'OmniSharp/omnisharp-vim'			" Csharp completion
 
 " Plugins Requiring Host Packages
@@ -122,7 +123,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin',	{'on':['NERDTreeToggle']}		" Git plugin for 
 Plug 'ryanoasis/vim-devicons',		{'on':['NERDTreeToggle']}		" Filetype icons for NerdTree.
 " Javascript docs snippet.
 Plug 'heavenshell/vim-jsdoc',		{'for':['javascript','javascript.jsx','typescript'],'do': 'make install'}
-Plug 'w0rp/ale',					{'for':'cs'}
 call plug#end()
 
 " =============================================================================
@@ -436,6 +436,7 @@ if has('nvim')
 	nnoremap <leader>hs :HtopVsplit<CR>
 	nnoremap <leader>ht :HtopTab<CR>
 	nnoremap <leader>tc :TTYClock<CR>
+	nnoremap <leader>\\  :TermWindow<CR>
 endif
 
 " Marker Replace
@@ -778,6 +779,22 @@ let g:brightest#highlight = {
 	\ "group" : "BrightestUndercurl"
 	\ }
 
+" Vim-Rooter
+" -----------------------------------------------------------------------------
+" Change cwd.
+" cd =  +current buffer, -current window, -other windows, -current tab, -other tabs
+" tcd = +current buffer, +current window, -other windows, +current tab, -other tabs
+" lcd = +current buffer, +current window, -other windows, -current tab, -other tabs
+let g:rooter_cd_cmd = 'tcd'
+let g:rooter_change_directory_for_non_project_files = 'current'
+let g:rooter_patterns = [
+	\ '.git',
+	\ 'package.json',
+	\ '=src',
+	\ '*.sln',
+	\ 'Makefile'
+	\ ]
+
 
 " =============================================================================
 " CUSTOM FUNCTIONS
@@ -841,7 +858,7 @@ if has('nvim')
 
 	" Terminal Split
 " -----------------------------------------------------------------------------
-	" Just make a terminal and split it on the right side.
+	" Make a terminal and split it on the right side.
 	function! TermSplit()
 		exec "vsplit term://zsh"
 		exec "terminal!"
@@ -850,12 +867,51 @@ if has('nvim')
 
 	" Terminal Tab
 " -----------------------------------------------------------------------------
-	" Just make a terminal in a new tab ffs.
+	" Make a terminal in a new tab.
 	function! TermTab()
 		exec "tabnew term://zsh"
 		exec "terminal!"
 	endfunction
 	command TermTab silent! call TermTab()
+
+	" Terminal Window
+" -----------------------------------------------------------------------------
+	" Make a floating terminal window as a scratch pad.
+	function! OpenFloatingWin()
+	  let startX = &lines/10
+	  let startY = &columns/10
+	  let height = startX * 9
+	  let width = startY * 9
+
+	  "Set the position, size, etc. of the floating window.
+	  "The size configuration here may not be so flexible, and there's room for further improvement.
+	  let opts = {
+			\ 'relative': 'editor',
+			\ 'row': startX,
+			\ 'col': startY,
+			\ 'width': width,
+			\ 'height': height
+			\ }
+
+	  let buf = nvim_create_buf(v:false, v:true)
+	  let win = nvim_open_win(buf, v:true, opts)
+
+	  "Set Floating Window Highlighting
+	  call setwinvar(win, '&winhl', 'Terminal:Pmenu')
+
+	  setlocal
+			\ buftype=nofile
+			\ nobuflisted
+			\ bufhidden=hide
+			\ nonumber
+			\ norelativenumber
+			\ signcolumn=no
+
+	exec "terminal!"
+
+	endfunction
+	command TermWindow silent! call OpenFloatingWin()
+
 endif
 
 " Speed Profiling
