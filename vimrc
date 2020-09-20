@@ -77,6 +77,7 @@ Plug 'rhysd/git-messenger.vim'			" Show git log messages.
 Plug 'osyo-manga/vim-brightest'			" Highlight all instances of cwords.
 Plug 'stefandtw/quickfix-reflector.vim' " Make the quickfix menu editable.
 Plug 'psliwka/vim-smoothie'				" Smooth Scrolling
+Plug 'airblade/vim-rooter'				" Sets working directory based.
 
 " Plugins Requiring Host Packages
 " -----------------------------------------------------------------------------
@@ -717,6 +718,22 @@ nnoremap <silent><leader>tb :TagbarToggle<CR>
 let g:brightest#highlight = {
 	\ "group" : "BrightestUndercurl"
 	\ }
+
+" Vim-Rooter
+" -----------------------------------------------------------------------------
+" Change cwd.
+" cd =  +current buffer, -current window, -other windows, -current tab, -other tabs
+" tcd = +current buffer, +current window, -other windows, +current tab, -other tabs
+" lcd = +current buffer, +current window, -other windows, -current tab, -other tabs
+let g:rooter_cd_cmd = 'tcd'
+let g:rooter_change_directory_for_non_project_files = 'current'
+let g:rooter_patterns = [
+	\ '.git',
+	\ 'package.json',
+	\ '=src',
+	\ '*.sln',
+	\ 'Makefile'
+	\ ]
 
 
 " =============================================================================
