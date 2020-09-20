@@ -77,6 +77,7 @@ Plug 'rhysd/git-messenger.vim'			" Show git log messages.
 Plug 'osyo-manga/vim-brightest'			" Highlight all instances of cwords.
 Plug 'stefandtw/quickfix-reflector.vim' " Make the quickfix menu editable.
 Plug 'psliwka/vim-smoothie'				" Smooth Scrolling
+Plug 'OmniSharp/omnisharp-vim'			" Csharp completion
 
 " Plugins Requiring Host Packages
 " -----------------------------------------------------------------------------
@@ -121,6 +122,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin',	{'on':['NERDTreeToggle']}		" Git plugin for 
 Plug 'ryanoasis/vim-devicons',		{'on':['NERDTreeToggle']}		" Filetype icons for NerdTree.
 " Javascript docs snippet.
 Plug 'heavenshell/vim-jsdoc',		{'for':['javascript','javascript.jsx','typescript'],'do': 'make install'}
+Plug 'w0rp/ale',					{'for':'cs'}
 call plug#end()
 
 " =============================================================================
@@ -263,20 +265,6 @@ if $CONTAINER !=? "true"
 	set undofile
 endif
 
-" =============================================================================
-" Filetype Config
-" =============================================================================
-autocmd FileType ruby setlocal ts=2 sts=2 sw=2 noexpandtab
-autocmd FileType javascript setlocal ts=2 sts=2 sw=2 noexpandtab
-autocmd FileType typescript setlocal ts=2 sts=2 sw=2 noexpandtab
-
-" Javascript
-" =============================================================================
-
-" Jsdoc
-" -----------------------------------------------------------------------------
-nnoremap <silent><leader>jd <Plug>(jsdoc)
-
 " Color Schemes
 " -----------------------------------------------------------------------------
 " This will manage color scheme stuff since we don't know if the host has wal
@@ -295,6 +283,78 @@ set termguicolors
 " 	" We are tty or ssh.
 " 	colorscheme monokai
 " endif
+
+" =============================================================================
+" Filetype Config
+" =============================================================================
+autocmd FileType ruby setlocal ts=2 sts=2 sw=2 noexpandtab
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2 noexpandtab
+autocmd FileType typescript setlocal ts=2 sts=2 sw=2 noexpandtab
+
+" Javascript
+" =============================================================================
+
+" Jsdoc
+" -----------------------------------------------------------------------------
+nnoremap <silent><leader>jd <Plug>(jsdoc)
+
+" CSharp
+" -----------------------------------------------------------------------------
+"let g:OmniSharp_server_path = '/home/me/omnisharp/omnisharp.http-linux-x64/run'
+let g:OmniSharp_server_stdio = 0
+let g:OmniSharp_server_use_mono = 1
+let g:ale_linters = {'cs':['OmniSharp']}
+
+if executable('fzf') && executable('rg')
+	let g:OmniSharp_selector_ui = 'fzf'    " Use fzf.vim
+else
+	let g:OmniSharp_selector_ui = 'ctrlp'  " Use ctrlp.vim
+endif
+
+augroup omnisharp_commands
+  autocmd!
+
+  " Show type information automatically when the cursor stops moving.
+  " Note that the type is echoed to the Vim command line, and will overwrite
+  " any other messages in this space including e.g. ALE linting messages.
+  autocmd CursorHold *.cs OmniSharpTypeLookup
+
+  autocmd FileType cs nmap <silent> <buffer> <leader>gd <Plug>(omnisharp_go_to_definition)
+  autocmd FileType cs nmap <silent> <buffer> <leader>gt <Plug>(omnisharp_type_lookup)
+  autocmd FileType cs nmap <silent> <buffer> <leader>gi <Plug>(omnisharp_find_implementations)
+  autocmd FileType cs nmap <silent> <buffer> <leader>gc <Plug>(omnisharp_find_usages)
+  autocmd FileType cs nmap <silent> <buffer> <leader>rr <Plug>(omnisharp_rename)
+  autocmd FileType cs nmap <silent> <buffer> <leader>cr <Plug>(omnisharp_restart_server)
+
+  autocmd FileType cs nmap <silent> <buffer> <leader>ospd <Plug>(omnisharp_preview_definition)
+  autocmd FileType cs nmap <silent> <buffer> <leader>ospi <Plug>(omnisharp_preview_implementations)
+  autocmd FileType cs nmap <silent> <buffer> <leader>osd <Plug>(omnisharp_documentation)
+  autocmd FileType cs nmap <silent> <buffer> <leader>osfs <Plug>(omnisharp_find_symbol)
+  autocmd FileType cs nmap <silent> <buffer> <leader>osfx <Plug>(omnisharp_fix_usings)
+  autocmd FileType cs nmap <silent> <buffer> <C-\> <Plug>(omnisharp_signature_help)
+  autocmd FileType cs imap <silent> <buffer> <C-\> <Plug>(omnisharp_signature_help)
+
+  autocmd FileType cs nmap <silent> <buffer> <leader>. <Plug>(omnisharp_code_action_repeat)
+  autocmd FileType cs xmap <silent> <buffer> <leader>. <Plug>(omnisharp_code_action_repeat)
+  autocmd FileType cs nmap <silent> <buffer> <leader>= <Plug>(omnisharp_code_format)
+
+  " Navigate up and down by method/property/field
+  autocmd FileType cs nmap <silent> <buffer> [[ <Plug>(omnisharp_navigate_up)
+  autocmd FileType cs nmap <silent> <buffer> ]] <Plug>(omnisharp_navigate_down)
+  " Find all code errors/warnings for the current solution and populate the quickfix window
+  autocmd FileType cs nmap <silent> <buffer> <leader>osgcc <Plug>(omnisharp_global_code_check)
+  " Contextual code actions (uses fzf, CtrlP or unite.vim selector when available)
+  autocmd FileType cs nmap <silent> <buffer> <leader>osca <Plug>(omnisharp_code_actions)
+  autocmd FileType cs xmap <silent> <buffer> <leader>osca <Plug>(omnisharp_code_actions)
+  " Repeat the last code action performed (does not use a selector)
+
+  autocmd FileType cs nmap <silent> <buffer> <leader>osst <Plug>(omnisharp_start_server)
+  autocmd FileType cs nmap <silent> <buffer> <leader>ossp <Plug>(omnisharp_stop_server)
+augroup END
+
+" Enable snippet completion, using the ultisnips plugin
+" let g:OmniSharp_want_snippet=1
+
 
 " Netrw Config
 " -----------------------------------------------------------------------------
