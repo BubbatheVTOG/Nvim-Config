@@ -78,6 +78,7 @@ Plug 'osyo-manga/vim-brightest'			" Highlight all instances of cwords.
 Plug 'stefandtw/quickfix-reflector.vim' " Make the quickfix menu editable.
 Plug 'psliwka/vim-smoothie'				" Smooth Scrolling
 Plug 'airblade/vim-rooter'				" Sets working directory based.
+Plug 'stsewd/fzf-checkout.vim'			" Add git actions to fzf
 Plug 'OmniSharp/omnisharp-vim'			" Csharp completion
 
 " Plugins Requiring Host Packages
@@ -219,12 +220,31 @@ if executable('rg') && executable('fzf')
 	let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 	let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 	let g:fzf_tags_command = 'ctags -R --fields=+iaS --extras=+q --exclude=.git'
+	let g:fzf_branch_actions = {
+      \  'track': {
+      \    'prompt': 'Track> ',
+      \    'execute': 'echo system("{git} checkout --track {branch}")',
+      \    'multiple': v:false,
+      \    'keymap': 'ctrl-t',
+      \    'required': ['branch'],
+      \    'confirm': v:false,
+      \  },
+	  \  'merge':{
+	  \    'prompt': 'Merge> ',
+	  \    'execute': 'echo system("{git} merge {branch}")',
+	  \    'multiple': v:false,
+	  \    'keymap': 'ctrl-m',
+	  \    'required': ['branch'],
+	  \    'confirm': v:true,
+	  \  },
+      \ }
 
 	" By default coc_fzf tries to look like coc-preview. Make it look like our fzf
 	let g:coc_fzf_preview = ''
 	let g:coc_fzf_opts = []
 
 	" nnoremap <leader>gl :Commits<CR>
+	nnoremap <Space>gb :GBranches<CR>
 	nnoremap <leader>bl :BCommits<CR>
 	nnoremap \ :Rg<CR>
 	nnoremap <C-p> :GFiles<CR>
