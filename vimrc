@@ -878,10 +878,10 @@ if has('nvim')
 " -----------------------------------------------------------------------------
 	" Make a floating terminal window as a scratch pad.
 	function! OpenFloatingWin()
-	  let startX = &lines/10
-	  let startY = &columns/10
-	  let height = startX * 9
-	  let width = startY * 9
+	  let startX = float2nr(&lines / 20)
+	  let startY = float2nr(&columns / 20)
+	  let height = float2nr(startX * 23)
+	  let width = float2nr(startY * 19)
 
 	  "Set the position, size, etc. of the floating window.
 	  "The size configuration here may not be so flexible, and there's room for further improvement.
