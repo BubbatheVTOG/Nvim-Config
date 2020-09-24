@@ -220,23 +220,23 @@ if executable('rg') && executable('fzf')
 	let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
 	let g:fzf_tags_command = 'ctags -R --fields=+iaS --extras=+q --exclude=.git'
 	let g:fzf_branch_actions = {
-      \  'track': {
-      \    'prompt': 'Track> ',
-      \    'execute': 'echo system("{git} checkout --track {branch}")',
-      \    'multiple': v:false,
-      \    'keymap': 'ctrl-t',
-      \    'required': ['branch'],
-      \    'confirm': v:false,
-      \  },
-	  \  'merge':{
-	  \    'prompt': 'Merge> ',
-	  \    'execute': 'echo system("{git} merge {branch}")',
-	  \    'multiple': v:false,
-	  \    'keymap': 'ctrl-m',
-	  \    'required': ['branch'],
-	  \    'confirm': v:true,
-	  \  },
-      \ }
+				\  'track': {
+				\    'prompt': 'Track> ',
+				\    'execute': 'echo system("{git} checkout --track {branch}")',
+				\    'multiple': v:false,
+				\    'keymap': 'ctrl-t',
+				\    'required': ['branch'],
+				\    'confirm': v:false,
+				\  },
+				\  'merge':{
+				\    'prompt': 'Merge> ',
+				\    'execute': 'echo system("{git} merge {branch}")',
+				\    'multiple': v:false,
+				\    'keymap': 'ctrl-m',
+				\    'required': ['branch'],
+				\    'confirm': v:true,
+				\  },
+				\ }
 
 	" By default coc_fzf tries to look like coc-preview. Make it look like our fzf
 	let g:coc_fzf_preview = ''
@@ -513,11 +513,11 @@ if has('nvim')
 	nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 	function! s:show_documentation()
-	  if (index(['vim','help'], &filetype) >= 0)
-		execute 'h '.expand('<cword>')
-	  else
-		call CocAction('doHover')
-	  endif
+		if (index(['vim','help'], &filetype) >= 0)
+			execute 'h '.expand('<cword>')
+		else
+			call CocAction('doHover')
+		endif
 	endfunction
 
 	" Go to code navigation.
@@ -839,36 +839,36 @@ if has('nvim')
 " -----------------------------------------------------------------------------
 	" Make a floating terminal window as a scratch pad.
 	function! OpenFloatingWin()
-	  let startX = float2nr(&lines / 20)
-	  let startY = float2nr(&columns / 20)
-	  let height = float2nr(startX * 23)
-	  let width = float2nr(startY * 19)
+		let startX = float2nr(&lines / 20)
+		let startY = float2nr(&columns / 20)
+		let height = float2nr(startX * 23)
+		let width = float2nr(startY * 19)
 
-	  "Set the position, size, etc. of the floating window.
-	  "The size configuration here may not be so flexible, and there's room for further improvement.
-	  let opts = {
-			\ 'relative': 'editor',
-			\ 'row': startX,
-			\ 'col': startY,
-			\ 'width': width,
-			\ 'height': height
-			\ }
+		"Set the position, size, etc. of the floating window.
+		"The size configuration here may not be so flexible, and there's room for further improvement.
+		let opts = {
+					\ 'relative': 'editor',
+					\ 'row': startX,
+					\ 'col': startY,
+					\ 'width': width,
+					\ 'height': height
+					\ }
 
-	  let buf = nvim_create_buf(v:false, v:true)
-	  let win = nvim_open_win(buf, v:true, opts)
+		let buf = nvim_create_buf(v:false, v:true)
+		let win = nvim_open_win(buf, v:true, opts)
 
-	  "Set Floating Window Highlighting
-	  call setwinvar(win, '&winhl', 'Terminal:Pmenu')
+		"Set Floating Window Highlighting
+		call setwinvar(win, '&winhl', 'Terminal:Pmenu')
 
-	  setlocal
-			\ buftype=nofile
-			\ nobuflisted
-			\ bufhidden=hide
-			\ nonumber
-			\ norelativenumber
-			\ signcolumn=no
+		setlocal
+					\ buftype=nofile
+					\ nobuflisted
+					\ bufhidden=hide
+					\ nonumber
+					\ norelativenumber
+					\ signcolumn=no
 
-	exec "terminal!"
+		exec "terminal!"
 
 	endfunction
 	command TermWindow silent! call OpenFloatingWin()
