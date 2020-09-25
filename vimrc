@@ -114,14 +114,14 @@ else
 	Plug 'ervandew/supertab'
 endif
 
-Plug 'challenger-deep-theme/vim',	{'as': 'challenger-deep'}		" An interesting theme.
-Plug 'cohama/agit.vim',				{'on':['Agit']}					" Git log viewer.
-Plug 'junegunn/goyo.vim',			{'on':['Goyo']}					" Distraction free writing.
-Plug 'mbbill/undotree',				{'on':['UndotreeToggle']}		" Create an undotree.
-Plug 'roman/golden-ratio',			{'on':['GoldenRatioToggle']}	" Change split sizes on focus change. This used to be a trigged plugin.
-Plug 'scrooloose/nerdtree',			{'on':['NERDTreeToggle']}		" Its NerdTree...but only when its toggled.
-Plug 'Xuyuanp/nerdtree-git-plugin',	{'on':['NERDTreeToggle']}		" Git plugin for NerdTree.
-Plug 'ryanoasis/vim-devicons',		{'on':['NERDTreeToggle']}		" Filetype icons for NerdTree.
+Plug 'challenger-deep-theme/vim',	{'as': 'challenger-deep'}						" An interesting theme.
+Plug 'cohama/agit.vim',				{'on':['Agit']}									" Git log viewer.
+Plug 'junegunn/goyo.vim',			{'on':['Goyo']}									" Distraction free writing.
+Plug 'mbbill/undotree',				{'on':['UndotreeToggle']}						" Create an undotree.
+Plug 'roman/golden-ratio',			{'on':['GoldenRatioToggle']}					" Change split sizes on focus change. This used to be a trigged plugin.
+Plug 'scrooloose/nerdtree',			{'on':['NERDTreeToggle', 'NERDTreeFind']}		" Its NerdTree...but only when its toggled.
+Plug 'Xuyuanp/nerdtree-git-plugin',	{'on':['NERDTreeToggle', 'NERDTreeFind']}		" Git plugin for NerdTree.
+Plug 'ryanoasis/vim-devicons',		{'on':['NERDTreeToggle', 'NERDTreeFind']}		" Filetype icons for NerdTree.
 " Javascript docs snippet.
 Plug 'heavenshell/vim-jsdoc',		{'for':['javascript','javascript.jsx','typescript'],'do': 'make install'}
 call plug#end()
@@ -402,7 +402,7 @@ let mapleader = " "
 " Map jj to escape.
 inoremap jj <Esc>
 " X escapes visual mode
-xnoremap x <Esc>
+" xnoremap x <Esc>
 " vv selects til end of line (not incl newline)
 vnoremap v $h
 " Y in visual mode copies to selection clipboard
