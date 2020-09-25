@@ -343,7 +343,7 @@ let mapleader = " "
 " Map jj to escape.
 inoremap jj <Esc>
 " X escapes visual mode
-xnoremap x <Esc>
+" xnoremap x <Esc>
 " vv selects til end of line (not incl newline)
 vnoremap v $h
 " Y in visual mode copies to selection clipboard
