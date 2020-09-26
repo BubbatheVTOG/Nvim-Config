@@ -480,10 +480,11 @@ if has('nvim')
 		\ 'coc-prettier',
 		\ 'coc-python',
 		\ 'coc-sh',
+		\ 'coc-sql',
 		\ 'coc-tag',
 		\ 'coc-tsserver',
 		\ 'coc-vimlsp',
-		\ 'coc-yaml',
+		\ 'coc-yaml'
 		\ ]
 
 	if executable('discord')
