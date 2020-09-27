@@ -397,7 +397,7 @@ if has('nvim')
 	nnoremap <leader>hs :HtopVsplit<CR>
 	nnoremap <leader>ht :HtopTab<CR>
 	nnoremap <leader>tc :TTYClock<CR>
-	nnoremap <leader>\\  :TermWindow<CR>
+	nnoremap <leader>\ :TermWindow<CR>
 endif
 
 " Marker Replace
@@ -421,20 +421,17 @@ map <C-l> <C-W>l
 vnoremap < <gv
 vnoremap > >gv
 
-" Buffer & Tab Binds
+" Buffer binds
 " -----------------------------------------------------------------------------
-" These binds are for changing buffers.
 nnoremap <leader>ls :ls<CR>
 nnoremap <leader>bn :bnext<CR>
 nnoremap <leader>bp :bprevious<CR>
-nnoremap <leader>bo :buffers<CR>:buffer<Space>
-nnoremap <leader>bd :buffers<CR>:bdelete<Space>
-
-" These binds are for managing tabs.
-nnoremap <leader>tn :tabnext<CR>
-nnoremap <leader>tp :tabprevious<CR>
-nnoremap <leader>to :tabnew<CR>
-nnoremap <leader>td :tabclose<CR>
+nnoremap <leader>bd :bdelete<CR>
+if executable('fzf') && executable('rg')
+	nnoremap <leader>bl :Buffers<CR>
+else
+	nnoremap <leader>bl :buffers<CR>
+endif
 
 " Reformatting Binds
 " -----------------------------------------------------------------------------
