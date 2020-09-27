@@ -70,15 +70,17 @@ Plug 'tpope/vim-vinegar'				" Netrw oil.
 Plug 'vim-airline/vim-airline'			" Status bar.
 Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
 Plug 'vim-scripts/SearchComplete'		" Tab completion inside of '/' search.
-Plug 'wellle/context.vim'				" Context plugin
+Plug 'wellle/context.vim'				" Context plugin.
 Plug 'sickill/vim-monokai'				" A theme used when all else fails.
 Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
 Plug 'rhysd/git-messenger.vim'			" Show git log messages.
 Plug 'osyo-manga/vim-brightest'			" Highlight all instances of cwords.
 Plug 'stefandtw/quickfix-reflector.vim' " Make the quickfix menu editable.
-Plug 'psliwka/vim-smoothie'				" Smooth Scrolling
+Plug 'psliwka/vim-smoothie'				" Smooth scrolling.
 Plug 'airblade/vim-rooter'				" Sets working directory based.
-Plug 'stsewd/fzf-checkout.vim'			" Add git actions to fzf
+Plug 'stsewd/fzf-checkout.vim'			" Add git actions to fzf.
+Plug 'SirVer/ultisnips'					" Snipit engine.
+Plug 'honza/vim-snippets'				" Community managemd snipits.
 
 " Plugins Requiring Host Packages
 " -----------------------------------------------------------------------------
@@ -485,7 +487,9 @@ if has('nvim')
 		\ 'coc-sql',
 		\ 'coc-tag',
 		\ 'coc-tsserver',
+		\ 'coc-ultisnips',
 		\ 'coc-vimlsp',
+		\ 'coc-xml',
 		\ 'coc-yaml'
 		\ ]
 
