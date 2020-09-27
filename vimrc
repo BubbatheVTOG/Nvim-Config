@@ -505,6 +505,11 @@ nnoremap <leader>ra gggqgG''						" Include list
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '>-2<CR>gv=gv
 
+" Quickfix list binds
+" -----------------------------------------------------------------------------
+nnoremap <leader>qn :cnext<CR>
+nnoremap <leader>qp :cprevious<CR>
+
 " Ctags Setup
 " -----------------------------------------------------------------------------
 " ^] to jump to tag under cursor
