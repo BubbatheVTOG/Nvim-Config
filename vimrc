@@ -79,6 +79,7 @@ Plug 'stefandtw/quickfix-reflector.vim' " Make the quickfix menu editable.
 Plug 'psliwka/vim-smoothie'				" Smooth Scrolling
 Plug 'airblade/vim-rooter'				" Sets working directory based.
 Plug 'stsewd/fzf-checkout.vim'			" Add git actions to fzf
+Plug 'w0rp/ale'							" Linter used for csharp
 Plug 'OmniSharp/omnisharp-vim'			" Csharp completion
 
 " Plugins Requiring Host Packages
