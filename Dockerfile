@@ -23,7 +23,7 @@ COPY vimrc .vimrc
 RUN sed '/GENERAL CONFIGURATION/q' .vimrc > install.vim \
 	&& ./squashfs-root/usr/bin/nvim -u install.vim +PlugInstall +qall \
 	&& rm install.vim; exit 0
-RUN ./squashfs-root/usr/bin/nvim -u .vimrc -c 'CocInstall -sync coc-clock coc-css coc-docker coc-eslint coc-github coc-html coc-import-cost coc-json coc-markdownlint coc-marketplace coc-phpls coc-prettier coc-python coc-sh coc-tag coc-tsserver coc-vimlsp coc-yaml coc-sql | qall'
+RUN ./squashfs-root/usr/bin/nvim -u .vimrc -c 'CocInstall coc-clock coc-css coc-docker coc-eslint coc-github coc-html coc-import-cost coc-json coc-markdownlint coc-marketplace coc-phpls coc-prettier coc-python coc-sh coc-sql coc-tag coc-tsserver coc-ultisnips coc-vimlsp coc-xml coc-yaml | qall'
 WORKDIR /home/nvim/mountpoint
 VOLUME /home/nvim/mountpoint
 ENTRYPOINT /home/nvim/squashfs-root/usr/bin/nvim -u /home/nvim/.vimrc
