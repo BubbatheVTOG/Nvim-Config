@@ -79,8 +79,6 @@ Plug 'stefandtw/quickfix-reflector.vim' " Make the quickfix menu editable.
 Plug 'psliwka/vim-smoothie'				" Smooth scrolling.
 Plug 'airblade/vim-rooter'				" Sets working directory based.
 Plug 'stsewd/fzf-checkout.vim'			" Add git actions to fzf.
-Plug 'SirVer/ultisnips'					" Snipit engine.
-Plug 'honza/vim-snippets'				" Community managemd snipits.
 Plug 'w0rp/ale'							" Linter used for csharp
 Plug 'OmniSharp/omnisharp-vim'			" Csharp completion
 
@@ -547,7 +545,6 @@ if has('nvim')
 		\ 'coc-sql',
 		\ 'coc-tag',
 		\ 'coc-tsserver',
-		\ 'coc-ultisnips',
 		\ 'coc-vimlsp',
 		\ 'coc-xml',
 		\ 'coc-yaml'
