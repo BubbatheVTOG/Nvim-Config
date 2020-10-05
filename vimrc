@@ -115,6 +115,7 @@ else
 	Plug 'ervandew/supertab'
 endif
 
+Plug 'ayu-theme/ayu-vim',			{'as': 'ayu'}									" An interesting theme.
 Plug 'challenger-deep-theme/vim',	{'as': 'challenger-deep'}						" An interesting theme.
 Plug 'cohama/agit.vim',				{'on':['Agit']}									" Git log viewer.
 Plug 'junegunn/goyo.vim',			{'on':['Goyo']}									" Distraction free writing.
@@ -290,7 +291,9 @@ endif
 " -----------------------------------------------------------------------------
 " This will manage color scheme stuff since we don't know if the host has wal
 " installed.
-colorscheme challenger_deep
+" colorscheme challenger_deep
+let ayucolor="dark"
+colorscheme ayu
 set termguicolors
 " if executable('/usr/bin/wal') && !empty($DISPLAY)
 " 	" Wal is installed and we are not on tty or ssh.
