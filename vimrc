@@ -59,7 +59,7 @@ Plug 'airblade/vim-gitgutter'			" Shows staged lines.
 Plug 'lilydjwg/colorizer'				" Hex code colorizer.
 Plug 'majutsushi/tagbar'				" Shows all methods and variables.
 Plug 'mboughaba/i3config.vim'			" i3 syntax highlighting support.
-Plug 'sheerun/vim-polyglot'				" Syntax highlighting for a lot of languages.
+" Plug 'sheerun/vim-polyglot'				" Syntax highlighting for a lot of languages.
 Plug 'thaerkh/vim-workspace'			" Save workspace.
 Plug 'tpope/vim-commentary'				" Commenting plugin.
 Plug 'tpope/vim-fugitive'				" Git commands from ex mode.
@@ -79,6 +79,7 @@ Plug 'stefandtw/quickfix-reflector.vim' " Make the quickfix menu editable.
 Plug 'psliwka/vim-smoothie'				" Smooth scrolling.
 Plug 'airblade/vim-rooter'				" Sets working directory based.
 Plug 'stsewd/fzf-checkout.vim'			" Add git actions to fzf.
+Plug 'nvim-treesitter/nvim-treesitter'
 
 " Plugins Requiring Host Packages
 " -----------------------------------------------------------------------------
@@ -763,6 +764,14 @@ let g:rooter_patterns = [
 	\ 'Makefile'
 	\ ]
 
+" Tree Sitter
+" -----------------------------------------------------------------------------
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all",
+  highlight = {
+    enable = true,
+  },
+}
 
 " =============================================================================
 " CUSTOM FUNCTIONS
