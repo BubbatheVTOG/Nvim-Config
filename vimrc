@@ -59,7 +59,6 @@ Plug 'airblade/vim-gitgutter'			" Shows staged lines.
 Plug 'lilydjwg/colorizer'				" Hex code colorizer.
 Plug 'majutsushi/tagbar'				" Shows all methods and variables.
 Plug 'mboughaba/i3config.vim'			" i3 syntax highlighting support.
-" Plug 'sheerun/vim-polyglot'				" Syntax highlighting for a lot of languages.
 Plug 'thaerkh/vim-workspace'			" Save workspace.
 Plug 'tpope/vim-commentary'				" Commenting plugin.
 Plug 'tpope/vim-fugitive'				" Git commands from ex mode.
@@ -541,7 +540,7 @@ if has('nvim')
 	nnoremap <leader>cr :CocRestart<CR><CR>
 
 	function! ShowDocIfNoDiagnostic(timer_id)
-		if (coc#util#has_float() == 0)
+		if (coc#float#has_float() == 0)
 			silent call CocActionAsync('doHover')
 		endif
 	endfunction
@@ -766,12 +765,14 @@ let g:rooter_patterns = [
 
 " Tree Sitter
 " -----------------------------------------------------------------------------
+lua << EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "all",
   highlight = {
     enable = true,
   },
 }
+EOF
 
 " =============================================================================
 " CUSTOM FUNCTIONS
@@ -1058,11 +1059,6 @@ augroup vimrc_help
 		\| setlocal nonumber
 		\| vertical resize 82
 augroup END
-
-
-" =============================================================================
-" TODO:
-" =============================================================================
 
 " vim:tw=78:ts=4:fdm=marker
 
