@@ -79,6 +79,7 @@ Plug 'psliwka/vim-smoothie'				" Smooth scrolling.
 Plug 'airblade/vim-rooter'				" Sets working directory based.
 Plug 'stsewd/fzf-checkout.vim'			" Add git actions to fzf.
 Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'romgrk/nvim-treesitter-context'
 
 " Plugins Requiring Host Packages
 " -----------------------------------------------------------------------------
