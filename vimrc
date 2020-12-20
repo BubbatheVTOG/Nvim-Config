@@ -247,9 +247,9 @@ if executable('rg') && executable('fzf')
 	" nnoremap <leader>gl :Commits<CR>
 	nnoremap <Space>gb :GBranches<CR>
 	nnoremap <leader>bc :BCommits<CR>
-	nnoremap <leader>b :Buffer<CR>
-	nnoremap <leader>m :Marks<CR>
-	nnoremap <leader>l :Lines<CR>
+	nnoremap <leader>bu :Buffers<CR>
+	nnoremap <leader>ma :Marks<CR>
+	nnoremap <leader>li :Lines<CR>
 	nnoremap \ :Rg<CR>
 	nnoremap <C-p> :FzfOmniFiles<CR>
 	nnoremap <Space>pw :Rg <C-R>=expand("<cword>")<CR><CR>
