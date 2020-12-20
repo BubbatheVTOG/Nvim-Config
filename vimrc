@@ -69,7 +69,6 @@ Plug 'tpope/vim-vinegar'				" Netrw oil.
 Plug 'vim-airline/vim-airline'			" Status bar.
 Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
 Plug 'vim-scripts/SearchComplete'		" Tab completion inside of '/' search.
-Plug 'wellle/context.vim'				" Context plugin.
 Plug 'sickill/vim-monokai'				" A theme used when all else fails.
 Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
 Plug 'rhysd/git-messenger.vim'			" Show git log messages.
@@ -80,6 +79,7 @@ Plug 'airblade/vim-rooter'				" Sets working directory based.
 Plug 'stsewd/fzf-checkout.vim'			" Add git actions to fzf.
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'romgrk/nvim-treesitter-context'
+Plug 'junegunn/limelight.vim'
 
 " Plugins Requiring Host Packages
 " -----------------------------------------------------------------------------
@@ -246,9 +246,12 @@ if executable('rg') && executable('fzf')
 
 	" nnoremap <leader>gl :Commits<CR>
 	nnoremap <Space>gb :GBranches<CR>
-	nnoremap <leader>bl :BCommits<CR>
+	nnoremap <leader>bc :BCommits<CR>
+	nnoremap <leader>b :Buffer<CR>
+	nnoremap <leader>m :Marks<CR>
+	nnoremap <leader>l :Lines<CR>
 	nnoremap \ :Rg<CR>
-	nnoremap <C-p> :GFiles<CR>
+	nnoremap <C-p> :FzfOmniFiles<CR>
 	nnoremap <Space>pw :Rg <C-R>=expand("<cword>")<CR><CR>
 else
 	nnoremap \ :vimgrep<CR>
@@ -1050,6 +1053,18 @@ fun! TrimWhitespace()
 	call winrestview(l:save)
 endfun
 autocmd BufWritePre * :call TrimWhitespace()
+
+" Figure out if we re in a git directory
+" -----------------------------------------------------------------------------
+function! FzfOmniFiles()
+	let is_get = system('git status')
+	if v:shell_error
+		:Files
+	else
+		:GitFiles
+	endif
+endfunction
+command FzfOmniFiles call FzfOmniFiles()
 
 " Open help in vertical split
 " -----------------------------------------------------------------------------
