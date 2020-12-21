@@ -77,8 +77,8 @@ Plug 'stefandtw/quickfix-reflector.vim' " Make the quickfix menu editable.
 Plug 'psliwka/vim-smoothie'				" Smooth scrolling.
 Plug 'airblade/vim-rooter'				" Sets working directory based.
 Plug 'stsewd/fzf-checkout.vim'			" Add git actions to fzf.
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'romgrk/nvim-treesitter-context'
+" Plug 'nvim-treesitter/nvim-treesitter'
+" Plug 'romgrk/nvim-treesitter-context'
 Plug 'junegunn/limelight.vim'
 
 " Plugins Requiring Host Packages
@@ -769,14 +769,14 @@ let g:rooter_patterns = [
 
 " Tree Sitter
 " -----------------------------------------------------------------------------
-lua << EOF
-require'nvim-treesitter.configs'.setup {
-	ensure_installed = "all",
-	highlight = {
-		enable = true,
-	},
-}
-EOF
+" lua << EOF
+" require'nvim-treesitter.configs'.setup {
+" 	ensure_installed = "all",
+" 	highlight = {
+" 		enable = true,
+" 	},
+" }
+" EOF
 
 " =============================================================================
 " CUSTOM FUNCTIONS
@@ -1076,6 +1076,25 @@ augroup vimrc_help
 		\| vertical resize 82
 augroup END
 
+" Disable colors for un-selected buffers
+" -----------------------------------------------------------------------------
+augroup buffer_color
+	autocmd!
+	let blacklist = ['nerdtree', 'fzf', 'help', 'fugitive', 'netrw']
+	" highlight INACTIVE_BUFFER ctermbg=16  ctermfg=15  guibg=#ff0000 guifg=#FFFFFF cterm=NONE gui=NONE
+	autocmd BufEnter * if index(blacklist, &ft) < 0
+				\| if (exists("b:colors_name"))
+				\| execute "colorscheme " . b:colors_name
+				\| endif
+				\| setlocal syntax=ON
+	autocmd BufLeave * if index(blacklist, &ft) < 0
+				\| if (exists("b:current_colors"))
+				\| let b:current_colors=colors_name
+				\| endif
+				\| setlocal syntax=OFF
+augroup END
+
+" -----------------------------------------------------------------------------
 " vim:tw=78:ts=4:fdm=marker
 
 " Prevent security issues.
