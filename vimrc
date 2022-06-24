@@ -31,6 +31,7 @@ if has('nvim')
 	endif
 	if getftype($HOME . '/.config/nvim/init.vim') != 'link'
 		silent !rm ~/.config/nvim/init.vim
+		silent !mkdir -p ~/.config/nvim
 		silent !ln -s ~/.vimrc ~/.config/nvim/init.vim
 	endif
 	if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
@@ -215,7 +216,7 @@ if executable('rg') && executable('fzf')
 				\ . " --color=dark"
 				\ . " --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1"
 				\ . " --color=info:0,pointer:12,marker:4,spinner:11,header:-1"
-				\ . " --preview '([[ -f {} ]] && (bat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'"
+				\ . " --preview '([[ -f {} ]] && (batcat --style=numbers --color=always {} || cat {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2> /dev/null | head -200'"
 
 	let g:fzf_preview_window='right:65%'
 	let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
@@ -494,6 +495,9 @@ if has('nvim')
 		\ 'coc-tsserver',
 		\ 'coc-vimlsp',
 		\ 'coc-xml',
+		\ 'coc-rls',
+		\ 'coc-angular',
+		\ 'coc-tailwindcss',
 		\ 'coc-yaml'
 		\ ]
 
@@ -543,21 +547,21 @@ if has('nvim')
 	nmap <silent> <leader>gn <Plug>(coc-diagnostic-next-error)
 	nnoremap <leader>cr :CocRestart<CR><CR>
 
-	function! ShowDocIfNoDiagnostic(timer_id)
-		if (coc#float#has_float() == 0)
-			silent call CocActionAsync('doHover')
-		endif
-	endfunction
+	"function! ShowDocIfNoDiagnostic(timer_id)
+	"	if (coc#float#has_float() == 0)
+	"		silent call CocActionAsync('doHover')
+	"	endif
+	"endfunction
 
-	function! s:show_hover_doc()
-		call timer_start(500, 'ShowDocIfNoDiagnostic')
-	endfunction
+	"function! s:show_hover_doc()
+	"	call timer_start(500, 'ShowDocIfNoDiagnostic')
+	"endfunction
 
 	" Highlight the symbol and its references when holding the cursor.
 	" autocmd CursorHold * silent call CocActionAsync('highlight')
 	" Show documentation of stuff on hover.
-	autocmd CursorHoldI * :call <SID>show_hover_doc()
-	autocmd CursorHold * :call <SID>show_hover_doc()
+	"autocmd CursorHoldI * :call <SID>show_hover_doc()
+	"autocmd CursorHold * :call <SID>show_hover_doc()
 
 	command! -nargs=0 Prettier :CocCommand prettier.formatFile
 	vnoremap <leader>fs  <Plug>(coc-format-selected)
