@@ -309,21 +309,19 @@ nnoremap <silent><leader>jd <Plug>(jsdoc)
 " This will manage color scheme stuff since we don't know if the host has wal
 " installed.
 " colorscheme challenger_deep
-let ayucolor="dark"
-colorscheme ayu
-set termguicolors
-" if executable('/usr/bin/wal') && !empty($DISPLAY)
-" 	" Wal is installed and we are not on tty or ssh.
-" 	let g:airline_theme = 'wal'
-" 	colorscheme wal
-" elseif !empty($DISPLAY) || ($CONTAINER ==? "true")
-" 	" Wal is not installed and we are not on tty or ssh.
-" 	colorscheme challenger_deep
-" 	set termguicolors
-" else
-" 	" We are tty or ssh.
-" 	colorscheme monokai
-" endif
+if executable('/usr/bin/wal') && !empty($DISPLAY)
+	" Wal is installed and we are not on tty or ssh.
+	let g:airline_theme = 'wal'
+	colorscheme wal
+elseif !empty($DISPLAY) || ($CONTAINER ==? "true") || &runtimepath =~? "ayu"
+	" Wal is not installed and we are not on tty or ssh.
+	let ayucolor="dark"
+	colorscheme ayu
+	set termguicolors
+else
+	" We are tty or ssh.
+	colorscheme monokai
+endif
 
 " Netrw Config
 " -----------------------------------------------------------------------------
@@ -412,8 +410,7 @@ endif
 " -----------------------------------------------------------------------------
 nnoremap <leader>mr /<++><CR>"_d4l:noh<CR>a
 
-" Split movement.
-" -----------------------------------------------------------------------------
+" Split movement. ----------------------------------------------------------------------------
 " This maps keys to move between splits easier.
 nnoremap <silent> <leader>= :vertical resize +10<CR>
 nnoremap <silent> <leader>- :vertical resize -10<CR>
@@ -473,8 +470,7 @@ endif
 
 " COC
 " -----------------------------------------------------------------------------
-if has('nvim')
-
+if has('nvim') && executable('node')
 	let g:coc_global_extensions = [
 		\ 'coc-clock',
 		\ 'coc-css',
@@ -531,9 +527,27 @@ if has('nvim')
 		if (index(['vim','help'], &filetype) >= 0)
 			execute 'h '.expand('<cword>')
 		else
-			call CocAction('doHover')
+			if (coc#float#has_float() == 0)
+				silent call CocActionAsync('doHover')
+			endif
 		endif
 	endfunction
+
+	function! ShowDocIfNoDiagnostic(timer_id)
+		if (coc#float#has_float() == 0)
+			silent call CocActionAsync('doHover')
+		endif
+	endfunction
+
+	function! s:show_hover_doc()
+		call timer_start(1000, 'ShowDocIfNoDiagnostic')
+	endfunction
+
+	" Highlight the symbol and its references when holding the cursor.
+	autocmd CursorHold * silent call CocActionAsync('highlight')
+	" Show documentation of stuff on hover.
+	autocmd CursorHoldI * :call <SID>show_hover_doc()
+	autocmd CursorHold * :call <SID>show_hover_doc()
 
 	" Go to code navigation.
 	nmap <leader>gd <Plug>(coc-definition)
@@ -546,22 +560,6 @@ if has('nvim')
 	nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev-error)
 	nmap <silent> <leader>gn <Plug>(coc-diagnostic-next-error)
 	nnoremap <leader>cr :CocRestart<CR><CR>
-
-	"function! ShowDocIfNoDiagnostic(timer_id)
-	"	if (coc#float#has_float() == 0)
-	"		silent call CocActionAsync('doHover')
-	"	endif
-	"endfunction
-
-	"function! s:show_hover_doc()
-	"	call timer_start(500, 'ShowDocIfNoDiagnostic')
-	"endfunction
-
-	" Highlight the symbol and its references when holding the cursor.
-	" autocmd CursorHold * silent call CocActionAsync('highlight')
-	" Show documentation of stuff on hover.
-	"autocmd CursorHoldI * :call <SID>show_hover_doc()
-	"autocmd CursorHold * :call <SID>show_hover_doc()
 
 	command! -nargs=0 Prettier :CocCommand prettier.formatFile
 	vnoremap <leader>fs  <Plug>(coc-format-selected)
