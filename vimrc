@@ -523,21 +523,21 @@ if has('nvim') && executable('node')
 
 	nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-	function! s:show_documentation()
-		if (index(['vim','help'], &filetype) >= 0)
-			execute 'h '.expand('<cword>')
-		else
-			if (coc#float#has_float() == 0)
-				silent call CocActionAsync('doHover')
-			endif
-		endif
-	endfunction
+  function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+      execute 'h '.expand('<cword>')
+    else
+      if (coc#float#has_float() == 0 && CocHasProvider('hover'))
+        silent call CocActionAsync('doHover')
+      endif
+    endif
+  endfunction
 
-	function! ShowDocIfNoDiagnostic(timer_id)
-		if (coc#float#has_float() == 0)
-			silent call CocActionAsync('doHover')
-		endif
-	endfunction
+  function! ShowDocIfNoDiagnostic(timer_id)
+    if (coc#float#has_float() == 0 && CocHasProvider('hover'))
+      silent call CocActionAsync('doHover')
+    endif
+  endfunction
 
 	function! s:show_hover_doc()
 		call timer_start(1000, 'ShowDocIfNoDiagnostic')
