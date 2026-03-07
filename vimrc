@@ -78,8 +78,8 @@ Plug 'stefandtw/quickfix-reflector.vim' " Make the quickfix menu editable.
 Plug 'psliwka/vim-smoothie'				" Smooth scrolling.
 Plug 'airblade/vim-rooter'				" Sets working directory based.
 Plug 'stsewd/fzf-checkout.vim'			" Add git actions to fzf.
-" Plug 'nvim-treesitter/nvim-treesitter'
-" Plug 'romgrk/nvim-treesitter-context'
+Plug 'nvim-treesitter/nvim-treesitter', {'tag': 'v0.9.3', 'do': ':TSUpdate'}
+Plug 'romgrk/nvim-treesitter-context'
 Plug 'junegunn/limelight.vim'
 
 " Plugins Requiring Host Packages
@@ -494,7 +494,8 @@ if has('nvim') && executable('node')
 		\ 'coc-rls',
 		\ 'coc-angular',
 		\ 'coc-tailwindcss',
-		\ 'coc-yaml'
+		\ 'coc-yaml',
+		\ 'coc-elixir'
 		\ ]
 
 	if executable('discord')
@@ -771,14 +772,17 @@ let g:rooter_patterns = [
 
 " Tree Sitter
 " -----------------------------------------------------------------------------
-" lua << EOF
-" require'nvim-treesitter.configs'.setup {
-" 	ensure_installed = "all",
-" 	highlight = {
-" 		enable = true,
-" 	},
-" }
-" EOF
+lua << EOF
+local status, ts = pcall(require, "nvim-treesitter.configs")
+if (status) then
+	ts.setup {
+		ensure_installed = { "c", "cpp", "css", "dockerfile", "elixir", "go", "html", "java", "javascript", "json", "lua", "markdown", "markdown_inline", "python", "regex", "rust", "sql", "toml", "typescript", "vim", "vimdoc", "yaml", "bash" },
+		highlight = {
+			enable = true,
+		},
+	}
+end
+EOF
 
 " =============================================================================
 " CUSTOM FUNCTIONS
@@ -791,6 +795,12 @@ if !empty(glob('/sys/class/leds/chromeos::kbd_backlight/brightness'))
 	autocmd InsertEnter * silent! call system('echo 50 > /sys/class/leds/chromeos::kbd_backlight/brightness')
 	autocmd InsertLeave * silent! call system('echo 1 > /sys/class/leds/chromeos::kbd_backlight/brightness')
 endif
+" Only do this if on a macbok.
+if !empty(glob('/sys/class/leds/kbd_backlight/brightness'))
+	autocmd InsertEnter * silent! call system('echo 50 > /sys/class/leds/kbd_backlight/brightness')
+	autocmd InsertLeave * silent! call system('echo 5 > /sys/class/leds/kbd_backlight/brightness')
+endif
+
 
 " Only create these functions if we are in neovim.
 if has('nvim')
