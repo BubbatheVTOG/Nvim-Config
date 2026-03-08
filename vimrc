@@ -49,7 +49,6 @@ Plug 'lilydjwg/colorizer'				" Hex code colorizer.
 Plug 'majutsushi/tagbar'				" Shows all methods and variables.
 Plug 'mboughaba/i3config.vim'			" i3 syntax highlighting support.
 Plug 'tpope/vim-fugitive'				" Git commands from ex mode.
-Plug 'tpope/vim-repeat'					" Repeat support for plugins.
 Plug 'lewis6991/gitsigns.nvim', {'do': ':GitSigns update'}	" Git gutter and blame.
 Plug 'vim-airline/vim-airline'			" Status bar.
 Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
@@ -70,17 +69,12 @@ endif
 if executable('fzf') && executable('rg')
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
-	Plug 'antoinemadec/coc-fzf'
-else
-	Plug 'kien/ctrlp.vim'
 endif
 
 " Change linters and completion for neovim.
 " -----------------------------------------------------------------------------
 if executable('node')
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}		" Completion using lsp
-else
-	Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'}	" Completion using linters.
 endif
 if executable('firefox') || executable('chrome') || executable('chromium')
 	Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
@@ -679,11 +673,6 @@ nnoremap <silent><leader>ag	:Agit<CR>
 " UndoTree
 " -----------------------------------------------------------------------------
 nnoremap <silent><leader>ut :UndotreeToggle<CR>
-
-" Deoplete
-" -----------------------------------------------------------------------------
-let g:deoplete#enable_at_startup = 1
-"let g:deoplete#complete_method = 'omnifunc'
 
 " Golden-ratio
 " -----------------------------------------------------------------------------
