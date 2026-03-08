@@ -48,7 +48,6 @@ call plug#begin()
 Plug 'lilydjwg/colorizer'				" Hex code colorizer.
 Plug 'majutsushi/tagbar'				" Shows all methods and variables.
 Plug 'mboughaba/i3config.vim'			" i3 syntax highlighting support.
-Plug 'thaerkh/vim-workspace'			" Save workspace.
 Plug 'tpope/vim-fugitive'				" Git commands from ex mode.
 Plug 'tpope/vim-repeat'					" Repeat support for plugins.
 Plug 'lewis6991/gitsigns.nvim', {'do': ':GitSigns update'}	" Git gutter and blame.
@@ -58,8 +57,7 @@ Plug 'sickill/vim-monokai'				" A theme used when all else fails.
 Plug 'osyo-manga/vim-brightest'			" Highlight all instances of cwords.
 Plug 'stefandtw/quickfix-reflector.vim' " Make the quickfix menu editable.
 Plug 'stsewd/fzf-checkout.vim'			" Add git actions to fzf.
-Plug 'stsewd/fzf-checkout.vim'			" Add git actions to fzf.
-Plug 'nvim-treesitter/nvim-treesitter', {'tag': 'v0.9.3', 'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'romgrk/nvim-treesitter-context'
 Plug 'junegunn/limelight.vim'
 
@@ -91,9 +89,7 @@ endif
 Plug 'ayu-theme/ayu-vim',			{'as': 'ayu'}									" An interesting theme.
 Plug 'challenger-deep-theme/vim',	{'as': 'challenger-deep'}						" An interesting theme.
 Plug 'cohama/agit.vim',				{'on':['Agit']}									" Git log viewer.
-Plug 'junegunn/goyo.vim',			{'on':['Goyo']}									" Distraction free writing.
 Plug 'mbbill/undotree',				{'on':['UndotreeToggle']}						" Create an undotree.
-Plug 'roman/golden-ratio',			{'on':['GoldenRatioToggle']}					" Change split sizes on focus change. This used to be a trigged plugin.
 Plug 'scrooloose/nerdtree',			{'on':['NERDTreeToggle', 'NERDTreeFind']}		" Its NerdTree...but only when its toggled.
 Plug 'Xuyuanp/nerdtree-git-plugin',	{'on':['NERDTreeToggle', 'NERDTreeFind']}		" Git plugin for NerdTree.
 Plug 'ryanoasis/vim-devicons',		{'on':['NERDTreeToggle', 'NERDTreeFind']}		" Filetype icons for NerdTree.
@@ -219,6 +215,7 @@ if executable('rg') && executable('fzf')
 
 	" nnoremap <leader>gl :Commits<CR>
 	nnoremap <Space>gb :GBranches<CR>
+	nnoremap <leader>gy :ZenMode<CR>
 	nnoremap <leader>bc :BCommits<CR>
 	nnoremap <leader>bu :Buffers<CR>
 	nnoremap <leader>ma :Marks<CR>
@@ -683,13 +680,6 @@ let g:deoplete#enable_at_startup = 1
 
 " Golden-ratio
 " -----------------------------------------------------------------------------
-nnoremap <leader>gr	:GoldenRatioToggle<CR>
-
-" Goyo (distraction free writing)
-" -----------------------------------------------------------------------------
-" TODO: make a meaningful bind
-nnoremap <leader>gy :Goyo<cr>
-
 " CtrlP
 " -----------------------------------------------------------------------------
 if !executable('fzf')
