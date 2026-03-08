@@ -96,6 +96,7 @@ Plug 'ryanoasis/vim-devicons',		{'on':['NERDTreeToggle', 'NERDTreeFind']}		" Fil
 " Javascript docs snippet.
 Plug 'heavenshell/vim-jsdoc',		{'for':['javascript','javascript.jsx','typescript'],'do': 'make install'}
 Plug 'arturbien/vim-javacomplete2',	{'for': ['java']}					" Java completion and navigation.
+Plug 'nvim-neotest/nvim-nio'
 Plug 'nvim-neotest/neotest'
 Plug 'nvim-neotest/neotest-vim-test'
 Plug 'vim-test/vim-test'
@@ -768,6 +769,13 @@ require('neotest').setup {
 	},
 }
 EOF
+
+" vim-test Configuration for Maven
+" -----------------------------------------------------------------------------
+let g:test#maven#test_runner = 'surefire'
+let g:test#maven#executable = 'mvn'
+let g:test#gradle#test_runner = 'gradle'
+let g:test#gradle#executable = 'gradle'
 
 " =============================================================================
 " CUSTOM FUNCTIONS
