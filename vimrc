@@ -709,7 +709,7 @@ lua << EOF
 local status, ts = pcall(require, "nvim-treesitter.configs")
 if (status) then
 	ts.setup {
-		ensure_installed = { "c", "cpp", "css", "dockerfile", "elixir", "go", "html", "java", "javascript", "json", "lua", "markdown", "markdown_inline", "python", "regex", "rust", "sql", "toml", "typescript", "vim", "vimdoc", "yaml", "bash" },
+		ensure_installed = { "bash", "css", "dockerfile", "elixir", "go", "html", "java", "javascript", "json", "lua", "markdown", "markdown_inline", "properties", "python", "regex", "toml", "tsx", "typescript", "vim", "vimdoc", "xml", "yaml" },
 		highlight = {
 			enable = true,
 		},
