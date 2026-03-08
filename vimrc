@@ -471,8 +471,7 @@ if has('nvim') && executable('node')
 		\ 'coc-angular',
 		\ 'coc-tailwindcss',
 		\ 'coc-yaml',
-		\ 'coc-elixir',
-		\ 'coc-maven'
+		\ 'coc-elixir'
 		\ ]
 
 	if executable('discord')
