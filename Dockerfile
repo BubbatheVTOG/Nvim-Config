@@ -67,16 +67,26 @@ VOLUME /home/nvim/mountpoint
 ENTRYPOINT ["/usr/bin/nvim", "-u", "~/.vimrc"]
 
 # ============================================================================
-# STAGE 2: JAVA IMAGE (Eclipse Temurin 25)
+# STAGE 2: JAVA IMAGE (Base + Java 25 + Maven)
 # ============================================================================
-FROM eclipse-temurin:25-jdk-alpine as java
+FROM eclipse-temurin:25-jdk-alpine as java-base
 
-# Install neovim and other dependencies
-RUN apk add --no-cache neovim bash git curl wget make
+# Install maven (keeps layer cached)
+RUN apk add --no-cache maven
 
-# Copy from base image
-COPY --from=base /home/nvim /home/nvim
-WORKDIR /home/nvim
+# Now create java image from base
+FROM nvim:base as java
+
+# Copy Java and Maven from java-base (as root first)
+USER root
+ENV JAVA_HOME=/usr/lib/jvm/java-25-openjdk
+ENV M2_HOME=/usr/share/java/maven-3
+ENV PATH=$JAVA_HOME/bin:$M2_HOME/bin:$PATH
+COPY --from=java-base /usr/lib/jvm/java-25-openjdk /usr/lib/jvm/java-25-openjdk
+COPY --from=java-base /usr/share/java/maven-3 /usr/share/java/maven-3
+COPY --from=java-base /usr/bin/mvn /usr/bin/mvn
+COPY --from=java-base /etc/mavenrc /etc/mavenrc
+USER nvim
 
 # Install coc-java and coc-clangd extensions
 # Create minimal init to avoid loading full vimrc during build
