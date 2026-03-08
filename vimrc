@@ -96,6 +96,8 @@ Plug 'ryanoasis/vim-devicons',		{'on':['NERDTreeToggle', 'NERDTreeFind']}		" Fil
 " Javascript docs snippet.
 Plug 'heavenshell/vim-jsdoc',		{'for':['javascript','javascript.jsx','typescript'],'do': 'make install'}
 Plug 'arturbien/vim-javacomplete2',	{'for': ['java']}					" Java completion and navigation.
+Plug 'nvim-neotest/neotest'
+Plug 'nvim-neotest/neotest-junit'
 call plug#end()
 
 " =============================================================================
@@ -272,6 +274,13 @@ autocmd FileType java setlocal ts=4 sts=4 sw=4 noexpandtab
 " Jsdoc
 " -----------------------------------------------------------------------------
 nnoremap <silent><leader>jd <Plug>(jsdoc)
+
+" Java Test Support (neotest)
+" -----------------------------------------------------------------------------
+nnoremap <leader>tn :Neotest run<CR>
+nnoremap <leader>ts :Neotest summary<CR>
+nnoremap <leader>tf :Neotest run --focus<CR>
+nnoremap <leader>tl :Neotest log<CR>
 
 " Color Schemes
 " -----------------------------------------------------------------------------
@@ -746,6 +755,18 @@ require('gitsigns').setup {
 		vim.keymap.set('n', '<leader>hr', gs.reset_hunk, {buffer = bufnr, desc = 'Reset hunk'})
 		vim.keymap.set('v', '<leader>hs', ':<C-U>Gitsigns select_hunk<CR>', {buffer = bufnr, desc = 'Stage hunk'})
 	end,
+}
+EOF
+
+" Neotest
+" -----------------------------------------------------------------------------
+lua << EOF
+require('neotest').setup {
+	adapters = {
+		require('neotest-junit').new {
+			xml_report_path = 'target/surefire-reports',
+		},
+	},
 }
 EOF
 
