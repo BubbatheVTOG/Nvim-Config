@@ -680,12 +680,6 @@ nnoremap <silent><leader>ag	:Agit<CR>
 " -----------------------------------------------------------------------------
 nnoremap <silent><leader>ut :UndotreeToggle<CR>
 
-" NERDCommenter
-" -----------------------------------------------------------------------------
-let NERDSpaceDelims = 1
-let NERDRemoveExtraSpaces = 1
-let NERDTrimTraillingWhitespace = 1
-
 " Deoplete
 " -----------------------------------------------------------------------------
 let g:deoplete#enable_at_startup = 1
