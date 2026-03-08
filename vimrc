@@ -45,21 +45,19 @@ endif
 " Plugins
 " -----------------------------------------------------------------------------
 call plug#begin()
-Plug 'airblade/vim-gitgutter'			" Shows staged lines.
 Plug 'lilydjwg/colorizer'				" Hex code colorizer.
 Plug 'majutsushi/tagbar'				" Shows all methods and variables.
 Plug 'mboughaba/i3config.vim'			" i3 syntax highlighting support.
 Plug 'thaerkh/vim-workspace'			" Save workspace.
 Plug 'tpope/vim-fugitive'				" Git commands from ex mode.
 Plug 'tpope/vim-repeat'					" Repeat support for plugins.
+Plug 'lewis6991/gitsigns.nvim', {'do': ':GitSigns update'}	" Git gutter and blame.
 Plug 'vim-airline/vim-airline'			" Status bar.
 Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
-Plug 'vim-scripts/SearchComplete'		" Tab completion inside of '/' search.
 Plug 'sickill/vim-monokai'				" A theme used when all else fails.
-Plug 'rhysd/git-messenger.vim'			" Show git log messages.
 Plug 'osyo-manga/vim-brightest'			" Highlight all instances of cwords.
 Plug 'stefandtw/quickfix-reflector.vim' " Make the quickfix menu editable.
-Plug 'airblade/vim-rooter'				" Sets working directory based.
+Plug 'stsewd/fzf-checkout.vim'			" Add git actions to fzf.
 Plug 'stsewd/fzf-checkout.vim'			" Add git actions to fzf.
 Plug 'nvim-treesitter/nvim-treesitter', {'tag': 'v0.9.3', 'do': ':TSUpdate'}
 Plug 'romgrk/nvim-treesitter-context'
@@ -606,14 +604,6 @@ nmap <leader>gl :diffget //3<CR>
 nmap <leader>gh :diffget //2<CR>
 nmap <leader>gs :G<CR>
 
-" GitGutter Config
-" -----------------------------------------------------------------------------
-let g:gitgutter_enabled = 1		" enable gitgutter
-
-" Git Messanger
-" -----------------------------------------------------------------------------
-nnoremap <silent><leader>gm :GitMessenger
-
 " Terminal Mode Config
 " -----------------------------------------------------------------------------
 tnoremap <Esc> <C-\><C-n>
@@ -663,6 +653,14 @@ autocmd TextYankPost * lua vim.highlight.on_yank()
 " Neovim Built-in Smooth Scrolling
 " -----------------------------------------------------------------------------
 set scrolljump=1
+
+" Neovim Built-in Search Complete
+" -----------------------------------------------------------------------------
+" Tab completion in / search works automatically with completeopt=menuone
+
+" Neovim Built-in Auto Directory Change
+" -----------------------------------------------------------------------------
+set autochdir
 
 " Aget
 " -----------------------------------------------------------------------------
@@ -715,22 +713,6 @@ let g:brightest#highlight = {
 	\ "group" : "BrightestUndercurl"
 	\ }
 
-" Vim-Rooter
-" -----------------------------------------------------------------------------
-" Change cwd.
-" cd =  +current buffer, -current window, -other windows, -current tab, -other tabs
-" tcd = +current buffer, +current window, -other windows, +current tab, -other tabs
-" lcd = +current buffer, +current window, -other windows, -current tab, -other tabs
-let g:rooter_cd_cmd = 'tcd'
-let g:rooter_change_directory_for_non_project_files = 'current'
-let g:rooter_patterns = [
-	\ '.git',
-	\ 'package.json',
-	\ '=src',
-	\ '*.sln',
-	\ 'Makefile'
-	\ ]
-
 " Tree Sitter
 " -----------------------------------------------------------------------------
 lua << EOF
@@ -743,6 +725,35 @@ if (status) then
 		},
 	}
 end
+EOF
+
+" GitSigns
+" -----------------------------------------------------------------------------
+lua << EOF
+require('gitsigns').setup {
+	signs = {
+		add = { text = '│' },
+		change = { text = '│' },
+		delete = { text = '_' },
+		topdelete = { text = '‾' },
+		changedelete = { text = '~' },
+	},
+	on_attach = function(bufnr)
+		local gs = package.loaded.gitsigns
+
+		-- Preserve <leader>gm for git blame popup
+		vim.keymap.set('n', '<leader>gm', gs.show_blame, {buffer = bufnr, desc = 'Show git blame'})
+
+		-- Add hunk navigation
+		vim.keymap.set('n', '[c', gs.prev_hunk, {buffer = bufnr, desc = 'Previous hunk'})
+		vim.keymap.set('n', ']c', gs.next_hunk, {buffer = bufnr, desc = 'Next hunk'})
+
+		-- Add sign commands
+		vim.keymap.set('n', '<leader>hs', gs.stage_hunk, {buffer = bufnr, desc = 'Stage hunk'})
+		vim.keymap.set('n', '<leader>hr', gs.reset_hunk, {buffer = bufnr, desc = 'Reset hunk'})
+		vim.keymap.set('v', '<leader>hs', ':<C-U>Gitsigns select_hunk<CR>', {buffer = bufnr, desc = 'Stage hunk'})
+	end,
+}
 EOF
 
 " =============================================================================
