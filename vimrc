@@ -50,21 +50,15 @@ Plug 'lilydjwg/colorizer'				" Hex code colorizer.
 Plug 'majutsushi/tagbar'				" Shows all methods and variables.
 Plug 'mboughaba/i3config.vim'			" i3 syntax highlighting support.
 Plug 'thaerkh/vim-workspace'			" Save workspace.
-Plug 'tpope/vim-commentary'				" Commenting plugin.
 Plug 'tpope/vim-fugitive'				" Git commands from ex mode.
 Plug 'tpope/vim-repeat'					" Repeat support for plugins.
-Plug 'tpope/vim-sleuth'					" Heuristic tabsizes.
-Plug 'tpope/vim-surround'				" Surround movement command.
-Plug 'tpope/vim-vinegar'				" Netrw oil.
 Plug 'vim-airline/vim-airline'			" Status bar.
 Plug 'vim-airline/vim-airline-themes'	" Themes for status bar.
 Plug 'vim-scripts/SearchComplete'		" Tab completion inside of '/' search.
 Plug 'sickill/vim-monokai'				" A theme used when all else fails.
-Plug 'machakann/vim-highlightedyank'	" Highlight yanked objects.
 Plug 'rhysd/git-messenger.vim'			" Show git log messages.
 Plug 'osyo-manga/vim-brightest'			" Highlight all instances of cwords.
 Plug 'stefandtw/quickfix-reflector.vim' " Make the quickfix menu editable.
-Plug 'psliwka/vim-smoothie'				" Smooth scrolling.
 Plug 'airblade/vim-rooter'				" Sets working directory based.
 Plug 'stsewd/fzf-checkout.vim'			" Add git actions to fzf.
 Plug 'nvim-treesitter/nvim-treesitter', {'tag': 'v0.9.3', 'do': ':TSUpdate'}
@@ -662,12 +656,13 @@ let g:colorizer_auto_color = 1
 let g:colorizer_x11_name = 1
 let g:colorizer_maxlines = 500
 
-" Vim-Highlightedyank
+" Neovim Built-in Yank Highlighting
 " -----------------------------------------------------------------------------
-" Bind y to activate plugin.
-map y <Plug>(highlightedyank)
-" Highlight time in milliseconds. '-1' makes in infinite.
-let g:highlightedyank_highlight_duration = 50
+autocmd TextYankPost * lua vim.highlight.on_yank()
+
+" Neovim Built-in Smooth Scrolling
+" -----------------------------------------------------------------------------
+set scrolljump=1
 
 " Aget
 " -----------------------------------------------------------------------------
