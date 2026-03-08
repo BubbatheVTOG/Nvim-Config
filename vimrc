@@ -95,7 +95,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin',	{'on':['NERDTreeToggle', 'NERDTreeFind']}		"
 Plug 'ryanoasis/vim-devicons',		{'on':['NERDTreeToggle', 'NERDTreeFind']}		" Filetype icons for NerdTree.
 " Javascript docs snippet.
 Plug 'heavenshell/vim-jsdoc',		{'for':['javascript','javascript.jsx','typescript'],'do': 'make install'}
-Plug 'arturbien/vim-javacomplete2',	{'for': ['java']}					" Java completion and navigation.
 Plug 'nvim-neotest/nvim-nio'
 Plug 'nvim-neotest/neotest'
 Plug 'nvim-neotest/neotest-vim-test'
