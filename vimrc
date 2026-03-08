@@ -97,7 +97,8 @@ Plug 'ryanoasis/vim-devicons',		{'on':['NERDTreeToggle', 'NERDTreeFind']}		" Fil
 Plug 'heavenshell/vim-jsdoc',		{'for':['javascript','javascript.jsx','typescript'],'do': 'make install'}
 Plug 'arturbien/vim-javacomplete2',	{'for': ['java']}					" Java completion and navigation.
 Plug 'nvim-neotest/neotest'
-Plug 'nvim-neotest/neotest-junit'
+Plug 'nvim-neotest/neotest-vim-test'
+Plug 'vim-test/vim-test'
 call plug#end()
 
 " =============================================================================
@@ -763,9 +764,7 @@ EOF
 lua << EOF
 require('neotest').setup {
 	adapters = {
-		require('neotest-junit').new {
-			xml_report_path = 'target/surefire-reports',
-		},
+		require('neotest-vim-test').new {},
 	},
 }
 EOF
