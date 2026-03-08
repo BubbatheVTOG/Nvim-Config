@@ -24,32 +24,21 @@ scriptencoding UTF-8
 set t_Co=256
 
 " Use `$nvim -u $(location to vimrc)` to trigger this event.
-if has('nvim')
-	if empty(glob('~/.config/nvim/init.vim'))
-		silent !mkdir -p ~/.config/nvim
-		silent !ln -s ~/.vimrc ~/.config/nvim/init.vim
-	endif
-	if getftype($HOME . '/.config/nvim/init.vim') != 'link'
-		silent !rm ~/.config/nvim/init.vim
-		silent !mkdir -p ~/.config/nvim
-		silent !ln -s ~/.vimrc ~/.config/nvim/init.vim
-	endif
-	if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-		silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-			\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-		" Sourcing the vimrc might not be needed.
-		if !$CONTAINER ==? "true"
-			autocmd vimEnter * PlugInstall --sync " | source $MYVIMRC
-		endif
-	endif
-else
-	if empty(glob('~/.vim/autoload/plug.vim'))
-		silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-			\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-		" Sourcing the vimrc might not be needed.
-		if !$CONTAINER ==? "true"
-			autocmd vimEnter * PlugInstall --sync " | source $MYVIMRC
-		endif
+if empty(glob('~/.config/nvim/init.vim'))
+	silent !mkdir -p ~/.config/nvim
+	silent !ln -s ~/.vimrc ~/.config/nvim/init.vim
+endif
+if getftype($HOME . '/.config/nvim/init.vim') != 'link'
+	silent !rm ~/.config/nvim/init.vim
+	silent !mkdir -p ~/.config/nvim
+	silent !ln -s ~/.vimrc ~/.config/nvim/init.vim
+endif
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+	silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+		\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	" Sourcing the vimrc might not be needed.
+	if !$CONTAINER ==? "true"
+		autocmd vimEnter * PlugInstall --sync " | source $MYVIMRC
 	endif
 endif
 
@@ -96,23 +85,15 @@ else
 	Plug 'kien/ctrlp.vim'
 endif
 
-" Change linters and completion for vim and neovim.
+" Change linters and completion for neovim.
 " -----------------------------------------------------------------------------
-if has('nvim')
-	if executable('node')
-		Plug 'neoclide/coc.nvim', {'branch': 'release'}		" Completion using lsp
-	else
-		Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'}	" Completion using linters.
-	endif
-	if executable('firefox') || executable('chrome') || executable('chromium')
-		Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-	endif
+if executable('node')
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}		" Completion using lsp
 else
-	" Completion using linters under default vim.
-	Plug 'Shougo/deoplete.nvim'
-	Plug 'roxma/nvim-yarp'
-	Plug 'roxma/vim-hug-neovim-rpc'
-	Plug 'ervandew/supertab'
+	Plug 'Shougo/deoplete.nvim',	{'do': ':UpdateRemotePlugins'}	" Completion using linters.
+endif
+if executable('firefox') || executable('chrome') || executable('chromium')
+	Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 endif
 
 Plug 'ayu-theme/ayu-vim',			{'as': 'ayu'}									" An interesting theme.
@@ -151,7 +132,7 @@ set splitbelow					" Open new vertical splits below the current one.
 set completeopt=longest,menuone,preview	" Better autocompletion.
 set shortmess+=c				" Don't send short messages to |ins-completion-menu|
 set hidden						" Buffers become hidden when abandoned.
-set autoread					" Reload the file when it changes outside of (n)vim.
+set autoread					" Reload the file when it changes outside of neovim.
 set visualbell					" Use visual bell instead of beeping.
 set history=1000				" Increase history.
 set undolevels=1000				" Increase undo levels.
@@ -180,9 +161,8 @@ endif
 if has('nvim')
 	set winblend=10				" Enable transparency for floating windows like fzf.
 	set inccommand=nosplit
-else
-	set nocompatible			" Disables legacy stuff. (for vim)
 endif
+set nocompatible			" Disables legacy stuff.
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite,*.o,*.obj,.git,*.rbc,*.pyc,__pycache__,*.java
 
@@ -266,13 +246,11 @@ nnoremap <Space>cs :CocSearch <C-R>=expand("<cword>")<CR><CR>
 set relativenumber			" Enable relative number position when using 'set number'
 set number					" Enable line numbering.
 
-" No line numbers in terminal window on nvim
-if has('nvim')
-	autocmd TermOpen * setlocal listchars= nonumber norelativenumber
-	autocmd TermOpen * startinsert
-	autocmd BufEnter,BufWinEnter,WinEnter term://* startinsert
-	autocmd BufLeave term://* stopinsert
-endif
+" No line numbers in terminal window on neovim
+autocmd TermOpen * setlocal listchars= nonumber norelativenumber
+autocmd TermOpen * startinsert
+autocmd BufEnter,BufWinEnter,WinEnter term://* startinsert
+autocmd BufLeave term://* stopinsert
 
 " Backups
 " -----------------------------------------------------------------------------
@@ -396,15 +374,12 @@ nnoremap <silent><leader>sf :SpellFix<CR>
 nnoremap <silent><leader>sl :UserColorColumn<CR>
 nnoremap <silent><leader>sw :UserVisibleWhitespace<CR>
 
-" Only create these binds if in neovim.
-if has('nvim')
-	nnoremap <leader>ts :TermSplit<CR>
-	nnoremap <leader>tt :TermTab<CR>
-	nnoremap <leader>hs :HtopVsplit<CR>
-	nnoremap <leader>ht :HtopTab<CR>
-	nnoremap <leader>tc :TTYClock<CR>
-	nnoremap <leader>\ :TermWindow<CR>
-endif
+nnoremap <leader>ts :TermSplit<CR>
+nnoremap <leader>tt :TermTab<CR>
+nnoremap <leader>hs :HtopVsplit<CR>
+nnoremap <leader>ht :HtopTab<CR>
+nnoremap <leader>tc :TTYClock<CR>
+nnoremap <leader>\ :TermWindow<CR>
 
 " Marker Replace
 " -----------------------------------------------------------------------------
@@ -569,51 +544,44 @@ if has('nvim') && executable('node')
 	let g:airline#extensions#coc#enabled = 1
 endif
 
-" SuperTab Completer
-" -----------------------------------------------------------------------------
-" This is only used with deoplete when we don't have coc installed.
-if !has('nvim')
-	let g:SuperTabDefaultCompletionType = "<c-n>"
-endif
+
 
 " FireNvim
 " -----------------------------------------------------------------------------
-if has('nvim')
-	if exists('g:started_by_firenvim')
-		set statusline=0
+if exists('g:started_by_firenvim')
+	set statusline=0
+	normal! :AirlineToggle
+	let w:airline_disable_statusline = 1
+	let g:airline#extensions#tabline#enabled = 1
+	let g:airline#extensions#tabline#show_buffers = 0
+	let g:airline#extensions#tabline#show_tabs = 1
+	normal! :ContextDisable
+	set spell
+	colorscheme challenger_deep
+	set termguicolors
+endif
+
+function! s:IsFirenvimActive(event) abort
+	if !exists('*nvim_get_chan_info')
+		return 0
+	endif
+	let l:ui = nvim_get_chan_info(a:event.chan)
+	return has_key(l:ui, 'client') && has_key(l:ui.client, 'name') &&
+				\ l:ui.client.name =~? 'Firenvim'
+endfunction
+
+function! OnUIEnter(event) abort
+	if s:IsFirenvimActive(a:event)
+		set laststatus=0
 		normal! :AirlineToggle
-		let w:airline_disable_statusline = 1
-		let g:airline#extensions#tabline#enabled = 1
-		let g:airline#extensions#tabline#show_buffers = 0
-		let g:airline#extensions#tabline#show_tabs = 1
-		normal! :ContextDisable
-		set spell
 		colorscheme challenger_deep
 		set termguicolors
 	endif
+endfunction
+autocmd UIEnter * call OnUIEnter(deepcopy(v:event))
 
-	function! s:IsFirenvimActive(event) abort
-		if !exists('*nvim_get_chan_info')
-			return 0
-		endif
-		let l:ui = nvim_get_chan_info(a:event.chan)
-		return has_key(l:ui, 'client') && has_key(l:ui.client, 'name') &&
-					\ l:ui.client.name =~? 'Firenvim'
-	endfunction
-
-	function! OnUIEnter(event) abort
-		if s:IsFirenvimActive(a:event)
-			set laststatus=0
-			normal! :AirlineToggle
-			colorscheme challenger_deep
-			set termguicolors
-		endif
-	endfunction
-	autocmd UIEnter * call OnUIEnter(deepcopy(v:event))
-
-	" FireNvim site<->filetype overrides.
-	autocmd BufEnter github.com_*.txt set filetype=markdown
-endif
+" FireNvim site<->filetype overrides.
+autocmd BufEnter github.com_*.txt set filetype=markdown
 
 " NERDTree config
 " -----------------------------------------------------------------------------
@@ -652,12 +620,10 @@ let g:gitgutter_enabled = 1		" enable gitgutter
 " -----------------------------------------------------------------------------
 nnoremap <silent><leader>gm :GitMessenger
 
-" Neovim Terminal Mode Config
+" Terminal Mode Config
 " -----------------------------------------------------------------------------
-if has('nvim')
-	tnoremap <Esc> <C-\><C-n>
-	autocmd TermOpen * setlocal statusline=%{b:term_title}
-endif
+tnoremap <Esc> <C-\><C-n>
+autocmd TermOpen * setlocal statusline=%{b:term_title}
 
 " Airline Config
 " -----------------------------------------------------------------------------
@@ -802,115 +768,110 @@ if !empty(glob('/sys/class/leds/kbd_backlight/brightness'))
 endif
 
 
-" Only create these functions if we are in neovim.
-if has('nvim')
-
-	" TTYClock()
+" TTYClock()
 " -----------------------------------------------------------------------------
-	" This executes ttyclock in a new full screen tab.
-	" Requires the host to have tty-clock installed.
-	if executable('tty-clock')
-		function! TTYClock()
-			exec "tabnew term://tty-clock -C 6 -txbsrc"
-		endfunction
-		command! TTYClock silent! call TTYClock()
-	endif
-
-	" Cmatrix()
-" -----------------------------------------------------------------------------
-	" This executes cmatrix in a new full screen tab.
-	" Requires the host to have cmatrix installed.
-	if executable('cmatrix')
-		function! Cmatrix()
-			exec "tabnew term://cmatrix -a -C cyan"
-		endfunction
-		command! Cmatrix silent! call Cmatrix()
-	endif
-
-	" Htop()
-" -----------------------------------------------------------------------------
-	" This executes htop in a new full screen tab.
-	" Requires the host to have htop installed.
-	if executable('htop')
-		function! Htop(window)
-			if system('if [ -e /usr/bin/htop ]; then echo true; fi') =~ "true"
-				if a:window ==? "tabnew"
-					exec "tabnew term://htop"
-				elseif a:window ==? "vsplit"
-					exec "vsplit term://htop"
-					" exec "normal! \<C-w>r\<C-w>\<C-w>"
-				else
-					echom "Bad command!"
-				endif
-			else
-				echom "Htop is NOT installed on the host system!"
-			endif
-		endfunction
-		command! HtopTab silent! call Htop("tabnew")
-		command! HtopVsplit silent! call Htop("vsplit")
-	endif
-
-	" Terminal Split
-" -----------------------------------------------------------------------------
-	" Make a terminal and split it on the right side.
-	function! TermSplit()
-		exec "vsplit term://zsh"
-		exec "terminal!"
+" This executes ttyclock in a new full screen tab.
+" Requires the host to have tty-clock installed.
+if executable('tty-clock')
+	function! TTYClock()
+		exec "tabnew term://tty-clock -C 6 -txbsrc"
 	endfunction
-	command TermSplit silent! call TermSplit()
-
-	" Terminal Tab
-" -----------------------------------------------------------------------------
-	" Make a terminal in a new tab.
-	function! TermTab()
-		exec "tabnew term://zsh"
-		exec "terminal!"
-	endfunction
-	command TermTab silent! call TermTab()
-
-	" Terminal Window
-" -----------------------------------------------------------------------------
-	" Make a floating terminal window as a scratch pad.
-	function! OpenFloatingWin()
-		let startX = float2nr(&lines / 20)
-		let startY = float2nr(&columns / 20)
-		let height = float2nr(startX * 23)
-		let width = float2nr(startY * 19)
-
-		"Set the position, size, etc. of the floating window.
-		"The size configuration here may not be so flexible, and there's room for further improvement.
-		let opts = {
-					\ 'relative': 'editor',
-					\ 'row': startX,
-					\ 'col': startY,
-					\ 'width': width,
-					\ 'height': height
-					\ }
-
-		let buf = nvim_create_buf(v:false, v:true)
-		let win = nvim_open_win(buf, v:true, opts)
-
-		"Set Floating Window Highlighting
-		call setwinvar(win, '&winhl', 'Terminal:Pmenu')
-
-		setlocal
-					\ buftype=nofile
-					\ nobuflisted
-					\ bufhidden=hide
-					\ nonumber
-					\ norelativenumber
-					\ signcolumn=no
-
-		exec "terminal!"
-
-	endfunction
-	command TermWindow silent! call OpenFloatingWin()
-
+	command! TTYClock silent! call TTYClock()
 endif
+
+" Cmatrix()
+" -----------------------------------------------------------------------------
+" This executes cmatrix in a new full screen tab.
+" Requires the host to have cmatrix installed.
+if executable('cmatrix')
+	function! Cmatrix()
+		exec "tabnew term://cmatrix -a -C cyan"
+	endfunction
+	command! Cmatrix silent! call Cmatrix()
+endif
+
+" Htop()
+" -----------------------------------------------------------------------------
+" This executes htop in a new full screen tab.
+" Requires the host to have htop installed.
+if executable('htop')
+	function! Htop(window)
+		if system('if [ -e /usr/bin/htop ]; then echo true; fi') =~ "true"
+			if a:window ==? "tabnew"
+				exec "tabnew term://htop"
+			elseif a:window ==? "vsplit"
+				exec "vsplit term://htop"
+				" exec "normal! \<C-w>r\<C-w>\<C-w>"
+			else
+				echom "Bad command!"
+			endif
+		else
+			echom "Htop is NOT installed on the host system!"
+		endif
+	endfunction
+	command! HtopTab silent! call Htop("tabnew")
+	command! HtopVsplit silent! call Htop("vsplit")
+endif
+
+" Terminal Split
+" -----------------------------------------------------------------------------
+" Make a terminal and split it on the right side.
+function! TermSplit()
+	exec "vsplit term://zsh"
+	exec "terminal!"
+endfunction
+command TermSplit silent! call TermSplit()
+
+" Terminal Tab
+" -----------------------------------------------------------------------------
+" Make a terminal in a new tab.
+function! TermTab()
+	exec "tabnew term://zsh"
+	exec "terminal!"
+endfunction
+command TermTab silent! call TermTab()
+
+" Terminal Window
+" -----------------------------------------------------------------------------
+" Make a floating terminal window as a scratch pad.
+function! OpenFloatingWin()
+	let startX = float2nr(&lines / 20)
+	let startY = float2nr(&columns / 20)
+	let height = float2nr(startX * 23)
+	let width = float2nr(startY * 19)
+
+	"Set the position, size, etc. of the floating window.
+	"The size configuration here may not be so flexible, and there's room for further improvement.
+	let opts = {
+				\ 'relative': 'editor',
+				\ 'row': startX,
+				\ 'col': startY,
+				\ 'width': width,
+				\ 'height': height
+				\ }
+
+	let buf = nvim_create_buf(v:false, v:true)
+	let win = nvim_open_win(buf, v:true, opts)
+
+	"Set Floating Window Highlighting
+	call setwinvar(win, '&winhl', 'Terminal:Pmenu')
+
+	setlocal
+				\ buftype=nofile
+				\ nobuflisted
+				\ bufhidden=hide
+				\ nonumber
+				\ norelativenumber
+				\ signcolumn=no
+
+	exec "terminal!"
+
+endfunction
+command TermWindow silent! call OpenFloatingWin()
 
 " Speed Profiling
 " -----------------------------------------------------------------------------
-" Lets you see what plugins/external commands are slowing down vim.
+" Lets you see what plugins/external commands are slowing down neovim.
 function! ProfileStart() "
 	exec "profile start profile.log"
 	exec "profile func *"
