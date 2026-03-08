@@ -95,6 +95,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin',	{'on':['NERDTreeToggle', 'NERDTreeFind']}		"
 Plug 'ryanoasis/vim-devicons',		{'on':['NERDTreeToggle', 'NERDTreeFind']}		" Filetype icons for NerdTree.
 " Javascript docs snippet.
 Plug 'heavenshell/vim-jsdoc',		{'for':['javascript','javascript.jsx','typescript'],'do': 'make install'}
+Plug 'arturbien/vim-javacomplete2',	{'for': ['java']}					" Java completion and navigation.
 call plug#end()
 
 " =============================================================================
@@ -263,6 +264,7 @@ endif
 autocmd FileType ruby setlocal ts=2 sts=2 sw=2 noexpandtab
 autocmd FileType javascript setlocal ts=2 sts=2 sw=2 noexpandtab
 autocmd FileType typescript setlocal ts=2 sts=2 sw=2 noexpandtab
+autocmd FileType java setlocal ts=4 sts=4 sw=4 noexpandtab
 
 " Javascript
 " =============================================================================
@@ -459,7 +461,8 @@ if has('nvim') && executable('node')
 		\ 'coc-angular',
 		\ 'coc-tailwindcss',
 		\ 'coc-yaml',
-		\ 'coc-elixir'
+		\ 'coc-elixir',
+		\ 'coc-maven'
 		\ ]
 
 	if executable('discord')
