@@ -91,6 +91,7 @@ Plug 'ryanoasis/vim-devicons',		{'on':['NERDTreeToggle', 'NERDTreeFind']}		" Fil
 Plug 'heavenshell/vim-jsdoc',		{'for':['javascript','javascript.jsx','typescript'],'do': 'make install'}
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-neotest/nvim-nio'
+Plug 'ChmaraX/herdr-nvim'
 Plug 'nvim-neotest/neotest'
 Plug 'nvim-neotest/neotest-vim-test'
 Plug 'vim-test/vim-test'
@@ -313,6 +314,13 @@ let g:netrw_winsize = 25
 " Leader Defined
 " -----------------------------------------------------------------------------
 let mapleader = " "
+
+lua << EOF
+local ok, herdr = pcall(require, "herdr-nvim")
+if ok then
+	herdr.setup({})
+end
+EOF
 
 " Remap semicolon
 " -----------------------------------------------------------------------------
