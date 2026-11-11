@@ -78,6 +78,10 @@
 	needed by every <code>:TSInstall</code> on the nvim-treesitter main branch),
 	<code>maven</code> and <code>gradle</code> (jdtls import + Java test runs),
 	<code>ctags</code> (tagbar, coc-tag), <code>pynvim</code> (Neovim's python3
-	provider; coc-snippets probes it once per session). All are installed by
-	<code>sigint/dotfiles/install-cli-tools.sh</code>.
+	provider; coc-snippets probes it once per session).
+	<li>Install them with <code>./install-editor-tools.sh</code> (dnf / pacman /
+	apk). It mirrors the <code>Dockerfile</code>'s dependency list and leaves
+	shell/CLI tooling to <code>sigint/dotfiles/install-cli-tools.sh</code>. It
+	does not install neovim or a JDK: run your own nvim build, and coc-java
+	manages its own JDK 23.
 </ul>
