@@ -58,6 +58,7 @@ Plug 'stefandtw/quickfix-reflector.vim' " Make the quickfix menu editable.
 Plug 'stsewd/fzf-checkout.vim'			" Add git actions to fzf.
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'romgrk/nvim-treesitter-context'
+Plug 'folke/which-key.nvim'			" Discover <leader> mappings.
 Plug 'junegunn/limelight.vim'
 
 " Plugins Requiring Host Packages
@@ -117,7 +118,7 @@ set showcmd						" Show partial command in status line.
 set showmatch					" Show matching brackets.
 set splitright					" Open new horizontal splits right of the current one.
 set splitbelow					" Open new vertical splits below the current one.
-set completeopt=longest,menuone,preview	" Better autocompletion.
+set completeopt=menuone,noselect	" coc owns the popup; 'preview' fought its floats.
 set shortmess+=c				" Don't send short messages to |ins-completion-menu|
 set hidden						" Buffers become hidden when abandoned.
 set autoread					" Reload the file when it changes outside of neovim.
@@ -133,7 +134,7 @@ set novisualbell				" No visual bell.
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set updatetime=50				" set update time to 50ms (default: 4s)
+set updatetime=300				" 50ms fired CursorHold 20x/s and starved LSP work.
 let &showbreak='>> '			" show characters at the begining of wrapped lines.
 set matchpairs+=<:>				" add '<' and '>' to pairs
 set signcolumn=yes				" always show sign column (helps with coc and git gutter.)
@@ -261,9 +262,8 @@ endif
 " Filetype Config
 " =============================================================================
 autocmd FileType ruby setlocal ts=2 sts=2 sw=2 noexpandtab
-autocmd FileType javascript setlocal ts=2 sts=2 sw=2 noexpandtab
-autocmd FileType typescript setlocal ts=2 sts=2 sw=2 noexpandtab
-autocmd FileType java setlocal ts=4 sts=4 sw=4 noexpandtab
+autocmd FileType javascript,javascriptreact,typescript,typescriptreact,json,jsonc setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType java setlocal ts=4 sts=4 sw=4 expandtab
 
 " Javascript
 " =============================================================================
@@ -450,36 +450,33 @@ endif
 " COC
 " -----------------------------------------------------------------------------
 if has('nvim') && executable('node')
+	" Dropped: coc-clock (registers 'TabEnter ' style events that Nvim 0.12
+	" rejects), coc-import-cost (missing tslib, failed every activation),
+	" coc-github (shells out to git on every completion), coc-rls (abandoned),
+	" coc-marketplace (network at startup), coc-discord-neovim (deprecated).
 	let g:coc_global_extensions = [
-		\ 'coc-clock',
 		\ 'coc-css',
 		\ 'coc-docker',
 		\ 'coc-eslint',
-		\ 'coc-github',
 		\ 'coc-html',
-		\ 'coc-import-cost',
 		\ 'coc-json',
 		\ 'coc-markdownlint',
-		\ 'coc-marketplace',
 		\ 'coc-phpls',
+		\ 'coc-pairs',
 		\ 'coc-prettier',
 		\ 'coc-python',
+		\ 'coc-snippets',
 		\ 'coc-sh',
 		\ 'coc-sql',
 		\ 'coc-tag',
 		\ 'coc-tsserver',
 		\ 'coc-vimlsp',
 		\ 'coc-xml',
-		\ 'coc-rls',
 		\ 'coc-angular',
 		\ 'coc-tailwindcss',
 		\ 'coc-yaml',
 		\ 'coc-elixir'
 		\ ]
-
-	if executable('discord')
-		call coc#add_extension('coc-discord-neovim')
-	endif
 
 	if executable('javac')
 		call coc#add_extension('coc-java')
@@ -494,12 +491,21 @@ if has('nvim') && executable('node')
 		return !col || getline('.')[col - 1]  =~# '\s'
 	endfunction
 
+	" coc draws its own popup, so pumvisible() never saw it; coc#pum# is the
+	" only predicate that tracks the menu coc actually renders.
 	inoremap <silent><expr> <TAB>
-	\ pumvisible() ? "\<C-n>" :
+	\ coc#pum#visible() ? coc#pum#next(1) :
 	\ <SID>check_back_space() ? "\<TAB>" :
 	\ coc#refresh()
-	inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+	inoremap <silent><expr> <S-TAB>
+	\ coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+	inoremap <silent><expr> <CR>
+	\ coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 	inoremap <silent><expr> <C-space> coc#refresh()
+
+	" coc-snippets placeholder jumps.
+	let g:coc_snippet_next = '<c-j>'
+	let g:coc_snippet_prev = '<c-k>'
 
 	nnoremap <silent> K :call <SID>show_documentation()<CR>
 
@@ -672,7 +678,9 @@ set scrolljump=1
 
 " Neovim Built-in Auto Directory Change
 " -----------------------------------------------------------------------------
-set autochdir
+" autochdir moves cwd on every buffer switch, which desyncs tsserver/jdtls
+" roots and breaks relative paths; use :cd / :lcd deliberately instead.
+set noautochdir
 
 " Aget
 " -----------------------------------------------------------------------------
@@ -710,15 +718,15 @@ let g:brightest#highlight = {
 " Tree Sitter
 " -----------------------------------------------------------------------------
 lua << EOF
-local status, ts = pcall(require, "nvim-treesitter.configs")
-if (status) then
-	ts.setup {
-		ensure_installed = { "bash", "css", "dockerfile", "elixir", "go", "html", "java", "javascript", "json", "lua", "markdown", "markdown_inline", "properties", "python", "regex", "toml", "tsx", "typescript", "vim", "vimdoc", "xml", "yaml" },
-		highlight = {
-			enable = true,
-		},
-	}
-end
+-- nvim-treesitter main dropped nvim-treesitter.configs; highlighting now has
+-- to be started per buffer, and parsers are installed with :TSInstall.
+-- pcall keeps buffers without a parser on regex syntax instead of erroring.
+vim.api.nvim_create_autocmd('FileType', {
+	group = vim.api.nvim_create_augroup('user_treesitter', { clear = true }),
+	callback = function(args)
+		pcall(vim.treesitter.start, args.buf)
+	end,
+})
 EOF
 
 " GitSigns
@@ -758,6 +766,25 @@ require('neotest').setup {
 		require('neotest-vim-test'),
 	},
 }
+EOF
+
+" Which-Key
+" -----------------------------------------------------------------------------
+lua << EOF
+-- pcall so a fresh clone (plugin not installed yet) still boots.
+local ok, wk = pcall(require, 'which-key')
+if ok then
+	wk.setup {
+		preset = 'modern',
+		delay = 300,
+		spec = {
+			{ '<leader>g', group = 'goto' },
+			{ '<leader>f', group = 'format / files' },
+			{ '<leader>t', group = 'test' },
+			{ '<leader>h', group = 'git hunk' },
+		},
+	}
+end
 EOF
 
 " vim-test Configuration for Maven

@@ -49,3 +49,35 @@
 <p>When you open up (n)vim, vim-plug will install. It might error out a bit..but just keep hitting enter. When its done call <code>:PlugInstall</code> again.
 <br>
 <hr width="75%" align="center" noshade>
+<hr width="75%" align="center" noshade>
+<strong>LSP (coc.nvim)</strong>
+<ul>
+	<li><code>coc-settings.json</code> lives here and is symlinked to
+	<code>~/.config/nvim/coc-settings.json</code>:
+	<code>ln -s /location/to/Nvim-Config/coc-settings.json ~/.config/nvim/coc-settings.json</code>
+	<li><code>eslint.enable</code> is <b>false</b> globally because coc-eslint
+	starts a server in every buffer, configured or not. Enable it per repository
+	with a project-local <code>.vim/coc-settings.json</code> containing
+	<code>{"eslint.enable": true}</code>.
+	<li>Removed extensions: <code>coc-clock</code> (registers
+	<code>'TabEnter '</code>-style events that Neovim 0.12 rejects),
+	<code>coc-import-cost</code> (missing <code>tslib</code>),
+	<code>coc-github</code> (shells out to git on every completion),
+	<code>coc-rls</code> (abandoned), <code>coc-marketplace</code> (network at
+	startup), <code>coc-discord-neovim</code> (deprecated).
+	<li><code>nvim-treesitter</code> tracks <code>main</code>, which dropped
+	<code>nvim-treesitter.configs</code>. Highlighting is started per buffer from
+	a <code>FileType</code> autocmd; install parsers with
+	<code>:TSInstall &lt;lang&gt;</code>.
+	<li><code>coc-snippets</code> expands snippet completions; <code>&lt;C-j&gt;</code>
+	and <code>&lt;C-k&gt;</code> jump between placeholders. <code>coc-pairs</code>
+	auto-closes brackets.
+	<li><code>which-key.nvim</code> shows a popup after a <code>&lt;leader&gt;</code>
+	prefix (300 ms delay, <code>modern</code> preset).
+	<li><b>Required binaries</b> for the plugins above: <code>tree-sitter</code> (CLI,
+	needed by every <code>:TSInstall</code> on the nvim-treesitter main branch),
+	<code>maven</code> and <code>gradle</code> (jdtls import + Java test runs),
+	<code>ctags</code> (tagbar, coc-tag), <code>pynvim</code> (Neovim's python3
+	provider; coc-snippets probes it once per session). All are installed by
+	<code>sigint/dotfiles/install-cli-tools.sh</code>.
+</ul>
